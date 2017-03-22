@@ -162,11 +162,11 @@ public class AdvertisementController {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
+	//PROVERI
+	//@RequestMapping(value = "/{id}/{updatedDate}",method = RequestMethod.PUT)
+	public ResponseEntity<AdvertisementDTO> prolong(@PathVariable Integer id, @PathVariable Date updatedDate) {
 
-	//@RequestMapping(method = RequestMethod.PUT, consumes = "application/json")
-	public ResponseEntity<AdvertisementDTO> prolong(@RequestBody AdvertisementDTO advertisementDTO, @PathVariable Date updatedDate) {
-
-		Advertisement advertisement = advertisementService.findById(advertisementDTO.getId());
+		Advertisement advertisement = advertisementService.findById(id);
 
 		if(advertisement == null) {
 			return new ResponseEntity<AdvertisementDTO>(HttpStatus.BAD_REQUEST);

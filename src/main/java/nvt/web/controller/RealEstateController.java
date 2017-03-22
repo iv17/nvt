@@ -72,10 +72,6 @@ public class RealEstateController {
 	public ResponseEntity<RealEstateDTO> createRealEstate(@RequestBody RealEstateDTO realEstateDTO) {
 
 		
-		if(realEstateService.findById(realEstateDTO.getId()) != null) {
-			return new ResponseEntity<RealEstateDTO>(HttpStatus.BAD_REQUEST);
-		}
-		
 		RealEstate realEstate = new RealEstate();
 		realEstate.setName(realEstateDTO.getName());
 		realEstate.setDescription(realEstateDTO.getDescription());
@@ -244,9 +240,9 @@ public class RealEstateController {
 	 */
 
 	@RequestMapping(value = "/{typeId}", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateDTO>> findByType(@PathVariable Integer id) {
+	public ResponseEntity<List<RealEstateDTO>> findByType(@PathVariable Integer typeId) {
 
-		RealEstateType realEstateType = realEstateTypeService.findById(id);
+		RealEstateType realEstateType = realEstateTypeService.findById(typeId);
 		if(realEstateType == null) {
 			return new ResponseEntity<List<RealEstateDTO>>(HttpStatus.NOT_FOUND);
 		}
@@ -311,10 +307,10 @@ public class RealEstateController {
 	}
 
 
-	//@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateCommentDTO>> getRealEstateComments(@RequestBody RealEstateDTO realEstateDTO) {
+	@RequestMapping(value = "/{id}/comments", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateCommentDTO>> getRealEstateComments(@PathVariable Integer id) {
 
-		RealEstate realEstate = realEstateService.findById(realEstateDTO.getId());
+		RealEstate realEstate = realEstateService.findById(id);
 
 		Set<RealEstateComment> realEstateComments = realEstate.getComments();
 
@@ -329,10 +325,10 @@ public class RealEstateController {
 	}
 
 
-	//@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateRatingDTO>> getRealEstateRatings(@RequestBody RealEstateDTO realEstateDTO) {
+	@RequestMapping(value = "/{id}/ratings", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateRatingDTO>> getRealEstateRatings(@PathVariable Integer id) {
 
-		RealEstate realEstate = realEstateService.findById(realEstateDTO.getId());
+		RealEstate realEstate = realEstateService.findById(id);
 
 		Set<RealEstateRating> realEstateRatings = realEstate.getRatings();
 
@@ -346,10 +342,10 @@ public class RealEstateController {
 
 	}
 
-	//@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateReportDTO>> getRealEstateReports(@RequestBody RealEstateDTO realEstateDTO) {
+	@RequestMapping(value = "/{id}/reports", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateReportDTO>> getRealEstateReports(@PathVariable Integer id) {
 
-		RealEstate realEstate = realEstateService.findById(realEstateDTO.getId());
+		RealEstate realEstate = realEstateService.findById(id);
 
 		Set<RealEstateReport> realEstateReports = realEstate.getReports();
 		

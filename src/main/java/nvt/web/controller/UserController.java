@@ -46,10 +46,6 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
 
-		if(userService.findById(userDTO.getId()) != null) {
-			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
-		}
-
 		User user = new User();
 		user.setEmail(userDTO.getEmail());
 		user.setUsername(userDTO.getUsername());
@@ -175,10 +171,10 @@ public class UserController {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
-	//@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<AgentRatingDTO>> getUserRatingsForAgents(@RequestBody UserDTO userDTO) {
+	@RequestMapping(value = "/{userID}/ratingsForAgents",method = RequestMethod.GET)
+	public ResponseEntity<List<AgentRatingDTO>> getUserRatingsForAgents(@PathVariable Integer userID) {
 
-		User user = userService.findById(userDTO.getId());
+		User user = userService.findById(userID);
 
 		Set<AgentRating> agentRatings = user.getAgentRatings();
 
@@ -193,10 +189,10 @@ public class UserController {
 	}
 
 
-	@RequestMapping(value = "/{userId}/comments", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateCommentDTO>> getUserComments(@RequestBody UserDTO userDTO) {
+	@RequestMapping(value = "/{userID}/comments", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateCommentDTO>> getUserComments(@PathVariable Integer userID) {
 
-		User user = userService.findById(userDTO.getId());
+		User user = userService.findById(userID);
 
 		Set<RealEstateComment> comments = user.getComments();
 
@@ -211,10 +207,10 @@ public class UserController {
 	}
 
 
-	@RequestMapping(value = "/{userId}/userRatings", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateRatingDTO>> getUserRatingsForRealEstate(@RequestBody UserDTO userDTO) {
+	@RequestMapping(value = "/{userID}/ratingsForEstates", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateRatingDTO>> getUserRatingsForRealEstate(@PathVariable Integer userID) {
 
-		User user = userService.findById(userDTO.getId());
+		User user = userService.findById(userID);
 
 		Set<RealEstateRating> ratings = user.getRatings();
 
@@ -229,10 +225,10 @@ public class UserController {
 	}
 
 
-	@RequestMapping(value = "/{userId}/reports", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateReportDTO>> getUserReports(@RequestBody UserDTO userDTO) {
+	@RequestMapping(value = "/{userID}/reports", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateReportDTO>> getUserReports(@PathVariable Integer userID) {
 
-		User user = userService.findById(userDTO.getId());
+		User user = userService.findById(userID);
 
 		Set<RealEstateReport> reports = user.getReports();
 
@@ -248,13 +244,13 @@ public class UserController {
 
 
 	//@RequestMapping(method = RequestMethod.PUT, consumes = "application/json")
-	public ResponseEntity<UserDTO> registration(@PathVariable String email, @PathVariable String username, @PathVariable String password) {
+	public ResponseEntity<UserDTO> registration(@RequestBody UserDTO userDTO) {
 
 		User user = new User();
 
-		user.setEmail(email);
-		user.setUsername(username);
-		user.setPassword(password);
+		user.setEmail(userDTO.getEmail());
+		user.setUsername(userDTO.getUsername());
+		user.setPassword(userDTO.getPassword());
 		
 		UserDTO newUserDTO = new UserDTO(user);
 
@@ -264,7 +260,7 @@ public class UserController {
 
 	}
 
-	@RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{username}/{password}", method = RequestMethod.GET)
 	public ResponseEntity<UserDTO> login(@PathVariable String username, @PathVariable String password) {
 
 		User user = userService.findByUsernameAndPassword(username, password);

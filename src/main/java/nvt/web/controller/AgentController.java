@@ -150,10 +150,10 @@ public class AgentController {
 	}
 	
 	
-	@RequestMapping(value = "/{agentId}/advertisements", method = RequestMethod.GET)
-	public ResponseEntity<List<AdvertisementDTO>> getAgentAdvertisements(@RequestBody AgentDTO agentDTO) {
+	@RequestMapping(value = "/{id}/advertisements", method = RequestMethod.GET)
+	public ResponseEntity<List<AdvertisementDTO>> getAgentAdvertisements(@PathVariable Integer id) {
 		
-		Agent agent = agentService.findById(agentDTO.getId());
+		Agent agent = agentService.findById(id);
 		
 		Set<Advertisement> advertisements = agent.getAdvertisements();
 		
@@ -168,10 +168,10 @@ public class AgentController {
 	}
 	
 	
-	@RequestMapping(value = "/{agentId}/agentRatings", method = RequestMethod.GET)
-	public ResponseEntity<List<AgentRatingDTO>> getAgentRatings(@RequestBody AgentDTO agentDTO) {
+	@RequestMapping(value = "/{id}/agentRatings", method = RequestMethod.GET)
+	public ResponseEntity<List<AgentRatingDTO>> getAgentRatings(@PathVariable Integer id) {
 		
-		Agent agent = agentService.findById(agentDTO.getId());
+		Agent agent = agentService.findById(id);
 		
 		Set<AgentRating> agentRatings = agent.getAgentRatings();
 		

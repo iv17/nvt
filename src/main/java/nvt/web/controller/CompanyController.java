@@ -50,10 +50,6 @@ public class CompanyController {
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<CompanyDTO> createCompany(@RequestBody CompanyDTO companyDTO) {
 
-		if(companyService.findById(companyDTO.getId()) != null) {
-			return new ResponseEntity<CompanyDTO>(HttpStatus.BAD_REQUEST);
-		}
-
 		Company company = new Company();
 		company.setName(companyDTO.getName());
 		company.setPassword(companyDTO.getPassword());
@@ -195,7 +191,7 @@ public class CompanyController {
 	}
 
 
-	@RequestMapping(value = "/{companyId}/agents", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}/agents", method = RequestMethod.GET)
 	public ResponseEntity<List<AgentDTO>> getAgents(@PathVariable Integer id) {
 
 		Company company = companyService.findById(id);
@@ -211,16 +207,16 @@ public class CompanyController {
 
 	}
 
-
-	public ResponseEntity<List<AgentDTO>> addAgent(@PathVariable Integer id, @RequestBody AgentDTO agentDTO) {
+	@RequestMapping(value = "/{id}/{agentId}", method = RequestMethod.PUT)
+	public ResponseEntity<List<AgentDTO>> addAgent(@PathVariable Integer id, @PathVariable Integer agentId) {
 
 		Company company = companyService.findById(id);
 		
 		Set<Agent> agents = company.getAgents();
-		if(agents.contains(agentService.findById(agentDTO.getId()))) {
+		if(agents.contains(agentService.findById(agentId))) {
 			return new ResponseEntity<List<AgentDTO>>(HttpStatus.BAD_REQUEST);
 		}
-		Agent agent = agentService.findById(agentDTO.getId());
+		Agent agent = agentService.findById(agentId);
 		agents.add(agent);
 		
 		company.setAgents(agents);
