@@ -1,0 +1,36 @@
+<div class = "col-md-4 col-sm-4 col-xs-12 profile_details">
+	<div class = "well profile_view">
+		<div class = "col-sm-12">
+			<h4 class = "brief"><i>{{ vm.advertisement.realEstate.name }}</i></h4>
+			<div class = "left col-xs-7">
+				<h2>{{ vm.advertisement.realEstate.location.street }} / {{ vm.advertisement.realEstate.location.city }}</h2>
+				<ul class = "list-unstyled">
+					<li><i class = "fa fa-eur"></i> {{ vm.advertisement.realEstate.price }} </li>
+					<li><i class = "fa fa-building"></i> {{ vm.advertisement.realEstate.surface }} </li>
+					<li><i class = "fa fa-calendar"></i> {{ vm.advertisement.posted }} </li>
+					<li><i class = "fa fa-male"></i> {{ vm.advertisement.agent }} </li>
+				</ul>
+			</div>
+			<div class = "right col-xs-5 text-center">
+				<img ng-src = "../images/img.jpg" alt = "" class = "img-rect img-responsive">
+			</div>
+		</div>
+		<div class = "col-xs-12 bottom text-center">
+			<div class = "col-xs-12 col-sm-6 emphasis">
+				<p class = "ratings">
+					<a>4.0</a>
+					<a href="#"><span class="fa fa-star"></span></a>
+					<a href="#"><span class="fa fa-star"></span></a>
+					<a href="#"><span class="fa fa-star"></span></a>
+					<a href="#"><span class="fa fa-star"></span></a>
+					<a href="#"><span class="fa fa-star-o"></span></a>
+				</p>
+			</div>
+			<div class = "col-xs-12 col-sm-6 emphasis">
+				<button type = "button" class = "btn btn-success btn-xs"></i> <i class = "fa fa-comments-o"></i> </button>
+				<button type = "button" class = "btn btn-success btn-xs"></i> <i class = "fa fa-flag-o"></i> </button>
+				<button type = "button" class = "btn btn-primary btn-xs"><i class = "fa fa-home"> </i> View realestate</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>User Rating</span> {{vm.userRating.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Value</span></dt>
+        <dd>
+            <span>{{vm.userRating.value}}</span>
+        </dd>
+        <dt><span>Author</span></dt>
+        <dd>
+            {{vm.userRating.author.login}}
+        </dd>
+        <dt><span>Real Estate</span></dt>
+        <dd>
+            <a ui-sref="real-estate-detail({id:vm.userRating.realEstate.id})">{{vm.userRating.realEstate.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="user-rating-detail.edit({id:vm.userRating.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

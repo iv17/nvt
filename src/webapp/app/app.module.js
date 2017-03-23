@@ -3,7 +3,9 @@
 
     angular
         .module('realestateApp', [
-           
+            'ngResource',
+            'ui.bootstrap',
+            'ui.router'
         ])
         .run(run);
 
