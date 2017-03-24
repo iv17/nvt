@@ -2,13 +2,14 @@
     'use strict';
 
     angular
-        .module('realestateApp', [
+        .module('nvtApp', [
             'ngResource',
             'ui.bootstrap',
             'ui.router'
         ])
         .run(run);
 
+    <!-- vidi sta je ovo-->
     run.$inject = ['stateHandler'];
 
     function run(stateHandler) {
