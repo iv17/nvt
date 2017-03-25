@@ -8,7 +8,7 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('app', {
+        $stateProvider.state('home', {
             abstract: true,
             views: {
               views: {
@@ -40,7 +40,7 @@
                 }
             },
             views: {
-                'home@': {
+                'content@': {
                     templateUrl: 'app/advertisement/advertisements.html',
                     controller: 'AdvertisementController',
                     controllerAs: 'ad'
