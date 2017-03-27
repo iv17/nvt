@@ -1,3 +1,4 @@
+
 (function() {
     'use strict';
 
@@ -18,34 +19,7 @@
                       controller: 'TopNavController',
                       controllerAs: 'topNav'
                   }
-              },
-                'profile@': {
-                    templateUrl: 'app/home/profile.html',
-                    controller: 'ProfileController',
-                    controllerAs: 'profile'
-                }
-            },
-            views: {
-                'filter@': {
-                    templateUrl: 'app/home/filter.html',
-                    controller: 'FilterController',
-                    controllerAs: 'filter'
-                }
-            },
-            views: {
-                'footer@': {
-                    templateUrl: 'app/home/footer.html',
-                    controller: 'FooterController',
-                    controllerAs: 'footer'
-                }
-            },
-            views: {
-                'content@': {
-                    templateUrl: 'app/advertisement/advertisements.html',
-                    controller: 'AdvertisementController',
-                    controllerAs: 'ad'
-                }
-            },
+              }
             resolve: {
                 authorize: ['Auth',
                     function (Auth) {
