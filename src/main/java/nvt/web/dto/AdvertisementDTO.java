@@ -7,7 +7,6 @@ import nvt.beans.Advertisement;
 public class AdvertisementDTO {
 
 	protected int id;
-	protected String name;
 	protected Date posted;
 	protected Date updated;
 	protected int duration;
@@ -26,7 +25,6 @@ public class AdvertisementDTO {
 	
 	public AdvertisementDTO(Advertisement advertisement) {
 		this(advertisement.getId(),
-				advertisement.getName(),
 				advertisement.getPosted(),
 				advertisement.getUpdated(),
 				advertisement.getDuration(),
@@ -38,10 +36,9 @@ public class AdvertisementDTO {
 	}
 
 	
-	public AdvertisementDTO(int id, String name, Date posted, Date updated, int duration, boolean inappropriate,
+	public AdvertisementDTO(int id, Date posted, Date updated, int duration, boolean inappropriate,
 			boolean verified, RealEstateDTO realEstateDTO, AgentDTO agentDTO, AdvertisementTypeDTO advertisementTypeDTO) {
 		this.id = id;
-		this.name = name;
 		this.posted = posted;
 		this.updated = updated;
 		this.duration = duration;
@@ -59,14 +56,6 @@ public class AdvertisementDTO {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public Date getPosted() {

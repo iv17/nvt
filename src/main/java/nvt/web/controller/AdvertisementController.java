@@ -44,7 +44,6 @@ public class AdvertisementController {
 	public ResponseEntity<AdvertisementDTO> createAdvertisement(@RequestBody AdvertisementDTO advertisementDTO) {
 
 		Advertisement advertisement = new Advertisement();
-		advertisement.setName(advertisementDTO.getName());
 		advertisement.setPosted(advertisementDTO.getPosted());
 		advertisement.setUpdated(advertisementDTO.getPosted());
 		advertisement.setDuration(advertisementDTO.getDuration());
@@ -115,7 +114,6 @@ public class AdvertisementController {
 		if(advertisement == null) {
 			return new ResponseEntity<AdvertisementDTO>(HttpStatus.BAD_REQUEST);
 		}
-		advertisement.setName(advertisementDTO.getName());
 		advertisement.setPosted(advertisementDTO.getPosted());
 		advertisement.setUpdated(advertisementDTO.getUpdated());
 		advertisement.setDuration(advertisementDTO.getDuration());

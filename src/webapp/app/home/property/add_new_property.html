@@ -1,88 +1,114 @@
 <aside class = "sidebar right sidebar-size-xs-1 sidebar-size-lg-48pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" id = sidebar-edit data-toggle-layout = true data-toggle-bar = true>
-  <div data-scrollable>
-    <form name = "addProperty">
-      <div class = "sidebar-block">
-        <h1 class = "text-h3 sidebar-heading">add new property</h1>
-      </div>
-      <div class = "sidebar-block">
-        <h4 class = "category">general information</h4>
-        <div class = "form-group">
+	<div data-scrollable>
+		<form name = "addProperty">
+			<div class = "sidebar-block">
+				<h1 class = "text-h3 sidebar-heading">add new property</h1>
+			</div>
+			<div class = "sidebar-block">
+				<h4 class = "category">general information</h4>
+				<div class = "form-group">
 					<div class = "input-group">
-            <label for = "name" class = "sidebar-text">name:</label>
+						<label for = "name" class = "sidebar-text">name:</label>
 						<input type = "text" id = "name" ng-model = "name" class = "form-control" placeholder = "name">
 					</div>
 				</div>
-        <div class = "form-group">
+				<div class = "form-group">
 					<div class = "input-group">
-            <label for = "description" class = "sidebar-text">description:</label>
+						<label for = "description" class = "sidebar-text">description:</label>
 						<textarea id = "description" id = "description" ng-model = "description" class = "form-control" placeholder = "description" rows = "5"/>
-						</div>
+					</div>
 				</div>
-        <div class = "form-group">
-          <label for = "apartmentType" class = "sidebar-text">apartment type:</label>
-          <select id = "apartmentType" class = "selectpicker">
-            <option>Apartment</option>
-            <option>House</option>
-          </select>
-        </div>
-        <div class = "form-group">
+				<div class = "form-group">
+					<label for = "apartmentType" class = "sidebar-text">apartment type:</label>
+					<select id = "apartmentType" class = "selectpicker">
+						<option>Apartment</option>
+						<option>House</option>
+					</select>
+				</div>
+				<div class = "form-group">
 					<div class = "input-group">
-            <label for = "surface" class = "sidebar-text">surface:</label>
+						<label for = "surface" class = "sidebar-text">surface:</label>
 						<input type = "surface" min = "30" max = "300" id = "surface" ng-model = "surface" class = "form-control" placeholder = "surface">
 					</div>
 				</div>
-        <div class = "form-group">
+				<div class = "form-group">
 					<div class = "input-group">
-            <label for = "floor" class = "sidebar-text">floor:</label>
+						<label for = "floor" class = "sidebar-text">floor:</label>
 						<input type = "number" min = "1" max = "100" id = "floor" ng-model = "floor" class = "form-control" placeholder = "floor">
 					</div>
 				</div>
-        <div class = "form-group">
+				<div class = "form-group">
 					<div class = "input-group">
-            <label for = "rooms" class = "sidebar-text">rooms:</label>
+						<label for = "rooms" class = "sidebar-text">rooms:</label>
 						<input type = "number" min = "1" max = "10" id = "name" ng-model = "name" class = "form-control" placeholder = "rooms">
 					</div>
 				</div>
-        <div class = "form-group">
+				<div class = "form-group">
 					<div class = "input-group">
-            <label for = "bathrooms" class = "sidebar-text">bathrooms:</label>
+						<label for = "bathrooms" class = "sidebar-text">bathrooms:</label>
 						<input type = "number" min = "1" max = "10" id = "bathrooms" ng-model = "bathrooms" class = "form-control" placeholder = "bathrooms">
 					</div>
 				</div>
-        <div class = "form-group">
+				<div class = "form-group">
 					<div class = "input-group">
-            <label for = "constructedYear" class = "sidebar-text">year of construction:</label>
+						<label for = "constructedYear" class = "sidebar-text">year of construction:</label>
 						<input type = "constructedYear" min = "1970" max = "2017" id = "constructedYear" ng-model = "constructedYear" class = "form-control" placeholder = "year of construction">
 					</div>
 				</div>
-        <div class = "form-group">
-          <label for = "heatingType" class = "sidebar-text">heating type:</label>
-          <select id = "heatingType" class = "selectpicker">
-            <option>heatingType</option>
-            <option>heatingType</option>
-          </select>
-        </div>
-      </div>
-      <div class = "sidebar-block">
-        <h4 class = "category">commercial</h4>
-        <div class = "form-group">
-          <label for = "advertisementType" class = "sidebar-text">advertisement type:</label>
-          <select id = "advertisementType" class = "selectpicker">
-            <option value="1">Rent</option>
-            <option value="2" selected>Sell</option>
-          </select>
-        </div>
-        <div class = "form-group">
-          <div class = "input-group">
-            <label for = "price" class = "sidebar-text">price: (&euro;)</label>
-            <input type = "text" id = "price" ng-model = "price" class = "form-control" placeholder = "price">
-          </div>
-        </div>
-      </div>
-      <div class = "sidebar-block equal-padding">
-        <button type = "submit" class = "btn btn-primary">save</button>
-        <button type = "button" class = "btn btn-default"><i class = "fa fa-times fa-fw"></i> cancel</button>
-      </div>
-    </form>
-  </div>
+				<div class = "form-group">
+					<label for = "heatingType" class = "sidebar-text">heating type:</label>
+					<select id = "heatingType" class = "selectpicker">
+						<option>heatingType</option>
+						<option>heatingType</option>
+					</select>
+				</div>
+				<div class = "form-group">
+					<label class = "control-label col-md-3 col-sm-3 col-xs-12">filed</label>
+					<div class = "col-md-6 col-sm-6 col-xs-12">
+						<div id = "filed" class = "btn-group" data-toggle = "buttons">
+							<label class = "btn btn-default" data-toggle-class = "btn-primary" data-toggle-passive-class = "btn-default">
+							<input type = "radio" name = "filed" value = "true"> &nbsp; yes &nbsp;
+							</label>
+							<label class = "btn btn-primary" data-toggle-class = "btn-primary" data-toggle-passive-class = "btn-default">
+							<input type = "radio" name = "filed" value = "false"> no
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class = "form-group">
+					<label class = "control-label col-md-3 col-sm-3 col-xs-12">furnished</label>
+					<div class = "col-md-6 col-sm-6 col-xs-12">
+						<div id = "furnished" class = "btn-group" data-toggle = "buttons">
+							<label class = "btn btn-default" data-toggle-class = "btn-primary" data-toggle-passive-class = "btn-default">
+							<input type = "radio" name = "furnished" value = "true"> &nbsp; yes &nbsp;
+							</label>
+							<label class = "btn btn-primary" data-toggle-class = "btn-primary" data-toggle-passive-class = "btn-default">
+							<input type = "radio" name = "furnished" value = "false"> no
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class = "sidebar-block">
+				<h4 class = "category">commercial</h4>
+				<div class = "form-group">
+					<label for = "advertisementType" class = "sidebar-text">advertisement type:</label>
+					<select id = "advertisementType" class = "selectpicker">
+						<option value="1">Rent</option>
+						<option value="2" selected>Sell</option>
+					</select>
+				</div>
+				<div class = "form-group">
+					<div class = "input-group">
+						<label for = "price" class = "sidebar-text">price: (&euro;)</label>
+						<input type = "text" id = "price" ng-model = "price" class = "form-control" placeholder = "price">
+					</div>
+				</div>
+			</div>
+			<div class = "sidebar-block equal-padding">
+				<button type = "submit" class = "btn btn-primary">save</button>
+				<button type = "button" class = "btn btn-default"><i class = "fa fa-times fa-fw"></i> cancel</button>
+			</div>
+		</form>
+	</div>
 </aside>

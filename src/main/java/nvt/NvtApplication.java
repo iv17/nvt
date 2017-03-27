@@ -402,11 +402,11 @@ public class NvtApplication implements CommandLineRunner {
 		advertisementTypeRepository.save(advertisementType2);
 		
 
-		Advertisement advertisement1 = new Advertisement("...", new Date(), 48, realEstate1, agent1, advertisementType2);
+		Advertisement advertisement1 = new Advertisement(new Date(), 48, realEstate1, agent1, advertisementType2);
 		advertisementRepository.save(advertisement1);
-		Advertisement advertisement2 = new Advertisement("...", new Date(), 48, realEstate2, agent1, advertisementType2);
+		Advertisement advertisement2 = new Advertisement(new Date(), 48, realEstate2, agent1, advertisementType2);
 		advertisementRepository.save(advertisement2);
-		Advertisement advertisement3 = new Advertisement("...", new Date(), 48, realEstate3, agent1, advertisementType1);
+		Advertisement advertisement3 = new Advertisement(new Date(), 48, realEstate3, agent1, advertisementType1);
 		advertisementRepository.save(advertisement3);
 
 		

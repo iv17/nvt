@@ -23,9 +23,6 @@ public class Advertisement implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
 	protected int id;
-
-	@Column(name = "name", unique = false, nullable = true)
-	protected String name;
 	
 	@Column(name = "posted", unique = false, nullable = true)
 	protected Date posted;
@@ -61,9 +58,8 @@ public class Advertisement implements Serializable {
 	}
 
 	
-	public Advertisement(String name, Date posted, int duration, RealEstate realEstate, 
+	public Advertisement(Date posted, int duration, RealEstate realEstate, 
 			Agent agent, AdvertisementType advertisementType) {
-		this.name = name;
 		this.posted = posted;
 		this.duration = duration;
 		this.realEstate = realEstate;
@@ -72,10 +68,9 @@ public class Advertisement implements Serializable {
 	}
 
 
-	public Advertisement(String name, Date posted, Date updated, int duration, 
+	public Advertisement(Date posted, Date updated, int duration, 
 			boolean inappropriate, boolean verified, RealEstate realEstate,
 			Agent agent, AdvertisementType advertisementType) {
-		this.name = name;
 		this.posted = posted;
 		this.updated = updated;
 		this.duration = duration;
@@ -87,11 +82,10 @@ public class Advertisement implements Serializable {
 	}
 
 	
-	public Advertisement(int id, String name, Date posted, Date updated, int duration,
+	public Advertisement(int id, Date posted, Date updated, int duration,
 			boolean inappropriate, boolean verified, RealEstate realEstate, 
 			Agent agent, AdvertisementType advertisementType) {
 		this.id = id;
-		this.name = name;
 		this.posted = posted;
 		this.updated = updated;
 		this.duration = duration;
@@ -109,14 +103,6 @@ public class Advertisement implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public Date getPosted() {
