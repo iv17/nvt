@@ -110,7 +110,7 @@ public class NvtApplication implements CommandLineRunner {
 	
 	public static void main(String[] args) {
 		
-		SpringApplication.run(NvtApplication.class, args);
+		SpringApplication.run(NvtApplication.class);
 		
 		System.out.println("\n\n\n\n\t\t\t\tIVANA");
 	}
@@ -119,7 +119,7 @@ public class NvtApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... arg0) throws Exception {
-		
+
 	
 		Image image11 = new Image("user1", "");
 		imageRepository.save(image11);
@@ -514,4 +514,5 @@ public class NvtApplication implements CommandLineRunner {
 
 		
 	}
+	
 }
