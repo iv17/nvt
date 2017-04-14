@@ -6,6 +6,7 @@
         .module('nvtApp')
         .config(stateConfig);
 
+
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
@@ -13,28 +14,21 @@
             abstract: true,
             views: {
                   'main_nav@': {
-                      templateUrl: 'app/home/account/main_nav.html',
+                      templateUrl: 'app/views/main_nav/main_nav.html',
                       controller: 'MainNavController',
                       controllerAs: 'mainNav'
                   }
             },
             views: {
                   'sidebar_menu@': {
-                      templateUrl: 'app/home/sidebar_menu.html',
+                      templateUrl: 'app/views/sidebar_menu.html',
                       controller: 'SidebarMenuController',
                       controllerAs: 'sidebarMenu'
                   }
             },
             views: {
                   'content@': {
-                      templateUrl: 'app/map_property/map.html',
-                      controller: 'MapController',
-                      controllerAs: 'map'
-                  }
-            },
-            views: {
-                  'pop_up@': {
-                      templateUrl: 'app/map_property/map.html',
+                      templateUrl: 'app/views/content/list_properties.html',
                       controller: 'MapController',
                       controllerAs: 'map'
                   }

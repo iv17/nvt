@@ -1,0 +1,9 @@
+sidebar_menu
+- meni sa strane
+- ubaciti linkove ka svim drugim stranicama
+
+main-nav
+- gornji toolbar
+- unutar njega postoje sign in, sign up i profile views
+- unutar profile view treba da se nalaze linkovi za
+  profile view, my_adverts, my_reports i sl..
