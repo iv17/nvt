@@ -34,7 +34,7 @@
 		<link href = "app/css/app/colors-buttons.css" rel = "stylesheet" />
 		<link href = "app/css/app/colors-text.css" rel = "stylesheet" />
 	</head>
-	<body ng-app = "nvtApp">
+	<body ng-app = "nvtApp" ng-strict-di>
 		<!-- Wrapper required for sidebar transitions -->
 		<div class = "st-container">
 			<!-- Fixed navbar -->
@@ -49,36 +49,34 @@
 						<span class = "icon-bar"></span>
 						</button>
 						<a href = "#sidebar-map" data-toggle = "sidebar-menu" class = "toggle pull-right visible-xs"><i class = "fa fa-map-marker"></i></a>
-						<a class = "navbar-brand" href = "index.html">realestate</a>
+						<a class = "navbar-brand" ui-sref = "app/index.html">realestate</a>
 					</div>
 					<div ui-view = "main_nav">
+						<!-- TOOLBAR -->
 					</div>
 					<!-- /.navbar-collapse -->
 				</div>
 			</nav>
-			<!-- MENI SA STRANE -->
 			<div ui-view = "sidebar_menu">
+				<!-- MENI SA STRANE -->
 			</div>
 
-			<!-- popup sa desne strane sa nekretninama-->
 			<div ui-view = "pop_up">
+				<!-- popup sa desne strane sa nekretninama-->
+
 			</div>
 
 			<div class = "st-pusher">
 				<div class = "st-content">
 					<div class = "st-content-inner padding-top-none" id = "content" ui-view = "content">
-
+						<!-- CONTENT -->
+						<p>content</p>
 					</div>
-					<!-- /st-content-inner -->
-				</div>
-				<!-- /st-content -->
+					</div>
 			</div>
-			<!-- /st-pusher -->
-			<!-- Footer -->
 			<footer class = "footer">
 				<strong>realestate</strong>
 			</footer>
-			<!-- // Footer -->
 		</div>
 		<script>
 			var colors = {
@@ -118,7 +116,7 @@
 		<!--
 		<script src = "app/js/vendor/core/jquery.js"></script>
 		<script src = "app/js/vendor/core/bootstrap.js"></script>
-	-->
+		-->
 		<script src = "app/js/vendor/core/breakpoints.js"></script>
 		<script src = "app/js/vendor/core/jquery.nicescroll.js"></script>
 		<script src = "app/js/vendor/core/isotope.pkgd.js"></script>
@@ -143,6 +141,10 @@
 		<!-- realestate scripts -->
 		<script src = "app/scripts/app.module.js"></script>
 		<script src = "app/scripts/app.state.js"></script>
+
+		<script src = "app/scripts/advertisement.controller.js"></script>
+		<script src = "app/scripts/advertisement.resource.js"></script>
+
 
 	</body>
 </html>

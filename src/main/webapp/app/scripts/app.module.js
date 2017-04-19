@@ -9,9 +9,11 @@ angular
     'ui.router',
     'lodash'
   ])
+
   // run se izvrsava pre svega ostalog
   .run(['Restangular', '$log', function(Restangular, $log) {
     Restangular.setBaseUrl("api");
+    stateHandler.initialize();
     Restangular.setErrorInterceptor(function(response) {
       if (response.status === 500) {
         $log.info("internal server error");
@@ -20,3 +22,5 @@ angular
       return true;
     });
   }]);
+
+  run.$inject = ['stateHandler'];

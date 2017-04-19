@@ -17,7 +17,7 @@ import nvt.service.ApartmentTypeService;
 import nvt.web.dto.ApartmentTypeDTO;
 
 @RestController
-@RequestMapping(value = "api/apartmentType")
+@RequestMapping(value = "api/apartmentTypes")
 public class ApartmentTypeController {
 
 	@Autowired

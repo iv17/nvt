@@ -1,6 +1,3 @@
-(function() {
-    'use strict';
-
     angular
         .module('nvtApp')
         .config(stateConfig);
@@ -26,9 +23,9 @@
             },
             views: {
                   'content@': {
-                      templateUrl: 'app/views/content/list_properties.html',
-                      controller: 'MapController',
-                      controllerAs: 'map'
+                      templateUrl: 'app/views/content/advertisements_list.html',
+                      controller: 'AdvertisementController',
+                      controllerAs: 'vm_advertisement'
                   }
             },
             resolve: {
@@ -40,6 +37,3 @@
             }
         });
     }
-
-
-})();

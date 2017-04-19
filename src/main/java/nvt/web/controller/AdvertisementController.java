@@ -24,7 +24,7 @@ import nvt.service.RealEstateService;
 import nvt.web.dto.AdvertisementDTO;
 
 @RestController
-@RequestMapping(value = "api/advertisement")
+@RequestMapping(value = "api/advertisements")
 public class AdvertisementController {
 
 	@Autowired
