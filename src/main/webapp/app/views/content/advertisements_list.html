@@ -1,17 +1,16 @@
 <div class = "sidebar-block sidebar-block-full">
-<table class="table table-bordered">
+<table class = "table table-bordered">
   <tr>
     <th>id</th>
     <th>duration</th>
   </tr>
-  <tr ng-repeat="advertisement in advertisements">
+  <tr ng-repeat="ad in advertisements">
     <td>
-      {{advertisement.id}}
+      {{ ad.id }}
     </td>
     <td>
-      {{advertisement.duration}}
+      {{ ad.duration }}
     </td>
   </tr>
 </table>
-<div ui-sref = "advertisement_list.html"> </div>
 </div>

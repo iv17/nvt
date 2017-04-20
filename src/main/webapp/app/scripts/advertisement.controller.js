@@ -7,12 +7,9 @@
 			function($scope, $state, _, AdvertisementResource) {
 
 				AdvertisementResource.getAdvertisements().then(function(items) {
-					$scope.advertisements = items;
+						$scope.advertisements = items;
 				});
 
-				$scope.deleteAdvertisement = function(id) {
-					AdvertisementResource.deleteAdvertisement(id);
-				};
 			}
 		]);
 })();

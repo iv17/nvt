@@ -3,16 +3,16 @@
 
   angular
     .module('nvtApp', [
+      'ui.router',
       'ngResource',
-      'ngRoute',
       'restangular',
       'ui.bootstrap',
-      'ui.router',
       'lodash'
     ])
-    .config(['$stateProvider', function($stateProvider) {
+    .config(function($stateProvider) {
       $stateProvider.state('app', {
         abstract: true,
+        url: "/",
         views: {
           'content@': {
             templateUrl: 'app/views/content/advertisements_list.html',
@@ -28,10 +28,11 @@
           ]
         }
       });
-    }])
+    })
       // run se izvrsava pre svega ostalog
     .run(['Restangular', '$log', function(Restangular, $log) {
       Restangular.setBaseUrl("api");
+      $log.info("started");
       Restangular.setErrorInterceptor(function(response) {
         if (response.status === 500) {
           $log.info("internal server error");

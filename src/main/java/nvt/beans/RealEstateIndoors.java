@@ -31,6 +31,13 @@ public class RealEstateIndoors implements Serializable {
 	protected IndoorFeature indoorFeature;
 
 	
+	
+	
+	public RealEstateIndoors() {
+
+	}
+
+
 	public RealEstateIndoors(RealEstate realEstate, IndoorFeature indoorFeature) {
 		this.realEstate = realEstate;
 		this.indoorFeature = indoorFeature;

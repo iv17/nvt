@@ -34,14 +34,73 @@
 		<link href = "app/css/app/colors-buttons.css" rel = "stylesheet" />
 		<link href = "app/css/app/colors-text.css" rel = "stylesheet" />
 	</head>
-	<body ng-app = "nvtApp" ng-strict-di>
+	<body ng-app = "nvtApp">
+
+		<div class = "st-container">
+			<nav class = "navbar navbar-default navbar-fixed-top" role = "navigation">
+				<div class = "container-fluid">
+					<div class = "navbar-header">
+						<a href = "#sidebar-menu" data-toggle = "sidebar-menu" class = "toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
+						<button type = "button" class = "navbar-toggle collapsed" data-toggle = "collapse" data-target = "#main-nav">
+						<span class = "sr-only">Toggle navigation</span>
+						<span class = "icon-bar"></span>
+						<span class = "icon-bar"></span>
+						<span class = "icon-bar"></span>
+						</button>
+						<a href = "#sidebar-map" data-toggle = "sidebar-menu" class = "toggle pull-right visible-xs"><i class = "fa fa-map-marker"></i></a>
+						<a class = "navbar-brand" ui-sref = "app/index.html">realestate</a>
+					</div>
+					<div ui-view = "main_nav">
+						<!-- TOOLBAR -->
+					</div>
+				</div>
+			</nav>
+			<div ui-view = "sidebar_menu">
+				<!-- MENI SA STRANE -->
+			</div>
+			<div ui-view = "pop_up">
+				<!-- popup sa desne strane sa nekretninama-->
+			</div>
+			<div class = "st-pusher">
+				<div class = "st-content">
+					<div class = "st-content-inner padding-top-none" id = "content" ui-view = "content">
+
+					</div>
+					</div>
+			</div>
+			<footer class = "footer">
+				<strong>realestate</strong>
+			</footer>
+		</div>
+		<script>
+			var colors = {
+			  "danger-color": "#e74c3c",
+			  "success-color": "#81b53e",
+			  "warning-color": "#f0ad4e",
+			  "inverse-color": "#2c3e50",
+			  "info-color": "#2d7cb5",
+			  "default-color": "#6e7882",
+			  "default-light-color": "#cfd9db",
+			  "purple-color": "#9D8AC7",
+			  "mustard-color": "#d4d171",
+			  "lightred-color": "#e15258",
+			  "body-bg": "#f6f6f6"
+			};
+			var config = {
+			  theme: "html",
+			  skins: {
+			    "default": {
+			      "primary-color": "#16ae9f"
+			    }
+			  }
+			};
+		</script>
 
 		<script src = "app/js/kts/jquery/dist/jquery.js"></script>
 		<script src = "app/js/kts/angular/angular.js"></script>
 		<script src = "app/js/kts/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
 		<script src = "app/js/angular-ui-router/angular-ui-router.js"></script>
 		<script src = "app/js/kts/angular-resource/angular-resource.js"></script>
-		<script src = "app/js/kts/angular-route/angular-route.js"></script>
 		<script src = "app/js/kts/lodash/lodash.js"></script>
 		<script src = "app/js/kts/restangular/dist/restangular.js"></script>
 		<script src = "app/js/kts/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -74,70 +133,9 @@
 
 		<!-- realestate scripts -->
 		<script src = "app/scripts/app.module.js"></script>
-		<!--<script src = "app/scripts/app.state.js"></script>-->
 
 		<script src = "app/scripts/advertisement.controller.js"></script>
 		<script src = "app/scripts/advertisement.resource.js"></script>
 
-
-		<div class = "st-container">
-			<nav class = "navbar navbar-default navbar-fixed-top" role = "navigation">
-				<div class = "container-fluid">
-					<div class = "navbar-header">
-						<a href = "#sidebar-menu" data-toggle = "sidebar-menu" class = "toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
-						<button type = "button" class = "navbar-toggle collapsed" data-toggle = "collapse" data-target = "#main-nav">
-						<span class = "sr-only">Toggle navigation</span>
-						<span class = "icon-bar"></span>
-						<span class = "icon-bar"></span>
-						<span class = "icon-bar"></span>
-						</button>
-						<a href = "#sidebar-map" data-toggle = "sidebar-menu" class = "toggle pull-right visible-xs"><i class = "fa fa-map-marker"></i></a>
-						<a class = "navbar-brand" ui-sref = "app/index.html">realestate</a>
-					</div>
-					<div ui-view = "main_nav">
-						<!-- TOOLBAR -->
-					</div>
-				</div>
-			</nav>
-			<div ui-view = "sidebar_menu">
-				<!-- MENI SA STRANE -->
-			</div>
-			<div ui-view = "pop_up">
-				<!-- popup sa desne strane sa nekretninama-->
-			</div>
-			<div class = "st-pusher">
-				<div class = "st-content">
-					<div class = "st-content-inner padding-top-none" id = "content" ui-view = "content">
-						<!-- CONTENT -->
-					</div>
-					</div>
-			</div>
-			<footer class = "footer">
-				<strong>realestate</strong>
-			</footer>
-		</div>
-		<script>
-			var colors = {
-			  "danger-color": "#e74c3c",
-			  "success-color": "#81b53e",
-			  "warning-color": "#f0ad4e",
-			  "inverse-color": "#2c3e50",
-			  "info-color": "#2d7cb5",
-			  "default-color": "#6e7882",
-			  "default-light-color": "#cfd9db",
-			  "purple-color": "#9D8AC7",
-			  "mustard-color": "#d4d171",
-			  "lightred-color": "#e15258",
-			  "body-bg": "#f6f6f6"
-			};
-			var config = {
-			  theme: "html",
-			  skins: {
-			    "default": {
-			      "primary-color": "#16ae9f"
-			    }
-			  }
-			};
-		</script>
 	</body>
 </html>

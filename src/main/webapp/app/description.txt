@@ -24,3 +24,72 @@ main-nav
       controllerAs: 'sidebarMenu'
     }
   },
+
+
+
+
+
+  			retVal.deleteAdvertisement = function(id) {
+  				return Restangular.one("advertisements", id).remove().then(function() {
+  					// uklanjamo advertisement sa zadatim id-om iz kolekcije
+  					_.remove(advertisements, {
+  						id: id
+  					});
+  				});
+  			};
+
+  			retVal.saveAdvertisement = function(advertisement) {
+  				if (advertisement.id) {
+  					return Restangular.all('advertisements').customPUT(advertisement).
+  					then(function(data) {
+  						var index = _.indexOf(advertisements,
+  							_.find(advertisements, {
+  								id: advertisement.id
+  							}));
+  						advertisements.splice(index, 1, data); //replaces advertisement
+  					});
+  				} else {
+  					return Restangular.all('advertisements').post(advertisement).
+  					then(function(data) {
+  						advertisements.push(data);
+  					});
+  				}
+  			};
+  			return retVal;
+  		}]);
+
+
+
+
+
+      $scope.deleteAdvertisement = function(id) {
+        AdvertisementResource.deleteAdvertisement(id);
+      };
+
+
+
+
+
+
+
+
+
+      .config(['$stateProvider', function($stateProvider) {
+        $stateProvider.state('app', {
+          abstract: true,
+          views: {
+            'content@': {
+              templateUrl: 'app/views/content/advertisements_list.html',
+              controller: 'AdvertisementController',
+              controllerAs: 'advertisements'
+            }
+          },
+          resolve: {
+            authorize: ['Auth',
+              function(Auth) {
+                return Auth.authorize();
+              }
+            ]
+          }
+        });
+      }])

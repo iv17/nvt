@@ -40,6 +40,8 @@ public class Image implements Serializable {
 	protected Company company;
 	
 	
+	public Image() { }
+
 	public Image(String name, String file) {
 		this.name = name;
 		this.file = file;

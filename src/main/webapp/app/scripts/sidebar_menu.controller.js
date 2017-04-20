@@ -9,7 +9,5 @@
 
     function SidebarMenuController ($scope, $state) {
         var sidebarMenu = this;
-
-
     }
 })();

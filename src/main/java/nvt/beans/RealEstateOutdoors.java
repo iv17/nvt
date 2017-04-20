@@ -32,6 +32,11 @@ public class RealEstateOutdoors implements Serializable {
 
 	
 	
+	public RealEstateOutdoors() {
+		
+	}
+
+
 	public RealEstateOutdoors(RealEstate realEstate, OutdoorFeature outdoorFeature) {
 		this.realEstate = realEstate;
 		this.outdoorFeature = outdoorFeature;
