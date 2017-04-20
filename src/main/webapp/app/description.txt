@@ -7,3 +7,20 @@ main-nav
 - unutar njega postoje sign in, sign up i profile views
 - unutar profile view treba da se nalaze linkovi za
   profile view, my_adverts, my_reports i sl..
+
+
+
+  views: {
+    'main_nav@': {
+      templateUrl: 'app/views/main_nav/main_nav.html',
+      controller: 'MainNavController',
+      controllerAs: 'mainNav'
+    }
+  },
+  views: {
+    'sidebar_menu@': {
+      templateUrl: 'app/views/sidebar_menu.html',
+      controller: 'SidebarMenuController',
+      controllerAs: 'sidebarMenu'
+    }
+  },
