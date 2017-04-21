@@ -3,6 +3,8 @@
   <tr>
     <th>id</th>
     <th>duration</th>
+    <th>realestate</th>
+    <th>agent</th>
   </tr>
   <tr ng-repeat = "ad in advertisements">
     <td>
@@ -10,6 +12,12 @@
     </td>
     <td>
       {{ ad.duration }}
+    </td>
+    <td>
+      {{ ad.realEstate.id }}
+    </td>
+    <td>
+      {{ ad.agent }}
     </td>
   </tr>
 </table>

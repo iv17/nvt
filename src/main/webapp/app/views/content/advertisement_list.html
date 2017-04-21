@@ -1,10 +1,11 @@
+<div ng-repeat = "ad in advertisements">
 <div class = "panel panel-default">
   <div class = "panel-body">
     <div class = "media media-clearfix-xs media-clearfix-sm">
       <div class = "media-left">
         <p>
-          <a ui-sref = "map-property.html">
-            <img src = "images/photodune-378874-real-estate-xs.jpg" alt = "property" width = "150" class = "media-object" />
+          <a ui-sref = "index.html">
+            <img src = "" alt = "property" width = "150" class = "media-object" />
           </a>
         </p>
         <div class = "text-center small">
@@ -17,8 +18,8 @@
           <a ui-sref = "map-property.html" class = "text-grey-400"><i class = "fa fa-flag-o fa-fw"></i></a>
         </div>
         <h4 class = "media-heading margin-v-0-10">
-          <a ui-sref = "map-property.html">Naziv</a>
-          <small class = "text-grey-400"><i class = "fa fa-clock-o fa-fw"></i> 5 days ago</small>
+          <a ui-sref = "map-property.html">{{ ad.id }}</a>
+          <small class = "text-grey-400"><i class = "fa fa-clock-o fa-fw"></i> {{ ad.duration }}</small>
         </h4>
         <p>
           <span class = "label label-grey-100"><i class="fa fa-home fa-fw"></i>3 Bedrooms</span>
@@ -28,4 +29,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

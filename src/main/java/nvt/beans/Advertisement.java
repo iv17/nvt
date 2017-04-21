@@ -41,15 +41,15 @@ public class Advertisement implements Serializable {
 	@Column(name = "verified", unique = false, nullable = true)
 	private boolean verified;
 
-	@ManyToOne @JsonIgnore
+	@ManyToOne 
 	@JoinColumn(name = "real_estate_id", referencedColumnName = "id", nullable = true)
 	private RealEstate realEstate;
 
-	@ManyToOne @JsonIgnore
+	@ManyToOne 
 	@JoinColumn(name = "agent_id", referencedColumnName = "id", nullable = true)
 	private Agent agent;
 
-	@ManyToOne @JsonIgnore
+	@ManyToOne 
 	@JoinColumn(name = "advertisement_type_id", referencedColumnName = "id", nullable = true)
 	private AdvertisementType advertisementType;
 	
