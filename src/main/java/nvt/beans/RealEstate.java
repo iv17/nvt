@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "real_estate")
 public class RealEstate implements Serializable {
@@ -24,70 +26,70 @@ public class RealEstate implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
-	protected int id;
+	private int id;
 	
 	@Column(name = "name", unique = false, nullable = false)
-	protected String name;
+	private String name;
 	
 	@Column(name = "description", unique = false, nullable = false)
-	protected String description;
+	private String description;
 	
 	@Column(name = "price", unique = false, nullable = false)
-	protected double price;
+	private double price;
 	
 	@Column(name = "surface", unique = false, nullable = false)
-	protected double surface;
+	private double surface;
 	
 	@Column(name = "floor", unique = false, nullable = false)
-	protected int floor;
+	private int floor;
 	
 	@Column(name = "rooms", unique = false, nullable = false)
-	protected int rooms;
+	private int rooms;
 	
 	@Column(name = "bathrooms", unique = false, nullable = false)
-	protected int bathrooms;
+	private int bathrooms;
 	
 	@Column(name = "constructedYear", unique = false, nullable = false)
-	protected int constructedYear;
+	private int constructedYear;
 	
 	@Column(name = "filed", unique = false, nullable = false)
-	protected boolean filed;
+	private boolean filed;
 	
 	@Column(name = "furnished", unique = false, nullable = false)
-	protected boolean furnished;
+	private boolean furnished;
 	
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
-	protected Location location;
+	private Location location;
 	
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "real_estate_type_id", referencedColumnName = "id", nullable = false)
-	protected RealEstateType realEstateType;
+	private RealEstateType realEstateType;
 		
-	@ManyToOne
-	@JoinColumn(name = "heating_type_id", referencedColumnName = "id", nullable = true)
-	protected HeatingType heatingType;
+	@ManyToOne @JsonIgnore
+	@JoinColumn(name = "heating_type_id", referencedColumnName = "id", nullable = true) 
+	private HeatingType heatingType;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate")
-	protected Set<Image> images;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore
+	private Set<Image> images;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate")
-	protected Set<RealEstateIndoors> indoors;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore
+	private Set<RealEstateIndoors> indoors;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate")
-	protected Set<RealEstateOutdoors> outdoors;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore
+	private Set<RealEstateOutdoors> outdoors;
 
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate")
-	protected Set<Advertisement> advertisements;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore
+	private Set<Advertisement> advertisements;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate")
-	protected Set<RealEstateComment> comments;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore
+	private Set<RealEstateComment> comments;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate")
-	protected Set<RealEstateRating> ratings;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore
+	private Set<RealEstateRating> ratings;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate")
-	protected Set<RealEstateReport> reports;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore
+	private Set<RealEstateReport> reports;
 
 	
 	

@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "working_time")
 public class WorkingTime implements Serializable {
@@ -23,22 +25,22 @@ public class WorkingTime implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
-	protected int id;
+	private int id;
 	
 	@Column(name = "radni_dan_od", unique = true, nullable = false)
-	protected String radniDanOd;
+	private String radniDanOd;
 	
 	@Column(name = "radni_dan_do", unique = true, nullable = false)
-	protected String radniDanDo;
+	private String radniDanDo;
 	
 	@Column(name = "vikend_od", unique = false, nullable = true)
-	protected String vikendOd;
+	private String vikendOd;
 	
 	@Column(name = "vikend_do", unique = false, nullable = true)
-	protected String vikendDo;
+	private String vikendDo;
 
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "workingTime")
-	protected Set<Company> companies;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "workingTime") @JsonIgnore
+	private Set<Company> companies;
 
 	
 	

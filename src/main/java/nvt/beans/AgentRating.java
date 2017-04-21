@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "agent_rating")
 public class AgentRating implements Serializable {
@@ -21,21 +23,21 @@ public class AgentRating implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
-	protected int id;
+	private int id;
 	
 	@Column(name = "rate", unique = false, nullable = false)
-	protected int rate;
+	private int rate;
 	
 	@Column(name = "posted", unique = false, nullable = false)
-	protected Date posted;
+	private Date posted;
 	
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "agent_id", referencedColumnName = "id", nullable = false)
-	protected Agent agent;
+	private Agent agent;
 	
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-	protected User user;
+	private User user;
 
 	
 	

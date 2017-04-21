@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "user")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -27,7 +29,7 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
-	protected int id;
+	private int id;
 	
 	@Column(name = "email", unique = false, nullable = false)
 	protected String email;
@@ -48,26 +50,26 @@ public class User implements Serializable {
 	protected String phoneNumber;
 	
 	@Column(name = "loged", unique = false, nullable = false)
-	protected boolean loged;
+	private boolean loged;
 	
 	@Column(name = "authenticated", unique = false, nullable = false)
-	protected boolean authenticated;
+	private boolean authenticated;
 	
-	@OneToOne
+	@OneToOne @JsonIgnore
 	@JoinColumn(name = "image", referencedColumnName = "id", nullable = true)
-	protected Image image; 
+	private Image image; 
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user")
-	protected Set<AgentRating> agentRatings;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user") @JsonIgnore
+	private Set<AgentRating> agentRatings;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user")
-	protected Set<RealEstateComment> comments;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user") @JsonIgnore
+	private Set<RealEstateComment> comments;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user")
-	protected Set<RealEstateRating> ratings;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user") @JsonIgnore
+	private Set<RealEstateRating> ratings;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user")
-	protected Set<RealEstateReport> reports;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user") @JsonIgnore
+	private Set<RealEstateReport> reports;
 
 	
 	

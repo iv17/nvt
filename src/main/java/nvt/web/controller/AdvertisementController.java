@@ -81,14 +81,14 @@ public class AdvertisementController {
 	public ResponseEntity<List<AdvertisementDTO>> getAdvertisements() {
 
 		List<Advertisement> advertisements = advertisementService.findAll();
-
+		
 		List<AdvertisementDTO> advertisementDTOs = new ArrayList<AdvertisementDTO>();
 		for (Advertisement advertisement : advertisements) {
 			AdvertisementDTO advertisementDTO = new AdvertisementDTO(advertisement);
 			advertisementDTOs.add(advertisementDTO);
 		}
-
-		return new ResponseEntity<List<AdvertisementDTO>>(advertisementDTOs, HttpStatus.OK);
+		
+		return new ResponseEntity<>(advertisementDTOs, HttpStatus.OK);
 	}
 
 

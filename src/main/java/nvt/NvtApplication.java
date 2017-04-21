@@ -121,70 +121,70 @@ public class NvtApplication implements CommandLineRunner {
 	public void run(String... arg0) throws Exception {
 
 	
-		Image image11 = new Image("user1", "");
+		Image image11 = new Image("user1", "a");
 		imageRepository.save(image11);
-		Image image12 = new Image("user2", "");
+		Image image12 = new Image("user2", "a");
 		imageRepository.save(image12);
-		Image image13 = new Image("user3", "");
+		Image image13 = new Image("user3", "a");
 		imageRepository.save(image13);
-		Image image14 = new Image("user4", "");
+		Image image14 = new Image("user4", "a");
 		imageRepository.save(image14);
-		Image image15 = new Image("user5", "");
+		Image image15 = new Image("user5", "a");
 		imageRepository.save(image15);
-		Image image16 = new Image("user6", "");
+		Image image16 = new Image("user6", "a");
 		imageRepository.save(image16);
-		Image image17 = new Image("user7", "");
+		Image image17 = new Image("user7", "a");
 		imageRepository.save(image17);
-		Image image18 = new Image("user8", "");
+		Image image18 = new Image("user8", "a");
 		imageRepository.save(image18);
-		Image image19 = new Image("user9", "");
+		Image image19 = new Image("user9", "a");
 		imageRepository.save(image19);
-		Image image20 = new Image("user10", "");
+		Image image20 = new Image("user10", "a");
 		imageRepository.save(image20);
 		
 		
-		User user1 = new User("ivana.unitedforce@gmail.com", "josh", "123", "Josh", "Duhamel", "065/123-456", image11);
-		//userRepository.save(user1);
-		User user2 = new User("iva17.igodina@gmail.com", "matthew", "123", "Matthew", "McConaughey", "065/456-789", image12);
-		//userRepository.save(user2);
-		User user3 = new User("iva17.iigodina@gmail.com", "bradley", "123", "Bradley", "Cooper", "065/789-123", image13);
-		//userRepository.save(user3);
-		User user4 = new User("iva17.iiigodina@gmail.com", "leonardo", "123", "Leonardo", "DiCaprio", "063/123-456", image14);
-		//userRepository.save(user4);
-		User user5 = new User("blake.lively@gmail.com", "blake", "123", "Blake", "Lively", "063/456-789", image15);
-		//userRepository.save(user5);
-		User user6 = new User("ryan.reynolds@gmail.com", "ryan", "123", "Ryan", "Reynolds", "063/789-123", image16);
-		//userRepository.save(user6);
-		User user7 = new User("jessica.alba@gmail.com", "jessica", "123", "Jessica", "Alba", "062/123-456", image17);
-		//userRepository.save(user7);
-		User user8 = new User("eva.mendes@gmail.com", "eva", "123", "Eva", "Mendes", "062/456-789", image18);
-		//userRepository.save(user8);
-		User user9 = new User("jessica.alba@gmail.com", "jessica", "123", "Jessica", "Alba", "062/123-456", image19);
-		//userRepository.save(user9);
-		User user10 = new User("natalie.portman@gmail.com", "natalie", "123", "Natalie", "Portman", "062/456-789", image20);
-		//userRepository.save(user10);
+		User user1 = new User("ivana.unitedforce@gmail.com", "josh", "123", "Josh", "Duhamel", "065-123-456", image11);
+		userRepository.save(user1);
+		User user2 = new User("iva17.igodina@gmail.com", "matthew", "123", "Matthew", "McConaughey", "065-456-789", image12);
+		userRepository.save(user2);
+		User user3 = new User("iva17.iigodina@gmail.com", "bradley", "123", "Bradley", "Cooper", "065-789-123", image13);
+		userRepository.save(user3);
+		User user4 = new User("iva17.iiigodina@gmail.com", "leonardo", "123", "Leonardo", "DiCaprio", "063-123-456", image14);
+		userRepository.save(user4);
+		User user5 = new User("blake.lively@gmail.com", "blake", "123", "Blake", "Lively", "063-456-789", image15);
+		userRepository.save(user5);
+		User user6 = new User("ryan.reynolds@gmail.com", "ryan", "123", "Ryan", "Reynolds", "063-789-123", image16);
+		userRepository.save(user6);
+		User user7 = new User("jessica.alba@gmail.com", "jessica", "123", "Jessica", "Alba", "062-123-456", image17);
+		userRepository.save(user7);
+		User user8 = new User("eva.mendes@gmail.com", "eva", "123", "Eva", "Mendes", "062-456-789", image18);
+		userRepository.save(user8);
+		User user9 = new User("jessica.alba@gmail.com", "jessica", "123", "Jessica", "Alba", "062-123-456", image19);
+		userRepository.save(user9);
+		User user10 = new User("natalie.portman@gmail.com", "natalie", "123", "Natalie", "Portman", "062-456-789", image20);
+		userRepository.save(user10);
 		
 		
 		
-		User user11 = new User("lars.ulrich@gmail.com", "lars", "123", "Lars", "Urlich", "061/123-456", image20);
+		User user11 = new User("lars.ulrich@gmail.com", "lars", "123", "Lars", "Urlich", "061-123-456", image20);
 		userRepository.save(user11);
-		User user12 = new User("james.hatfield@gmail.com", "james", "123", "James", "Hatfield", "061/456-789", image20);
+		User user12 = new User("james.hatfield@gmail.com", "james", "123", "James", "Hatfield", "061-456-789", image20);
 		userRepository.save(user12);
-		User user13 = new User("til.linderman@gmail.com", "til", "123", "Til", "Linderman", "061/789-123", image20);
+		User user13 = new User("til.linderman@gmail.com", "til", "123", "Til", "Linderman", "061-789-123", image20);
 		userRepository.save(user13);
-		User user14 = new User("lily.aldridge@gmail.com", "lily", "123", "Lily", "Aldridge", "060/123-456", image20);
+		User user14 = new User("lily.aldridge@gmail.com", "lily", "123", "Lily", "Aldridge", "060-123-456", image20);
 		userRepository.save(user14);
-		User user15 = new User("alessandra.ambrosio@gmail.com", "alessandra", "123", "Alessandra", "Ambrosio", "060/456-789", image20);
+		User user15 = new User("alessandra.ambrosio@gmail.com", "alessandra", "123", "Alessandra", "Ambrosio", "060-456-789", image20);
 		userRepository.save(user15);
-		User user16 = new User("tyra.banks@gmail.com", "tyra", "123", "Tyra", "Banks", "060/789-123", image20);
+		User user16 = new User("tyra.banks@gmail.com", "tyra", "123", "Tyra", "Banks", "060-789-123", image20);
 		userRepository.save(user16);
-		User user17 = new User("stella.maxwell@gmail.com", "jessica", "123", "Jessica", "Alba", "066/123-456", image20);
+		User user17 = new User("stella.maxwell@gmail.com", "jessica", "123", "Jessica", "Alba", "066-123-456", image20);
 		userRepository.save(user17);
-		User user18 = new User("behati.prinslo@gmail.com", "behati", "123", "Behati", "Prinslo", "066/456-789", image20);
+		User user18 = new User("behati.prinslo@gmail.com", "behati", "123", "Behati", "Prinslo", "066-456-789", image20);
 		userRepository.save(user18);
-		User user19 = new User("martha.hunt@gmail.com", "martha", "123", "Martha", "Hunt", "069/123-456", image20);
+		User user19 = new User("martha.hunt@gmail.com", "martha", "123", "Martha", "Hunt", "069-123-456", image20);
 		userRepository.save(user19);
-		User user20 = new User("romee.strijd@gmail.com", "romee", "123", "Romee", "Strijd", "069/456-789", image20);
+		User user20 = new User("romee.strijd@gmail.com", "romee", "123", "Romee", "Strijd", "069-456-789", image20);
 		userRepository.save(user20);
 
 		Location location1 = new Location(44.8023505, 20.4719586, "Beograd", "Vračar", "Krunska", "11000");
@@ -224,27 +224,27 @@ public class NvtApplication implements CommandLineRunner {
 		WorkingTime workingTime1 = new WorkingTime("09.00", "18.0", "Zatvoreno", "Zatvoreno");
 		workingTimeRepository.save(workingTime1);
 		
-		Image image26 = new Image("company1", "");
+		Image image26 = new Image("company1", "a");
 		imageRepository.save(image26);
-		Image image27 = new Image("company2", "");
+		Image image27 = new Image("company2", "a");
 		imageRepository.save(image27);
-		Image image28 = new Image("company3", "");
+		Image image28 = new Image("company3", "a");
 		imageRepository.save(image28);
-		Image image29 = new Image("company4", "");
+		Image image29 = new Image("company4", "a");
 		imageRepository.save(image29);
-		Image image30 = new Image("user5", "");
+		Image image30 = new Image("user5", "a");
 		imageRepository.save(image30);
 		
 		
-		Company company1 = new Company("001", "BEST REAL ESTATE", "company", "063/282-558", "www.bestrealestate.rs/en/", image26, location11, workingTime1);
+		Company company1 = new Company("001", "BEST REAL ESTATE", "company", "063-282-558", "www.bestrealestate.rs", image26, location11, workingTime1);
 		companyRepository.save(company1);
-		Company company2 = new Company("002", "MENTOR REAL ESTATE BELGRADE", "company", "011/30-89-080", "http://mentorrent.rs/", image27, location12, workingTime1);
+		Company company2 = new Company("002", "MENTOR REAL ESTATE BELGRADE", "company", "011-30-89-080", "m", image27, location12, workingTime1);
 		companyRepository.save(company2);
-		Company company3 = new Company("003", "R.E.A.L. Consulting Nekretnine", "company", "069/46-68-118", "http://www.flatrentbelgrade.com/", image28, location13, workingTime1);
+		Company company3 = new Company("003", "R.E.A.L. Consulting Nekretnine", "company", "069-46-68-118", "m", image28, location13, workingTime1);
 		companyRepository.save(company3);
-		Company company4 = new Company("004", "Kvadrat nekretnine", "company", "011/33-48-871", "http://www.kvadratnekretnine.com/", image29, location14, workingTime1);
+		Company company4 = new Company("004", "Kvadrat nekretnine", "company", "011-33-48-871", "m", image29, location14, workingTime1);
 		companyRepository.save(company4);
-		Company company5 = new Company("005", "FOX nekretnine", "company", "011/24-02-386", "foxnekretnine.com", image30, location15, workingTime1);
+		Company company5 = new Company("005", "FOX nekretnine", "company", "011-24-02-386", "foxnekretnine.com", image30, location15, workingTime1);
 		companyRepository.save(company5);
 
 		
@@ -298,7 +298,7 @@ public class NvtApplication implements CommandLineRunner {
 		indoorFeatureRepository.save(indoorFeature13);
 		IndoorFeature indoorFeature14 = new IndoorFeature("Open fireplace");
 		indoorFeatureRepository.save(indoorFeature14);
-		IndoorFeature indoorFeature15 = new IndoorFeature("");
+		IndoorFeature indoorFeature15 = new IndoorFeature("a");
 		indoorFeatureRepository.save(indoorFeature15);
 
 	
@@ -354,37 +354,37 @@ public class NvtApplication implements CommandLineRunner {
 		realEstateRepository.save(realEstate3);
 
 		
-		Image image1 = new Image("house1", "", realEstate1);
+		Image image1 = new Image("house1", "1", realEstate1);
 		imageRepository.save(image1);
-		Image image2 = new Image("house2", "", realEstate1);
+		Image image2 = new Image("house2", "1", realEstate1);
 		imageRepository.save(image2);
-		Image image3 = new Image("house3", "", realEstate1);
+		Image image3 = new Image("house3", "1", realEstate1);
 		imageRepository.save(image3);
-		Image image4 = new Image("house4", "", realEstate1);
+		Image image4 = new Image("house4", "1", realEstate1);
 		imageRepository.save(image4);
-		Image image5 = new Image("house5", "", realEstate1);
+		Image image5 = new Image("house5", "1", realEstate1);
 		imageRepository.save(image5);
-		Image image6 = new Image("house6", "", realEstate2);
+		Image image6 = new Image("house6", "1", realEstate2);
 		imageRepository.save(image6);
-		Image image7 = new Image("house7", "", realEstate2);
+		Image image7 = new Image("house7", "1", realEstate2);
 		imageRepository.save(image7);
-		Image image8 = new Image("house8", "", realEstate2);
+		Image image8 = new Image("house8", "1", realEstate2);
 		imageRepository.save(image8);
-		Image image9 = new Image("house9", "", realEstate2);
+		Image image9 = new Image("house9", "1", realEstate2);
 		imageRepository.save(image9);
-		Image image10 = new Image("house10", "", realEstate2);
+		Image image10 = new Image("house10", "1", realEstate2);
 		imageRepository.save(image10);
 
 		
-		Image image21 = new Image("house11", "", realEstate3);
+		Image image21 = new Image("house11", "1", realEstate3);
 		imageRepository.save(image21);
-		Image image22 = new Image("house12", "", realEstate3);
+		Image image22 = new Image("house12", "1", realEstate3);
 		imageRepository.save(image22);
-		Image image23 = new Image("house13", "", realEstate3);
+		Image image23 = new Image("house13", "1", realEstate3);
 		imageRepository.save(image23);
-		Image image24 = new Image("house14", "", realEstate3);
+		Image image24 = new Image("house14", "1", realEstate3);
 		imageRepository.save(image24);
-		Image image25 = new Image("house15", "", realEstate3);
+		Image image25 = new Image("house15", "1", realEstate3);
 		imageRepository.save(image25);
 		
 	

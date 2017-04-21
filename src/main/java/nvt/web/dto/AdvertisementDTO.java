@@ -24,19 +24,19 @@ public class AdvertisementDTO {
 	
 	
 	public AdvertisementDTO(Advertisement advertisement) {
-		this(advertisement.getId(),
-				advertisement.getPosted(),
-				advertisement.getUpdated(),
-				advertisement.getDuration(),
-				advertisement.isInappropriate(), 
-				advertisement.isVerified(),
-				new RealEstateDTO(advertisement.getRealEstate()),
-				new AgentDTO(advertisement.getAgent()),
-				new AdvertisementTypeDTO(advertisement.getAdvertisementType()));
+		id = advertisement.getId();
+		posted = advertisement.getPosted();
+		updated = advertisement.getUpdated();
+		duration = advertisement.getDuration();
+		inappropriate = advertisement.isInappropriate(); 
+		verified = advertisement.isVerified();
+		realEstateDTO = new RealEstateDTO(advertisement.getRealEstate());
+		agentDTO = new AgentDTO(advertisement.getAgent());
+		advertisementTypeDTO = new AdvertisementTypeDTO(advertisement.getAdvertisementType());
 	}
 
-	
-	public AdvertisementDTO(int id, Date posted, Date updated, int duration, boolean inappropriate,
+	/*
+	 * public AdvertisementDTO(int id, Date posted, Date updated, int duration, boolean inappropriate,
 			boolean verified, RealEstateDTO realEstateDTO, AgentDTO agentDTO, AdvertisementTypeDTO advertisementTypeDTO) {
 		this.id = id;
 		this.posted = posted;
@@ -50,6 +50,8 @@ public class AdvertisementDTO {
 	}
 	
 
+	 */
+	
 	public int getId() {
 		return id;
 	}

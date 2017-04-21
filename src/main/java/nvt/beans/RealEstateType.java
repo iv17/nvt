@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "real_estate_type")
 public class RealEstateType implements Serializable {
@@ -22,13 +24,13 @@ public class RealEstateType implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
-	protected int id;
+	private int id;
 	
 	@Column(name = "name", unique = false, nullable = false)
-	protected String name;
+	private String name;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstateType")
-	protected Set<RealEstate> realEstates;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstateType") @JsonIgnore
+	private Set<RealEstate> realEstates;
 
 	
 	

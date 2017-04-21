@@ -10,7 +10,6 @@
 
 			retVal.getAdvertisements = function() {
 				return Restangular.all("advertisements").getList().then(function(entries) {
-
 					advertisements = entries;
 					return advertisements;
 				});

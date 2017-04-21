@@ -22,15 +22,14 @@ public class CompanyDTO {
 	
 	
 	public CompanyDTO(Company company) {
-		this(company.getId(),
-				company.getName(),
-				company.getPassword(),
-				company.getPropertyNo(),
-				company.getPhoneNumber(),
-				company.getWebAddress(),
-				new ImageDTO(company.getImage()),
-				new LocationDTO(company.getLocation()),
-				new WorkingTimeDTO(company.getWorkingTime()));
+		id = company.getId();
+		name = company.getName();
+		password = company.getPassword();
+		propertyNo = company.getPropertyNo();
+		phoneNumber = company.getPhoneNumber();
+		webAddress = company.getWebAddress();
+		locationDTO = new LocationDTO(company.getLocation());
+		workingTimeDTO = new WorkingTimeDTO(company.getWorkingTime());
 	}
 
 	

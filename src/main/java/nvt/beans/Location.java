@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "location")
 public class Location implements Serializable {
@@ -22,28 +24,28 @@ public class Location implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
-	protected int id;
+	private int id;
 	
 	@Column(name = "coord1", unique = false, nullable = false)
-	protected double coord1;
+	private double coord1;
 	
 	@Column(name = "coord2", unique = false, nullable = false)
-	protected double coord2;
+	private double coord2;
 	
 	@Column(name = "city", unique = false, nullable = false)
-	protected String city;
+	private String city;
 	
 	@Column(name = "block", unique = false, nullable = false)
-	protected String block;
+	private String block;
 	
 	@Column(name = "street", unique = false, nullable = false)
-	protected String street;
+	private String street;
 	
 	@Column(name = "zipCode", unique = false, nullable = false)
-	protected String zipCode;
+	private String zipCode;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "location")
-	protected Set<RealEstate> realEstates;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "location") @JsonIgnore
+	private Set<RealEstate> realEstates;
 
 	
 	

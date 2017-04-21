@@ -23,19 +23,19 @@ public class UserDTO {
 	
 	
 	public UserDTO(User user) {
-		this(user.getId(), 
-				user.getEmail(),
-				user.getUsername(),
-				user.getPassword(),
-				user.getName(),
-				user.getLastName(),
-				user.getPhoneNumber(),
-				user.isLoged(),
-				user.isAuthenticated(),
-				new ImageDTO(user.getImage()));
+		id = user.getId();
+		email = user.getEmail();
+		username = user.getUsername();
+		password = user.getPassword();
+		name = user.getName();
+		lastName = user.getLastName();
+		phoneNumber = user.getPhoneNumber();
+		loged = user.isLoged();
+		authenticated = user.isAuthenticated();
+		//imageDTO = new ImageDTO(user.getImage());
 	}
 
-	
+	/*
 	public UserDTO(int id, String email, String username, String password, String name,
 			String lastName, String phoneNumber, boolean loged, boolean authenticated,
 			ImageDTO imageDTO) {
@@ -50,7 +50,7 @@ public class UserDTO {
 		this.authenticated = authenticated;
 		this.imageDTO = imageDTO;
 	}
-	
+	*/
 
 	public int getId() {
 		return id;

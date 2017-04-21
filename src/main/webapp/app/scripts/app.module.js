@@ -4,14 +4,18 @@
   angular
     .module('nvtApp', [
       'ui.router',
+      'ngRoute',
       'ngResource',
       'restangular',
       'ui.bootstrap',
       'lodash'
     ])
-    .config(function($stateProvider) {
-      $stateProvider.state('app', {
-        abstract: true,
+    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+      function($stateProvider, $urlRouterProvider, $locationProvider) {
+      $locationProvider.hashPrefix('');
+      $urlRouterProvider.otherwise('/');
+      $stateProvider
+      .state('advertisements', {
         url: "/",
         views: {
           'content@': {
@@ -19,16 +23,9 @@
             controller: 'AdvertisementController',
             controllerAs: 'advertisements'
           }
-        },
-        resolve: {
-          authorize: ['Auth',
-            function(Auth) {
-              return Auth.authorize();
-            }
-          ]
         }
       });
-    })
+    }])
       // run se izvrsava pre svega ostalog
     .run(['Restangular', '$log', function(Restangular, $log) {
       Restangular.setBaseUrl("api");

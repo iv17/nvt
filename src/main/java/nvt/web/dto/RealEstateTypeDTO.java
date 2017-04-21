@@ -15,7 +15,8 @@ public class RealEstateTypeDTO {
 	
 	
 	public RealEstateTypeDTO(RealEstateType realEstateType) {
-		this(realEstateType.getId(), realEstateType.getName());
+		id = realEstateType.getId();
+		name = realEstateType.getName();
 	}
 
 	

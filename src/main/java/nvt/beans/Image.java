@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "image")
 public class Image implements Serializable {
@@ -21,23 +23,23 @@ public class Image implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
-	protected int id;
+	private int id;
 	
-	@Column(name = "name", unique = false, nullable = false)
-	protected String name;
+	@Column(name = "name", unique = false, nullable = true)
+	private String name;
 	
-	@Column(name = "file", unique = false, nullable = false)
-	protected String file;
+	@Column(name = "file", unique = false, nullable = true)
+	private String file;
 	
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "real_estate_id", referencedColumnName = "id", nullable = true)
-	protected RealEstate realEstate;
+	private RealEstate realEstate;
 	
-	@OneToOne(mappedBy = "image")
-	protected User user;
+	@OneToOne(mappedBy = "image") @JsonIgnore
+	private User user;
 	
-	@OneToOne(mappedBy = "image")
-	protected Company company;
+	@OneToOne(mappedBy = "image") @JsonIgnore
+	private Company company;
 	
 	
 	public Image() { }

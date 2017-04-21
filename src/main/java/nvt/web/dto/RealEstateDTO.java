@@ -35,26 +35,26 @@ public class RealEstateDTO {
 	
 	
 	public RealEstateDTO(RealEstate realEstate) {
-		this(realEstate.getId(),
-				realEstate.getName(),
-				realEstate.getDescription(), 
-				realEstate.getPrice(),
-				realEstate.getSurface(), 
-				realEstate.getFloor(), 
-				realEstate.getRooms(),
-				realEstate.getBathrooms(),
-				realEstate.getConstructedYear(), 
-				realEstate.isFiled(),
-				realEstate.isFurnished(),
-				new LocationDTO(realEstate.getLocation()),
-				new RealEstateTypeDTO(realEstate.getRealEstateType()),
-				new HeatingTypeDTO(realEstate.getHeatingType()),
-				realEstate.getImages(),
-				realEstate.getIndoors(),
-				realEstate.getOutdoors());
+		id = realEstate.getId();	
+		name = realEstate.getName();
+		description = realEstate.getDescription(); 
+		price = realEstate.getPrice();
+		surface = realEstate.getSurface(); 
+		floor = realEstate.getFloor();
+		rooms = realEstate.getRooms();
+		bathrooms = realEstate.getBathrooms();
+		constructedYear = realEstate.getConstructedYear(); 
+		filed = realEstate.isFiled();
+		furnished = realEstate.isFurnished();
+		locationDTO = new LocationDTO(realEstate.getLocation());
+		realEstateTypeDTO = new RealEstateTypeDTO(realEstate.getRealEstateType());
+		heatingTypeDTO = new HeatingTypeDTO(realEstate.getHeatingType());
+		//images = realEstate.getImages();
+		indoorsDTO = realEstate.getIndoors();
+		outdoorsDTO = realEstate.getOutdoors();
 	}
 	
-	
+	/*
 	public RealEstateDTO(int id, String name, String description, double price, double surface,
 			int floor, int rooms, int bathrooms, int constructedYear, boolean filed,
 			boolean furnished, LocationDTO locationDTO, RealEstateTypeDTO realEstateTypeDTO, 
@@ -78,7 +78,7 @@ public class RealEstateDTO {
 		this.indoorsDTO = indoorsDTO;
 		this.outdoorsDTO = outdoorsDTO;
 	}
-
+	*/
 
 	public int getId() {
 		return id;

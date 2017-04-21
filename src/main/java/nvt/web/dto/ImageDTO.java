@@ -14,25 +14,15 @@ public class ImageDTO {
 	
 	
 	public ImageDTO(Image image) {
-		this(image.getId(),
-				image.getName(),
-				image.getFile(),
-				new RealEstateDTO(image.getRealEstate()),
-				new UserDTO(image.getUser()),
-				new CompanyDTO(image.getCompany()));
+		id = image.getId();
+		name = image.getName();
+		file = image.getFile();
+		//realEstateDTO = new RealEstateDTO(image.getRealEstate());
+		//userDTO = new UserDTO(image.getUser());
+		//companyDTO = new CompanyDTO(image.getCompany());
 	}
 	
 	
-	public ImageDTO(int id, String name, String file, RealEstateDTO realEstateDTO, UserDTO userDTO, CompanyDTO companyDTO) {
-		this.id = id;
-		this.name = name;
-		this.file = file;
-		this.realEstateDTO = realEstateDTO;
-		this.userDTO = userDTO;
-		this.companyDTO = companyDTO;
-	}
-
-
 	public int getId() {
 		return id;
 	}

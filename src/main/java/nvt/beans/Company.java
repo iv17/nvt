@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "company")
 public class Company implements Serializable {
@@ -25,37 +27,37 @@ public class Company implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
-	protected int id;
+	private int id;
 
 	@Column(name = "property_no", unique = true, nullable = false)
-	protected String propertyNo;
+	private String propertyNo;
 
 	@Column(name = "name", unique = true, nullable = false)
-	protected String name;
+	private String name;
 
 	@Column(name = "password", unique = false, nullable = false)
-	protected String password;
+	private String password;
 
 	@Column(name = "phone_number", unique = false, nullable = false)
-	protected String phoneNumber;
+	private String phoneNumber;
 
 	@Column(name = "web_address", unique = false, nullable = false)
-	protected String webAddress;
+	private String webAddress;
 
-	@OneToOne
+	@OneToOne @JsonIgnore
 	@JoinColumn(name = "image", referencedColumnName = "id", nullable = true)
-	protected Image image;
+	private Image image;
 
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
-	protected Location location;
+	private Location location;
 
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "working_time_id", referencedColumnName = "id", nullable = false)
-	protected WorkingTime workingTime;
+	private WorkingTime workingTime;
 
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "company")
-	protected Set<Agent> agents;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "company") @JsonIgnore
+	private Set<Agent> agents;
 
 
 

@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "real_estate_indoors")
 public class RealEstateIndoors implements Serializable {
@@ -20,15 +22,15 @@ public class RealEstateIndoors implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
-	protected int id;
+	private int id;
 	
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "real_estate_id", referencedColumnName = "id", nullable = false)
-	protected RealEstate realEstate;
+	private RealEstate realEstate;
 	
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "indoor_feature_id", referencedColumnName = "id", nullable = false)
-	protected IndoorFeature indoorFeature;
+	private IndoorFeature indoorFeature;
 
 	
 	

@@ -18,10 +18,10 @@ public class ApartmentType implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
-	protected int id;
+	private int id;
 	
 	@Column(name = "name", unique = false, nullable = true)
-	protected String name;
+	private String name;
 
 	
 	

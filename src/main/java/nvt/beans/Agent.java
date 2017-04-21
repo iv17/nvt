@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "agent")
 public class Agent extends User {
@@ -17,14 +19,14 @@ public class Agent extends User {
 	private static final long serialVersionUID = -4819479829618308513L;
 	
 	@ManyToOne
-	@JoinColumn(name = "company_id", referencedColumnName = "id", nullable = true)
-	protected Company company;
+	@JoinColumn(name = "company_id", referencedColumnName = "id", nullable = true) @JsonIgnore
+	private Company company;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "agent")
-	protected Set<Advertisement> advertisements;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "agent") @JsonIgnore
+	private Set<Advertisement> advertisements;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "agent")
-	protected Set<AgentRating> agentRatings;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "agent") @JsonIgnore
+	private Set<AgentRating> agentRatings;
 
 	
 	

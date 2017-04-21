@@ -13,16 +13,16 @@ public class AgentDTO extends UserDTO{
 	
 	
 	public AgentDTO(Agent agent) {
-		super(agent.getId(),
-				agent.getEmail(),
-				agent.getUsername(),
-				agent.getPassword(),
-				agent.getName(),
-				agent.getLastName(), 
-				agent.getPhoneNumber(),
-				agent.isLoged(), 
-				agent.isAuthenticated(),
-				new ImageDTO(agent.getImage())); 
+		id = agent.getId();
+		email = agent.getEmail();
+		username = agent.getUsername();
+		password = agent.getPassword();
+		name = agent.getName();
+		lastName = agent.getLastName();
+		phoneNumber = agent.getPhoneNumber();
+		loged = agent.isLoged();
+		authenticated = agent.isAuthenticated();
+		//imageDTO = new ImageDTO(agent.getImage());
 		companyDTO = new CompanyDTO(agent.getCompany());
 	}
 

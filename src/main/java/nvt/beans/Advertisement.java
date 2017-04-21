@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "advertisement")
 public class Advertisement implements Serializable {
@@ -22,34 +24,34 @@ public class Advertisement implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
-	protected int id;
+	private int id;
 	
 	@Column(name = "posted", unique = false, nullable = true)
-	protected Date posted;
+	private Date posted;
 
 	@Column(name = "updated", unique = false, nullable = true)
-	protected Date updated;
+	private Date updated;
 
 	@Column(name = "duration", unique = false, nullable = true)
-	protected int duration;
+	private int duration;
 
 	@Column(name = "inappropriate", unique = false, nullable = true)
-	protected boolean inappropriate;
+	private boolean inappropriate;
 
 	@Column(name = "verified", unique = false, nullable = true)
-	protected boolean verified;
+	private boolean verified;
 
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "real_estate_id", referencedColumnName = "id", nullable = true)
-	protected RealEstate realEstate;
+	private RealEstate realEstate;
 
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "agent_id", referencedColumnName = "id", nullable = true)
-	protected Agent agent;
+	private Agent agent;
 
-	@ManyToOne
+	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "advertisement_type_id", referencedColumnName = "id", nullable = true)
-	protected AdvertisementType advertisementType;
+	private AdvertisementType advertisementType;
 	
 	
 
@@ -182,6 +184,16 @@ public class Advertisement implements Serializable {
 	public void setAdvertisementType(AdvertisementType advertisementType) {
 		this.advertisementType = advertisementType;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Advertisement [id=" + id + ", posted=" + posted + ", updated=" + updated + ", duration=" + duration
+				+ ", inappropriate=" + inappropriate + ", verified=" + verified + ", realEstate=" + realEstate
+				+ ", agent=" + agent + ", advertisementType=" + advertisementType + "]";
+	}
+	
+	
 
 
 }
