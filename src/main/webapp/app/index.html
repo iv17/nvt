@@ -6,7 +6,6 @@
 		<meta name = "description" content = "">
 		<meta name = "author" content = "">
 		<title>realestate</title>
-
 		<link href = "app/css/vendor/bootstrap.css" rel = "stylesheet">
 		<link href = "app/css/vendor/font-awesome.css" rel = "stylesheet">
 		<link href = "app/css/vendor/picto.css" rel = "stylesheet">
@@ -35,7 +34,6 @@
 		<link href = "app/css/app/colors-text.css" rel = "stylesheet" />
 	</head>
 	<body ng-app = "nvtApp">
-
 		<div class = "st-container">
 			<nav class = "navbar navbar-default navbar-fixed-top" role = "navigation">
 				<div class = "container-fluid">
@@ -50,26 +48,136 @@
 						<a href = "#sidebar-map" data-toggle = "sidebar-menu" class = "toggle pull-right visible-xs"><i class = "fa fa-map-marker"></i></a>
 						<a class = "navbar-brand" ui-sref = "#">realestate</a>
 					</div>
-					<!--
-					<div ui-view = "main_nav">
-
+					<div >
+						<div class = "collapse navbar-collapse" id = "main-nav">
+							<ul class = "nav navbar-nav navbar-right ">
+								<li class = "dropdown">
+									<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"><i class = "fa fa-fw fa-user-plus"></i> Sign Up</a>
+									<div class = "dropdown-menu dropdown-size-280">
+										<form name = "signUp">
+											<div class = "form-group">
+												<div class = "input-group">
+													<span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+													<input type = "text" id = "name" ng-model = "name" class = "form-control" placeholder = "name">
+												</div>
+											</div>
+											<div class = "form-group">
+												<div class = "input-group">
+													<span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+													<input type = "text" id = "lastname" ng-model = "lastname" class = "form-control" placeholder = "last name">
+												</div>
+											</div>
+											<div class = "form-group">
+												<div class = "input-group">
+													<span class = "input-group-addon"><i class = "fa fa-envelope"></i></span>
+													<input type = "text" id = "email" ng-model = "email" class = "form-control" placeholder = "email">
+												</div>
+											</div>
+											<div class = "form-group">
+												<div class = "input-group">
+													<span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+													<input type = "text" name = "username" ng-model = "username" class = "form-control" placeholder = "username">
+												</div>
+											</div>
+											<div class = "form-group">
+												<div class = "input-group">
+													<span class = "input-group-addon"><i class = "fa fa-key"></i></span>
+													<input type = "password" name = "password" ng-model = "password" class = "form-control" placeholder = "password">
+												</div>
+											</div>
+											<div class = "form-group">
+												<div class = "input-group">
+													<span class = "input-group-addon"><i class = "fa fa-key"></i></span>
+													<input type = "password" name = "password2" ng-model = "password2" class = "form-control" placeholder = "repeat password">
+												</div>
+											</div>
+											<div class = "text-center">
+												<button type = "submit" class = "btn btn-primary">sign up <i class = "fa fa-sign-in"></i></button>
+											</div>
+										</form>
+									</div>
+								</li>
+								<li class = "dropdown">
+									<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+									<i class = "fa fa-fw fa-lock"></i> Login
+									</a>
+									<div class = "dropdown-menu dropdown-size-280">
+										<form name = "signIn">
+											<div class = "form-group">
+												<div class = "input-group">
+													<span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+													<input type = "text" id = "username" ng-model = "username" class = "form-control" placeholder = "username">
+												</div>
+											</div>
+											<div class = "form-group">
+												<div class = "input-group">
+													<span class = "input-group-addon"><i class = "fa fa-key"></i></span>
+													<input type = "password" id = "password" ng-model = "password" class = "form-control" placeholder = "password">
+												</div>
+											</div>
+											<div class = "text-center">
+												<button type = "submit" class = "btn btn-primary">sign in <i class = "fa fa-sign-in"></i></button>
+											</div>
+										</form>
+									</div>
+								</li>
+								<li class = "dropdown user">
+									<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+									<img alt = "" class = "img-circle" /> Bill<span class = "caret"></span>
+									</a>
+									<ul class = "dropdown-menu" role = "menu">
+										<li><a href = "#"><i class = "fa fa-user"></i>profile</a></li>
+										<li><a href = "#"><i class = "fa fa-wrench"></i>my adverts</a></li>
+										<li><a href = "#"><i class = "fa fa-sign-out"></i>logout</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
 					</div>
-					-->
 				</div>
 			</nav>
-			<!--
-			<div ui-view = "sidebar_menu">
+			<!-- <div ui-view = "sidebar_menu"> -->
+			<div>
+				<aside class = "sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id = sidebar-menu data-type = collapse>
+				  <div data-scrollable>
+				    <ul class = "sidebar-menu sm-bordered sm-icons-block sm-icons-right">
+				      <li class = "hasSubmenu">
+				        <a ui-sref = "#hiden"><i class = "fa fa-star"></i><span>hiden</span></a>
+				        <ul id = "hiden" class = "in">
+				        </ul>
+				      </li>
+				      <li class = "hasSubmenu">
+				        <a href = "#discover"><i class = "fa fa-star"></i><span>discover</span></a>
+				        <ul id = "discover" class = "in">
+				          <li class = "active"><a href = "index.html"><i class = "fa fa-map-marker"></i><span>full screen map</span></a></li>
+				          <li><a ui-sref = "map-listing-list.html"><i class = "fa fa-list"></i><span>map listing - list</span></a></li>
+				          <li><a ui-sref = "map-listing-grid.html"><i class = "fa fa-th"></i><span>map listing - grid</span></a></li>
+				          <li><a ui-sref = "listing.html"><i class = "fa fa-list"></i><span>listing - list</span></a></li>
+				          <li><a ui-sref = "listing-grid.html"><i class = "fa fa-th"></i><span>listing - grid</span></a></li>
+				          <li><a ui-sref = "listing-map.html"><i class = "fa fa-map-marker"></i><span>listing - map</span></a></li>
+				        </ul>
+				      </li>
+				      <li class = "hasSubmenu">
+				        <a href = "#property"><i class = "fa fa-home"></i><span>property</span></a>
+				        <ul id = "property">
+				          <li><a ui-sref = "map-property.html"><i class = "fa fa-map-marker"></i><span>map + property</span></a></li>
+				          <li><a ui-sref = "property.html"><i class = "fa fa-list"></i><span>property details</span></a></li>
+				        </ul>
+				      </li>
+				      <li><a ui-sref = "map-edit.html"><i class = "fa fa-pencil"></i><span>add property</span></a></li>
+				    </ul>
+				  </div>
+				</aside>
+
 
 			</div>
 			<div ui-view = "pop_up">
-					</div>
-		-->
+			</div>
 			<div class = "st-pusher">
 				<div class = "st-content">
 					<div class = "st-content-inner padding-top-none" id = "content" ui-view = "content">
-
 					</div>
-					</div>
+				</div>
 			</div>
 			<footer class = "footer">
 				<strong>realestate</strong>
@@ -98,7 +206,6 @@
 			  }
 			};
 		</script>
-
 		<script src = "app/js/kts/jquery/dist/jquery.js"></script>
 		<script src = "app/js/kts/angular/angular.js"></script>
 		<script src = "app/js/kts/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
@@ -109,11 +216,10 @@
 		<script src = "app/js/kts/restangular/dist/restangular.js"></script>
 		<script src = "app/js/kts/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 		<script src = "app/js/kts/angular-lodash-module/angular-lodash-module.js"></script>
-
 		<!--
-		<script src = "app/js/vendor/core/jquery.js"></script>
-		<script src = "app/js/vendor/core/bootstrap.js"></script>
-		-->
+			<script src = "app/js/vendor/core/jquery.js"></script>
+			<script src = "app/js/vendor/core/bootstrap.js"></script>
+			-->
 		<script src = "app/js/vendor/core/breakpoints.js"></script>
 		<script src = "app/js/vendor/core/jquery.nicescroll.js"></script>
 		<script src = "app/js/vendor/core/isotope.pkgd.js"></script>
@@ -128,18 +234,15 @@
 		<script src = "app/js/vendor/core/jquery.debouncedresize.js"></script>
 		<script src = "app/js/vendor/forms/all.js"></script>
 		<script src = "app/js/vendor/media/all.js"></script>
-
 		<script src = "app/js/app/essentials.js"></script>
 		<script src = "app/js/app/layout.js"></script>
 		<script src = "app/js/app/sidebar.js"></script>
 		<script src = "app/js/app/media.js"></script>
 		<script src = "app/js/app/main.js"></script>
-
 		<!-- realestate scripts -->
 		<script src = "app/scripts/app.module.js"></script>
-
 		<script src = "app/scripts/advertisement.controller.js"></script>
 		<script src = "app/scripts/advertisement.resource.js"></script>
-
+		<script src = "app/scripts/sidebar_menu.controller.js"></script>
 	</body>
 </html>

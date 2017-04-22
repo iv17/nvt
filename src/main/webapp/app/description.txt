@@ -17,13 +17,7 @@ main-nav
       controllerAs: 'mainNav'
     }
   },
-  views: {
-    'sidebar_menu@': {
-      templateUrl: 'app/views/sidebar_menu.html',
-      controller: 'SidebarMenuController',
-      controllerAs: 'sidebarMenu'
-    }
-  },
+
 
 
 

@@ -1,5 +1,86 @@
-<div class = "collapse navbar-collapse" id = "main-nav">
-  <ul class = "nav navbar-nav navbar-right ">
-
-  </ul>
+<div >
+  <div class = "collapse navbar-collapse" id = "main-nav">
+    <ul class = "nav navbar-nav navbar-right ">
+      <li class = "dropdown">
+        <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"><i class = "fa fa-fw fa-user-plus"></i> Sign Up</a>
+        <div class = "dropdown-menu dropdown-size-280">
+          <form name = "signUp">
+            <div class = "form-group">
+              <div class = "input-group">
+                <span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+                <input type = "text" id = "name" ng-model = "name" class = "form-control" placeholder = "name">
+              </div>
+            </div>
+            <div class = "form-group">
+              <div class = "input-group">
+                <span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+                <input type = "text" id = "lastname" ng-model = "lastname" class = "form-control" placeholder = "last name">
+              </div>
+            </div>
+            <div class = "form-group">
+              <div class = "input-group">
+                <span class = "input-group-addon"><i class = "fa fa-envelope"></i></span>
+                <input type = "text" id = "email" ng-model = "email" class = "form-control" placeholder = "email">
+              </div>
+            </div>
+            <div class = "form-group">
+              <div class = "input-group">
+                <span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+                <input type = "text" name = "username" ng-model = "username" class = "form-control" placeholder = "username">
+              </div>
+            </div>
+            <div class = "form-group">
+              <div class = "input-group">
+                <span class = "input-group-addon"><i class = "fa fa-key"></i></span>
+                <input type = "password" name = "password" ng-model = "password" class = "form-control" placeholder = "password">
+              </div>
+            </div>
+            <div class = "form-group">
+              <div class = "input-group">
+                <span class = "input-group-addon"><i class = "fa fa-key"></i></span>
+                <input type = "password" name = "password2" ng-model = "password2" class = "form-control" placeholder = "repeat password">
+              </div>
+            </div>
+            <div class = "text-center">
+              <button type = "submit" class = "btn btn-primary">sign up <i class = "fa fa-sign-in"></i></button>
+            </div>
+          </form>
+        </div>
+      </li>
+      <li class = "dropdown">
+        <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+        <i class = "fa fa-fw fa-lock"></i> Login
+        </a>
+        <div class = "dropdown-menu dropdown-size-280">
+          <form name = "signIn">
+            <div class = "form-group">
+              <div class = "input-group">
+                <span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+                <input type = "text" id = "username" ng-model = "username" class = "form-control" placeholder = "username">
+              </div>
+            </div>
+            <div class = "form-group">
+              <div class = "input-group">
+                <span class = "input-group-addon"><i class = "fa fa-key"></i></span>
+                <input type = "password" id = "password" ng-model = "password" class = "form-control" placeholder = "password">
+              </div>
+            </div>
+            <div class = "text-center">
+              <button type = "submit" class = "btn btn-primary">sign in <i class = "fa fa-sign-in"></i></button>
+            </div>
+          </form>
+        </div>
+      </li>
+      <li class = "dropdown user">
+        <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+        <img alt = "" class = "img-circle" /> Bill<span class = "caret"></span>
+        </a>
+        <ul class = "dropdown-menu" role = "menu">
+          <li><a href = "#"><i class = "fa fa-user"></i>profile</a></li>
+          <li><a href = "#"><i class = "fa fa-wrench"></i>my adverts</a></li>
+          <li><a href = "#"><i class = "fa fa-sign-out"></i>logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </div>
