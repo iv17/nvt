@@ -39,7 +39,7 @@ import nvt.web.dto.RealEstateRatingDTO;
 import nvt.web.dto.RealEstateReportDTO;
 
 @RestController
-@RequestMapping(value = "api/realestates")
+@RequestMapping(value = "api/realEstates")
 public class RealEstateController {
 
 	@Autowired

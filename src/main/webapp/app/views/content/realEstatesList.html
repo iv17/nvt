@@ -1,0 +1,35 @@
+<div class = "sidebar-block sidebar-block-full">
+<div ng-repeat = "realEstate in realEstates">
+<div class = "panel panel-default">
+  <div class = "panel-body">
+    <div class = "media media-clearfix-xs media-clearfix-sm">
+      <div class = "media-left">
+        <p>
+          <a ui-sref = "index.html">
+            <img src = "" alt = "property" width = "150" class = "media-object" />
+          </a>
+        </p>
+        <div class = "text-center small">
+          <span class = "fa fa-fw fa-star text-yellow-800"></span>
+        </div>
+      </div>
+      <div class = "media-body">
+        <div class = "pull-right">
+          <a ui-sref = "map-property.html" class = "text-primary"><i class = "fa fa-comments fa-fw"></i><strong></strong></a>
+          <a ui-sref = "map-property.html" class = "text-grey-400"><i class = "fa fa-flag-o fa-fw"></i></a>
+        </div>
+        <h4 class = "media-heading margin-v-0-10">.
+          <a ui-sref = "map-property.html">{{ realEstate.name }}</a>
+          <small class = "text-grey-400"><i class = "fa fa-clock-o fa-fw"></i> {{ realEstate.posted | date : "fullDate" }}</small>
+        </h4>
+        <p>
+          <span class = "label label-grey-100"><i class="fa fa-home fa-fw"></i> {{ realEstate.rooms }}</span>
+          <span class = "label label-grey-100"><i class="fa fa-fw icon icon-toilet"></i> {{ realEstate.bathrooms }}</span>
+        </p>
+        <p class = "margin-none"> {{ realEstate.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

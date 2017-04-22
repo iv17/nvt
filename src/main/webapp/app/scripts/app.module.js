@@ -19,9 +19,9 @@
         url: "/",
         views: {
           'content@': {
-            templateUrl: 'app/views/content/advertisement_list.html',
-            controller: 'AdvertisementController',
-            controllerAs: 'advertisements'
+            templateUrl: 'app/views/content/realEstatesList.html',
+            controller: 'RealEstateController',
+            controllerAs: 'realEstates'
           }
         }
       });
