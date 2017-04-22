@@ -7,7 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import nvt.beans.Advertisement;
 import nvt.beans.AdvertisementType;
 import nvt.beans.Agent;
 import nvt.beans.AgentRating;
@@ -27,7 +26,6 @@ import nvt.beans.RealEstateType;
 import nvt.beans.User;
 import nvt.beans.WorkingTime;
 import nvt.repository.AdvertisementTypeRepository;
-import nvt.repository.AdvertisementsRepository;
 import nvt.repository.AgentRatingRepository;
 import nvt.repository.AgentRepository;
 import nvt.repository.CompanyRepository;
@@ -81,9 +79,6 @@ public class NvtApplication implements CommandLineRunner {
 	
 	@Autowired 
 	AdvertisementTypeRepository advertisementTypeRepository;
-	
-	@Autowired
-	AdvertisementsRepository advertisementRepository;
 	
 	@Autowired
 	RealEstateCommentRepository realEstateCommentRepository;
@@ -345,12 +340,18 @@ public class NvtApplication implements CommandLineRunner {
 		RealEstateType realEstateType4 = new RealEstateType("PENTHOUSE");
 		realEstateTypeRepository.save(realEstateType4);
 
+		AdvertisementType advertisementType1 = new AdvertisementType("SALE");
+		advertisementTypeRepository.save(advertisementType1);
+		AdvertisementType advertisementType2 = new AdvertisementType("RENT");
+		advertisementTypeRepository.save(advertisementType2);
 		
-		RealEstate realEstate1 = new RealEstate("..", "...", 500.0, 50.0, 2, 1, 1, 2015, true, true, location1, realEstateType2, heatingType1);
+
+		
+		RealEstate realEstate1 = new RealEstate("..", "...", 500.0, 50.0, 2, 1, 1, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
 		realEstateRepository.save(realEstate1);
-		RealEstate realEstate2 = new RealEstate("..", "...", 1500.0, 150.0, 2, 5, 2, 2015, true, true, location1, realEstateType3, heatingType1);
+		RealEstate realEstate2 = new RealEstate("..", "...", 1500.0, 150.0, 2, 5, 2, 2015, true, true, location1, realEstateType3, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
 		realEstateRepository.save(realEstate2);
-		RealEstate realEstate3 = new RealEstate("..", "...", 500000.0, 300.0, 3, 7, 2, 2015, true, true, location1, realEstateType4, heatingType1);
+		RealEstate realEstate3 = new RealEstate("..", "...", 500000.0, 300.0, 3, 7, 2, 2015, true, true, location1, realEstateType4, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
 		realEstateRepository.save(realEstate3);
 
 		
@@ -396,19 +397,7 @@ public class NvtApplication implements CommandLineRunner {
 		realEstateOutdoorsRepository.save(realEstateOutdoors);
 		
 		
-		AdvertisementType advertisementType1 = new AdvertisementType("SALE");
-		advertisementTypeRepository.save(advertisementType1);
-		AdvertisementType advertisementType2 = new AdvertisementType("RENT");
-		advertisementTypeRepository.save(advertisementType2);
 		
-
-		Advertisement advertisement1 = new Advertisement(new Date(), 48, realEstate1, agent1, advertisementType2);
-		advertisementRepository.save(advertisement1);
-		Advertisement advertisement2 = new Advertisement(new Date(), 48, realEstate2, agent1, advertisementType2);
-		advertisementRepository.save(advertisement2);
-		Advertisement advertisement3 = new Advertisement(new Date(), 48, realEstate3, agent1, advertisementType1);
-		advertisementRepository.save(advertisement3);
-
 		
 		RealEstateComment realEstateComment1 = new RealEstateComment("..", new Date(), realEstate1, user11);
 		realEstateCommentRepository.save(realEstateComment1);

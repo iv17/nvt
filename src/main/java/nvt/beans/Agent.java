@@ -23,7 +23,7 @@ public class Agent extends User {
 	private Company company;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "agent") @JsonIgnore
-	private Set<Advertisement> advertisements;
+	private Set<RealEstate> realEstates;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "agent") @JsonIgnore
 	private Set<AgentRating> agentRatings;
@@ -47,10 +47,10 @@ public class Agent extends User {
 	}
 
 
-	public Agent(Company company, Set<Advertisement> advertisements, Set<AgentRating> agentRatings) {
+	public Agent(Company company, Set<RealEstate> realEstates, Set<AgentRating> agentRatings) {
 		super();
 		this.company = company;
-		this.advertisements = advertisements;
+		this.realEstates = realEstates;
 		this.agentRatings = agentRatings;
 	}
 
@@ -63,12 +63,12 @@ public class Agent extends User {
 		this.company = company;
 	}
 
-	public Set<Advertisement> getAdvertisements() {
-		return advertisements;
+	public Set<RealEstate> getRealEstates() {
+		return realEstates;
 	}
 
-	public void setAdvertisements(Set<Advertisement> advertisements) {
-		this.advertisements = advertisements;
+	public void setRealEstates(Set<RealEstate> realEstates) {
+		this.realEstates = realEstates;
 	}
 
 	public Set<AgentRating> getAgentRatings() {

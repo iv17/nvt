@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import nvt.beans.AdvertisementType;
+import nvt.beans.Agent;
 import nvt.beans.HeatingType;
 import nvt.beans.Location;
 import nvt.beans.RealEstate;
@@ -20,6 +22,8 @@ import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateRating;
 import nvt.beans.RealEstateReport;
 import nvt.beans.RealEstateType;
+import nvt.service.AdvertisementTypeService;
+import nvt.service.AgentService;
 import nvt.service.HeatingTypeService;
 import nvt.service.IndoorFeatureService;
 import nvt.service.LocationService;
@@ -35,7 +39,7 @@ import nvt.web.dto.RealEstateRatingDTO;
 import nvt.web.dto.RealEstateReportDTO;
 
 @RestController
-@RequestMapping(value = "api/realEstates")
+@RequestMapping(value = "api/realestates")
 public class RealEstateController {
 
 	@Autowired
@@ -58,6 +62,12 @@ public class RealEstateController {
 
 	@Autowired
 	protected HeatingTypeService heatingTypeService;
+	
+	@Autowired
+	protected AgentService agentService;
+	
+	@Autowired
+	protected AdvertisementTypeService advertisementTypeService;
 	
 	@Autowired
 	protected IndoorFeatureService indoorFeatureService;
@@ -102,9 +112,26 @@ public class RealEstateController {
 		}
 		realEstate.setHeatingType(heatingType);
 		
+		realEstate.setPosted(realEstateDTO.getPosted());
+		realEstate.setUpdated(realEstateDTO.getUpdated());
+		realEstate.setDuration(realEstateDTO.getDuration());
+		realEstate.setInappropriate(realEstateDTO.isInappropriate());
+		realEstate.setVerified(realEstateDTO.isVerified());
 		
 		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
 
+		Agent agent = agentService.findById(realEstateDTO.getAgentDTO().getId());
+		if(agent == null) {
+			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
+		}
+		realEstate.setAgent(agent);
+		
+		AdvertisementType  advertisementType = advertisementTypeService.findById(realEstateDTO.getAdvertisementTypeDTO().getId());
+		if(advertisementType == null) {
+			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
+		}
+		realEstate.setAdvertisementType(advertisementType);
+		
 		realEstateService.save(realEstate);
 		
 		return new ResponseEntity<RealEstateDTO>(newRealEstateDTO, HttpStatus.CREATED);
@@ -169,6 +196,7 @@ public class RealEstateController {
 		}
 		realEstate.setHeatingType(heatingType);
 
+		
 		realEstateService.save(realEstate);
 		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
 

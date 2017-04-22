@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import nvt.beans.Advertisement;
 import nvt.beans.Agent;
 import nvt.beans.AgentRating;
 import nvt.beans.Company;
 import nvt.beans.Image;
+import nvt.beans.RealEstate;
 import nvt.service.AgentService;
 import nvt.service.CompanyService;
 import nvt.service.ImageService;
-import nvt.web.dto.AdvertisementDTO;
 import nvt.web.dto.AgentDTO;
 import nvt.web.dto.AgentRatingDTO;
+import nvt.web.dto.RealEstateDTO;
 
 @RestController
 @RequestMapping(value = "api/agents")
@@ -150,20 +150,20 @@ public class AgentController {
 	}
 	
 	
-	@RequestMapping(value = "/{id}/advertisements", method = RequestMethod.GET)
-	public ResponseEntity<List<AdvertisementDTO>> getAgentAdvertisements(@PathVariable Integer id) {
+	@RequestMapping(value = "/{id}/realestates", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateDTO>> getAgentRealEstates(@PathVariable Integer id) {
 		
 		Agent agent = agentService.findById(id);
 		
-		Set<Advertisement> advertisements = agent.getAdvertisements();
+		Set<RealEstate> realEstates = agent.getRealEstates();
 		
-		List<AdvertisementDTO> advertisementDTOs = new ArrayList<AdvertisementDTO>();
-		for (Advertisement advertisement : advertisements) {
-			AdvertisementDTO advertisementDTO = new AdvertisementDTO(advertisement);
-			advertisementDTOs.add(advertisementDTO);
+		List<RealEstateDTO> realestatesDTO = new ArrayList<RealEstateDTO>();
+		for (RealEstate realEstate : realEstates) {
+			RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
+			realestatesDTO.add(realEstateDTO);
 		}
 		
-		return new ResponseEntity<List<AdvertisementDTO>>(advertisementDTOs, HttpStatus.OK);
+		return new ResponseEntity<List<RealEstateDTO>>(realestatesDTO, HttpStatus.OK);
 		
 	}
 	

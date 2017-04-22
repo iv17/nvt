@@ -30,7 +30,7 @@ public class AdvertisementType implements Serializable {
 	private String name;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "advertisementType") @JsonIgnore
-	private Set<Advertisement> advertisements;
+	private Set<RealEstate> realEstates;
 
 	
 	
@@ -44,17 +44,17 @@ public class AdvertisementType implements Serializable {
 	}
 
 	
-	public AdvertisementType(String name, Set<Advertisement> advertisements) {
+	public AdvertisementType(String name, Set<RealEstate> realEstates) {
 		this.name = name;
-		this.advertisements = advertisements;
+		this.realEstates = realEstates;
 	}
 	
 
-	public AdvertisementType(int id, String name, Set<Advertisement> advertisements) {
+	public AdvertisementType(int id, String name, Set<RealEstate> realEstates) {
 		
 		this.id = id;
 		this.name = name;
-		this.advertisements = advertisements;
+		this.realEstates = realEstates;
 	}
 
 	
@@ -74,12 +74,12 @@ public class AdvertisementType implements Serializable {
 		this.name = name;
 	}
 
-	public Set<Advertisement> getAdvertisements() {
-		return advertisements;
+	public Set<RealEstate> getRealEstates() {
+		return realEstates;
 	}
 
-	public void setAdvertisements(Set<Advertisement> advertisements) {
-		this.advertisements = advertisements;
+	public void setRealEstates(Set<RealEstate> realEstates) {
+		this.realEstates = realEstates;
 	}
 
 	

@@ -9,7 +9,7 @@
 			var retVal = {};
 
 			retVal.getAdvertisements = function() {
-				return Restangular.all("advertisements").getList().then(function(entries) {
+				return Restangular.all("realestates").getList().then(function(entries) {
 					advertisements = entries;
 					return advertisements;
 				});

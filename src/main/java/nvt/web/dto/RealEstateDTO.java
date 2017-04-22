@@ -1,5 +1,6 @@
 package nvt.web.dto;
 
+import java.util.Date;
 import java.util.Set;
 
 import nvt.beans.Image;
@@ -23,6 +24,13 @@ public class RealEstateDTO {
 	private LocationDTO locationDTO;
 	private RealEstateTypeDTO realEstateTypeDTO;
 	private HeatingTypeDTO heatingTypeDTO;
+	private Date posted;
+	private Date updated;
+	private int duration;
+	private boolean inappropriate;
+	private boolean verified;
+	private AgentDTO agentDTO;
+	private AdvertisementTypeDTO advertisementTypeDTO;
 	private Set<Image> images; 
 	private Set<RealEstateIndoors> indoorsDTO;
 	private Set<RealEstateOutdoors> outdoorsDTO;
@@ -49,144 +57,254 @@ public class RealEstateDTO {
 		locationDTO = new LocationDTO(realEstate.getLocation());
 		realEstateTypeDTO = new RealEstateTypeDTO(realEstate.getRealEstateType());
 		heatingTypeDTO = new HeatingTypeDTO(realEstate.getHeatingType());
+		posted = realEstate.getPosted();
+		updated = realEstate.getUpdated();
+		duration = realEstate.getDuration();
+		inappropriate = realEstate.isInappropriate();
+		verified = realEstate.isVerified();
+		agentDTO = new AgentDTO(realEstate.getAgent());
+		advertisementTypeDTO = new AdvertisementTypeDTO(realEstate.getAdvertisementType());
+		
 		//images = realEstate.getImages();
 		indoorsDTO = realEstate.getIndoors();
 		outdoorsDTO = realEstate.getOutdoors();
 	}
-
 	
 
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	public String getName() {
 		return name;
 	}
 
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 	public String getDescription() {
 		return description;
 	}
 
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 
 	public double getPrice() {
 		return price;
 	}
 
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
 
 	public double getSurface() {
 		return surface;
 	}
 
+
 	public void setSurface(double surface) {
 		this.surface = surface;
 	}
+
 
 	public int getFloor() {
 		return floor;
 	}
 
+
 	public void setFloor(int floor) {
 		this.floor = floor;
 	}
+
 
 	public int getRooms() {
 		return rooms;
 	}
 
+
 	public void setRooms(int rooms) {
 		this.rooms = rooms;
 	}
+
 
 	public int getBathrooms() {
 		return bathrooms;
 	}
 
+
 	public void setBathrooms(int bathrooms) {
 		this.bathrooms = bathrooms;
 	}
+
 
 	public int getConstructedYear() {
 		return constructedYear;
 	}
 
+
 	public void setConstructedYear(int constructedYear) {
 		this.constructedYear = constructedYear;
 	}
+
 
 	public boolean isFiled() {
 		return filed;
 	}
 
+
 	public void setFiled(boolean filed) {
 		this.filed = filed;
 	}
+
 
 	public boolean isFurnished() {
 		return furnished;
 	}
 
+
 	public void setFurnished(boolean furnished) {
 		this.furnished = furnished;
 	}
-	
+
+
 	public LocationDTO getLocationDTO() {
 		return locationDTO;
 	}
+
 
 	public void setLocationDTO(LocationDTO locationDTO) {
 		this.locationDTO = locationDTO;
 	}
 
+
 	public RealEstateTypeDTO getRealEstateTypeDTO() {
 		return realEstateTypeDTO;
 	}
+
 
 	public void setRealEstateTypeDTO(RealEstateTypeDTO realEstateTypeDTO) {
 		this.realEstateTypeDTO = realEstateTypeDTO;
 	}
 
+
 	public HeatingTypeDTO getHeatingTypeDTO() {
 		return heatingTypeDTO;
 	}
+
 
 	public void setHeatingTypeDTO(HeatingTypeDTO heatingTypeDTO) {
 		this.heatingTypeDTO = heatingTypeDTO;
 	}
 
+
+	public Date getPosted() {
+		return posted;
+	}
+
+
+	public void setPosted(Date posted) {
+		this.posted = posted;
+	}
+
+
+	public Date getUpdated() {
+		return updated;
+	}
+
+
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
+
+
+	public int getDuration() {
+		return duration;
+	}
+
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+
+	public boolean isInappropriate() {
+		return inappropriate;
+	}
+
+
+	public void setInappropriate(boolean inappropriate) {
+		this.inappropriate = inappropriate;
+	}
+
+
+	public boolean isVerified() {
+		return verified;
+	}
+
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+
+
+	public AgentDTO getAgentDTO() {
+		return agentDTO;
+	}
+
+
+	public void setAgentDTO(AgentDTO agentDTO) {
+		this.agentDTO = agentDTO;
+	}
+
+
+	public AdvertisementTypeDTO getAdvertisementTypeDTO() {
+		return advertisementTypeDTO;
+	}
+
+
+	public void setAdvertisementTypeDTO(AdvertisementTypeDTO advertisementTypeDTO) {
+		this.advertisementTypeDTO = advertisementTypeDTO;
+	}
+
+
 	public Set<Image> getImages() {
 		return images;
 	}
+
 
 	public void setImages(Set<Image> images) {
 		this.images = images;
 	}
 
+
 	public Set<RealEstateIndoors> getIndoorsDTO() {
 		return indoorsDTO;
 	}
+
 
 	public void setIndoorsDTO(Set<RealEstateIndoors> indoorsDTO) {
 		this.indoorsDTO = indoorsDTO;
 	}
 
+
 	public Set<RealEstateOutdoors> getOutdoorsDTO() {
 		return outdoorsDTO;
 	}
+
 
 	public void setOutdoorsDTO(Set<RealEstateOutdoors> outdoorsDTO) {
 		this.outdoorsDTO = outdoorsDTO;
