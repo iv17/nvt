@@ -4,22 +4,16 @@ import nvt.beans.AdvertisementType;
 
 public class AdvertisementTypeDTO {
 
-	protected int id;
-	protected String name;
+	private int id;
+	private String name;
 	
 	
 	
 	public AdvertisementTypeDTO(AdvertisementType advertisementType) {
-		this(advertisementType.getId(),
-				advertisementType.getName());
+		id = advertisementType.getId();
+		name = advertisementType.getName();
 	}
 	
-	
-	public AdvertisementTypeDTO(int id, String name) {
-		this.id = id;
-		this.name = name;
-	}
-
 	
 	public int getId() {
 		return id;

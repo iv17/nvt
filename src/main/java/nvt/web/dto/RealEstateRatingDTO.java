@@ -6,11 +6,11 @@ import nvt.beans.RealEstateRating;
 
 public class RealEstateRatingDTO {
 
-	protected int id;
-	protected int rate;
-	protected Date posted;
-	protected RealEstateDTO realEstateDTO;
-	protected UserDTO userDTO;
+	private int id;
+	private int rate;
+	private Date posted;
+	private RealEstateDTO realEstateDTO;
+	private UserDTO userDTO;
 
 	public RealEstateRatingDTO() {
 		
@@ -18,21 +18,11 @@ public class RealEstateRatingDTO {
 	
 	
 	public RealEstateRatingDTO(RealEstateRating realEstateRating) {
-		this(realEstateRating.getId(),
-				realEstateRating.getRate(),
-				realEstateRating.getPosted(),
-				new RealEstateDTO(realEstateRating.getRealEstate()),
-				new UserDTO(realEstateRating.getUser()));
-	}
-
-	
-	public RealEstateRatingDTO(int id, int rate, Date posted, RealEstateDTO realEstateDTO, 
-			UserDTO userDTO) {
-		this.id = id;
-		this.rate = rate;
-		this.posted = posted;
-		this.realEstateDTO = realEstateDTO;
-		this.userDTO = userDTO;
+		id = realEstateRating.getId();
+		rate = realEstateRating.getRate();
+		posted = realEstateRating.getPosted();
+		realEstateDTO = new RealEstateDTO(realEstateRating.getRealEstate());
+		userDTO = new UserDTO(realEstateRating.getUser());
 	}
 
 	

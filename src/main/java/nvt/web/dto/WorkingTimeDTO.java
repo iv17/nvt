@@ -12,17 +12,11 @@ public class WorkingTimeDTO {
 	
 	
 	public WorkingTimeDTO(WorkingTime workingTime) {
-		this(workingTime.getId(), workingTime.getRadniDanOd(), workingTime.getRadniDanDo(),
-				workingTime.getRadniDanOd(), workingTime.getRadniDanDo());
-	}
-	
-	
-	public WorkingTimeDTO(int id, String radniDanOd, String radniDanDo, String vikendOd, String vikendDo) {
-		this.id = id;
-		this.radniDanOd = radniDanOd;
-		this.radniDanDo = radniDanDo;
-		this.vikendOd = vikendOd;
-		this.vikendDo = vikendDo;
+		id = workingTime.getId();
+		radniDanOd = workingTime.getRadniDanOd();
+		radniDanDo = workingTime.getRadniDanDo();
+		vikendOd = workingTime.getRadniDanOd();
+		vikendDo = workingTime.getRadniDanDo();
 	}
 	
 	

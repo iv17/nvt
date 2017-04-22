@@ -4,7 +4,7 @@ import nvt.beans.Agent;
 
 public class AgentDTO extends UserDTO{
 
-	protected CompanyDTO companyDTO;
+	private CompanyDTO companyDTO;
 	
 	
 	public AgentDTO() {

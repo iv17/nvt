@@ -6,11 +6,11 @@ import nvt.beans.RealEstateComment;
 
 public class RealEstateCommentDTO {
 
-	protected int id;
-	protected String comment;
-	protected Date posted;
-	protected RealEstateDTO realEstateDTO;
-	protected UserDTO userDTO;
+	private int id;
+	private String comment;
+	private Date posted;
+	private RealEstateDTO realEstateDTO;
+	private UserDTO userDTO;
 
 	
 	
@@ -20,23 +20,13 @@ public class RealEstateCommentDTO {
 	
 	
 	public RealEstateCommentDTO(RealEstateComment realEstateComment) {
-		this(realEstateComment.getId(),
-				realEstateComment.getComment(), 
-				realEstateComment.getPosted(),
-				new RealEstateDTO(realEstateComment.getRealEstate()),
-				new UserDTO(realEstateComment.getUser()));
+		id = realEstateComment.getId();
+		comment = realEstateComment.getComment(); 
+		posted = realEstateComment.getPosted();
+		realEstateDTO = new RealEstateDTO(realEstateComment.getRealEstate());
+		userDTO = new UserDTO(realEstateComment.getUser());
 	}
 	
-
-	public RealEstateCommentDTO(int id, String comment, Date posted, 
-			RealEstateDTO realEstateDTO, UserDTO userDTO) {
-		this.id = id;
-		this.comment = comment;
-		this.posted = posted;
-		this.realEstateDTO = realEstateDTO;
-		this.userDTO = userDTO;
-	}
-
 	
 	public int getId() {
 		return id;

@@ -6,15 +6,15 @@ import nvt.beans.Advertisement;
 
 public class AdvertisementDTO {
 
-	protected int id;
-	protected Date posted;
-	protected Date updated;
-	protected int duration;
-	protected boolean inappropriate;
-	protected boolean verified;
-	protected RealEstateDTO realEstateDTO;
-	protected AgentDTO agentDTO;
-	protected AdvertisementTypeDTO advertisementTypeDTO;
+	private int id;
+	private Date posted;
+	private Date updated;
+	private int duration;
+	private boolean inappropriate;
+	private boolean verified;
+	private RealEstateDTO realEstateDTO;
+	private AgentDTO agentDTO;
+	private AdvertisementTypeDTO advertisementTypeDTO;
 
 	
 	
@@ -35,22 +35,7 @@ public class AdvertisementDTO {
 		advertisementTypeDTO = new AdvertisementTypeDTO(advertisement.getAdvertisementType());
 	}
 
-	/*
-	 * public AdvertisementDTO(int id, Date posted, Date updated, int duration, boolean inappropriate,
-			boolean verified, RealEstateDTO realEstateDTO, AgentDTO agentDTO, AdvertisementTypeDTO advertisementTypeDTO) {
-		this.id = id;
-		this.posted = posted;
-		this.updated = updated;
-		this.duration = duration;
-		this.inappropriate = inappropriate;
-		this.verified = verified;
-		this.realEstateDTO = realEstateDTO;
-		this.agentDTO = agentDTO;
-		this.advertisementTypeDTO = advertisementTypeDTO;
-	}
 	
-
-	 */
 	
 	public int getId() {
 		return id;
@@ -124,5 +109,14 @@ public class AdvertisementDTO {
 		this.advertisementTypeDTO = advertisementTypeDTO;
 	}
 
+
+	@Override
+	public String toString() {
+		return "AdvertisementDTO [id=" + id + ", posted=" + posted + ", updated=" + updated + ", duration=" + duration
+				+ ", inappropriate=" + inappropriate + ", verified=" + verified + ", realEstateDTO=" + realEstateDTO
+				+ ", agentDTO=" + agentDTO + ", advertisementTypeDTO=" + advertisementTypeDTO + "]";
+	}
+
+	
 	
 }

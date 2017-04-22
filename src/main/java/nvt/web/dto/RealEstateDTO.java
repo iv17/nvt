@@ -9,23 +9,23 @@ import nvt.beans.RealEstateOutdoors;
 
 public class RealEstateDTO {
 
-	protected int id;
-	protected String name;
-	protected String description;
-	protected double price;
-	protected double surface;
-	protected int floor;
-	protected int rooms;
-	protected int bathrooms;
-	protected int constructedYear;
-	protected boolean filed;
-	protected boolean furnished;
-	protected LocationDTO locationDTO;
-	protected RealEstateTypeDTO realEstateTypeDTO;
-	protected HeatingTypeDTO heatingTypeDTO;
-	protected Set<Image> images; 
-	protected Set<RealEstateIndoors> indoorsDTO;
-	protected Set<RealEstateOutdoors> outdoorsDTO;
+	private int id;
+	private String name;
+	private String description;
+	private double price;
+	private double surface;
+	private int floor;
+	private int rooms;
+	private int bathrooms;
+	private int constructedYear;
+	private boolean filed;
+	private boolean furnished;
+	private LocationDTO locationDTO;
+	private RealEstateTypeDTO realEstateTypeDTO;
+	private HeatingTypeDTO heatingTypeDTO;
+	private Set<Image> images; 
+	private Set<RealEstateIndoors> indoorsDTO;
+	private Set<RealEstateOutdoors> outdoorsDTO;
 	
 	
 	
@@ -53,32 +53,8 @@ public class RealEstateDTO {
 		indoorsDTO = realEstate.getIndoors();
 		outdoorsDTO = realEstate.getOutdoors();
 	}
+
 	
-	/*
-	public RealEstateDTO(int id, String name, String description, double price, double surface,
-			int floor, int rooms, int bathrooms, int constructedYear, boolean filed,
-			boolean furnished, LocationDTO locationDTO, RealEstateTypeDTO realEstateTypeDTO, 
-			HeatingTypeDTO heatingTypeDTO, Set<Image> images, 
-			Set<RealEstateIndoors> indoorsDTO, Set<RealEstateOutdoors> outdoorsDTO) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.price = price;
-		this.surface = surface;
-		this.floor = floor;
-		this.rooms = rooms;
-		this.bathrooms = bathrooms;
-		this.constructedYear = constructedYear;
-		this.filed = filed;
-		this.furnished = furnished;
-		this.locationDTO = locationDTO;
-		this.realEstateTypeDTO = realEstateTypeDTO;
-		this.heatingTypeDTO = heatingTypeDTO;
-		this.images = images;
-		this.indoorsDTO = indoorsDTO;
-		this.outdoorsDTO = outdoorsDTO;
-	}
-	*/
 
 	public int getId() {
 		return id;
@@ -214,6 +190,17 @@ public class RealEstateDTO {
 
 	public void setOutdoorsDTO(Set<RealEstateOutdoors> outdoorsDTO) {
 		this.outdoorsDTO = outdoorsDTO;
+	}
+
+
+	@Override
+	public String toString() {
+		return "RealEstateDTO [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
+				+ ", surface=" + surface + ", floor=" + floor + ", rooms=" + rooms + ", bathrooms=" + bathrooms
+				+ ", constructedYear=" + constructedYear + ", filed=" + filed + ", furnished=" + furnished
+				+ ", locationDTO=" + locationDTO + ", realEstateTypeDTO=" + realEstateTypeDTO + ", heatingTypeDTO="
+				+ heatingTypeDTO + ", images=" + images + ", indoorsDTO=" + indoorsDTO + ", outdoorsDTO=" + outdoorsDTO
+				+ "]";
 	}
 
 

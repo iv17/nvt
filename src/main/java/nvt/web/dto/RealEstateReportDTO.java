@@ -6,11 +6,11 @@ import nvt.beans.RealEstateReport;
 
 public class RealEstateReportDTO {
 
-	protected int id;
-	protected String report;
-	protected Date posted;
-	protected RealEstateDTO realEstateDTO;
-	protected UserDTO userDTO;
+	private int id;
+	private String report;
+	private Date posted;
+	private RealEstateDTO realEstateDTO;
+	private UserDTO userDTO;
 	
 	
 	
@@ -20,21 +20,11 @@ public class RealEstateReportDTO {
 	
 	
 	public RealEstateReportDTO(RealEstateReport realEstateReport) {
-		this(realEstateReport.getId(), 
-				realEstateReport.getReport(),
-				realEstateReport.getPosted(),
-				new RealEstateDTO(realEstateReport.getRealEstate()),
-				new UserDTO(realEstateReport.getUser()));
-	}
-	
-
-	public RealEstateReportDTO(int id, String report, Date posted, RealEstateDTO realEstateDTO,
-			UserDTO userDTO) {
-		this.id = id;
-		this.report = report;
-		this.posted = posted;
-		this.realEstateDTO = realEstateDTO;
-		this.userDTO = userDTO;
+		id = realEstateReport.getId();
+		report = realEstateReport.getReport();
+		posted = realEstateReport.getPosted();
+		realEstateDTO = new RealEstateDTO(realEstateReport.getRealEstate());
+		userDTO = new UserDTO(realEstateReport.getUser());
 	}
 
 	

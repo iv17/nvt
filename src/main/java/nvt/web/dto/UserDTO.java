@@ -35,22 +35,6 @@ public class UserDTO {
 		//imageDTO = new ImageDTO(user.getImage());
 	}
 
-	/*
-	public UserDTO(int id, String email, String username, String password, String name,
-			String lastName, String phoneNumber, boolean loged, boolean authenticated,
-			ImageDTO imageDTO) {
-		this.id = id;
-		this.email = email;
-		this.username = username;
-		this.password = password;
-		this.name = name;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
-		this.loged = loged;
-		this.authenticated = authenticated;
-		this.imageDTO = imageDTO;
-	}
-	*/
 
 	public int getId() {
 		return id;

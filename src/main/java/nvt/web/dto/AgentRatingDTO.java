@@ -6,11 +6,11 @@ import nvt.beans.AgentRating;
 
 public class AgentRatingDTO {
 
-	protected int id;
-	protected int rate;
-	protected Date posted;
-	protected AgentDTO agentDTO;
-	protected UserDTO userDTO;
+	private int id;
+	private int rate;
+	private Date posted;
+	private AgentDTO agentDTO;
+	private UserDTO userDTO;
 
 	
 	
@@ -20,20 +20,11 @@ public class AgentRatingDTO {
 	
 	
 	public AgentRatingDTO(AgentRating agentRating) {
-		this(agentRating.getId(),
-				agentRating.getRate(),
-				agentRating.getPosted(),
-				new AgentDTO(agentRating.getAgent()),
-				new UserDTO(agentRating.getUser()));
-	}
-
-	
-	public AgentRatingDTO(int id, int rate, Date posted, AgentDTO agentDTO, UserDTO userDTO) {
-		this.id = id;
-		this.rate = rate;
-		this.posted = posted;
-		this.agentDTO = agentDTO;
-		this.userDTO = userDTO;
+		id = agentRating.getId();
+		rate = agentRating.getRate();
+		posted = agentRating.getPosted();
+		agentDTO = new AgentDTO(agentRating.getAgent());
+		userDTO = new UserDTO(agentRating.getUser());
 	}
 
 	

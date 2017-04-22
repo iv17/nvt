@@ -79,7 +79,7 @@ public class RealEstate implements Serializable {
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore
 	private Set<RealEstateOutdoors> outdoors;
 
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") 
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore
 	private Set<Advertisement> advertisements;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore
@@ -358,6 +358,17 @@ public class RealEstate implements Serializable {
 
 	public void setReports(Set<RealEstateReport> reports) {
 		this.reports = reports;
+	}
+
+
+	@Override
+	public String toString() {
+		return "RealEstate [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
+				+ ", surface=" + surface + ", floor=" + floor + ", rooms=" + rooms + ", bathrooms=" + bathrooms
+				+ ", constructedYear=" + constructedYear + ", filed=" + filed + ", furnished=" + furnished
+				+ ", location=" + location + ", realEstateType=" + realEstateType + ", heatingType=" + heatingType
+				+ ", images=" + images + ", indoors=" + indoors + ", outdoors=" + outdoors + ", advertisements="
+				+ advertisements + ", comments=" + comments + ", ratings=" + ratings + ", reports=" + reports + "]";
 	}
 	
 	

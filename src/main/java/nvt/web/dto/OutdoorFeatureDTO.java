@@ -4,8 +4,8 @@ import nvt.beans.OutdoorFeature;
 
 public class OutdoorFeatureDTO {
 
-	protected int id;
-	protected String name;
+	private int id;
+	private String name;
 	
 	
 	
@@ -15,15 +15,10 @@ public class OutdoorFeatureDTO {
 	
 	
 	public OutdoorFeatureDTO(OutdoorFeature outdoorFeature) {
-		this(outdoorFeature.getId(), outdoorFeature.getName());	
+		id = outdoorFeature.getId();
+		name = outdoorFeature.getName();	
 	}
 	
-
-	public OutdoorFeatureDTO(int id, String name) {
-		this.id = id;
-		this.name = name;
-	}
-
 	
 	public int getId() {
 		return id;

@@ -4,15 +4,15 @@ import nvt.beans.Company;
 
 public class CompanyDTO {
 
-	protected int id;
-	protected String name;
-	protected String password;
-	protected String propertyNo;
-	protected String phoneNumber;
-	protected String webAddress;
-	protected ImageDTO imageDTO;
-	protected LocationDTO locationDTO;
-	protected WorkingTimeDTO workingTimeDTO;
+	private int id;
+	private String name;
+	private String password;
+	private String propertyNo;
+	private String phoneNumber;
+	private String webAddress;
+	private ImageDTO imageDTO;
+	private LocationDTO locationDTO;
+	private WorkingTimeDTO workingTimeDTO;
 
 	
 	
@@ -31,22 +31,7 @@ public class CompanyDTO {
 		locationDTO = new LocationDTO(company.getLocation());
 		workingTimeDTO = new WorkingTimeDTO(company.getWorkingTime());
 	}
-
 	
-	public CompanyDTO(int id, String name, String password, String propertyNo, 
-			String phoneNumber, String webAddress, ImageDTO imageDTO, 
-			LocationDTO locationDTO, WorkingTimeDTO workingTimeDTO) {
-		this.id = id;
-		this.name = name;
-		this.password = password;
-		this.propertyNo = propertyNo;
-		this.phoneNumber = phoneNumber;
-		this.webAddress = webAddress;
-		this.imageDTO = imageDTO;
-		this.locationDTO = locationDTO;
-		this.workingTimeDTO = workingTimeDTO;
-	}
-
 	
 	public int getId() {
 		return id;

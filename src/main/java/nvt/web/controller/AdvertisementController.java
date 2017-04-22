@@ -85,6 +85,8 @@ public class AdvertisementController {
 		List<AdvertisementDTO> advertisementDTOs = new ArrayList<AdvertisementDTO>();
 		for (Advertisement advertisement : advertisements) {
 			AdvertisementDTO advertisementDTO = new AdvertisementDTO(advertisement);
+			System.out.println(advertisementDTO.toString());
+			System.out.println("***************************");
 			advertisementDTOs.add(advertisementDTO);
 		}
 		

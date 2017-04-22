@@ -4,8 +4,8 @@ import nvt.beans.IndoorFeature;
 
 public class IndoorFeatureDTO {
 
-	protected int id;
-	protected String name;
+	private int id;
+	private String name;
 	
 	
 	
@@ -15,7 +15,8 @@ public class IndoorFeatureDTO {
 	
 	
 	public IndoorFeatureDTO(IndoorFeature indoorFeature) {
-		this(indoorFeature.getId(), indoorFeature.getName());
+		id = indoorFeature.getId();
+		name = indoorFeature.getName();
 	}
 
 	

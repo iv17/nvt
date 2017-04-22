@@ -4,8 +4,8 @@ import nvt.beans.ApartmentType;
 
 public class ApartmentTypeDTO {
 
-	protected int id;
-	protected String name;
+	private int id;
+	private String name;
 	
 	
 	
@@ -15,13 +15,8 @@ public class ApartmentTypeDTO {
 	
 	
 	public ApartmentTypeDTO(ApartmentType apartmentType) {
-		this(apartmentType.getId(), apartmentType.getName());
-	}
-
-	
-	public ApartmentTypeDTO(int id, String name) {
-		this.id = id;
-		this.name = name;
+		id = apartmentType.getId();
+		name = apartmentType.getName();
 	}
 
 	
