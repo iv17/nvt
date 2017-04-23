@@ -45,6 +45,12 @@
         <div ng-repeat = "rr in realEstate.reports ">
           <span class = "label label-grey-100"><i class="fa fa-home fa-fw"></i> {{ rr.report }}</span>
         </div>
+        <div ng-repeat = "i in realEstate.outdoors">
+          <span class = "label label-grey-100"><i class="fa fa-home fa-fw"></i> {{ i.outdoorFeature.name }}</span>
+        </div>
+        <div ng-repeat = "i in realEstate.indoors">
+          <span class = "label label-grey-100"><i class="fa fa-fw icon icon-toilet"></i> {{ i.indoorFeature.name }}</span>
+        </div>
       </div>
     </div>
   </div>

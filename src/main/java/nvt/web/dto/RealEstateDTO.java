@@ -7,6 +7,8 @@ import java.util.Set;
 import nvt.beans.Image;
 import nvt.beans.RealEstate;
 import nvt.beans.RealEstateComment;
+import nvt.beans.RealEstateIndoors;
+import nvt.beans.RealEstateOutdoors;
 import nvt.beans.RealEstateRating;
 import nvt.beans.RealEstateReport;
 
@@ -34,8 +36,8 @@ public class RealEstateDTO {
 	private AgentDTO agent;
 	private AdvertisementTypeDTO advertisementType;
 	private Set<Image> images; 
-	private Set<IndoorFeatureDTO> indoors;
-	private Set<OutdoorFeatureDTO> outdoors;
+	private Set<RealEstateIndoorsDTO> indoors;
+	private Set<RealEstateOutdoorsDTO> outdoors;
 	private Set<RealEstateCommentDTO> comments;
 	private Set<RealEstateRatingDTO> ratings;
 	private Set<RealEstateReportDTO> reports;
@@ -71,6 +73,24 @@ public class RealEstateDTO {
 		realEstateReportDTO.setUser( new UserDTO(realEstateReport.getUser()));
 	
 		return realEstateReportDTO;
+	}
+	
+	public RealEstateIndoorsDTO toDTO(RealEstateIndoors indoors) {
+		RealEstateIndoorsDTO realEstateIndoorsDTO = new RealEstateIndoorsDTO();
+		
+		realEstateIndoorsDTO.setId(indoors.getId());
+		realEstateIndoorsDTO.setIndoorFeature(new IndoorFeatureDTO(indoors.getIndoorFeature()));
+		
+		return realEstateIndoorsDTO;
+	}
+	
+	public RealEstateOutdoorsDTO toDTO(RealEstateOutdoors outdoors) {
+		RealEstateOutdoorsDTO realEstateOudoorsDTO = new RealEstateOutdoorsDTO();
+		
+		realEstateOudoorsDTO.setId(outdoors.getId());
+		realEstateOudoorsDTO.setOutdoorFeature(new OutdoorFeatureDTO(outdoors.getOutdoorFeature()));
+		
+		return realEstateOudoorsDTO;
 	}
 	
 	public RealEstateDTO() {
@@ -117,6 +137,18 @@ public class RealEstateDTO {
 		for (RealEstateReport realEstateReport : realEstate.getReports()) {
 			RealEstateReportDTO realEstateReportDTO = toDTO(realEstateReport);
 			reports.add(realEstateReportDTO);
+		}
+		
+		indoors = new HashSet<RealEstateIndoorsDTO>();
+		for(RealEstateIndoors realEstateIndoors : realEstate.getIndoors()) {
+			RealEstateIndoorsDTO realEstateIndoorsDTO = toDTO(realEstateIndoors);
+			indoors.add(realEstateIndoorsDTO);
+		}
+		
+		outdoors = new HashSet<RealEstateOutdoorsDTO>();
+		for(RealEstateOutdoors realEstateOutdoors : realEstate.getOutdoors()) {
+			RealEstateOutdoorsDTO realEstateOutdoorsDTO = toDTO(realEstateOutdoors);
+			outdoors.add(realEstateOutdoorsDTO);
 		}
 		
 	}
@@ -298,19 +330,20 @@ public class RealEstateDTO {
 		this.images = images;
 	}
 
-	public Set<IndoorFeatureDTO> getIndoors() {
+	
+	public Set<RealEstateIndoorsDTO> getIndoors() {
 		return indoors;
 	}
 
-	public void setIndoors(Set<IndoorFeatureDTO> indoors) {
+	public void setIndoors(Set<RealEstateIndoorsDTO> indoors) {
 		this.indoors = indoors;
 	}
 
-	public Set<OutdoorFeatureDTO> getOutdoors() {
+	public Set<RealEstateOutdoorsDTO> getOutdoors() {
 		return outdoors;
 	}
 
-	public void setOutdoors(Set<OutdoorFeatureDTO> outdoors) {
+	public void setOutdoors(Set<RealEstateOutdoorsDTO> outdoors) {
 		this.outdoors = outdoors;
 	}
 
@@ -337,5 +370,7 @@ public class RealEstateDTO {
 	public void setReports(Set<RealEstateReportDTO> reports) {
 		this.reports = reports;
 	}
+	
+	
 	
 }

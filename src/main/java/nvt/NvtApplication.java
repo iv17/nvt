@@ -411,6 +411,8 @@ public class NvtApplication implements CommandLineRunner {
 	
 		RealEstateIndoors realEstateIndoors = new RealEstateIndoors(realEstate1, indoorFeature1);
 		realEstateIndoorsRepository.save(realEstateIndoors);
+		RealEstateIndoors realEstateIndoors2 = new RealEstateIndoors(realEstate1, indoorFeature2);
+		realEstateIndoorsRepository.save(realEstateIndoors2);
 		
 		
 		RealEstateOutdoors realEstateOutdoors = new RealEstateOutdoors(realEstate2, outdoorFeature1);

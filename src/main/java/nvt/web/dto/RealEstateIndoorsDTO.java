@@ -10,6 +10,11 @@ public class RealEstateIndoorsDTO {
 	
 	
 	
+	public RealEstateIndoorsDTO() {
+		
+	}
+
+
 	public RealEstateIndoorsDTO(RealEstateIndoors indoors) {
 		id = indoors.getId();
 		realEstate = new RealEstateDTO(indoors.getRealEstate()); 

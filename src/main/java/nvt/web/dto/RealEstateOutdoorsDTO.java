@@ -10,6 +10,11 @@ public class RealEstateOutdoorsDTO {
 	
 	
 	
+	public RealEstateOutdoorsDTO() {
+		
+	}
+
+
 	public RealEstateOutdoorsDTO(RealEstateOutdoors outdoors) {
 		id = outdoors.getId();
 		realEstate = new RealEstateDTO(outdoors.getRealEstate());
