@@ -9,10 +9,9 @@ public class RealEstateCommentDTO {
 	private int id;
 	private String comment;
 	private Date posted;
-	private RealEstateDTO realEstateDTO;
+	private RealEstateDTO realEstate;
 	private UserDTO userDTO;
 
-	
 	
 	public RealEstateCommentDTO() {
 		
@@ -23,10 +22,10 @@ public class RealEstateCommentDTO {
 		id = realEstateComment.getId();
 		comment = realEstateComment.getComment(); 
 		posted = realEstateComment.getPosted();
-		realEstateDTO = new RealEstateDTO(realEstateComment.getRealEstate());
+		realEstate = new RealEstateDTO(realEstateComment.getRealEstate());
 		userDTO = new UserDTO(realEstateComment.getUser());
 	}
-	
+
 	
 	public int getId() {
 		return id;
@@ -52,14 +51,14 @@ public class RealEstateCommentDTO {
 		this.posted = posted;
 	}
 
-	public RealEstateDTO getRealEstateDTO() {
-		return realEstateDTO;
+	public RealEstateDTO getRealEstate() {
+		return realEstate;
 	}
 
-	public void setRealEstateDTO(RealEstateDTO realEstateDTO) {
-		this.realEstateDTO = realEstateDTO;
+	public void setRealEstate(RealEstateDTO realEstate) {
+		this.realEstate = realEstate;
 	}
-
+	
 	public UserDTO getUserDTO() {
 		return userDTO;
 	}
@@ -67,6 +66,5 @@ public class RealEstateCommentDTO {
 	public void setUserDTO(UserDTO userDTO) {
 		this.userDTO = userDTO;
 	}
-
 	
 }

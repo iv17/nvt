@@ -87,8 +87,8 @@ public class RealEstate implements Serializable {
 
 	@Column(name = "verified", unique = false, nullable = true)
 	private boolean verified;
-
-	@ManyToOne 
+	
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
 	@JoinColumn(name = "agent_id", referencedColumnName = "id", nullable = true)
 	private Agent agent;
 

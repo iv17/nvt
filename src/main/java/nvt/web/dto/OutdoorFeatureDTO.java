@@ -8,7 +8,6 @@ public class OutdoorFeatureDTO {
 	private String name;
 	
 	
-	
 	public OutdoorFeatureDTO() {
 		
 	}

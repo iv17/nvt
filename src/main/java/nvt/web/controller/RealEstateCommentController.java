@@ -72,7 +72,7 @@ public class RealEstateCommentController {
 		realEstateComment.setComment(realEstateCommentDTO.getComment());
 		realEstateComment.setPosted(realEstateCommentDTO.getPosted());
 		
-		RealEstate realEstate = realEstateService.findById(realEstateCommentDTO.getRealEstateDTO().getId());
+		RealEstate realEstate = realEstateService.findById(realEstateCommentDTO.getRealEstate().getId());
 		if(realEstate == null) {
 			return new ResponseEntity<RealEstateCommentDTO>(HttpStatus.BAD_REQUEST);
 		}
@@ -102,7 +102,7 @@ public class RealEstateCommentController {
 		realEstateComment.setComment(realEstateCommentDTO.getComment());
 		realEstateComment.setPosted(realEstateCommentDTO.getPosted());
 		
-		RealEstate realEstate = realEstateService.findById(realEstateCommentDTO.getRealEstateDTO().getId());
+		RealEstate realEstate = realEstateService.findById(realEstateCommentDTO.getRealEstate().getId());
 		if(realEstate == null) {
 			return new ResponseEntity<RealEstateCommentDTO>(HttpStatus.BAD_REQUEST);
 		}

@@ -56,7 +56,7 @@ public class UserController {
 		user.setLoged(false);
 		user.setAuthenticated(false);
 
-		Image image = imageRepository.findById(userDTO.getImageDTO().getId());
+		Image image = imageRepository.findById(userDTO.getImage().getId());
 		if(image == null) {
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}
@@ -112,7 +112,7 @@ public class UserController {
 		user.setLoged(userDTO.isLoged());
 		user.setAuthenticated(userDTO.isAuthenticated());
 
-		Image image = imageRepository.findById(userDTO.getImageDTO().getId());
+		Image image = imageRepository.findById(userDTO.getImage().getId());
 		if(image == null) {
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}
@@ -143,7 +143,7 @@ public class UserController {
 		user.setLoged(userDTO.isLoged());
 		user.setAuthenticated(userDTO.isAuthenticated());
 
-		Image image = imageRepository.findById(userDTO.getImageDTO().getId());
+		Image image = imageRepository.findById(userDTO.getImage().getId());
 		if(image == null) {
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}

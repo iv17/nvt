@@ -2,9 +2,9 @@ package nvt.web.dto;
 
 import nvt.beans.Agent;
 
-public class AgentDTO extends UserDTO{
+public class AgentDTO extends UserDTO {
 
-	private CompanyDTO companyDTO;
+	private CompanyDTO company;
 	
 	
 	public AgentDTO() {
@@ -23,18 +23,18 @@ public class AgentDTO extends UserDTO{
 		loged = agent.isLoged();
 		authenticated = agent.isAuthenticated();
 		//imageDTO = new ImageDTO(agent.getImage());
-		companyDTO = new CompanyDTO(agent.getCompany());
+		company = new CompanyDTO(agent.getCompany());
 	}
 
-	
-	public CompanyDTO getCompanyDTO() {
-		return companyDTO;
+
+	public CompanyDTO getCompany() {
+		return company;
 	}
 
-	public void setCompanyDTO(CompanyDTO companyDTO) {
-		this.companyDTO = companyDTO;
+
+	public void setCompany(CompanyDTO company) {
+		this.company = company;
 	}
-	
 	
 	
 }

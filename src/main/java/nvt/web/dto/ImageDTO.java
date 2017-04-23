@@ -7,9 +7,9 @@ public class ImageDTO {
 	protected int id; 
 	protected String name; 
 	protected String file;
-	protected RealEstateDTO realEstateDTO;
-	protected UserDTO userDTO;
-	protected CompanyDTO companyDTO;
+	protected RealEstateDTO realEstate;
+	protected UserDTO user;
+	protected CompanyDTO company;
 	
 	
 	
@@ -17,12 +17,11 @@ public class ImageDTO {
 		id = image.getId();
 		name = image.getName();
 		file = image.getFile();
-		//realEstateDTO = new RealEstateDTO(image.getRealEstate());
-		//userDTO = new UserDTO(image.getUser());
-		//companyDTO = new CompanyDTO(image.getCompany());
+		//realEstate = new RealEstateDTO(image.getRealEstate());
+		//user = new UserDTO(image.getUser());
+		//company = new CompanyDTO(image.getCompany());
 	}
-	
-	
+
 	public int getId() {
 		return id;
 	}
@@ -47,15 +46,28 @@ public class ImageDTO {
 		this.file = file;
 	}
 
-	public RealEstateDTO getRealEstateDTO() {
-		return realEstateDTO;
+	public RealEstateDTO getRealEstate() {
+		return realEstate;
 	}
 
-	public void setRealEstateDTO(RealEstateDTO realEstateDTO) {
-		this.realEstateDTO = realEstateDTO;
+	public void setRealEstate(RealEstateDTO realEstate) {
+		this.realEstate = realEstate;
 	}
-	
-	
-	
+
+	public UserDTO getUser() {
+		return user;
+	}
+
+	public void setUser(UserDTO user) {
+		this.user = user;
+	}
+
+	public CompanyDTO getCompany() {
+		return company;
+	}
+
+	public void setCompany(CompanyDTO company) {
+		this.company = company;
+	}
 	
 }

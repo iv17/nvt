@@ -22,7 +22,7 @@ public class Agent extends User {
 	@JoinColumn(name = "company_id", referencedColumnName = "id", nullable = true) @JsonIgnore
 	private Company company;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "agent") @JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, mappedBy = "agent") @JsonIgnore
 	private Set<RealEstate> realEstates;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "agent") @JsonIgnore

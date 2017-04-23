@@ -42,13 +42,13 @@ public class AgentRatingController {
 		agentRating.setRate(agentRatingDTO.getRate());
 		agentRating.setPosted(agentRatingDTO.getPosted());
 		
-		Agent agent = agentService.findById(agentRatingDTO.getAgentDTO().getId());
+		Agent agent = agentService.findById(agentRatingDTO.getAgent().getId());
 		if(agent == null) {
 			
 		}
 		agentRating.setAgent(agent);
 		
-		User user = userService.findById(agentRatingDTO.getUserDTO().getId());
+		User user = userService.findById(agentRatingDTO.getUser().getId());
 		if(user == null) {
 			return new ResponseEntity<AgentRatingDTO>(HttpStatus.BAD_REQUEST);
 		}
@@ -103,13 +103,13 @@ public class AgentRatingController {
 		agentRating.setRate(agentRatingDTO.getRate());
 		agentRating.setPosted(agentRatingDTO.getPosted());
 		
-		Agent agent = agentService.findById(agentRatingDTO.getAgentDTO().getId());
+		Agent agent = agentService.findById(agentRatingDTO.getAgent().getId());
 		if(agent == null) {
 			return new ResponseEntity<AgentRatingDTO>(HttpStatus.BAD_REQUEST);
 		}
 		agentRating.setAgent(agent);
 		
-		User user = userService.findById(agentRatingDTO.getUserDTO().getId());
+		User user = userService.findById(agentRatingDTO.getUser().getId());
 		if(user == null) {
 			return new ResponseEntity<AgentRatingDTO>(HttpStatus.BAD_REQUEST);
 		}

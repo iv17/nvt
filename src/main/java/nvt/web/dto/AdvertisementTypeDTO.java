@@ -8,7 +8,6 @@ public class AdvertisementTypeDTO {
 	private String name;
 	
 	
-	
 	public AdvertisementTypeDTO(AdvertisementType advertisementType) {
 		id = advertisementType.getId();
 		name = advertisementType.getName();

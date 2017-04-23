@@ -13,7 +13,6 @@ public class LocationDTO {
 	private String zipCode;
 	
 	
-	
 	public LocationDTO() {
 		
 	}

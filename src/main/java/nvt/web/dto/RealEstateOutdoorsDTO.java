@@ -5,18 +5,18 @@ import nvt.beans.RealEstateOutdoors;
 public class RealEstateOutdoorsDTO {
 
 	private int id;
-	private RealEstateDTO realEstateDTO;
-	private OutdoorFeatureDTO outdoorFeatureDTO;
+	private RealEstateDTO realEstate;
+	private OutdoorFeatureDTO outdoorFeature;
 	
 	
 	
 	public RealEstateOutdoorsDTO(RealEstateOutdoors outdoors) {
 		id = outdoors.getId();
-		realEstateDTO = new RealEstateDTO(outdoors.getRealEstate());
-		outdoorFeatureDTO = new OutdoorFeatureDTO(outdoors.getOutdoorFeature());
+		realEstate = new RealEstateDTO(outdoors.getRealEstate());
+		outdoorFeature = new OutdoorFeatureDTO(outdoors.getOutdoorFeature());
 	}
 
-	
+
 	public int getId() {
 		return id;
 	}
@@ -25,21 +25,21 @@ public class RealEstateOutdoorsDTO {
 		this.id = id;
 	}
 
-	public RealEstateDTO getRealEstateDTO() {
-		return realEstateDTO;
+	public RealEstateDTO getRealEstate() {
+		return realEstate;
 	}
 
-	public void setRealEstateDTO(RealEstateDTO realEstateDTO) {
-		this.realEstateDTO = realEstateDTO;
+	public void setRealEstate(RealEstateDTO realEstate) {
+		this.realEstate = realEstate;
 	}
 
-	public OutdoorFeatureDTO getOutdoorFeatureDTO() {
-		return outdoorFeatureDTO;
+	public OutdoorFeatureDTO getOutdoorFeature() {
+		return outdoorFeature;
 	}
 
-	public void setOutdoorFeatureDTO(OutdoorFeatureDTO outdoorFeatureDTO) {
-		this.outdoorFeatureDTO = outdoorFeatureDTO;
+	public void setOutdoorFeature(OutdoorFeatureDTO outdoorFeature) {
+		this.outdoorFeature = outdoorFeature;
 	}
-	
+
 	
 }

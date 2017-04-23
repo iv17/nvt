@@ -9,10 +9,9 @@ public class AgentRatingDTO {
 	private int id;
 	private int rate;
 	private Date posted;
-	private AgentDTO agentDTO;
-	private UserDTO userDTO;
+	private AgentDTO agent;
+	private UserDTO user;
 
-	
 	
 	public AgentRatingDTO() {
 		
@@ -23,8 +22,8 @@ public class AgentRatingDTO {
 		id = agentRating.getId();
 		rate = agentRating.getRate();
 		posted = agentRating.getPosted();
-		agentDTO = new AgentDTO(agentRating.getAgent());
-		userDTO = new UserDTO(agentRating.getUser());
+		agent = new AgentDTO(agentRating.getAgent());
+		user = new UserDTO(agentRating.getUser());
 	}
 
 	
@@ -52,21 +51,20 @@ public class AgentRatingDTO {
 		this.posted = posted;
 	}
 
-	public AgentDTO getAgentDTO() {
-		return agentDTO;
+	public AgentDTO getAgent() {
+		return agent;
 	}
 
-	public void setAgentDTO(AgentDTO agentDTO) {
-		this.agentDTO = agentDTO;
+	public void setAgent(AgentDTO agent) {
+		this.agent = agent;
 	}
 
-	public UserDTO getUserDTO() {
-		return userDTO;
+	public UserDTO getUser() {
+		return user;
 	}
 
-	public void setUserDTO(UserDTO userDTO) {
-		this.userDTO = userDTO;
+	public void setUser(UserDTO user) {
+		this.user = user;
 	}
-	
 	
 }

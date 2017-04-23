@@ -21,19 +21,19 @@ public class RealEstateDTO {
 	private int constructedYear;
 	private boolean filed;
 	private boolean furnished;
-	private LocationDTO locationDTO;
-	private RealEstateTypeDTO realEstateTypeDTO;
-	private HeatingTypeDTO heatingTypeDTO;
+	private LocationDTO location;
+	private RealEstateTypeDTO realEstateType;
+	private HeatingTypeDTO heatingType;
 	private Date posted;
 	private Date updated;
 	private int duration;
 	private boolean inappropriate;
 	private boolean verified;
-	private AgentDTO agentDTO;
-	private AdvertisementTypeDTO advertisementTypeDTO;
+	private AgentDTO agent;
+	private AdvertisementTypeDTO advertisementType;
 	private Set<Image> images; 
-	private Set<RealEstateIndoors> indoorsDTO;
-	private Set<RealEstateOutdoors> outdoorsDTO;
+	private Set<RealEstateIndoors> indoors;
+	private Set<RealEstateOutdoors> outdoors;
 	
 	
 	
@@ -54,275 +54,214 @@ public class RealEstateDTO {
 		constructedYear = realEstate.getConstructedYear(); 
 		filed = realEstate.isFiled();
 		furnished = realEstate.isFurnished();
-		locationDTO = new LocationDTO(realEstate.getLocation());
-		realEstateTypeDTO = new RealEstateTypeDTO(realEstate.getRealEstateType());
-		heatingTypeDTO = new HeatingTypeDTO(realEstate.getHeatingType());
+		location = new LocationDTO(realEstate.getLocation());
+		realEstateType = new RealEstateTypeDTO(realEstate.getRealEstateType());
+		heatingType = new HeatingTypeDTO(realEstate.getHeatingType());
 		posted = realEstate.getPosted();
 		updated = realEstate.getUpdated();
 		duration = realEstate.getDuration();
 		inappropriate = realEstate.isInappropriate();
 		verified = realEstate.isVerified();
-		agentDTO = new AgentDTO(realEstate.getAgent());
-		advertisementTypeDTO = new AdvertisementTypeDTO(realEstate.getAdvertisementType());
+		agent = new AgentDTO(realEstate.getAgent());
+		advertisementType = new AdvertisementTypeDTO(realEstate.getAdvertisementType());
 		
 		//images = realEstate.getImages();
-		indoorsDTO = realEstate.getIndoors();
-		outdoorsDTO = realEstate.getOutdoors();
+		indoors = realEstate.getIndoors();
+		outdoors = realEstate.getOutdoors();
 	}
-	
+
 
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 	public double getPrice() {
 		return price;
 	}
 
-
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
 
 	public double getSurface() {
 		return surface;
 	}
 
-
 	public void setSurface(double surface) {
 		this.surface = surface;
 	}
-
 
 	public int getFloor() {
 		return floor;
 	}
 
-
 	public void setFloor(int floor) {
 		this.floor = floor;
 	}
-
 
 	public int getRooms() {
 		return rooms;
 	}
 
-
 	public void setRooms(int rooms) {
 		this.rooms = rooms;
 	}
-
 
 	public int getBathrooms() {
 		return bathrooms;
 	}
 
-
 	public void setBathrooms(int bathrooms) {
 		this.bathrooms = bathrooms;
 	}
-
 
 	public int getConstructedYear() {
 		return constructedYear;
 	}
 
-
 	public void setConstructedYear(int constructedYear) {
 		this.constructedYear = constructedYear;
 	}
-
 
 	public boolean isFiled() {
 		return filed;
 	}
 
-
 	public void setFiled(boolean filed) {
 		this.filed = filed;
 	}
-
 
 	public boolean isFurnished() {
 		return furnished;
 	}
 
-
 	public void setFurnished(boolean furnished) {
 		this.furnished = furnished;
 	}
 
-
-	public LocationDTO getLocationDTO() {
-		return locationDTO;
+	public LocationDTO getLocation() {
+		return location;
 	}
 
-
-	public void setLocationDTO(LocationDTO locationDTO) {
-		this.locationDTO = locationDTO;
+	public void setLocation(LocationDTO location) {
+		this.location = location;
 	}
 
-
-	public RealEstateTypeDTO getRealEstateTypeDTO() {
-		return realEstateTypeDTO;
+	public RealEstateTypeDTO getRealEstateType() {
+		return realEstateType;
 	}
 
-
-	public void setRealEstateTypeDTO(RealEstateTypeDTO realEstateTypeDTO) {
-		this.realEstateTypeDTO = realEstateTypeDTO;
+	public void setRealEstateType(RealEstateTypeDTO realEstateType) {
+		this.realEstateType = realEstateType;
 	}
 
-
-	public HeatingTypeDTO getHeatingTypeDTO() {
-		return heatingTypeDTO;
+	public HeatingTypeDTO getHeatingType() {
+		return heatingType;
 	}
 
-
-	public void setHeatingTypeDTO(HeatingTypeDTO heatingTypeDTO) {
-		this.heatingTypeDTO = heatingTypeDTO;
+	public void setHeatingType(HeatingTypeDTO heatingType) {
+		this.heatingType = heatingType;
 	}
-
 
 	public Date getPosted() {
 		return posted;
 	}
 
-
 	public void setPosted(Date posted) {
 		this.posted = posted;
 	}
-
 
 	public Date getUpdated() {
 		return updated;
 	}
 
-
 	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
-
 
 	public int getDuration() {
 		return duration;
 	}
 
-
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-
 
 	public boolean isInappropriate() {
 		return inappropriate;
 	}
 
-
 	public void setInappropriate(boolean inappropriate) {
 		this.inappropriate = inappropriate;
 	}
-
 
 	public boolean isVerified() {
 		return verified;
 	}
 
-
 	public void setVerified(boolean verified) {
 		this.verified = verified;
 	}
 
-
-	public AgentDTO getAgentDTO() {
-		return agentDTO;
+	public AgentDTO getAgent() {
+		return agent;
 	}
 
-
-	public void setAgentDTO(AgentDTO agentDTO) {
-		this.agentDTO = agentDTO;
+	public void setAgent(AgentDTO agent) {
+		this.agent = agent;
 	}
 
-
-	public AdvertisementTypeDTO getAdvertisementTypeDTO() {
-		return advertisementTypeDTO;
+	public AdvertisementTypeDTO getAdvertisementType() {
+		return advertisementType;
 	}
 
-
-	public void setAdvertisementTypeDTO(AdvertisementTypeDTO advertisementTypeDTO) {
-		this.advertisementTypeDTO = advertisementTypeDTO;
+	public void setAdvertisementType(AdvertisementTypeDTO advertisementType) {
+		this.advertisementType = advertisementType;
 	}
-
 
 	public Set<Image> getImages() {
 		return images;
 	}
 
-
 	public void setImages(Set<Image> images) {
 		this.images = images;
 	}
 
-
-	public Set<RealEstateIndoors> getIndoorsDTO() {
-		return indoorsDTO;
+	public Set<RealEstateIndoors> getIndoors() {
+		return indoors;
 	}
 
-
-	public void setIndoorsDTO(Set<RealEstateIndoors> indoorsDTO) {
-		this.indoorsDTO = indoorsDTO;
+	public void setIndoors(Set<RealEstateIndoors> indoors) {
+		this.indoors = indoors;
 	}
 
-
-	public Set<RealEstateOutdoors> getOutdoorsDTO() {
-		return outdoorsDTO;
+	public Set<RealEstateOutdoors> getOutdoors() {
+		return outdoors;
 	}
 
-
-	public void setOutdoorsDTO(Set<RealEstateOutdoors> outdoorsDTO) {
-		this.outdoorsDTO = outdoorsDTO;
+	public void setOutdoors(Set<RealEstateOutdoors> outdoors) {
+		this.outdoors = outdoors;
 	}
-
-
-	@Override
-	public String toString() {
-		return "RealEstateDTO [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", surface=" + surface + ", floor=" + floor + ", rooms=" + rooms + ", bathrooms=" + bathrooms
-				+ ", constructedYear=" + constructedYear + ", filed=" + filed + ", furnished=" + furnished
-				+ ", locationDTO=" + locationDTO + ", realEstateTypeDTO=" + realEstateTypeDTO + ", heatingTypeDTO="
-				+ heatingTypeDTO + ", images=" + images + ", indoorsDTO=" + indoorsDTO + ", outdoorsDTO=" + outdoorsDTO
-				+ "]";
-	}
-
-
-
-
+	
 	
 }

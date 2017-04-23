@@ -9,23 +9,21 @@ public class RealEstateRatingDTO {
 	private int id;
 	private int rate;
 	private Date posted;
-	private RealEstateDTO realEstateDTO;
-	private UserDTO userDTO;
+	private RealEstateDTO realEstate;
+	private UserDTO user;
 
 	public RealEstateRatingDTO() {
 		
 	}
 	
-	
 	public RealEstateRatingDTO(RealEstateRating realEstateRating) {
 		id = realEstateRating.getId();
 		rate = realEstateRating.getRate();
 		posted = realEstateRating.getPosted();
-		realEstateDTO = new RealEstateDTO(realEstateRating.getRealEstate());
-		userDTO = new UserDTO(realEstateRating.getUser());
+		realEstate = new RealEstateDTO(realEstateRating.getRealEstate());
+		user = new UserDTO(realEstateRating.getUser());
 	}
 
-	
 	public int getId() {
 		return id;
 	}
@@ -50,20 +48,22 @@ public class RealEstateRatingDTO {
 		this.posted = posted;
 	}
 
-	public RealEstateDTO getRealEstateDTO() {
-		return realEstateDTO;
+	public RealEstateDTO getRealEstate() {
+		return realEstate;
 	}
 
-	public void setRealEstateDTO(RealEstateDTO realEstateDTO) {
-		this.realEstateDTO = realEstateDTO;
+	public void setRealEstate(RealEstateDTO realEstate) {
+		this.realEstate = realEstate;
 	}
 
-	public UserDTO getUserDTO() {
-		return userDTO;
+	public UserDTO getUser() {
+		return user;
 	}
 
-	public void setUserDTO(UserDTO userDTO) {
-		this.userDTO = userDTO;
+	public void setUser(UserDTO user) {
+		this.user = user;
 	}
 
+
+	
 }

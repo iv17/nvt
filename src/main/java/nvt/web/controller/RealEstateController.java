@@ -94,19 +94,19 @@ public class RealEstateController {
 		realEstate.setFurnished(realEstateDTO.isFurnished());
 		realEstate.setConstructedYear(realEstateDTO.getConstructedYear());
 		
-		Location location = locationService.findById(realEstateDTO.getLocationDTO().getId());
+		Location location = locationService.findById(realEstateDTO.getLocation().getId());
 		if(location == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
 		realEstate.setLocation(location);
 		
-		RealEstateType realEstateType = realEstateTypeService.findById(realEstateDTO.getRealEstateTypeDTO().getId());
+		RealEstateType realEstateType = realEstateTypeService.findById(realEstateDTO.getRealEstateType().getId());
 		if(realEstateType == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
 		realEstate.setRealEstateType(realEstateType);
 		
-		HeatingType heatingType = heatingTypeService.findById(realEstateDTO.getHeatingTypeDTO().getId());
+		HeatingType heatingType = heatingTypeService.findById(realEstateDTO.getHeatingType().getId());
 		if(heatingType == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
@@ -120,13 +120,13 @@ public class RealEstateController {
 		
 		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
 
-		Agent agent = agentService.findById(realEstateDTO.getAgentDTO().getId());
+		Agent agent = agentService.findById(realEstateDTO.getAgent().getId());
 		if(agent == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
 		realEstate.setAgent(agent);
 		
-		AdvertisementType  advertisementType = advertisementTypeService.findById(realEstateDTO.getAdvertisementTypeDTO().getId());
+		AdvertisementType  advertisementType = advertisementTypeService.findById(realEstateDTO.getAdvertisementType().getId());
 		if(advertisementType == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
@@ -178,19 +178,19 @@ public class RealEstateController {
 		realEstate.setFurnished(realEstateDTO.isFurnished());
 		realEstate.setConstructedYear(realEstateDTO.getConstructedYear());
 		
-		Location location = locationService.findById(realEstateDTO.getLocationDTO().getId());
+		Location location = locationService.findById(realEstateDTO.getLocation().getId());
 		if(location == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
 		realEstate.setLocation(location);
 		
-		RealEstateType realEstateType = realEstateTypeService.findById(realEstateDTO.getRealEstateTypeDTO().getId());
+		RealEstateType realEstateType = realEstateTypeService.findById(realEstateDTO.getRealEstateType().getId());
 		if(realEstateType == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
 		realEstate.setRealEstateType(realEstateType);
 		
-		HeatingType heatingType = heatingTypeService.findById(realEstateDTO.getHeatingTypeDTO().getId());
+		HeatingType heatingType = heatingTypeService.findById(realEstateDTO.getHeatingType().getId());
 		if(heatingType == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
@@ -224,19 +224,19 @@ public class RealEstateController {
 		realEstate.setFurnished(realEstateDTO.isFurnished());
 		realEstate.setConstructedYear(realEstateDTO.getConstructedYear());
 		
-		Location location = locationService.findById(realEstateDTO.getLocationDTO().getId());
+		Location location = locationService.findById(realEstateDTO.getLocation().getId());
 		if(location == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
 		realEstate.setLocation(location);
 		
-		RealEstateType realEstateType = realEstateTypeService.findById(realEstateDTO.getRealEstateTypeDTO().getId());
+		RealEstateType realEstateType = realEstateTypeService.findById(realEstateDTO.getRealEstateType().getId());
 		if(realEstateType == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
 		realEstate.setRealEstateType(realEstateType);
 		
-		HeatingType heatingType = heatingTypeService.findById(realEstateDTO.getHeatingTypeDTO().getId());
+		HeatingType heatingType = heatingTypeService.findById(realEstateDTO.getHeatingType().getId());
 		if(heatingType == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}

@@ -8,7 +8,6 @@ public class IndoorFeatureDTO {
 	private String name;
 	
 	
-	
 	public IndoorFeatureDTO() {
 		
 	}

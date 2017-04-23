@@ -9,8 +9,8 @@ public class RealEstateReportDTO {
 	private int id;
 	private String report;
 	private Date posted;
-	private RealEstateDTO realEstateDTO;
-	private UserDTO userDTO;
+	private RealEstateDTO realEstate;
+	private UserDTO user;
 	
 	
 	
@@ -23,8 +23,8 @@ public class RealEstateReportDTO {
 		id = realEstateReport.getId();
 		report = realEstateReport.getReport();
 		posted = realEstateReport.getPosted();
-		realEstateDTO = new RealEstateDTO(realEstateReport.getRealEstate());
-		userDTO = new UserDTO(realEstateReport.getUser());
+		realEstate = new RealEstateDTO(realEstateReport.getRealEstate());
+		user = new UserDTO(realEstateReport.getUser());
 	}
 
 	
@@ -53,19 +53,19 @@ public class RealEstateReportDTO {
 	}
 
 	public RealEstateDTO getRealEstateDTO() {
-		return realEstateDTO;
+		return realEstate;
 	}
 
-	public void setRealEstateDTO(RealEstateDTO realEstateDTO) {
-		this.realEstateDTO = realEstateDTO;
+	public void setRealEstateDTO(RealEstateDTO realEstate) {
+		this.realEstate = realEstate;
 	}
 
 	public UserDTO getUserDTO() {
-		return userDTO;
+		return user;
 	}
 
-	public void setUserDTO(UserDTO userDTO) {
-		this.userDTO = userDTO;
+	public void setUserDTO(UserDTO user) {
+		this.user = user;
 	}
 
 

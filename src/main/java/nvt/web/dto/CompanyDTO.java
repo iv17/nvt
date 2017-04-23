@@ -10,9 +10,9 @@ public class CompanyDTO {
 	private String propertyNo;
 	private String phoneNumber;
 	private String webAddress;
-	private ImageDTO imageDTO;
-	private LocationDTO locationDTO;
-	private WorkingTimeDTO workingTimeDTO;
+	private ImageDTO image;
+	private LocationDTO location;
+	private WorkingTimeDTO workingTime;
 
 	
 	
@@ -28,11 +28,11 @@ public class CompanyDTO {
 		propertyNo = company.getPropertyNo();
 		phoneNumber = company.getPhoneNumber();
 		webAddress = company.getWebAddress();
-		locationDTO = new LocationDTO(company.getLocation());
-		workingTimeDTO = new WorkingTimeDTO(company.getWorkingTime());
+		location = new LocationDTO(company.getLocation());
+		workingTime = new WorkingTimeDTO(company.getWorkingTime());
 	}
-	
-	
+
+
 	public int getId() {
 		return id;
 	}
@@ -81,30 +81,30 @@ public class CompanyDTO {
 		this.webAddress = webAddress;
 	}
 
-	public ImageDTO getImageDTO() {
-		return imageDTO;
+	public ImageDTO getImage() {
+		return image;
 	}
 
-	public void setImageDTO(ImageDTO imageDTO) {
-		this.imageDTO = imageDTO;
+	public void setImage(ImageDTO image) {
+		this.image = image;
 	}
 
-	public LocationDTO getLocationDTO() {
-		return locationDTO;
+	public LocationDTO getLocation() {
+		return location;
 	}
 
-	public void setLocationDTO(LocationDTO locationDTO) {
-		this.locationDTO = locationDTO;
+	public void setLocation(LocationDTO location) {
+		this.location = location;
 	}
 
-	public WorkingTimeDTO getWorkingTimeDTO() {
-		return workingTimeDTO;
+	public WorkingTimeDTO getWorkingTime() {
+		return workingTime;
 	}
 
-	public void setWorkingTimeDTO(WorkingTimeDTO workingTimeDTO) {
-		this.workingTimeDTO = workingTimeDTO;
+	public void setWorkingTime(WorkingTimeDTO workingTime) {
+		this.workingTime = workingTime;
 	}
-
+	
 	
 
 }

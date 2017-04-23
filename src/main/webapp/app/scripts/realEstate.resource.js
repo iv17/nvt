@@ -1,8 +1,8 @@
 (function() {
 	angular
 		.module('nvtApp')
-		.factory('RealEstateResource', ['Restangular', '_',
-			function(Restangular, _) {
+		.factory('RealEstateResource', ['Restangular', '_', '$log',
+			function(Restangular, _, $log) {
 			'use strict';
 
 			var realEstates = [];
@@ -10,7 +10,7 @@
 
 			retVal.getRealEstates = function() {
 				return Restangular.all("realEstates").getList().then(function(entries) {
-					realEstates = entries;
+					realEstates = entries;				
 					return realEstates;
 				});
 			};

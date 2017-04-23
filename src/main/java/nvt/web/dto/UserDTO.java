@@ -13,7 +13,7 @@ public class UserDTO {
 	protected String phoneNumber;
 	protected boolean loged;
 	protected boolean authenticated;
-	protected ImageDTO imageDTO;
+	protected ImageDTO image;
 	
 	
 	
@@ -32,7 +32,7 @@ public class UserDTO {
 		phoneNumber = user.getPhoneNumber();
 		loged = user.isLoged();
 		authenticated = user.isAuthenticated();
-		//imageDTO = new ImageDTO(user.getImage());
+		//image = new ImageDTO(user.getImage());
 	}
 
 
@@ -108,13 +108,11 @@ public class UserDTO {
 		this.authenticated = authenticated;
 	}
 
-	public ImageDTO getImageDTO() {
-		return imageDTO;
+	public ImageDTO getImage() {
+		return image;
 	}
 
-	public void setImageDTO(ImageDTO imageDTO) {
-		this.imageDTO = imageDTO;
+	public void setImage(ImageDTO image) {
+		this.image = image;
 	}
-	
-	
 }

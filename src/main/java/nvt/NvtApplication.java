@@ -349,9 +349,9 @@ public class NvtApplication implements CommandLineRunner {
 		
 		RealEstate realEstate1 = new RealEstate("naziv1..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 500.0, 50.0, 2, 1, 1, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
 		realEstateRepository.save(realEstate1);
-		RealEstate realEstate2 = new RealEstate("naziv2..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 1500.0, 150.0, 2, 5, 2, 2015, true, true, location1, realEstateType3, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
+		RealEstate realEstate2 = new RealEstate("naziv2..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 1500.0, 150.0, 2, 5, 2, 2015, true, true, location2, realEstateType3, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
 		realEstateRepository.save(realEstate2);
-		RealEstate realEstate3 = new RealEstate("naziv3..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 5000.0, 300.0, 3, 7, 2, 2015, true, true, location1, realEstateType4, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
+		RealEstate realEstate3 = new RealEstate("naziv3..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 5000.0, 300.0, 3, 7, 2, 2015, true, true, location3, realEstateType4, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
 		realEstateRepository.save(realEstate3);
 
 		

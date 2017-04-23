@@ -51,13 +51,13 @@ public class AgentController {
 		agent.setLastName(agentDTO.getLastName());
 		agent.setPhoneNumber(agentDTO.getPhoneNumber());
 	
-		Image image = imageService.findById(agentDTO.getImageDTO().getId());
+		Image image = imageService.findById(agentDTO.getImage().getId());
 		if(image == null) {
 			return new ResponseEntity<AgentDTO>(HttpStatus.BAD_REQUEST);
 		}
 		agent.setImage(image);
 		
-		Company company = companyService.findById(agentDTO.getCompanyDTO().getId());
+		Company company = companyService.findById(agentDTO.getCompany().getId());
 		if(company != null) {
 			return new ResponseEntity<AgentDTO>(HttpStatus.BAD_REQUEST);
 		}
@@ -115,13 +115,13 @@ public class AgentController {
 		agent.setLastName(agentDTO.getLastName());
 		agent.setPhoneNumber(agentDTO.getPhoneNumber());
 	
-		Image image = imageService.findById(agentDTO.getImageDTO().getId());
+		Image image = imageService.findById(agentDTO.getImage().getId());
 		if(image == null) {
 			return new ResponseEntity<AgentDTO>(HttpStatus.BAD_REQUEST);
 		}
 		agent.setImage(image);
 	
-		Company company = companyService.findById(agentDTO.getCompanyDTO().getId());
+		Company company = companyService.findById(agentDTO.getCompany().getId());
 		if(company != null) {
 			return new ResponseEntity<AgentDTO>(HttpStatus.BAD_REQUEST);
 		}
