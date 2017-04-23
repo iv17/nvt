@@ -1,12 +1,14 @@
 package nvt.web.dto;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import nvt.beans.Image;
 import nvt.beans.RealEstate;
-import nvt.beans.RealEstateIndoors;
-import nvt.beans.RealEstateOutdoors;
+import nvt.beans.RealEstateComment;
+import nvt.beans.RealEstateRating;
+import nvt.beans.RealEstateReport;
 
 public class RealEstateDTO {
 
@@ -32,10 +34,44 @@ public class RealEstateDTO {
 	private AgentDTO agent;
 	private AdvertisementTypeDTO advertisementType;
 	private Set<Image> images; 
-	private Set<RealEstateIndoors> indoors;
-	private Set<RealEstateOutdoors> outdoors;
+	private Set<IndoorFeatureDTO> indoors;
+	private Set<OutdoorFeatureDTO> outdoors;
+	private Set<RealEstateCommentDTO> comments;
+	private Set<RealEstateRatingDTO> ratings;
+	private Set<RealEstateReportDTO> reports;
 	
+	public RealEstateCommentDTO toDTO(RealEstateComment realEstateComment) {
+		RealEstateCommentDTO realEstateCommentDTO = new RealEstateCommentDTO();
+		
+		realEstateCommentDTO.setId(realEstateComment.getId());
+		realEstateCommentDTO.setComment(realEstateComment.getComment());
+		realEstateCommentDTO.setPosted(realEstateComment.getPosted());
+		realEstateCommentDTO.setUser(new UserDTO(realEstateComment.getUser()));
+		
+		return realEstateCommentDTO;
+	}
 	
+	public RealEstateRatingDTO toDTO(RealEstateRating realEstateRating) {
+		RealEstateRatingDTO realEstateRatingDTO = new RealEstateRatingDTO();
+		
+		realEstateRatingDTO.setId(realEstateRating.getId());
+		realEstateRatingDTO.setRate(realEstateRating.getRate());
+		realEstateRatingDTO.setPosted(realEstateRating.getPosted());
+		realEstateRatingDTO.setUser(new UserDTO(realEstateRating.getUser()));
+		
+		return realEstateRatingDTO;
+	}
+	
+	public RealEstateReportDTO toDTO(RealEstateReport realEstateReport) {
+		RealEstateReportDTO realEstateReportDTO = new RealEstateReportDTO();
+		
+		realEstateReportDTO.setId(realEstateReport.getId());
+		realEstateReportDTO.setReport(realEstateReport.getReport());
+		realEstateReportDTO.setPosted(realEstateReport.getPosted());
+		realEstateReportDTO.setUser( new UserDTO(realEstateReport.getUser()));
+	
+		return realEstateReportDTO;
+	}
 	
 	public RealEstateDTO() {
 		
@@ -65,9 +101,24 @@ public class RealEstateDTO {
 		agent = new AgentDTO(realEstate.getAgent());
 		advertisementType = new AdvertisementTypeDTO(realEstate.getAdvertisementType());
 		
-		//images = realEstate.getImages();
-		indoors = realEstate.getIndoors();
-		outdoors = realEstate.getOutdoors();
+		comments = new HashSet<RealEstateCommentDTO>();
+		for (RealEstateComment realEstateComment : realEstate.getComments()) {
+			RealEstateCommentDTO realEstateCommentDTO = toDTO(realEstateComment);
+			comments.add(realEstateCommentDTO);
+		}
+		
+		ratings = new HashSet<RealEstateRatingDTO>();
+		for (RealEstateRating realEstateRating : realEstate.getRatings()) {
+			RealEstateRatingDTO realEstateRatingDTO = toDTO(realEstateRating);
+			ratings.add(realEstateRatingDTO);
+		}
+		
+		reports = new HashSet<RealEstateReportDTO>();
+		for (RealEstateReport realEstateReport : realEstate.getReports()) {
+			RealEstateReportDTO realEstateReportDTO = toDTO(realEstateReport);
+			reports.add(realEstateReportDTO);
+		}
+		
 	}
 
 
@@ -247,21 +298,44 @@ public class RealEstateDTO {
 		this.images = images;
 	}
 
-	public Set<RealEstateIndoors> getIndoors() {
+	public Set<IndoorFeatureDTO> getIndoors() {
 		return indoors;
 	}
 
-	public void setIndoors(Set<RealEstateIndoors> indoors) {
+	public void setIndoors(Set<IndoorFeatureDTO> indoors) {
 		this.indoors = indoors;
 	}
 
-	public Set<RealEstateOutdoors> getOutdoors() {
+	public Set<OutdoorFeatureDTO> getOutdoors() {
 		return outdoors;
 	}
 
-	public void setOutdoors(Set<RealEstateOutdoors> outdoors) {
+	public void setOutdoors(Set<OutdoorFeatureDTO> outdoors) {
 		this.outdoors = outdoors;
 	}
-	
+
+	public Set<RealEstateCommentDTO> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<RealEstateCommentDTO> comments) {
+		this.comments = comments;
+	}
+
+	public Set<RealEstateRatingDTO> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(Set<RealEstateRatingDTO> ratings) {
+		this.ratings = ratings;
+	}
+
+	public Set<RealEstateReportDTO> getReports() {
+		return reports;
+	}
+
+	public void setReports(Set<RealEstateReportDTO> reports) {
+		this.reports = reports;
+	}
 	
 }

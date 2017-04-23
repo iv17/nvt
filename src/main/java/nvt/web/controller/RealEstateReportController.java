@@ -45,13 +45,13 @@ public class RealEstateReportController {
 		realEstateReport.setReport(realEstateReportDTO.getReport());
 		realEstateReport.setPosted(realEstateReportDTO.getPosted());
 
-		RealEstate realEstate = realEstateService.findById(realEstateReportDTO.getRealEstateDTO().getId());
+		RealEstate realEstate = realEstateService.findById(realEstateReportDTO.getRealEstate().getId());
 		if(realEstate == null) {
 
 		}
 		realEstateReport.setRealEstate(realEstate);
 
-		User user = userService.findById(realEstateReportDTO.getUserDTO().getId());
+		User user = userService.findById(realEstateReportDTO.getUser().getId());
 		if(user == null) {
 
 		}
@@ -102,13 +102,13 @@ public class RealEstateReportController {
 		realEstateReport.setReport(realEstateReportDTO.getReport());
 		realEstateReport.setPosted(realEstateReportDTO.getPosted());
 
-		RealEstate realEstate = realEstateService.findById(realEstateReportDTO.getRealEstateDTO().getId());
+		RealEstate realEstate = realEstateService.findById(realEstateReportDTO.getRealEstate().getId());
 		if(realEstate == null) {
 
 		}
 		realEstateReport.setRealEstate(realEstate);
 
-		User user = userService.findById(realEstateReportDTO.getUserDTO().getId());
+		User user = userService.findById(realEstateReportDTO.getUser().getId());
 		if(user == null) {
 
 		}
@@ -133,13 +133,13 @@ public class RealEstateReportController {
 		realEstateReport.setReport(realEstateReportDTO.getReport());
 		realEstateReport.setPosted(realEstateReportDTO.getPosted());
 
-		RealEstate realEstate = realEstateService.findById(realEstateReportDTO.getRealEstateDTO().getId());
+		RealEstate realEstate = realEstateService.findById(realEstateReportDTO.getRealEstate().getId());
 		if(realEstate == null) {
 
 		}
 		realEstateReport.setRealEstate(realEstate);
 
-		User user = userService.findById(realEstateReportDTO.getUserDTO().getId());
+		User user = userService.findById(realEstateReportDTO.getUser().getId());
 		if(user == null) {
 
 		}

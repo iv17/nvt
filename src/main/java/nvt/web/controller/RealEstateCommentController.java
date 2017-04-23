@@ -78,7 +78,7 @@ public class RealEstateCommentController {
 		}
 		realEstateComment.setRealEstate(realEstate);
 	
-		User user = userService.findById(realEstateCommentDTO.getUserDTO().getId());
+		User user = userService.findById(realEstateCommentDTO.getUser().getId());
 		if(user == null) {
 			return new ResponseEntity<RealEstateCommentDTO>(HttpStatus.BAD_REQUEST);
 		}
@@ -108,7 +108,7 @@ public class RealEstateCommentController {
 		}
 		realEstateComment.setRealEstate(realEstate);
 	
-		User user = userService.findById(realEstateCommentDTO.getUserDTO().getId());
+		User user = userService.findById(realEstateCommentDTO.getUser().getId());
 		if(user == null) {
 			return new ResponseEntity<RealEstateCommentDTO>(HttpStatus.BAD_REQUEST);
 		}

@@ -21,7 +21,7 @@
           'content@': {
             templateUrl: 'app/views/content/realEstatesList.html',
             controller: 'RealEstateController',
-            controllerAs: 'realEstates'
+            controllerAs: 'vm_realEstates'
           }
         }
       });

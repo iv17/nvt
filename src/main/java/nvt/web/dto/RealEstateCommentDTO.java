@@ -10,7 +10,7 @@ public class RealEstateCommentDTO {
 	private String comment;
 	private Date posted;
 	private RealEstateDTO realEstate;
-	private UserDTO userDTO;
+	private UserDTO user;
 
 	
 	public RealEstateCommentDTO() {
@@ -23,7 +23,7 @@ public class RealEstateCommentDTO {
 		comment = realEstateComment.getComment(); 
 		posted = realEstateComment.getPosted();
 		realEstate = new RealEstateDTO(realEstateComment.getRealEstate());
-		userDTO = new UserDTO(realEstateComment.getUser());
+		user = new UserDTO(realEstateComment.getUser());
 	}
 
 	
@@ -59,12 +59,12 @@ public class RealEstateCommentDTO {
 		this.realEstate = realEstate;
 	}
 	
-	public UserDTO getUserDTO() {
-		return userDTO;
+	public UserDTO getUser() {
+		return user;
 	}
 
-	public void setUserDTO(UserDTO userDTO) {
-		this.userDTO = userDTO;
+	public void setUser(UserDTO user) {
+		this.user = user;
 	}
-	
+
 }

@@ -23,6 +23,7 @@ public class RealEstateRatingDTO {
 		realEstate = new RealEstateDTO(realEstateRating.getRealEstate());
 		user = new UserDTO(realEstateRating.getUser());
 	}
+	
 
 	public int getId() {
 		return id;

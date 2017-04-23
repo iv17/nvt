@@ -137,51 +137,71 @@ public class NvtApplication implements CommandLineRunner {
 		Image image20 = new Image("user10", "a");
 		imageRepository.save(image20);
 		
+		Image image31 = new Image("user1", "a");
+		imageRepository.save(image31);
+		Image image32 = new Image("user2", "a");
+		imageRepository.save(image32);
+		Image image33 = new Image("user3", "a");
+		imageRepository.save(image33);
+		Image image34 = new Image("user4", "a");
+		imageRepository.save(image34);
+		Image image35 = new Image("user5", "a");
+		imageRepository.save(image35);
+		Image image36 = new Image("user6", "a");
+		imageRepository.save(image36);
+		Image image37 = new Image("user7", "a");
+		imageRepository.save(image37);
+		Image image38 = new Image("user8", "a");
+		imageRepository.save(image38);
+		Image image39 = new Image("user9", "a");
+		imageRepository.save(image39);
+		Image image40 = new Image("user10", "a");
+		imageRepository.save(image40);
 		
 		User user1 = new User("ivana.unitedforce@gmail.com", "josh", "123", "Josh", "Duhamel", "065-123-456", image11);
-		userRepository.save(user1);
+		//userRepository.save(user1);
 		User user2 = new User("iva17.igodina@gmail.com", "matthew", "123", "Matthew", "McConaughey", "065-456-789", image12);
-		userRepository.save(user2);
+		//userRepository.save(user2);
 		User user3 = new User("iva17.iigodina@gmail.com", "bradley", "123", "Bradley", "Cooper", "065-789-123", image13);
-		userRepository.save(user3);
+		//userRepository.save(user3);
 		User user4 = new User("iva17.iiigodina@gmail.com", "leonardo", "123", "Leonardo", "DiCaprio", "063-123-456", image14);
-		userRepository.save(user4);
+		//userRepository.save(user4);
 		User user5 = new User("blake.lively@gmail.com", "blake", "123", "Blake", "Lively", "063-456-789", image15);
-		userRepository.save(user5);
+		//userRepository.save(user5);
 		User user6 = new User("ryan.reynolds@gmail.com", "ryan", "123", "Ryan", "Reynolds", "063-789-123", image16);
-		userRepository.save(user6);
+		//userRepository.save(user6);
 		User user7 = new User("jessica.alba@gmail.com", "jessica", "123", "Jessica", "Alba", "062-123-456", image17);
-		userRepository.save(user7);
+		//userRepository.save(user7);
 		User user8 = new User("eva.mendes@gmail.com", "eva", "123", "Eva", "Mendes", "062-456-789", image18);
-		userRepository.save(user8);
+		//userRepository.save(user8);
 		User user9 = new User("jessica.alba@gmail.com", "jessica", "123", "Jessica", "Alba", "062-123-456", image19);
-		userRepository.save(user9);
+		//userRepository.save(user9);
 		User user10 = new User("natalie.portman@gmail.com", "natalie", "123", "Natalie", "Portman", "062-456-789", image20);
-		userRepository.save(user10);
+		//userRepository.save(user10);
 		
 		
 		
-		User user11 = new User("lars.ulrich@gmail.com", "lars", "123", "Lars", "Urlich", "061-123-456", image20);
+		User user11 = new User("lars.ulrich@gmail.com", "lars", "123", "Lars", "Urlich", "061-123-456", image31);
 		userRepository.save(user11);
-		User user12 = new User("james.hatfield@gmail.com", "james", "123", "James", "Hatfield", "061-456-789", image20);
+		User user12 = new User("james.hatfield@gmail.com", "james", "123", "James", "Hatfield", "061-456-789", image32);
 		userRepository.save(user12);
-		User user13 = new User("til.linderman@gmail.com", "til", "123", "Til", "Linderman", "061-789-123", image20);
+		User user13 = new User("til.linderman@gmail.com", "til", "123", "Til", "Linderman", "061-789-123", image33);
 		userRepository.save(user13);
-		User user14 = new User("lily.aldridge@gmail.com", "lily", "123", "Lily", "Aldridge", "060-123-456", image20);
+		User user14 = new User("lily.aldridge@gmail.com", "lily", "123", "Lily", "Aldridge", "060-123-456", image34);
 		userRepository.save(user14);
-		User user15 = new User("alessandra.ambrosio@gmail.com", "alessandra", "123", "Alessandra", "Ambrosio", "060-456-789", image20);
+		User user15 = new User("alessandra.ambrosio@gmail.com", "alessandra", "123", "Alessandra", "Ambrosio", "060-456-789", image35);
 		userRepository.save(user15);
-		User user16 = new User("tyra.banks@gmail.com", "tyra", "123", "Tyra", "Banks", "060-789-123", image20);
+		User user16 = new User("tyra.banks@gmail.com", "tyra", "123", "Tyra", "Banks", "060-789-123", image36);
 		userRepository.save(user16);
-		User user17 = new User("stella.maxwell@gmail.com", "jessica", "123", "Jessica", "Alba", "066-123-456", image20);
+		User user17 = new User("stella.maxwell@gmail.com", "jessica", "123", "Jessica", "Alba", "066-123-456", image37);
 		userRepository.save(user17);
-		User user18 = new User("behati.prinslo@gmail.com", "behati", "123", "Behati", "Prinslo", "066-456-789", image20);
+		User user18 = new User("behati.prinslo@gmail.com", "behati", "123", "Behati", "Prinslo", "066-456-789", image38);
 		userRepository.save(user18);
-		User user19 = new User("martha.hunt@gmail.com", "martha", "123", "Martha", "Hunt", "069-123-456", image20);
+		User user19 = new User("martha.hunt@gmail.com", "martha", "123", "Martha", "Hunt", "069-123-456", image39);
 		userRepository.save(user19);
-		User user20 = new User("romee.strijd@gmail.com", "romee", "123", "Romee", "Strijd", "069-456-789", image20);
+		User user20 = new User("romee.strijd@gmail.com", "romee", "123", "Romee", "Strijd", "069-456-789", image40);
 		userRepository.save(user20);
-
+		
 		Location location1 = new Location(44.8023505, 20.4719586, "Beograd", "Vračar", "Krunska", "11000");
 		locationRepository.save(location1);
 		Location location2 = new Location(44.8192953, 20.4486969, "Beograd", "Beton hala", "Karađorđeva 2-4", "11000");
@@ -399,25 +419,25 @@ public class NvtApplication implements CommandLineRunner {
 		
 		
 		
-		RealEstateComment realEstateComment1 = new RealEstateComment("..", new Date(), realEstate1, user11);
+		RealEstateComment realEstateComment1 = new RealEstateComment("comentarrr..", new Date(), realEstate1, user11);
 		realEstateCommentRepository.save(realEstateComment1);
-		RealEstateComment realEstateComment2 = new RealEstateComment("..", new Date(), realEstate1, user12);
+		RealEstateComment realEstateComment2 = new RealEstateComment(".comentarrr.", new Date(), realEstate1, user12);
 		realEstateCommentRepository.save(realEstateComment2);
-		RealEstateComment realEstateComment3 = new RealEstateComment("..", new Date(), realEstate1, user13);
+		RealEstateComment realEstateComment3 = new RealEstateComment(".comentarrr3.", new Date(), realEstate1, user13);
 		realEstateCommentRepository.save(realEstateComment3);
-		RealEstateComment realEstateComment4 = new RealEstateComment("..", new Date(), realEstate1, user14);
+		RealEstateComment realEstateComment4 = new RealEstateComment(".comentarrr2.", new Date(), realEstate1, user14);
 		realEstateCommentRepository.save(realEstateComment4);
 		RealEstateComment realEstateComment5 = new RealEstateComment("..", new Date(), realEstate1, user15);
 		realEstateCommentRepository.save(realEstateComment5);
-		RealEstateComment realEstateComment6 = new RealEstateComment("..", new Date(), realEstate2, user11);
+		RealEstateComment realEstateComment6 = new RealEstateComment("..aaaa", new Date(), realEstate2, user16);
 		realEstateCommentRepository.save(realEstateComment6);
-		RealEstateComment realEstateComment7 = new RealEstateComment("..", new Date(), realEstate2, user12);
+		RealEstateComment realEstateComment7 = new RealEstateComment(".aaaa.", new Date(), realEstate2, user16);
 		realEstateCommentRepository.save(realEstateComment7);
-		RealEstateComment realEstateComment8 = new RealEstateComment("..", new Date(), realEstate2, user13);
+		RealEstateComment realEstateComment8 = new RealEstateComment("aa..", new Date(), realEstate2, user18);
 		realEstateCommentRepository.save(realEstateComment8);
-		RealEstateComment realEstateComment9 = new RealEstateComment("..", new Date(), realEstate3, user11);
+		RealEstateComment realEstateComment9 = new RealEstateComment("..", new Date(), realEstate3, user18);
 		realEstateCommentRepository.save(realEstateComment9);
-		RealEstateComment realEstateComment10 = new RealEstateComment("..", new Date(), realEstate3, user12);
+		RealEstateComment realEstateComment10 = new RealEstateComment("..", new Date(), realEstate3, user19);
 		realEstateCommentRepository.save(realEstateComment10);
 
 		

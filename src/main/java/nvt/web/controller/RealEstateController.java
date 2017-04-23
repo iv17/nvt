@@ -267,74 +267,6 @@ public class RealEstateController {
 	 * PRETRAGE
 	 */
 
-	@RequestMapping(value = "/{typeId}", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateDTO>> findByType(@PathVariable Integer typeId) {
-
-		RealEstateType realEstateType = realEstateTypeService.findById(typeId);
-		if(realEstateType == null) {
-			return new ResponseEntity<List<RealEstateDTO>>(HttpStatus.NOT_FOUND);
-		}
-
-		List<RealEstate> realEstates = realEstateService.findByType(realEstateType);
-
-		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
-
-		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
-	}
-
-
-	@RequestMapping(value = "/{city}", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateDTO>> findByCity(@PathVariable String city) {
-
-		List<Location> locations = locationService.findByCity(city);
-
-		List<RealEstate> realEstates = findByLocations(locations);
-
-		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
-
-		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
-	}
-
-
-	@RequestMapping(value = "/{block}", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateDTO>> findByBlock(@PathVariable String block) {
-
-		List<Location> locations = locationService.findByBlock(block);
-
-		List<RealEstate> realEstates = findByLocations(locations);
-
-		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
-
-		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
-	}
-
-
-	@RequestMapping(value = "/{street}", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateDTO>> findByStreet(@PathVariable String street) {
-
-		List<Location> locations = locationService.findByStreet(street);
-
-		List<RealEstate> realEstates = findByLocations(locations);
-
-		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
-
-		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
-	}
-
-
-	@RequestMapping(value = "/{zipCode}", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateDTO>> findByZipCode(@PathVariable String zipCode) {
-
-		List<Location> locations = locationService.findByZipCode(zipCode);
-
-		List<RealEstate> realEstates = findByLocations(locations);
-
-		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
-
-		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
-	}
-
-
 	@RequestMapping(value = "/{id}/comments", method = RequestMethod.GET)
 	public ResponseEntity<List<RealEstateCommentDTO>> getRealEstateComments(@PathVariable Integer id) {
 
@@ -345,6 +277,7 @@ public class RealEstateController {
 		List<RealEstateCommentDTO> realEstateCommentDTOs = new ArrayList<RealEstateCommentDTO>();
 		for (RealEstateComment comment : realEstateComments) {
 			RealEstateCommentDTO realEstateCommentDTO = new RealEstateCommentDTO(comment);
+			System.out.println(realEstateCommentDTO.toString());
 			realEstateCommentDTOs.add(realEstateCommentDTO);
 		}
 
@@ -399,6 +332,82 @@ public class RealEstateController {
 		}
 
 		return realEstateDTOs;
+	}
+
+
+	@RequestMapping(value = "/{city}", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateDTO>> findByCity(@PathVariable String city) {
+	
+		List<Location> locations = locationService.findByCity(city);
+	
+		List<RealEstate> realEstates = findByLocations(locations);
+	
+		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
+	
+		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
+	}
+
+
+	@RequestMapping(value = "/{block}", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateDTO>> findByBlock(@PathVariable String block) {
+	
+		List<Location> locations = locationService.findByBlock(block);
+	
+		List<RealEstate> realEstates = findByLocations(locations);
+	
+		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
+	
+		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
+	}
+
+
+	@RequestMapping(value = "/{street}", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateDTO>> findByStreet(@PathVariable String street) {
+	
+		List<Location> locations = locationService.findByStreet(street);
+	
+		List<RealEstate> realEstates = findByLocations(locations);
+	
+		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
+	
+		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
+	}
+
+
+	/*
+	 * PRETRAGE
+	 */
+	
+	@RequestMapping(value = "/{typeId}", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateDTO>> findByType(@PathVariable Integer typeId) {
+	
+		RealEstateType realEstateType = realEstateTypeService.findById(typeId);
+		if(realEstateType == null) {
+			return new ResponseEntity<List<RealEstateDTO>>(HttpStatus.NOT_FOUND);
+		}
+	
+		List<RealEstate> realEstates = realEstateService.findByType(realEstateType);
+	
+		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
+	
+		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
+	}
+
+
+	/*
+	 * PRETRAGE
+	 */
+	
+	@RequestMapping(value = "/{zipCode}", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateDTO>> findByZipCode(@PathVariable String zipCode) {
+	
+		List<Location> locations = locationService.findByZipCode(zipCode);
+	
+		List<RealEstate> realEstates = findByLocations(locations);
+	
+		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
+	
+		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
 	}
 
 

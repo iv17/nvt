@@ -10,13 +10,16 @@
           </a>
         </p>
         <div class = "text-center small">
-          <span class = "fa fa-fw fa-star text-yellow-800"></span>
+
+              <span class = "fa fa-fw fa-star text-yellow-800"></span>
+
         </div>
       </div>
       <div class = "media-body">
         <div class = "pull-right">
-          <a ui-sref = "map-property.html" class = "text-primary"><i class = "fa fa-comments fa-fw"></i><strong></strong></a>
-          <a ui-sref = "map-property.html" class = "text-grey-400"><i class = "fa fa-flag-o fa-fw"></i></a>
+          <a ui-sref = "map-property.html" class = "text-primary"><i class = "fa fa-fw fa-star text-yellow-800"></i><strong> {{ realEstate.ratings.length }}</strong></a>
+          <a ui-sref = "map-property.html" class = "text-primary"><i class = "fa fa-comments fa-fw"></i><strong> {{ realEstate.comments.length }}</strong></a>
+          <a ui-sref = "map-property.html" class = "text-grey-400"><i class = "fa fa-flag-o fa-fw"></i>{{ realEstate.reports.length }}</a>
         </div>
         <h4 class = "media-heading margin-v-0-10">.
           <a ui-sref = "map-property.html">{{ realEstate.name }}</a>
@@ -33,6 +36,15 @@
         <p class = "margin-none"> {{ realEstate.location.street }}</p>
         <p class = "margin-none"> {{ realEstate.location.city }}</p>
 
+        <div ng-repeat = "c in realEstate.comments ">
+          <span class = "label label-grey-100"><i class="fa fa-fw icon icon-toilet"></i> {{ c.comment }}</span>
+        </div>
+        <div ng-repeat = "r in realEstate.ratings ">
+          <span class = "label label-grey-100"><i class="fa fa-home fa-fw"></i> {{ r.rate }}</span>
+        </div>
+        <div ng-repeat = "rr in realEstate.reports ">
+          <span class = "label label-grey-100"><i class="fa fa-home fa-fw"></i> {{ rr.report }}</span>
+        </div>
       </div>
     </div>
   </div>

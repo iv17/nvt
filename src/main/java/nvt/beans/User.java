@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -56,7 +55,6 @@ public class User implements Serializable {
 	private boolean authenticated;
 	
 	@OneToOne @JsonIgnore
-	@JoinColumn(name = "image", referencedColumnName = "id", nullable = true)
 	private Image image; 
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user") @JsonIgnore
