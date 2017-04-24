@@ -24,9 +24,11 @@
             controllerAs: 'vm_users'
           },
           'content@': {
-            templateUrl: 'app/views/content/realEstatesList.html',
-            controller: 'RealEstateController',
-            controllerAs: 'vm_realEstates'
+            //templateUrl: 'app/views/content/realEstatesList.html',
+            //controller: 'RealEstateController',
+            templateUrl: 'app/views/content/test.html',
+            controller: 'HeatingTypeController'
+            //controllerAs: 'vm_realEstates'
           }
         }
 
