@@ -18,12 +18,18 @@
       .state('advertisements', {
         url: "/",
         views: {
+          'main_nav@': {
+            templateUrl: 'app/views/main_nav/main_nav.html',
+            controller: 'UserController',
+            controllerAs: 'vm_users'
+          },
           'content@': {
             templateUrl: 'app/views/content/realEstatesList.html',
             controller: 'RealEstateController',
             controllerAs: 'vm_realEstates'
           }
         }
+
       });
     }])
       // run se izvrsava pre svega ostalog

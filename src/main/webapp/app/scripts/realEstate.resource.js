@@ -14,15 +14,6 @@
 					return realEstates;
 				});
 			};
-
-/*
-			retVal.getRealEstateComments = function(id) {
-          return Restangular.one("realEstates", id).
-	       	 getList("comments").then(function(entries) {
-		       	return entries;
-	       	});
-    	};
-*/
 			return retVal;
 		}]);
 

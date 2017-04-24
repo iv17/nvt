@@ -182,6 +182,7 @@ public class NvtApplication implements CommandLineRunner {
 		
 		
 		User user11 = new User("lars.ulrich@gmail.com", "lars", "123", "Lars", "Urlich", "061-123-456", image31);
+		user11.setLoged(true);
 		userRepository.save(user11);
 		User user12 = new User("james.hatfield@gmail.com", "james", "123", "James", "Hatfield", "061-456-789", image32);
 		userRepository.save(user12);

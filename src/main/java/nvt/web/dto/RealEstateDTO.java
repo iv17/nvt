@@ -36,12 +36,13 @@ public class RealEstateDTO {
 	private AgentDTO agent;
 	private AdvertisementTypeDTO advertisementType;
 	private Set<Image> images; 
-	private Set<RealEstateIndoorsDTO> indoors;
-	private Set<RealEstateOutdoorsDTO> outdoors;
 	private Set<RealEstateCommentDTO> comments;
 	private Set<RealEstateRatingDTO> ratings;
 	private Set<RealEstateReportDTO> reports;
-	
+	private Set<RealEstateIndoorsDTO> indoors;
+	private Set<RealEstateOutdoorsDTO> outdoors;
+
+
 	public RealEstateCommentDTO toDTO(RealEstateComment realEstateComment) {
 		RealEstateCommentDTO realEstateCommentDTO = new RealEstateCommentDTO();
 		
@@ -49,6 +50,7 @@ public class RealEstateDTO {
 		realEstateCommentDTO.setComment(realEstateComment.getComment());
 		realEstateCommentDTO.setPosted(realEstateComment.getPosted());
 		realEstateCommentDTO.setUser(new UserDTO(realEstateComment.getUser()));
+		//realEstateCommentDTO.setRealEstate(new RealEstateDTO(realEstateComment.getRealEstate()));
 		
 		return realEstateCommentDTO;
 	}
@@ -60,6 +62,7 @@ public class RealEstateDTO {
 		realEstateRatingDTO.setRate(realEstateRating.getRate());
 		realEstateRatingDTO.setPosted(realEstateRating.getPosted());
 		realEstateRatingDTO.setUser(new UserDTO(realEstateRating.getUser()));
+		//realEstateRatingDTO.setRealEstate(this);
 		
 		return realEstateRatingDTO;
 	}
@@ -71,7 +74,8 @@ public class RealEstateDTO {
 		realEstateReportDTO.setReport(realEstateReport.getReport());
 		realEstateReportDTO.setPosted(realEstateReport.getPosted());
 		realEstateReportDTO.setUser( new UserDTO(realEstateReport.getUser()));
-	
+		//realEstateReportDTO.setRealEstate(this);
+		
 		return realEstateReportDTO;
 	}
 	
