@@ -1,4 +1,4 @@
-<html class = "st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l1 sidebar-r1-xs" lang = "en">
+<html  class="st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l-sum-13 " lang = "en">
 	<head>
 		<meta charset = "utf-8">
 		<meta http-equiv = "X-UA-Compatible" content = "IE=edge">
@@ -49,47 +49,156 @@
 						<a class = "navbar-brand" ui-sref = "#">realestate</a>
 					</div>
 					<div ui-view = "main_nav">
-
 					</div>
 				</div>
 			</nav>
+
+			<aside class = "sidebar left sidebar-size-3 sidebar-offset-1 sidebar-skin-white sidebar-visible-desktop" id = sidebar-filter>
+				<div data-scrollable>
+					<div class = "sidebar-block equal-padding">
+						<div class = "form-group input-group">
+							<input type = "text" class = "form-control" placeholder = "Search">
+							<span class = "input-group-btn">
+							<button class = "btn btn-primary" type = "button"><i class = "fa fa-search"></i></button>
+							</span>
+						</div>
+					</div>
+					<div class = "category">price</div>
+					<div class = "sidebar-block">
+						<input data-slider = "default" type = "text" value = "" data-slider-min = "10" data-slider-max = "1000" data-slider-step = "5" data-slider-value = "[250,450]" data-slider-handle = "square" />
+						<div class = "form-group input-group margin-none">
+							<div class = "row margin-none">
+								<div class = "col-xs-6 padding-none">
+									<input class = "form-control" type = "text" placeholder = "min ..">
+								</div>
+								<div class ="col-xs-6 padding-none">
+									<input class = "form-control" type = "text" placeholder = "max ..">
+								</div>
+							</div>
+							<div class = "input-group-btn">
+								<button type = "button" class = "btn btn-primary"><i class = "fa fa-search"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class = "category">surface</div>
+					<div class = "sidebar-block">
+						<input data-slider = "default" type = "text" value = "" data-slider-min = "10" data-slider-max = "1000" data-slider-step = "5" data-slider-value = "[250,450]" data-slider-handle = "square" />
+						<div class = "form-group input-group margin-none">
+							<div class = "row margin-none">
+								<div class = "col-xs-6 padding-none">
+									<input class = "form-control" type = "text" placeholder = "min ..">
+								</div>
+								<div class ="col-xs-6 padding-none">
+									<input class = "form-control" type = "text" placeholder = "max ..">
+								</div>
+							</div>
+							<div class = "input-group-btn">
+								<button type = "button" class = "btn btn-primary"><i class = "fa fa-search"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class = "category">floor</div>
+					<div class = "sidebar-block">
+						<input data-slider = "default" type = "text" value = "" data-slider-min = "10" data-slider-max = "1000" data-slider-step = "5" data-slider-value = "[250,450]" data-slider-handle = "square" />
+						<div class = "form-group input-group margin-none">
+							<div class = "row margin-none">
+								<div class = "col-xs-6 padding-none">
+									<input class = "form-control" type = "text" placeholder = "min ..">
+								</div>
+								<div class ="col-xs-6 padding-none">
+									<input class = "form-control" type = "text" placeholder = "max ..">
+								</div>
+							</div>
+							<div class = "input-group-btn">
+								<button type = "button" class = "btn btn-primary"><i class = "fa fa-search"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class = "category">rooms</div>
+					<div class = "sidebar-block">
+						<input data-slider = "default" type = "text" value = "" data-slider-min = "10" data-slider-max = "1000" data-slider-step = "5" data-slider-value = "[250,450]" data-slider-handle = "square" />
+						<div class = "form-group input-group margin-none">
+							<div class = "row margin-none">
+								<div class = "col-xs-6 padding-none">
+									<input class = "form-control" type = "text" placeholder = "min ..">
+								</div>
+								<div class ="col-xs-6 padding-none">
+									<input class = "form-control" type = "text" placeholder = "max ..">
+								</div>
+							</div>
+							<div class = "input-group-btn">
+								<button type = "button" class = "btn btn-primary"><i class = "fa fa-search"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class = "category">bathrooms</div>
+					<div class = "sidebar-block">
+						<input data-slider = "default" type = "text" value = "" data-slider-min = "10" data-slider-max = "1000" data-slider-step = "5" data-slider-value = "[250,450]" data-slider-handle = "square" />
+						<div class = "form-group input-group margin-none">
+							<div class = "row margin-none">
+								<div class = "col-xs-6 padding-none">
+									<input class = "form-control" type = "text" placeholder = "min ..">
+								</div>
+								<div class ="col-xs-6 padding-none">
+									<input class = "form-control" type = "text" placeholder = "max ..">
+								</div>
+							</div>
+							<div class = "input-group-btn">
+								<button type = "button" class = "btn btn-primary"><i class = "fa fa-search"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class = "category">constructed year</div>
+					<div class = "sidebar-block">
+						<input data-slider = "default" type = "text" value = "" data-slider-min = "10" data-slider-max = "1000" data-slider-step = "5" data-slider-value = "[250,450]" data-slider-handle = "square" />
+						<div class = "form-group input-group margin-none">
+							<div class = "row margin-none">
+								<div class = "col-xs-6 padding-none">
+									<input class = "form-control" type = "text" placeholder = "min ..">
+								</div>
+								<div class ="col-xs-6 padding-none">
+									<input class = "form-control" type = "text" placeholder = "max ..">
+								</div>
+							</div>
+							<div class = "input-group-btn">
+								<button type = "button" class = "btn btn-primary"><i class = "fa fa-search"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</aside>
 			<!-- <div ui-view = "sidebar_menu"> -->
-			<div>
-				<aside class = "sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id = sidebar-menu data-type = collapse>
-				  <div data-scrollable>
-				    <ul class = "sidebar-menu sm-bordered sm-icons-block sm-icons-right">
-				      <li class = "hasSubmenu">
-				        <a ui-sref = "#hiden"><i class = "fa fa-star"></i><span>hiden</span></a>
-				        <ul id = "hiden" class = "in">
-				        </ul>
-				      </li>
-				      <li class = "hasSubmenu">
-				        <a href = "#discover"><i class = "fa fa-star"></i><span>discover</span></a>
-				        <ul id = "discover" class = "in">
-				          <li class = "active"><a href = "index.html"><i class = "fa fa-map-marker"></i><span>full screen map</span></a></li>
-				          <li><a ui-sref = "map-listing-list.html"><i class = "fa fa-list"></i><span>map listing - list</span></a></li>
-				          <li><a ui-sref = "map-listing-grid.html"><i class = "fa fa-th"></i><span>map listing - grid</span></a></li>
-				          <li><a ui-sref = "listing.html"><i class = "fa fa-list"></i><span>listing - list</span></a></li>
-				          <li><a ui-sref = "listing-grid.html"><i class = "fa fa-th"></i><span>listing - grid</span></a></li>
-				          <li><a ui-sref = "listing-map.html"><i class = "fa fa-map-marker"></i><span>listing - map</span></a></li>
-				        </ul>
-				      </li>
-				      <li class = "hasSubmenu">
-				        <a href = "#property"><i class = "fa fa-home"></i><span>property</span></a>
-				        <ul id = "property">
-				          <li><a ui-sref = "map-property.html"><i class = "fa fa-map-marker"></i><span>map + property</span></a></li>
-				          <li><a ui-sref = "property.html"><i class = "fa fa-list"></i><span>property details</span></a></li>
-				        </ul>
-				      </li>
-				      <li><a ui-sref = "map-edit.html"><i class = "fa fa-pencil"></i><span>add property</span></a></li>
-				    </ul>
-				  </div>
-				</aside>
+			<aside class = "sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id = sidebar-menu data-type = collapse>
+				<div data-scrollable>
+					<ul class = "sidebar-menu sm-bordered sm-icons-block sm-icons-right">
+						<li class = "hasSubmenu">
+							<a ui-sref = "#hiden"><i class = "fa fa-star"></i><span>hiden</span></a>
+							<ul id = "hiden" class = "in">
+							</ul>
+						</li>
+						<li class = "hasSubmenu">
+							<a href = "#discover"><i class = "fa fa-star"></i><span>discover</span></a>
+							<ul id = "discover" class = "in">
+								<li class = "active"><a href = "index.html"><i class = "fa fa-map-marker"></i><span>full screen map</span></a></li>
+								<li><a ui-sref = "map-listing-list.html"><i class = "fa fa-list"></i><span>map listing - list</span></a></li>
+								<li><a ui-sref = "map-listing-grid.html"><i class = "fa fa-th"></i><span>map listing - grid</span></a></li>
+								<li><a ui-sref = "listing.html"><i class = "fa fa-list"></i><span>listing - list</span></a></li>
+								<li><a ui-sref = "listing-grid.html"><i class = "fa fa-th"></i><span>listing - grid</span></a></li>
+								<li><a ui-sref = "listing-map.html"><i class = "fa fa-map-marker"></i><span>listing - map</span></a></li>
+							</ul>
+						</li>
+						<li class = "hasSubmenu">
+							<a href = "#property"><i class = "fa fa-home"></i><span>property</span></a>
+							<ul id = "property">
+								<li><a ui-sref = "map-property.html"><i class = "fa fa-map-marker"></i><span>map + property</span></a></li>
+								<li><a ui-sref = "property.html"><i class = "fa fa-list"></i><span>property details</span></a></li>
+							</ul>
+						</li>
+						<li><a ui-sref = "map-edit.html"><i class = "fa fa-pencil"></i><span>add property</span></a></li>
+					</ul>
+				</div>
+			</aside>
 
-
-			</div>
-			<div ui-view = "pop_up">
-			</div>
 			<div class = "st-pusher">
 				<div class = "st-content">
 					<div class = "st-content-inner padding-top-none" id = "content" ui-view = "content">
@@ -133,8 +242,6 @@
 		<script src = "app/js/kts/restangular/dist/restangular.js"></script>
 		<script src = "app/js/kts/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 		<script src = "app/js/kts/angular-lodash-module/angular-lodash-module.js"></script>
-
-
 		<script src = "app/js/vendor/core/breakpoints.js"></script>
 		<script src = "app/js/vendor/core/jquery.nicescroll.js"></script>
 		<script src = "app/js/vendor/core/isotope.pkgd.js"></script>
