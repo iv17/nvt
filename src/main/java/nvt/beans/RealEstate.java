@@ -96,7 +96,7 @@ public class RealEstate implements Serializable {
 	@JoinColumn(name = "advertisement_type_id", referencedColumnName = "id", nullable = true)
 	private AdvertisementType advertisementType;
 
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, mappedBy = "realEstate") @JsonIgnore
 	private Set<Image> images;
 
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore

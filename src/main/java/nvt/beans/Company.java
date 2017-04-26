@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -44,10 +43,6 @@ public class Company implements Serializable {
 	@Column(name = "web_address", unique = false, nullable = false)
 	private String webAddress;
 
-	@OneToOne @JsonIgnore
-	@JoinColumn(name = "image", referencedColumnName = "id", nullable = true)
-	private Image image;
-
 	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
 	private Location location;
@@ -55,6 +50,9 @@ public class Company implements Serializable {
 	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "working_time_id", referencedColumnName = "id", nullable = false)
 	private WorkingTime workingTime;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, mappedBy = "company") @JsonIgnore
+	private Set<Image> images;
 
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "company") @JsonIgnore
 	private Set<Agent> agents;
@@ -67,33 +65,31 @@ public class Company implements Serializable {
 
 
 	public Company(String propertyNo, String name, String password, String phoneNumber, 
-			String webAddress, Image image, Location location, WorkingTime workingTime) {	
+			String webAddress, Location location, WorkingTime workingTime) {	
 		this.propertyNo = propertyNo;
 		this.name = name;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
 		this.webAddress = webAddress;
-		this.image = image;
 		this.location = location;
 		this.workingTime = workingTime;
 	}
 
 
 	public Company(String name, String propertyNo, String password, String phoneNumber, 
-			String webAddress, Image image, Location location, Set<Agent> agents) {
+			String webAddress, Location location, Set<Agent> agents) {
 		this.name = name;
 		this.propertyNo = propertyNo;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
 		this.webAddress = webAddress;
-		this.image = image;
 		this.location = location;
 		this.agents = agents;
 	}
 
 
 	public Company(int id, String propertyNo, String name, String password, String phoneNumber,
-			String webAddress, Image image, Location location, WorkingTime workingTime,
+			String webAddress, Location location, WorkingTime workingTime, Set<Image> images,
 			Set<Agent> agents) {
 
 		this.id = id;
@@ -102,10 +98,11 @@ public class Company implements Serializable {
 		this.password = password;
 		this.phoneNumber = phoneNumber;
 		this.webAddress = webAddress;
-		this.image = image;
 		this.location = location;
 		this.workingTime = workingTime;
 		this.agents = agents;
+		this.images = images;
+		
 	}
 
 
@@ -157,14 +154,6 @@ public class Company implements Serializable {
 		this.webAddress = webAddress;
 	}
 
-	public Image getImage() {
-		return image;
-	}
-
-	public void setImage(Image image) {
-		this.image = image;
-	}
-
 	public Location getLocation() {
 		return location;
 	}
@@ -180,7 +169,15 @@ public class Company implements Serializable {
 	public void setWorkingTime(WorkingTime workingTime) {
 		this.workingTime = workingTime;
 	}
+	
+	public Set<Image> getImages() {
+		return images;
+	}
 
+	public void setImages(Set<Image> images) {
+		this.images = images;
+	}
+	
 	public Set<Agent> getAgents() {
 		return agents;
 	}

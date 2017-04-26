@@ -35,7 +35,7 @@ public class RealEstateDTO {
 	private boolean verified;
 	private AgentDTO agent;
 	private AdvertisementTypeDTO advertisementType;
-	private Set<Image> images; 
+	private Set<ImageDTO> images; 
 	private Set<RealEstateCommentDTO> comments;
 	private Set<RealEstateRatingDTO> ratings;
 	private Set<RealEstateReportDTO> reports;
@@ -97,6 +97,16 @@ public class RealEstateDTO {
 		return realEstateOudoorsDTO;
 	}
 	
+	public ImageDTO toDTO(Image image) {
+		ImageDTO imageDTO = new ImageDTO();
+		
+		imageDTO.setId(image.getId());
+		imageDTO.setName(image.getName());
+		imageDTO.setFile(image.getFile());
+		
+		return imageDTO;
+	}
+	
 	public RealEstateDTO() {
 		
 	}
@@ -155,6 +165,11 @@ public class RealEstateDTO {
 			outdoors.add(realEstateOutdoorsDTO);
 		}
 		
+		images = new HashSet<ImageDTO>();
+		for (Image image : realEstate.getImages()) {
+			ImageDTO imageDTO = toDTO(image);
+			images.add(imageDTO);
+		}
 	}
 
 
@@ -326,11 +341,11 @@ public class RealEstateDTO {
 		this.advertisementType = advertisementType;
 	}
 
-	public Set<Image> getImages() {
+	public Set<ImageDTO> getImages() {
 		return images;
 	}
 
-	public void setImages(Set<Image> images) {
+	public void setImages(Set<ImageDTO> images) {
 		this.images = images;
 	}
 

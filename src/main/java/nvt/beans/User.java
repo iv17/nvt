@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -54,9 +53,9 @@ public class User implements Serializable {
 	@Column(name = "authenticated", unique = false, nullable = false)
 	private boolean authenticated;
 	
-	@OneToOne @JsonIgnore
-	private Image image; 
-	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, mappedBy = "user") @JsonIgnore
+	private Set<Image> images;
+
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user") @JsonIgnore
 	private Set<AgentRating> agentRatings;
 	
@@ -75,22 +74,32 @@ public class User implements Serializable {
 		
 	}
 
-	
 	public User(String email, String username, String password, String name, String lastName,
-			String phoneNumber, Image image) {
+			String phoneNumber) {
 		this.email = email;
 		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
-		this.image = image;
+		
+	}
+	
+	public User(String email, String username, String password, String name, String lastName,
+			String phoneNumber, Set<Image> images) {
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.images = images;
 		
 	}
 
 	
 	public User(int id, String email, String username, String password, String name, String lastName,
-			String phoneNumber, Image image, Set<AgentRating> agentRatings,
+			String phoneNumber, Set<Image> images, Set<AgentRating> agentRatings,
 			Set<RealEstateComment> comments, Set<RealEstateRating> ratings, Set<RealEstateReport> reports) {
 		this.id = id;
 		this.email = email;
@@ -101,7 +110,7 @@ public class User implements Serializable {
 		this.phoneNumber = phoneNumber;
 		this.loged = false;
 		this.authenticated = false;
-		this.image = image;
+		this.images = images;
 		this.agentRatings = agentRatings;
 		this.comments = comments;
 		this.ratings = ratings;
@@ -182,13 +191,14 @@ public class User implements Serializable {
 		this.authenticated = authenticated;
 	}
 
-	public Image getImage() {
-		return image;
+	public Set<Image> getImages() {
+		return images;
 	}
 
-	public void setImage(Image image) {
-		this.image = image;
+	public void setImages(Set<Image> images) {
+		this.images = images;
 	}
+
 
 	public Set<AgentRating> getAgentRatings() {
 		return agentRatings;
@@ -222,13 +232,6 @@ public class User implements Serializable {
 		this.reports = reports;
 	}
 
-	@Override
-	public String toString() {
-		return "User [email=" + email + ", username=" + username + ", password=" + password + ", name=" + name
-				+ ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", image=" + image + "]";
-	}
-
-	
 	
 	
 }

@@ -1,6 +1,8 @@
 package nvt;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -120,6 +122,9 @@ public class NvtApplication implements CommandLineRunner {
 		imageRepository.save(image11);
 		Image image12 = new Image("user2", "a");
 		imageRepository.save(image12);
+		Set<Image> userImages = new HashSet<Image>();
+		userImages.add(image11);
+		userImages.add(image12);
 		Image image13 = new Image("user3", "a");
 		imageRepository.save(image13);
 		Image image14 = new Image("user4", "a");
@@ -158,49 +163,50 @@ public class NvtApplication implements CommandLineRunner {
 		Image image40 = new Image("user10", "a");
 		imageRepository.save(image40);
 		
-		User user1 = new User("ivana.unitedforce@gmail.com", "josh", "123", "Josh", "Duhamel", "065-123-456", image11);
+		User user1 = new User("ivana.unitedforce@gmail.com", "josh", "123", "Josh", "Duhamel", "065-123-456");
 		//userRepository.save(user1);
-		User user2 = new User("iva17.igodina@gmail.com", "matthew", "123", "Matthew", "McConaughey", "065-456-789", image12);
+		User user2 = new User("iva17.igodina@gmail.com", "matthew", "123", "Matthew", "McConaughey", "065-456-789");
 		//userRepository.save(user2);
-		User user3 = new User("iva17.iigodina@gmail.com", "bradley", "123", "Bradley", "Cooper", "065-789-123", image13);
+		User user3 = new User("iva17.iigodina@gmail.com", "bradley", "123", "Bradley", "Cooper", "065-789-123");
 		//userRepository.save(user3);
-		User user4 = new User("iva17.iiigodina@gmail.com", "leonardo", "123", "Leonardo", "DiCaprio", "063-123-456", image14);
+		User user4 = new User("iva17.iiigodina@gmail.com", "leonardo", "123", "Leonardo", "DiCaprio", "063-123-456");
 		//userRepository.save(user4);
-		User user5 = new User("blake.lively@gmail.com", "blake", "123", "Blake", "Lively", "063-456-789", image15);
+		User user5 = new User("blake.lively@gmail.com", "blake", "123", "Blake", "Lively", "063-456-789");
 		//userRepository.save(user5);
-		User user6 = new User("ryan.reynolds@gmail.com", "ryan", "123", "Ryan", "Reynolds", "063-789-123", image16);
+		User user6 = new User("ryan.reynolds@gmail.com", "ryan", "123", "Ryan", "Reynolds", "063-789-123");
 		//userRepository.save(user6);
-		User user7 = new User("jessica.alba@gmail.com", "jessica", "123", "Jessica", "Alba", "062-123-456", image17);
+		User user7 = new User("jessica.alba@gmail.com", "jessica", "123", "Jessica", "Alba", "062-123-456");
 		//userRepository.save(user7);
-		User user8 = new User("eva.mendes@gmail.com", "eva", "123", "Eva", "Mendes", "062-456-789", image18);
+		User user8 = new User("eva.mendes@gmail.com", "eva", "123", "Eva", "Mendes", "062-456-789");
 		//userRepository.save(user8);
-		User user9 = new User("jessica.alba@gmail.com", "jessica", "123", "Jessica", "Alba", "062-123-456", image19);
+		User user9 = new User("jessica.alba@gmail.com", "jessica", "123", "Jessica", "Alba", "062-123-456");
 		//userRepository.save(user9);
-		User user10 = new User("natalie.portman@gmail.com", "natalie", "123", "Natalie", "Portman", "062-456-789", image20);
+		User user10 = new User("natalie.portman@gmail.com", "natalie", "123", "Natalie", "Portman", "062-456-789");
 		//userRepository.save(user10);
 		
 		
 		
-		User user11 = new User("lars.ulrich@gmail.com", "lars", "123", "Lars", "Urlich", "061-123-456", image31);
+		User user11 = new User("lars.ulrich@gmail.com", "lars", "123", "Lars", "Urlich", "061-123-456");
+		user11.setImages(userImages);
 		user11.setLoged(true);
 		userRepository.save(user11);
-		User user12 = new User("james.hatfield@gmail.com", "james", "123", "James", "Hatfield", "061-456-789", image32);
+		User user12 = new User("james.hatfield@gmail.com", "james", "123", "James", "Hatfield", "061-456-789");
 		userRepository.save(user12);
-		User user13 = new User("til.linderman@gmail.com", "til", "123", "Til", "Linderman", "061-789-123", image33);
+		User user13 = new User("til.linderman@gmail.com", "til", "123", "Til", "Linderman", "061-789-123");
 		userRepository.save(user13);
-		User user14 = new User("lily.aldridge@gmail.com", "lily", "123", "Lily", "Aldridge", "060-123-456", image34);
+		User user14 = new User("lily.aldridge@gmail.com", "lily", "123", "Lily", "Aldridge", "060-123-456");
 		userRepository.save(user14);
-		User user15 = new User("alessandra.ambrosio@gmail.com", "alessandra", "123", "Alessandra", "Ambrosio", "060-456-789", image35);
+		User user15 = new User("alessandra.ambrosio@gmail.com", "alessandra", "123", "Alessandra", "Ambrosio", "060-456-789");
 		userRepository.save(user15);
-		User user16 = new User("tyra.banks@gmail.com", "tyra", "123", "Tyra", "Banks", "060-789-123", image36);
+		User user16 = new User("tyra.banks@gmail.com", "tyra", "123", "Tyra", "Banks", "060-789-123");
 		userRepository.save(user16);
-		User user17 = new User("stella.maxwell@gmail.com", "jessica", "123", "Jessica", "Alba", "066-123-456", image37);
+		User user17 = new User("stella.maxwell@gmail.com", "jessica", "123", "Jessica", "Alba", "066-123-456");
 		userRepository.save(user17);
-		User user18 = new User("behati.prinslo@gmail.com", "behati", "123", "Behati", "Prinslo", "066-456-789", image38);
+		User user18 = new User("behati.prinslo@gmail.com", "behati", "123", "Behati", "Prinslo", "066-456-789");
 		userRepository.save(user18);
-		User user19 = new User("martha.hunt@gmail.com", "martha", "123", "Martha", "Hunt", "069-123-456", image39);
+		User user19 = new User("martha.hunt@gmail.com", "martha", "123", "Martha", "Hunt", "069-123-456");
 		userRepository.save(user19);
-		User user20 = new User("romee.strijd@gmail.com", "romee", "123", "Romee", "Strijd", "069-456-789", image40);
+		User user20 = new User("romee.strijd@gmail.com", "romee", "123", "Romee", "Strijd", "069-456-789");
 		userRepository.save(user20);
 		
 		Location location1 = new Location(44.8023505, 20.4719586, "Beograd", "Vračar", "Krunska", "11000");
@@ -251,16 +257,19 @@ public class NvtApplication implements CommandLineRunner {
 		Image image30 = new Image("user5", "a");
 		imageRepository.save(image30);
 		
-		
-		Company company1 = new Company("001", "BEST REAL ESTATE", "company", "063-282-558", "www.bestrealestate.rs", image26, location11, workingTime1);
+		Set<Image> companyImages = new HashSet<Image>();
+		companyImages.add(image26);
+		companyImages.add(image27);
+		Company company1 = new Company("001", "BEST REAL ESTATE", "company", "063-282-558", "www.bestrealestate.rs", location11, workingTime1);
+		company1.setImages(companyImages);
 		companyRepository.save(company1);
-		Company company2 = new Company("002", "MENTOR REAL ESTATE BELGRADE", "company", "011-30-89-080", "m", image27, location12, workingTime1);
+		Company company2 = new Company("002", "MENTOR REAL ESTATE BELGRADE", "company", "011-30-89-080", "m", location12, workingTime1);
 		companyRepository.save(company2);
-		Company company3 = new Company("003", "R.E.A.L. Consulting Nekretnine", "company", "069-46-68-118", "m", image28, location13, workingTime1);
+		Company company3 = new Company("003", "R.E.A.L. Consulting Nekretnine", "company", "069-46-68-118", "m", location13, workingTime1);
 		companyRepository.save(company3);
-		Company company4 = new Company("004", "Kvadrat nekretnine", "company", "011-33-48-871", "m", image29, location14, workingTime1);
+		Company company4 = new Company("004", "Kvadrat nekretnine", "company", "011-33-48-871", "m", location14, workingTime1);
 		companyRepository.save(company4);
-		Company company5 = new Company("005", "FOX nekretnine", "company", "011-24-02-386", "foxnekretnine.com", image30, location15, workingTime1);
+		Company company5 = new Company("005", "FOX nekretnine", "company", "011-24-02-386", "foxnekretnine.com", location15, workingTime1);
 		companyRepository.save(company5);
 
 		
@@ -366,9 +375,25 @@ public class NvtApplication implements CommandLineRunner {
 		AdvertisementType advertisementType2 = new AdvertisementType("RENT");
 		advertisementTypeRepository.save(advertisementType2);
 		
-
+		Image image1 = new Image("house1", "1");
+		imageRepository.save(image1);
+		Image image2 = new Image("house2", "1");
+		imageRepository.save(image2);
+		Image image3 = new Image("house3", "1");
+		imageRepository.save(image3);
+		Image image4 = new Image("house4", "1");
+		imageRepository.save(image4);
+		Image image5 = new Image("house5", "1");
+		imageRepository.save(image5);
+		Set<Image> images = new HashSet<Image>();
+		images.add(image1);
+		images.add(image2);
+		images.add(image3);
+		images.add(image4);
+		images.add(image5);
 		
 		RealEstate realEstate1 = new RealEstate("naziv1..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 500.0, 50.0, 2, 1, 1, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
+		realEstate1.setImages(images);
 		realEstateRepository.save(realEstate1);
 		RealEstate realEstate2 = new RealEstate("naziv2..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 1500.0, 150.0, 2, 5, 2, 2015, true, true, location2, realEstateType3, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
 		realEstateRepository.save(realEstate2);
@@ -376,16 +401,7 @@ public class NvtApplication implements CommandLineRunner {
 		realEstateRepository.save(realEstate3);
 
 		
-		Image image1 = new Image("house1", "1", realEstate1);
-		imageRepository.save(image1);
-		Image image2 = new Image("house2", "1", realEstate1);
-		imageRepository.save(image2);
-		Image image3 = new Image("house3", "1", realEstate1);
-		imageRepository.save(image3);
-		Image image4 = new Image("house4", "1", realEstate1);
-		imageRepository.save(image4);
-		Image image5 = new Image("house5", "1", realEstate1);
-		imageRepository.save(image5);
+		
 		Image image6 = new Image("house6", "1", realEstate2);
 		imageRepository.save(image6);
 		Image image7 = new Image("house7", "1", realEstate2);

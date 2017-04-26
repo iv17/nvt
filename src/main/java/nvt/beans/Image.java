@@ -2,17 +2,16 @@ package nvt.beans;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "image")
@@ -31,14 +30,16 @@ public class Image implements Serializable {
 	@Column(name = "file", unique = false, nullable = true)
 	private String file;
 	
-	@ManyToOne @JsonIgnore
-	@JoinColumn(name = "real_estate_id", referencedColumnName = "id", nullable = true)
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "realestate_id", referencedColumnName = "id", nullable = true)
 	private RealEstate realEstate;
 	
-	@OneToOne(mappedBy = "image") @JsonIgnore
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
 	private User user;
 	
-	@OneToOne(mappedBy = "image") @JsonIgnore
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "company_id", referencedColumnName = "id", nullable = true)
 	private Company company;
 	
 	

@@ -1,6 +1,10 @@
 package nvt.web.dto;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import nvt.beans.Company;
+import nvt.beans.Image;
 
 public class CompanyDTO {
 
@@ -10,10 +14,19 @@ public class CompanyDTO {
 	private String propertyNo;
 	private String phoneNumber;
 	private String webAddress;
-	private ImageDTO image;
 	private LocationDTO location;
 	private WorkingTimeDTO workingTime;
-
+	private Set<ImageDTO> images; 
+	
+	public ImageDTO toDTO(Image image) {
+		ImageDTO imageDTO = new ImageDTO();
+		
+		imageDTO.setId(image.getId());
+		imageDTO.setName(image.getName());
+		imageDTO.setFile(image.getFile());
+		
+		return imageDTO;
+	}
 	
 	
 	public CompanyDTO() {
@@ -30,6 +43,12 @@ public class CompanyDTO {
 		webAddress = company.getWebAddress();
 		location = new LocationDTO(company.getLocation());
 		workingTime = new WorkingTimeDTO(company.getWorkingTime());
+		
+		images = new HashSet<ImageDTO>();
+		for (Image image : company.getImages()) {
+			ImageDTO imageDTO = toDTO(image);
+			images.add(imageDTO);
+		}
 	}
 
 
@@ -81,14 +100,6 @@ public class CompanyDTO {
 		this.webAddress = webAddress;
 	}
 
-	public ImageDTO getImage() {
-		return image;
-	}
-
-	public void setImage(ImageDTO image) {
-		this.image = image;
-	}
-
 	public LocationDTO getLocation() {
 		return location;
 	}
@@ -103,6 +114,14 @@ public class CompanyDTO {
 
 	public void setWorkingTime(WorkingTimeDTO workingTime) {
 		this.workingTime = workingTime;
+	}
+
+	public Set<ImageDTO> getImages() {
+		return images;
+	}
+
+	public void setImages(Set<ImageDTO> images) {
+		this.images = images;
 	}
 	
 	

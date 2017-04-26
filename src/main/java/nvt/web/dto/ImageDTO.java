@@ -12,15 +12,19 @@ public class ImageDTO {
 	protected CompanyDTO company;
 	
 	
+	public ImageDTO() {
+		
+	}
 	
 	public ImageDTO(Image image) {
 		id = image.getId();
 		name = image.getName();
 		file = image.getFile();
-		//realEstate = new RealEstateDTO(image.getRealEstate());
-		//user = new UserDTO(image.getUser());
-		//company = new CompanyDTO(image.getCompany());
+		realEstate = new RealEstateDTO(image.getRealEstate());
+		user = new UserDTO(image.getUser());
+		company = new CompanyDTO(image.getCompany());
 	}
+
 
 	public int getId() {
 		return id;

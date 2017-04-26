@@ -56,11 +56,11 @@ public class UserController {
 		user.setLoged(false);
 		user.setAuthenticated(false);
 
-		Image image = imageRepository.findById(userDTO.getImage().getId());
+		/*Image image = imageRepository.findById(userDTO.getImage().getId());
 		if(image == null) {
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}
-		user.setImage(image);
+		//user.setImage(image);*/
 		
 		UserDTO newUserDTO = new UserDTO(user);
 
@@ -112,11 +112,11 @@ public class UserController {
 		user.setLoged(userDTO.isLoged());
 		user.setAuthenticated(userDTO.isAuthenticated());
 
-		Image image = imageRepository.findById(userDTO.getImage().getId());
+		/*Image image = imageRepository.findById(userDTO.getImage().getId());
 		if(image == null) {
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}
-		user.setImage(image);
+		//user.setImage(image);*/
 		
 		UserDTO newUserDTO = new UserDTO(user);
 
@@ -142,12 +142,12 @@ public class UserController {
 		user.setPhoneNumber(userDTO.getPhoneNumber());
 		user.setLoged(userDTO.isLoged());
 		user.setAuthenticated(userDTO.isAuthenticated());
-
+/*
 		Image image = imageRepository.findById(userDTO.getImage().getId());
 		if(image == null) {
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}
-		user.setImage(image);
+		//user.setImage(image);*/
 		
 		UserDTO newUserDTO = new UserDTO(user);
 

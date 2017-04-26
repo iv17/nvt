@@ -3,10 +3,7 @@ package nvt.web.dto;
 import java.util.HashSet;
 import java.util.Set;
 
-import nvt.beans.AgentRating;
-import nvt.beans.RealEstateComment;
-import nvt.beans.RealEstateRating;
-import nvt.beans.RealEstateReport;
+import nvt.beans.Image;
 import nvt.beans.User;
 
 public class UserDTO {
@@ -20,11 +17,12 @@ public class UserDTO {
 	protected String phoneNumber;
 	protected boolean loged;
 	protected boolean authenticated;
-	protected ImageDTO image;
+	private Set<ImageDTO> images; 
+	/*
 	private Set<RealEstateCommentDTO> comments;
 	private Set<RealEstateRatingDTO> ratings;
 	private Set<RealEstateReportDTO> reports;
-	private Set<AgentRatingDTO> agentRatings;
+	private Set<AgentRatingDTO> agentRatings;*/
 	
 	/*
 	public RealEstateCommentDTO toDTOu(RealEstateComment realEstateComment) {
@@ -76,6 +74,15 @@ public class UserDTO {
 	}
 	
 	*/
+	public ImageDTO toDTO(Image image) {
+		ImageDTO imageDTO = new ImageDTO();
+		
+		imageDTO.setId(image.getId());
+		imageDTO.setName(image.getName());
+		imageDTO.setFile(image.getFile());
+		
+		return imageDTO;
+	}
 	
 	public UserDTO() {
 		
@@ -119,6 +126,12 @@ public class UserDTO {
 			agentRatings.add(agentRatingDTO);
 		}
 		*/
+		
+		images = new HashSet<ImageDTO>();
+		for (Image image : user.getImages()) {
+			ImageDTO imageDTO = toDTO(image);
+			images.add(imageDTO);
+		}
 	}
 
 
@@ -194,11 +207,13 @@ public class UserDTO {
 		this.authenticated = authenticated;
 	}
 
-	public ImageDTO getImage() {
-		return image;
+	public Set<ImageDTO> getImages() {
+		return images;
 	}
 
-	public void setImage(ImageDTO image) {
-		this.image = image;
+	public void setImages(Set<ImageDTO> images) {
+		this.images = images;
 	}
+
+	
 }

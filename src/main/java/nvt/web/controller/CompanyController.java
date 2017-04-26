@@ -57,12 +57,13 @@ public class CompanyController {
 		company.setPhoneNumber(companyDTO.getPhoneNumber());
 		company.setWebAddress(companyDTO.getWebAddress());
 
+		/*
 		Image image = imageService.findById(companyDTO.getImage().getId());
 		if(image == null) {
 			return new ResponseEntity<CompanyDTO>(HttpStatus.NOT_FOUND);
 		}
 		company.setImage(image);
-		
+		*/
 		Location location = locationService.findById(companyDTO.getLocation().getId());
 		if(location == null) {
 			return new ResponseEntity<CompanyDTO>(HttpStatus.NOT_FOUND);
@@ -123,11 +124,11 @@ public class CompanyController {
 		company.setPhoneNumber(companyDTO.getPhoneNumber());
 		company.setWebAddress(companyDTO.getWebAddress());
 
-		Image image = imageService.findById(companyDTO.getImage().getId());
+		/*Image image = imageService.findById(companyDTO.getImage().getId());
 		if(image == null) {
 			return new ResponseEntity<CompanyDTO>(HttpStatus.NOT_FOUND);
 		}
-		company.setImage(image);
+		company.setImage(image);*/
 		
 		Location location = locationService.findById(companyDTO.getLocation().getId());
 		if(location == null) {
@@ -164,11 +165,11 @@ public class CompanyController {
 		company.setPhoneNumber(companyDTO.getPhoneNumber());
 		company.setWebAddress(companyDTO.getWebAddress());
 
-		Image image = imageService.findById(companyDTO.getImage().getId());
+		/*Image image = imageService.findById(companyDTO.getImage().getId());
 		if(image == null) {
 			return new ResponseEntity<CompanyDTO>(HttpStatus.NOT_FOUND);
 		}
-		company.setImage(image);
+		company.setImage(image);*/
 		
 		Location location = locationService.findById(companyDTO.getLocation().getId());
 		if(location == null) {
