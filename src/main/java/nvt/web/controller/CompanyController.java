@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import nvt.beans.Agent;
 import nvt.beans.Company;
-import nvt.beans.Image;
 import nvt.beans.Location;
 import nvt.beans.WorkingTime;
 import nvt.service.AgentService;

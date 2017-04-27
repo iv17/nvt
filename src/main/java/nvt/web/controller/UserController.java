@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import nvt.beans.AgentRating;
-import nvt.beans.Image;
 import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateRating;
 import nvt.beans.RealEstateReport;

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import nvt.beans.Agent;
 import nvt.beans.AgentRating;
 import nvt.beans.Company;
-import nvt.beans.Image;
 import nvt.beans.RealEstate;
 import nvt.service.AgentService;
 import nvt.service.CompanyService;
