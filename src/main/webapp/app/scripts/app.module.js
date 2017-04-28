@@ -26,9 +26,6 @@
           'content@': {
             templateUrl: 'app/views/content/realEstatesList.html',
             controller: 'RealEstateController'
-            //templateUrl: 'app/views/content/test.html',
-            //controller: 'LocationController'
-            //controllerAs: 'vm_realEstates'
           }
         }
 
