@@ -3,11 +3,16 @@
 
 	angular
 		.module('nvtApp')
-		.controller('RealEstateController', ['$scope', '$state', '_', 'RealEstateResource', '$log',
-			function($scope, $state, _, RealEstateResource, $log) {
+		.controller('RealEstateController', ['$scope', '$state', '_', 'RealEstateResource', '$log', '$stateParams',
+			function($scope, $state, _, RealEstateResource, $log, $stateParams) {
 
-				RealEstateResource.getRealEstates().then(function(items) {
-						$scope.realEstates = items;
+				var realEstateId = $stateParams.realEstateId;
+
+				RealEstateResource.getRealEstate(realEstateId).then(function(item) {
+				  $log.log('RealEstateController	- start');
+					$log.log(realEstateId);
+					$log.log('RealEstateController	- end');
+					$scope.realEstate = item;
 				});
 			}
 		]);

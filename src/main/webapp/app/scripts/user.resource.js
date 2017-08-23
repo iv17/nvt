@@ -6,7 +6,7 @@
 			'use strict';
 
 			var users = [];
-			var retVal = {};
+			var retVal = {}; //JSON objekat koji prosledjujemo controller-u
 
 			retVal.getUsers = function() {
 				return Restangular.all("users").getList().then(function(entries) {

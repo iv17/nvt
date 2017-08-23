@@ -37,7 +37,8 @@
 				<div class = "media media-clearfix-xs media-clearfix-sm">
 					<div class = "media-left">
 						<p>
-							<a ui-sref = "index.html">
+							<!--ui-sref = 'stateName({param:value, param:value})' -->
+							<a ui-sref = "realEstate({realEstateId: realEstate.id})">
 							<img ng-src = "app/images/photodune-195203-houses-xs.jpg"  width = "150" />
 							</a>
 						</p>
@@ -54,7 +55,7 @@
 							<a ui-sref = "map-property.html" class = "text-grey-400"><i class = "fa fa-flag-o fa-fw"></i>{{ realEstate.reports.length }}</a>
 						</div>
 						<h4 class = "media-heading margin-v-0-10">
-							<a ui-sref = "map-property.html">{{ realEstate.name }}</a>
+							<a ui-sref = "realEstate({realEstateId: realEstate.id})">{{ realEstate.name }}</a>
 							<small class = "text-grey-400"><i class = "fa fa-clock-o fa-fw"></i> {{ realEstate.posted | date : "fullDate" }}</small>
 						</h4>
 						<p><span class = "label label-grey-100">{{ realEstate.location.street }}, {{ realEstate.location.block }}, {{ realEstate.location.city }}</span></p>

@@ -15,7 +15,7 @@
       $locationProvider.hashPrefix('');
       $urlRouterProvider.otherwise('/');
       $stateProvider
-      .state('advertisements', {
+      .state('realEstates', {
         url: "/",
         views: {
           'main_nav@': {
@@ -25,6 +25,21 @@
           },
           'content@': {
             templateUrl: 'app/views/content/realEstatesList.html',
+            controller: 'RealEstatesController'
+          }
+        }
+
+      })
+      .state('realEstate', {
+        url: "/realEstate/:realEstateId",
+        views: {
+          'main_nav@': {
+            templateUrl: 'app/views/main_nav/main_nav.html',
+            controller: 'UserController',
+            controllerAs: 'vm_users'
+          },
+          'content@': {
+            templateUrl: 'app/views/content/realEstate.html',
             controller: 'RealEstateController'
           }
         }

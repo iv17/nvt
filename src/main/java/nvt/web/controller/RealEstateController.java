@@ -335,7 +335,7 @@ public class RealEstateController {
 	}
 
 
-	@RequestMapping(value = "/{city}", method = RequestMethod.GET)
+	@RequestMapping(value = "/location/{city}", method = RequestMethod.GET)
 	public ResponseEntity<List<RealEstateDTO>> findByCity(@PathVariable String city) {
 	
 		List<Location> locations = locationService.findByCity(city);
@@ -348,7 +348,7 @@ public class RealEstateController {
 	}
 
 
-	@RequestMapping(value = "/{block}", method = RequestMethod.GET)
+	@RequestMapping(value = "/location/{block}", method = RequestMethod.GET)
 	public ResponseEntity<List<RealEstateDTO>> findByBlock(@PathVariable String block) {
 	
 		List<Location> locations = locationService.findByBlock(block);
@@ -361,7 +361,7 @@ public class RealEstateController {
 	}
 
 
-	@RequestMapping(value = "/{street}", method = RequestMethod.GET)
+	@RequestMapping(value = "/location/{street}", method = RequestMethod.GET)
 	public ResponseEntity<List<RealEstateDTO>> findByStreet(@PathVariable String street) {
 	
 		List<Location> locations = locationService.findByStreet(street);
@@ -378,7 +378,7 @@ public class RealEstateController {
 	 * PRETRAGE
 	 */
 	
-	@RequestMapping(value = "/{typeId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/realEstateType/{typeId}", method = RequestMethod.GET)
 	public ResponseEntity<List<RealEstateDTO>> findByType(@PathVariable Integer typeId) {
 	
 		RealEstateType realEstateType = realEstateTypeService.findById(typeId);
@@ -398,7 +398,7 @@ public class RealEstateController {
 	 * PRETRAGE
 	 */
 	
-	@RequestMapping(value = "/{zipCode}", method = RequestMethod.GET)
+	@RequestMapping(value = "/location/{zipCode}", method = RequestMethod.GET)
 	public ResponseEntity<List<RealEstateDTO>> findByZipCode(@PathVariable String zipCode) {
 	
 		List<Location> locations = locationService.findByZipCode(zipCode);
