@@ -39,7 +39,7 @@
             controllerAs: 'vm_users'
           },
           'content@': {
-            templateUrl: 'app/views/content/realEstate.html',
+            templateUrl: 'app/views/content/property_details/property_detail.html',
             controller: 'RealEstateController'
           }
         }
