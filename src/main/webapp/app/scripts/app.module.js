@@ -16,7 +16,7 @@
       $urlRouterProvider.otherwise('/');
       $stateProvider
       .state('realEstates', {
-        url: "/",
+        url: "/",   //ovaj url nema veze sa url-om u springu
         views: {
           'main_nav@': {
             templateUrl: 'app/views/main_nav/main_nav.html',

@@ -9,10 +9,7 @@
 				var realEstateId = $stateParams.realEstateId;
 
 				RealEstateResource.getRealEstate(realEstateId).then(function(item) {
-				  $log.log('RealEstateController	- start');
-					$log.log(realEstateId);
-					$log.log('RealEstateController	- end');
-					$scope.realEstate = item;
+				  $scope.realEstate = item;
 				});
 			}
 		]);

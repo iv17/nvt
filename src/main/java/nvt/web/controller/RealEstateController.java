@@ -153,7 +153,6 @@ public class RealEstateController {
 	public ResponseEntity<RealEstateDTO> getRealEstate(@PathVariable Integer id){
 
 		RealEstate realEstate = realEstateService.findById(id);
-
 		if(realEstate == null){
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}

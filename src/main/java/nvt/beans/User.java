@@ -1,6 +1,7 @@
 package nvt.beans;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -68,7 +69,8 @@ public class User implements Serializable {
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user") @JsonIgnore
 	private Set<RealEstateReport> reports;
 
-	
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	private Set<UserAuthority> userAuthorities = new HashSet<UserAuthority>();
 	
 	public User() {
 		
@@ -230,6 +232,14 @@ public class User implements Serializable {
 
 	public void setReports(Set<RealEstateReport> reports) {
 		this.reports = reports;
+	}
+
+	public Set<UserAuthority> getUserAuthorities() {
+		return userAuthorities;
+	}
+
+	public void setUserAuthorities(Set<UserAuthority> userAuthorities) {
+		this.userAuthorities = userAuthorities;
 	}
 
 	

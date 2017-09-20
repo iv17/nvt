@@ -1,5 +1,6 @@
 package nvt.beans;
 
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
