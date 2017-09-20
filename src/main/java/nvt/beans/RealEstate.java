@@ -89,9 +89,10 @@ public class RealEstate implements Serializable {
 	private boolean verified;
 	
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-	@JoinColumn(name = "agent_id", referencedColumnName = "id", nullable = true)
-	private Agent agent;
-
+	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
+	private User user;
+	
+	
 	@ManyToOne 
 	@JoinColumn(name = "advertisement_type_id", referencedColumnName = "id", nullable = true)
 	private AdvertisementType advertisementType;
@@ -125,7 +126,7 @@ public class RealEstate implements Serializable {
 			int bathrooms, int constructedYear, boolean filed, boolean furnished,
 			Location location, RealEstateType realEstateType, HeatingType heatingType,
 			Date posted, Date updated, Integer duration, Boolean inappropriate, Boolean verified,
-			Agent agent, AdvertisementType advertisementType) {
+			User user, AdvertisementType advertisementType) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
@@ -144,108 +145,10 @@ public class RealEstate implements Serializable {
 		this.duration = duration;
 		this.inappropriate = inappropriate;
 		this.verified = verified;
-		this.agent = agent;
+		this.user = user;
 		this.advertisementType = advertisementType;
 	}
 
-
-	public RealEstate(String name, String description, double price, double surface, int floor, int rooms,
-			int bathrooms, int constructedYear, boolean filed, boolean furnished,
-			Location location, RealEstateType realEstateType, HeatingType heatingType,
-			Date posted, Date updated, Integer duration, Boolean inappropriate, Boolean verified,
-			Agent agent, AdvertisementType advertisementType,
-			Set<Image> images) {
-		this.name = name;
-		this.description = description;
-		this.price = price;
-		this.surface = surface;
-		this.floor = floor;
-		this.rooms = rooms;
-		this.bathrooms = bathrooms;
-		this.constructedYear = constructedYear;
-		this.filed = filed;
-		this.furnished = furnished;
-		this.location = location;
-		this.realEstateType = realEstateType;
-		this.heatingType = heatingType;
-		this.posted = posted;
-		this.updated = updated;
-		this.duration = duration;
-		this.inappropriate = inappropriate;
-		this.verified = verified;
-		this.agent = agent;
-		this.advertisementType = advertisementType;
-		this.images = images;
-	}
-
-
-	public RealEstate(String name, String description, double price, double surface,
-			int floor, int rooms, int bathrooms, int constructedYear, boolean filed,
-			boolean furnished, Location location, RealEstateType realEstateType,
-			HeatingType heatingType, Date posted, Date updated, Integer duration, Boolean inappropriate, Boolean verified,
-			Agent agent, AdvertisementType advertisementType, Set<Image> images, 
-			Set<RealEstateIndoors> indoors, Set<RealEstateOutdoors> outdoors) {
-		this.name = name;
-		this.description = description;
-		this.price = price;
-		this.surface = surface;
-		this.floor = floor;
-		this.rooms = rooms;
-		this.bathrooms = bathrooms;
-		this.constructedYear = constructedYear;
-		this.filed = filed;
-		this.furnished = furnished;
-		this.location = location;
-		this.realEstateType = realEstateType;
-		this.heatingType = heatingType;
-		this.posted = posted;
-		this.updated = updated;
-		this.duration = duration;
-		this.inappropriate = inappropriate;
-		this.verified = verified;
-		this.agent = agent;
-		this.advertisementType = advertisementType;
-		this.images = images;
-		this.indoors = indoors;
-		this.outdoors = outdoors;
-	}
-
-
-	public RealEstate(String name, String description, double price, double surface, 
-			int floor, int rooms, int bathrooms, int constructedYear, boolean filed,
-			boolean furnished, Location location, RealEstateType realEstateType, 
-			HeatingType heatingType, Date posted, Date updated, Integer duration, Boolean inappropriate, Boolean verified,
-			Agent agent, AdvertisementType advertisementType, Set<Image> images,
-			Set<RealEstateIndoors> indoors, Set<RealEstateOutdoors> outdoors,
-			Set<RealEstateComment> comments,
-			Set<RealEstateRating> ratings, Set<RealEstateReport> reports) {
-		this.name = name;
-		this.description = description;
-		this.price = price;
-		this.surface = surface;
-		this.floor = floor;
-		this.rooms = rooms;
-		this.bathrooms = bathrooms;
-		this.constructedYear = constructedYear;
-		this.filed = filed;
-		this.furnished = furnished;
-		this.location = location;
-		this.realEstateType = realEstateType;
-		this.heatingType = heatingType;
-		this.posted = posted;
-		this.updated = updated;
-		this.duration = duration;
-		this.inappropriate = inappropriate;
-		this.verified = verified;
-		this.agent = agent;
-		this.advertisementType = advertisementType;
-		this.images = images;
-		this.indoors = indoors;
-		this.outdoors = outdoors;
-		this.comments = comments;
-		this.ratings = ratings;
-		this.reports = reports;
-	}
 
 	
 	public int getId() {
@@ -448,14 +351,12 @@ public class RealEstate implements Serializable {
 		this.verified = verified;
 	}
 
-
-	public Agent getAgent() {
-		return agent;
+	public User getUser() {
+		return user;
 	}
 
-
-	public void setAgent(Agent agent) {
-		this.agent = agent;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 

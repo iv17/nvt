@@ -33,7 +33,7 @@ public class RealEstateDTO {
 	private int duration;
 	private boolean inappropriate;
 	private boolean verified;
-	private AgentDTO agent;
+	private UserDTO user;
 	private AdvertisementTypeDTO advertisementType;
 	private Set<ImageDTO> images; 
 	private Set<RealEstateCommentDTO> comments;
@@ -132,7 +132,7 @@ public class RealEstateDTO {
 		duration = realEstate.getDuration();
 		inappropriate = realEstate.isInappropriate();
 		verified = realEstate.isVerified();
-		agent = new AgentDTO(realEstate.getAgent());
+		user = new UserDTO(realEstate.getUser());
 		advertisementType = new AdvertisementTypeDTO(realEstate.getAdvertisementType());
 		
 		comments = new HashSet<RealEstateCommentDTO>();
@@ -325,12 +325,13 @@ public class RealEstateDTO {
 		this.verified = verified;
 	}
 
-	public AgentDTO getAgent() {
-		return agent;
+	
+	public UserDTO getUser() {
+		return user;
 	}
 
-	public void setAgent(AgentDTO agent) {
-		this.agent = agent;
+	public void setUser(UserDTO user) {
+		this.user = user;
 	}
 
 	public AdvertisementTypeDTO getAdvertisementType() {

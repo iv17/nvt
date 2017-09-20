@@ -3,40 +3,108 @@
 
   angular
     .module('nvtApp', [
+      'toastr',
       'ui.router',
       'ngRoute',
       'ngResource',
       'restangular',
       'ui.bootstrap',
-      'lodash'
+      'lodash',
+      'ngStorage'
     ])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
       function($stateProvider, $urlRouterProvider, $locationProvider) {
       $locationProvider.hashPrefix('');
       $urlRouterProvider.otherwise('/');
       $stateProvider
-      .state('realEstates', {
-        url: "/",   //ovaj url nema veze sa url-om u springu
+      .state('home', {
+        url: "/",
         views: {
-          'main_nav@': {
-            templateUrl: 'app/views/main_nav/main_nav.html',
-            controller: 'UserController',
-            controllerAs: 'vm_users'
+          'navbar@': {
+            templateUrl: 'app/views/navbar.html'
+          },
+          'sidebar_menu@': {
+            templateUrl: 'app/views/sidebar_menu.html'
+          },
+          'sidebar_search@': {
+            templateUrl: 'app/views/sidebar_search.html'
           },
           'content@': {
             templateUrl: 'app/views/content/realEstatesList.html',
             controller: 'RealEstatesController'
           }
         }
-
+      })
+      .state('login', {
+        url: "/login/:username/:password",
+        views: {
+          'navbar@': {
+            templateUrl: 'app/views/navbar.html',
+            controller: 'UserController'
+          },
+          'sidebar_menu@': {
+            templateUrl: 'app/views/sidebar_menu.html'
+          },
+          'sidebar_search@': {
+            templateUrl: 'app/views/sidebar_search.html',
+            controller: 'SidebarSearchController'
+          },
+          'content@': {
+            controller: 'LoginController'
+          }
+        }
+      })
+      .state('logout', {
+          url: "/logout",
+          views: {
+            'navbar@': {
+              templateUrl: 'app/views/navbar.html',
+              controller: 'UserController'
+            },
+            'sidebar_menu@': {
+              templateUrl: 'app/views/sidebar_menu.html'
+            },
+            'sidebar_search@': {
+              templateUrl: 'app/views/sidebar_search.html',
+              controller: 'SidebarSearchController'
+            },
+            'content@': {
+              controller: 'LogoutController'
+            }
+          }
+      })
+      .state('register', {
+        url: "/register/:name/:lastname/:email/:username/:password/:repeated_password",
+        views: {
+          'navbar@': {
+            templateUrl: 'app/views/navbar.html',
+            controller: 'UserController'
+          },
+          'sidebar_menu@': {
+            templateUrl: 'app/views/sidebar_menu.html'
+          },
+          'sidebar_search@': {
+            templateUrl: 'app/views/sidebar_search.html',
+            controller: 'SidebarSearchController'
+          },
+          'content@': {
+            controller: 'RegistrationController'
+          }
+        }
       })
       .state('realEstate', {
         url: "/realEstate/:realEstateId",
         views: {
-          'main_nav@': {
-            templateUrl: 'app/views/main_nav/main_nav.html',
-            controller: 'UserController',
-            controllerAs: 'vm_users'
+          'navbar@': {
+            templateUrl: 'app/views/navbar.html',
+            controller: 'UserController'
+          },
+          'sidebar_menu@': {
+            templateUrl: 'app/views/sidebar_menu.html'
+          },
+          'sidebar_search@': {
+            templateUrl: 'app/views/sidebar_search.html',
+            controller: 'SidebarSearchController'
           },
           'content@': {
             templateUrl: 'app/views/content/property_details/property_detail.html',
@@ -46,16 +114,31 @@
 
       });
     }])
-      // run se izvrsava pre svega ostalog
-    .run(['Restangular', '$log', function(Restangular, $log) {
-      Restangular.setBaseUrl("api");
-      $log.info("started");
-      Restangular.setErrorInterceptor(function(response) {
-        if (response.status === 500) {
-          $log.info("internal server error");
-          return true;
-        }
-        return true;
+    // run se izvrsava pre svega ostalog
+  .run(['Restangular', '$log', '$localStorage',
+  function(Restangular, $log, $localStorage) {
+    Restangular.setBaseUrl("api");
+
+    Restangular.addFullRequestInterceptor(
+      function (element, operation, route, url, headers, params, httpConfig) {
+
+          headers = {'X-Auth-Token':  $localStorage.token };
+
+          return {
+              element: element,
+              params: params,
+              headers: headers,
+              httpConfig: httpConfig
+          };
+
       });
-    }]);
+    $log.info("started");
+    Restangular.setErrorInterceptor(function(response) {
+      if (response.status === 500) {
+        $log.info("internal server error");
+        return true;
+      }
+      return true;
+    });
+  }]);
 })();

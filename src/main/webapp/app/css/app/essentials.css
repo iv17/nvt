@@ -2061,11 +2061,11 @@ input[type=radio]:focus + label::before {
 }
 .bootstrap-switch {
   display: inline-block;
+  direction: ltr;
   cursor: pointer;
   border-radius: 4px;
-  margin-top: 2px;
   border: 1px solid;
-  border-color: #e2e2e2;
+  border-color: #e7e7e7;
   position: relative;
   text-align: left;
   overflow: hidden;
@@ -2084,7 +2084,6 @@ input[type=radio]:focus + label::before {
   display: inline-block;
   top: 0;
   border-radius: 4px;
-  height: 30px;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
@@ -2097,7 +2096,6 @@ input[type=radio]:focus + label::before {
   height: 100%;
   padding: 6px 12px;
   font-size: 14px;
-  font-weight: bold;
   line-height: 20px;
 }
 .bootstrap-switch .bootstrap-switch-handle-on,

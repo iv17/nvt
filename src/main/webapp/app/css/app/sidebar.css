@@ -4395,29 +4395,37 @@
   display: none;
   top: 0;
 }
-body > .sidebar,
-.st-container > .sidebar,
-.ui-view-main > .sidebar {
+.ls-top-navbar body > .sidebar,
+.ls-top-navbar .st-container > .sidebar,
+.ls-top-navbar .ui-view-main > .sidebar {
   top: 50px;
 }
-.ls-bottom-footer .st-container > .sidebar {
-  bottom: 45px;
-}
-.ls-top-navbar-large .st-container > .sidebar {
+.ls-top-navbar-large body > .sidebar,
+.ls-top-navbar-large .st-container > .sidebar,
+.ls-top-navbar-large .ui-view-main > .sidebar {
   top: 50px;
 }
 @media (min-width: 992px) {
-  .ls-top-navbar-large .st-container > .sidebar {
+  .ls-top-navbar-large body > .sidebar,
+  .ls-top-navbar-large .st-container > .sidebar,
+  .ls-top-navbar-large .ui-view-main > .sidebar {
     top: 64px;
   }
 }
-.ls-top-navbar-xlarge .st-container > .sidebar {
+.ls-top-navbar-xlarge body > .sidebar,
+.ls-top-navbar-xlarge .st-container > .sidebar,
+.ls-top-navbar-xlarge .ui-view-main > .sidebar {
   top: 50px;
 }
 @media (min-width: 992px) {
-  .ls-top-navbar-xlarge .st-container > .sidebar {
+  .ls-top-navbar-xlarge body > .sidebar,
+  .ls-top-navbar-xlarge .st-container > .sidebar,
+  .ls-top-navbar-xlarge .ui-view-main > .sidebar {
     top: 80px;
   }
+}
+.ls-bottom-footer .st-container > .sidebar {
+  bottom: 45px;
 }
 .sidebar ul {
   list-style: none;
@@ -6818,7 +6826,7 @@ html.app-mobile #content .container-fluid .sidebar {
 }
 .sidebar-menu a {
   display: block;
-  font-weight: 300;
+  font-weight: 500;
   text-decoration: none;
 }
 .sidebar-menu i {
@@ -6947,7 +6955,7 @@ html.app-mobile #content .container-fluid .sidebar {
 .sidebar-menu li ul li a {
   line-height: 32px;
   padding-left: 16px;
-  font-size: 14px;
+  font-size: 1rem;
 }
 .sidebar-menu li ul li a i {
   top: -1px;
@@ -7032,11 +7040,11 @@ html.app-mobile #content .container-fluid .sidebar {
 }
 .sidebar .category {
   padding: 16px;
-  font-weight: 400;
-  font-size: 16px;
-  font-family: 'Source Sans Pro', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: none;
-  letter-spacing: -0.2px;
+  letter-spacing: normal;
   margin: 0;
 }
 .sidebar .category:hover {
@@ -7083,7 +7091,7 @@ html.app-mobile #content .container-fluid .sidebar {
 .sidebar .list-group-menu a {
   display: block;
   text-decoration: none;
-  font-weight: 300;
+  font-weight: 500;
 }
 .sidebar .list-group-menu .list-group-item *:last-child {
   margin: 0;

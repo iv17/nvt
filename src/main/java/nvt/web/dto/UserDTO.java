@@ -12,68 +12,14 @@ public class UserDTO {
 	protected String email;
 	protected String username;
 	protected String password;
+	private String repeated_password; // samo za registraciju
 	protected String name;
 	protected String lastName;
 	protected String phoneNumber;
 	protected boolean loged;
 	protected boolean authenticated;
 	private Set<ImageDTO> images; 
-	/*
-	private Set<RealEstateCommentDTO> comments;
-	private Set<RealEstateRatingDTO> ratings;
-	private Set<RealEstateReportDTO> reports;
-	private Set<AgentRatingDTO> agentRatings;*/
-	
-	/*
-	public RealEstateCommentDTO toDTOu(RealEstateComment realEstateComment) {
-		RealEstateCommentDTO realEstateCommentDTO = new RealEstateCommentDTO();
-		
-		realEstateCommentDTO.setId(realEstateComment.getId());
-		realEstateCommentDTO.setComment(realEstateComment.getComment());
-		realEstateCommentDTO.setPosted(realEstateComment.getPosted());
-		realEstateCommentDTO.setRealEstate(new RealEstateDTO(realEstateComment.getRealEstate()));
-		realEstateCommentDTO.setUser(new UserDTO(realEstateComment.getUser()));
-		
-		return realEstateCommentDTO;
-	}
-	
-	public RealEstateRatingDTO toDTOu(RealEstateRating realEstateRating) {
-		RealEstateRatingDTO realEstateRatingDTO = new RealEstateRatingDTO();
-		
-		realEstateRatingDTO.setId(realEstateRating.getId());
-		realEstateRatingDTO.setRate(realEstateRating.getRate());
-		realEstateRatingDTO.setPosted(realEstateRating.getPosted());
-		realEstateRatingDTO.setRealEstate(new RealEstateDTO(realEstateRating.getRealEstate()));
-		realEstateRatingDTO.setUser(this);
-		
-		return realEstateRatingDTO;
-	}
-	
-	public RealEstateReportDTO toDTOu(RealEstateReport realEstateReport) {
-		RealEstateReportDTO realEstateReportDTO = new RealEstateReportDTO();
-		
-		realEstateReportDTO.setId(realEstateReport.getId());
-		realEstateReportDTO.setReport(realEstateReport.getReport());
-		realEstateReportDTO.setPosted(realEstateReport.getPosted());
-		realEstateReportDTO.setRealEstate(new RealEstateDTO(realEstateReport.getRealEstate()));
-		realEstateReportDTO.setUser(this);
-		
-		return realEstateReportDTO;
-	}
-	
-	public AgentRatingDTO toDTO(AgentRating agentRating) {
-		AgentRatingDTO agentRatingDTO = new AgentRatingDTO();
-		
-		agentRatingDTO.setId(agentRating.getId());
-		agentRatingDTO.setRate(agentRating.getRate());
-		agentRatingDTO.setPosted(agentRating.getPosted());
-		agentRatingDTO.setAgent(new AgentDTO(agentRating.getAgent()));
-		
-		return agentRatingDTO;
 
-	}
-	
-	*/
 	public ImageDTO toDTO(Image image) {
 		ImageDTO imageDTO = new ImageDTO();
 		
@@ -99,39 +45,7 @@ public class UserDTO {
 		phoneNumber = user.getPhoneNumber();
 		loged = user.isLoged();
 		authenticated = user.isAuthenticated();
-		//image = new ImageDTO(user.getImage());
-		
-		/*
-		comments = new HashSet<RealEstateCommentDTO>();
-		for (RealEstateComment realEstateComment : user.getComments()) {
-			RealEstateCommentDTO realEstateCommentDTO = toDTOu(realEstateComment);
-			comments.add(realEstateCommentDTO);
-		}
-		
-		ratings = new HashSet<RealEstateRatingDTO>();
-		for (RealEstateRating realEstateRating : user.getRatings()) {
-			RealEstateRatingDTO realEstateRatingDTO = toDTOu(realEstateRating);
-			ratings.add(realEstateRatingDTO);
-		}
-		
-		reports = new HashSet<RealEstateReportDTO>();
-		for (RealEstateReport realEstateReport : user.getReports()) {
-			RealEstateReportDTO realEstateReportDTO = toDTOu(realEstateReport);
-			reports.add(realEstateReportDTO);
-		}
-		
-		agentRatings = new HashSet<AgentRatingDTO>();
-		for (AgentRating agentRating : user.getAgentRatings()) {
-			AgentRatingDTO agentRatingDTO = toDTO(agentRating);
-			agentRatings.add(agentRatingDTO);
-		}
-		*/
-		
-		images = new HashSet<ImageDTO>();
-		for (Image image : user.getImages()) {
-			ImageDTO imageDTO = toDTO(image);
-			images.add(imageDTO);
-		}
+
 	}
 
 
@@ -213,6 +127,14 @@ public class UserDTO {
 
 	public void setImages(Set<ImageDTO> images) {
 		this.images = images;
+	}
+
+	public String getRepeated_password() {
+		return repeated_password;
+	}
+
+	public void setRepeated_password(String repeated_password) {
+		this.repeated_password = repeated_password;
 	}
 
 	

@@ -7,22 +7,34 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import nvt.web.dto.LoginResponseDTO;
 import nvt.beans.AgentRating;
+import nvt.beans.RealEstate;
 import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateRating;
 import nvt.beans.RealEstateReport;
 import nvt.beans.User;
+import nvt.conf.TokenUtils;
 import nvt.repository.ImageRepository;
 import nvt.service.AgentRatingService;
 import nvt.service.UserService;
 import nvt.web.dto.AgentRatingDTO;
 import nvt.web.dto.RealEstateCommentDTO;
+import nvt.web.dto.RealEstateDTO;
 import nvt.web.dto.RealEstateRatingDTO;
 import nvt.web.dto.RealEstateReportDTO;
 import nvt.web.dto.UserDTO;
@@ -39,35 +51,83 @@ public class UserController {
 
 	@Autowired
 	protected ImageRepository imageRepository;
-	
-	
-	
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
+
+	//====================Security====================
+	@Autowired
+	AuthenticationManager authenticationManager;
+
+	@Autowired
+	private UserDetailsService userDetailsService;
+
+	@Autowired
+	TokenUtils tokenUtils;
+	//====================Security====================
+
+
+
+
+	@RequestMapping(
+			value = "/registration",
+			method = RequestMethod.POST,
+			consumes = "application/json")
+	public ResponseEntity<UserDTO> registration(@RequestBody UserDTO userDTO) {
+
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 		User user = new User();
-		user.setEmail(userDTO.getEmail());
-		user.setUsername(userDTO.getUsername());
-		user.setPassword(userDTO.getPassword());
-		user.setName(userDTO.getName());
-		user.setLastName(userDTO.getLastName());
-		user.setPhoneNumber(userDTO.getPhoneNumber());
-		user.setLoged(false);
-		user.setAuthenticated(false);
 
-		/*Image image = imageRepository.findById(userDTO.getImage().getId());
-		if(image == null) {
+		if (userService.findByUsername(userDTO.getUsername()) == null
+				|| userService.findByEmail(userDTO.getEmail()) == null) {
+
+			System.out.println(userDTO.getPassword());
+			System.out.println(userDTO.getRepeated_password());
+			if (userDTO.getPassword().equals(userDTO.getRepeated_password())) {
+
+				user.setName(userDTO.getName());
+				user.setLastName(userDTO.getLastName());
+				user.setEmail(userDTO.getEmail());
+				user.setUsername(userDTO.getUsername());
+				user.setPassword(encoder.encode(userDTO.getPassword()));
+
+				UserDTO newUserDTO = new UserDTO(user);
+
+				userService.save(user);
+
+				return new ResponseEntity<UserDTO>(newUserDTO, HttpStatus.CREATED);
+			}
+			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
+
+		} else {
+
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}
-		//user.setImage(image);*/
-		
-		UserDTO newUserDTO = new UserDTO(user);
-
-		userService.save(user);
-
-		return new ResponseEntity<UserDTO>(newUserDTO, HttpStatus.CREATED);
 
 	}
+
+	@RequestMapping(
+			value = "/login", 
+			method = RequestMethod.POST,
+			consumes = "application/json")
+	public ResponseEntity<LoginResponseDTO> login(@RequestBody UserDTO userDTO) {
+
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+				userDTO.getUsername(), userDTO.getPassword());
+
+		Authentication authentication = authenticationManager.authenticate(token);
+
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		UserDetails details = userDetailsService.loadUserByUsername(userDTO.getUsername());
+
+		String userToken = tokenUtils.generateToken(details);
+
+		User user = userService.findByToken(userToken);
+
+		LoginResponseDTO loginResponseDTO = new LoginResponseDTO(new UserDTO(user), userToken);
+
+		return new ResponseEntity<LoginResponseDTO>(loginResponseDTO, HttpStatus.OK);
+
+	}
+
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<UserDTO>> getUsers() {
@@ -98,189 +158,35 @@ public class UserController {
 	}
 
 
-	//@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<UserDTO> saveUser(@RequestBody UserDTO userDTO) {
-
-		User user = new User();
-		user.setEmail(userDTO.getEmail());
-		user.setUsername(userDTO.getUsername());
-		user.setPassword(userDTO.getPassword());
-		user.setName(userDTO.getName());
-		user.setLastName(userDTO.getLastName());
-		user.setPhoneNumber(userDTO.getPhoneNumber());
-		user.setLoged(userDTO.isLoged());
-		user.setAuthenticated(userDTO.isAuthenticated());
-
-		/*Image image = imageRepository.findById(userDTO.getImage().getId());
-		if(image == null) {
-			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
-		}
-		//user.setImage(image);*/
-		
-		UserDTO newUserDTO = new UserDTO(user);
-
-		userService.save(user);
-
-		return new ResponseEntity<UserDTO>(newUserDTO, HttpStatus.CREATED);
-	}
 
 
-	@RequestMapping(method = RequestMethod.PUT, consumes = "application/json")
-	public ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO userDTO) {
+	@RequestMapping(
+			value = "/realEstates", // id - id user-a ciji su snippeti
+			method = RequestMethod.POST, 
+			consumes = "application/json"
+			)
+	public ResponseEntity<List<RealEstateDTO>> getRealEstates(@RequestHeader("X-Auth-Token") String token) {
 
-		User user = userService.findById(userDTO.getId());
+		if(userService.findByToken(token) != null) {
 
-		if(user == null) {
-			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
-		}
-		user.setEmail(userDTO.getEmail());
-		user.setUsername(userDTO.getUsername());
-		user.setPassword(userDTO.getPassword());
-		user.setName(userDTO.getName());
-		user.setLastName(userDTO.getLastName());
-		user.setPhoneNumber(userDTO.getPhoneNumber());
-		user.setLoged(userDTO.isLoged());
-		user.setAuthenticated(userDTO.isAuthenticated());
-/*
-		Image image = imageRepository.findById(userDTO.getImage().getId());
-		if(image == null) {
-			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
-		}
-		//user.setImage(image);*/
-		
-		UserDTO newUserDTO = new UserDTO(user);
+			User user = userService.findByToken(token);
 
-		userService.save(user);
-
-		return new ResponseEntity<UserDTO>(newUserDTO, HttpStatus.OK);
-	}
-
-
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
-
-		User user = userService.findById(id);
-
-		if(user == null) {
-			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		}
-
-		userService.removeById(id);
-
-		return new ResponseEntity<Void>(HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/{userID}/ratingsForAgents",method = RequestMethod.GET)
-	public ResponseEntity<List<AgentRatingDTO>> getUserRatingsForAgents(@PathVariable Integer userID) {
-
-		User user = userService.findById(userID);
-
-		Set<AgentRating> agentRatings = user.getAgentRatings();
-
-		List<AgentRatingDTO> agentRatingDTOs = new ArrayList<AgentRatingDTO>();
-
-		for (AgentRating agentRating : agentRatings) {
-			AgentRatingDTO agentRatingDTO = new AgentRatingDTO(agentRating);
-			agentRatingDTOs.add(agentRatingDTO);
-		}
-
-		return new ResponseEntity<List<AgentRatingDTO>>(agentRatingDTOs, HttpStatus.OK);
-	}
-
-
-	@RequestMapping(value = "/{userID}/comments", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateCommentDTO>> getUserComments(@PathVariable Integer userID) {
-
-		User user = userService.findById(userID);
-
-		Set<RealEstateComment> comments = user.getComments();
-
-		List<RealEstateCommentDTO> commentDTOs = new ArrayList<RealEstateCommentDTO>();
-
-		for (RealEstateComment realEstateComment : comments) {
-			RealEstateCommentDTO realEstateCommentDTO = new RealEstateCommentDTO(realEstateComment);
-			commentDTOs.add(realEstateCommentDTO);
-		}
-
-		return new ResponseEntity<List<RealEstateCommentDTO>>(commentDTOs, HttpStatus.OK);
-	}
-
-
-	@RequestMapping(value = "/{userID}/ratingsForEstates", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateRatingDTO>> getUserRatingsForRealEstate(@PathVariable Integer userID) {
-
-		User user = userService.findById(userID);
-
-		Set<RealEstateRating> ratings = user.getRatings();
-
-		List<RealEstateRatingDTO> ratingDTOs = new ArrayList<RealEstateRatingDTO>();
-
-		for (RealEstateRating realEstateRating : ratings) {
-			RealEstateRatingDTO realEstateRatingDTO = new RealEstateRatingDTO(realEstateRating);
-			ratingDTOs.add(realEstateRatingDTO);
-		}
-
-		return new ResponseEntity<List<RealEstateRatingDTO>>(ratingDTOs, HttpStatus.OK);
-	}
-
-
-	@RequestMapping(value = "/{userID}/reports", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateReportDTO>> getUserReports(@PathVariable Integer userID) {
-
-		User user = userService.findById(userID);
-
-		Set<RealEstateReport> reports = user.getReports();
-
-		List<RealEstateReportDTO> reportDTOs = new ArrayList<RealEstateReportDTO>();
-
-		for (RealEstateReport realEstateReport : reports) {
-			RealEstateReportDTO realEstateReportDTO = new RealEstateReportDTO(realEstateReport);
-			reportDTOs.add(realEstateReportDTO);
-		}
-		return new ResponseEntity<List<RealEstateReportDTO>>(reportDTOs, HttpStatus.OK);
-	}
-
-
-
-	//@RequestMapping(method = RequestMethod.PUT, consumes = "application/json")
-	public ResponseEntity<UserDTO> registration(@RequestBody UserDTO userDTO) {
-
-		User user = new User();
-
-		user.setEmail(userDTO.getEmail());
-		user.setUsername(userDTO.getUsername());
-		user.setPassword(userDTO.getPassword());
-		
-		UserDTO newUserDTO = new UserDTO(user);
-
-		userService.save(user);
-		
-		return new ResponseEntity<UserDTO>(newUserDTO, HttpStatus.CREATED);
-
-	}
-
-	@RequestMapping(value = "/{username}/{password}", method = RequestMethod.GET)
-	public ResponseEntity<UserDTO> login(@PathVariable String username, @PathVariable String password) {
-
-		User user = userService.findByUsernameAndPassword(username, password);
-
-		UserDTO userDTO = new UserDTO(user);
-
-		return new ResponseEntity<UserDTO>(userDTO, HttpStatus.OK);
-
-	}
-
-
-	public UserDTO getCurrentUser() {
-		List<User> users = userService.findAll();
-		UserDTO userDTO = new UserDTO();
-		for (User user : users) {
-			if(user.isLoged()) {
-				new UserDTO(user);
+			Set<RealEstate> realEstateSet = user.getRealEstates();
+			List<RealEstateDTO> realEstatesDTO = new ArrayList<RealEstateDTO>();
+			
+			for (RealEstate realEstate : realEstateSet) {
+				RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
+				realEstatesDTO.add(realEstateDTO);
 			}
-		}
+			return new ResponseEntity<List<RealEstateDTO>>(realEstatesDTO, HttpStatus.OK);
 
-		return userDTO;
+		}
+		return new ResponseEntity<List<RealEstateDTO>>(HttpStatus.NOT_FOUND);
+
 	}
+
+
+
+
 
 }

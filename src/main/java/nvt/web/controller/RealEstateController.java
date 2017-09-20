@@ -119,12 +119,6 @@ public class RealEstateController {
 		realEstate.setVerified(realEstateDTO.isVerified());
 		
 		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
-
-		Agent agent = agentService.findById(realEstateDTO.getAgent().getId());
-		if(agent == null) {
-			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
-		}
-		realEstate.setAgent(agent);
 		
 		AdvertisementType  advertisementType = advertisementTypeService.findById(realEstateDTO.getAdvertisementType().getId());
 		if(advertisementType == null) {
@@ -162,45 +156,6 @@ public class RealEstateController {
 	}
 
 
-	//@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<RealEstateDTO> saveRealEstate(@RequestBody RealEstateDTO realEstateDTO) {
-
-		RealEstate realEstate = new RealEstate();
-		realEstate.setName(realEstateDTO.getName());
-		realEstate.setDescription(realEstateDTO.getDescription());
-		realEstate.setPrice(realEstateDTO.getPrice());
-		realEstate.setSurface(realEstateDTO.getSurface());
-		realEstate.setFloor(realEstateDTO.getFloor());
-		realEstate.setRooms(realEstateDTO.getRooms());
-		realEstate.setBathrooms(realEstateDTO.getBathrooms());
-		realEstate.setFiled(realEstateDTO.isFiled());
-		realEstate.setFurnished(realEstateDTO.isFurnished());
-		realEstate.setConstructedYear(realEstateDTO.getConstructedYear());
-		
-		Location location = locationService.findById(realEstateDTO.getLocation().getId());
-		if(location == null) {
-			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
-		}
-		realEstate.setLocation(location);
-		
-		RealEstateType realEstateType = realEstateTypeService.findById(realEstateDTO.getRealEstateType().getId());
-		if(realEstateType == null) {
-			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
-		}
-		realEstate.setRealEstateType(realEstateType);
-		
-		HeatingType heatingType = heatingTypeService.findById(realEstateDTO.getHeatingType().getId());
-		if(heatingType == null) {
-			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
-		}
-		realEstate.setHeatingType(heatingType);
-
-		
-		realEstateService.save(realEstate);
-		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
-
-		return new ResponseEntity<RealEstateDTO>(newRealEstateDTO, HttpStatus.CREATED);
-	}
 
 
 	@RequestMapping(method = RequestMethod.PUT, consumes = "application/json")

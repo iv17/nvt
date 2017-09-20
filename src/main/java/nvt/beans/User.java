@@ -61,6 +61,9 @@ public class User implements Serializable {
 	private Set<AgentRating> agentRatings;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user") @JsonIgnore
+	private Set<RealEstate> realEstates;
+	
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user") @JsonIgnore
 	private Set<RealEstateComment> comments;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user") @JsonIgnore
@@ -240,6 +243,14 @@ public class User implements Serializable {
 
 	public void setUserAuthorities(Set<UserAuthority> userAuthorities) {
 		this.userAuthorities = userAuthorities;
+	}
+
+	public Set<RealEstate> getRealEstates() {
+		return realEstates;
+	}
+
+	public void setRealEstates(Set<RealEstate> realEstates) {
+		this.realEstates = realEstates;
 	}
 
 	
