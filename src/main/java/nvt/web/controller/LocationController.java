@@ -2,6 +2,7 @@ package nvt.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import nvt.beans.Location;
 import nvt.service.LocationService;
+import nvt.web.dto.BlockDTO;
+import nvt.web.dto.CityDTO;
 import nvt.web.dto.LocationDTO;
+import nvt.web.dto.StreetDTO;
+import nvt.web.dto.ZipCodeDTO;
 
 @RestController
 @RequestMapping(value = "api/locations")
@@ -51,6 +56,115 @@ public class LocationController {
 		LocationDTO locationDTO = new LocationDTO(location);
 		
 		return new ResponseEntity<LocationDTO>(locationDTO, HttpStatus.OK);
+	}
+	
+	@RequestMapping(
+			value = "/zipCodes",
+			method = RequestMethod.GET
+			)
+	public ResponseEntity<List<ZipCodeDTO>> getUniqueZipCodes() {
+		
+		List<Location> locations = locationService.findAll();
+		List<String> duplicates = new ArrayList<>();
+		
+		
+		for (Location location : locations) {
+			duplicates.add(location.getZipCode());
+		}
+		List<String> zipCodes = givenListContainsDuplicates_whenRemovingDuplicatesWithJava8_thenCorrect(duplicates);
+		
+		List<ZipCodeDTO> dtos = new ArrayList<>();
+		for (String string : zipCodes) {
+			ZipCodeDTO dto = new ZipCodeDTO();
+			dto.setLabel(string);
+			dtos.add(dto);
+		}
+		
+		return new ResponseEntity<List<ZipCodeDTO>>(dtos, HttpStatus.OK);
+	}
+	
+	@RequestMapping(
+			value = "/cities",
+			method = RequestMethod.GET
+			)
+	public ResponseEntity<List<CityDTO>> getUniqueCities() {
+		
+		List<Location> locations = locationService.findAll();
+		List<String> duplicates = new ArrayList<>();
+		
+		
+		for (Location location : locations) {
+			duplicates.add(location.getCity());
+		}
+		List<String> cities = givenListContainsDuplicates_whenRemovingDuplicatesWithJava8_thenCorrect(duplicates);
+		
+		List<CityDTO> dtos = new ArrayList<>();
+		for (String string : cities) {
+			CityDTO dto = new CityDTO();
+			dto.setLabel(string);
+			dtos.add(dto);
+		}
+		
+		return new ResponseEntity<List<CityDTO>>(dtos, HttpStatus.OK);
+	}
+	
+	@RequestMapping(
+			value = "/blocks",
+			method = RequestMethod.GET
+			)
+	public ResponseEntity<List<BlockDTO>> getUniqueBlocks() {
+		
+		List<Location> locations = locationService.findAll();
+		List<String> duplicates = new ArrayList<>();
+		
+		
+		for (Location location : locations) {
+			duplicates.add(location.getBlock());
+		}
+		List<String> blocks = givenListContainsDuplicates_whenRemovingDuplicatesWithJava8_thenCorrect(duplicates);
+		
+		List<BlockDTO> dtos = new ArrayList<>();
+		for (String string : blocks) {
+			BlockDTO dto = new BlockDTO();
+			dto.setLabel(string);
+			dtos.add(dto);
+		}
+		
+		return new ResponseEntity<List<BlockDTO>>(dtos, HttpStatus.OK);
+	}
+	
+	@RequestMapping(
+			value = "/streets",
+			method = RequestMethod.GET
+			)
+	public ResponseEntity<List<StreetDTO>> getUniqueStreets() {
+		
+		List<Location> locations = locationService.findAll();
+		List<String> duplicates = new ArrayList<>();
+		
+		
+		for (Location location : locations) {
+			duplicates.add(location.getStreet());
+		}
+		List<String> streets = givenListContainsDuplicates_whenRemovingDuplicatesWithJava8_thenCorrect(duplicates);
+		
+		List<StreetDTO> dtos = new ArrayList<>();
+		for (String string : streets) {
+			StreetDTO dto = new StreetDTO();
+			dto.setLabel(string);
+			dtos.add(dto);
+		}
+		
+		return new ResponseEntity<List<StreetDTO>>(dtos, HttpStatus.OK);
+	}
+	
+	public List<String>  givenListContainsDuplicates_whenRemovingDuplicatesWithJava8_thenCorrect(List<String> labels) {
+	    List<String> listWithDuplicates = labels;
+	    List<String> listWithoutDuplicates = listWithDuplicates.stream()
+	     .distinct()
+	     .collect(Collectors.toList());
+	    
+	    return listWithoutDuplicates;
 	}
 	
 	

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import nvt.beans.AdvertisementType;
-import nvt.beans.Agent;
 import nvt.beans.HeatingType;
 import nvt.beans.Location;
 import nvt.beans.RealEstate;

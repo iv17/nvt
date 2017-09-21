@@ -21,22 +21,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import nvt.web.dto.LoginResponseDTO;
-import nvt.beans.AgentRating;
 import nvt.beans.RealEstate;
-import nvt.beans.RealEstateComment;
-import nvt.beans.RealEstateRating;
-import nvt.beans.RealEstateReport;
 import nvt.beans.User;
 import nvt.conf.TokenUtils;
 import nvt.repository.ImageRepository;
 import nvt.service.AgentRatingService;
 import nvt.service.UserService;
-import nvt.web.dto.AgentRatingDTO;
-import nvt.web.dto.RealEstateCommentDTO;
+import nvt.web.dto.LoginResponseDTO;
 import nvt.web.dto.RealEstateDTO;
-import nvt.web.dto.RealEstateRatingDTO;
-import nvt.web.dto.RealEstateReportDTO;
 import nvt.web.dto.UserDTO;
 
 @RestController
