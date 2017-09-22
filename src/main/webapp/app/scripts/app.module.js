@@ -61,8 +61,7 @@
 				url: "/login/:username/:password",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html',
-						controller: 'UserController'
+						templateUrl: 'app/views/navbar.html'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -80,8 +79,7 @@
 				url: "/logout",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html',
-						controller: 'UserController'
+						templateUrl: 'app/views/navbar.html'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -99,8 +97,7 @@
 				url: "/register/:name/:lastname/:email/:username/:password/:repeated_password",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html',
-						controller: 'UserController'
+						templateUrl: 'app/views/navbar.html'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -118,8 +115,7 @@
 				url: "/realEstate/:realEstateId",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html',
-						controller: 'UserController'
+						templateUrl: 'app/views/navbar.html'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'

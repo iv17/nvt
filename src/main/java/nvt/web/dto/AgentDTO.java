@@ -20,7 +20,7 @@ public class AgentDTO extends UserDTO {
 		name = agent.getName();
 		lastName = agent.getLastName();
 		phoneNumber = agent.getPhoneNumber();
-		loged = agent.isLoged();
+	
 		authenticated = agent.isAuthenticated();
 		//imageDTO = new ImageDTO(agent.getImage());
 		company = new CompanyDTO(agent.getCompany());

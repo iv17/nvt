@@ -42,7 +42,7 @@ public class UserDTO {
 		name = user.getName();
 		lastName = user.getLastName();
 		phoneNumber = user.getPhoneNumber();
-		loged = user.isLoged();
+	
 		authenticated = user.isAuthenticated();
 
 	}

@@ -51,11 +51,12 @@
                 <div class = "form-group">
                   <div class = "input-group">
                     <span class = "input-group-addon"><i class = "fa fa-key"></i></span>
-                    <input type = "password" name = "password2" ng-model = "password2" class = "form-control" placeholder = "repeat password">
+                    <input type = "password" name = "password2" ng-model = "repeated_password" class = "form-control" placeholder = "repeat password">
                   </div>
                 </div>
                 <div class = "text-center">
-                  <button type = "submit" class = "btn btn-primary">sign up <i class = "fa fa-sign-in"></i></button>
+                  <a ui-sref = "register({ name: name, lastname: lastname, email: email, username: username, password: password, repeated_password: repeated_password})" class = "btn btn-primary">sign up <i class = "fa fa-sign-in"></i></a>
+
                 </div>
               </form>
             </div>
@@ -79,7 +80,8 @@
                   </div>
                 </div>
                 <div class = "text-center">
-                  <button type = "submit" class = "btn btn-primary">sign in <i class = "fa fa-sign-in"></i></button>
+                  <a ui-sref = "login({ username: username, password: password})" class = "btn btn-primary">sign in <i class = "fa fa-sign-in"></i></a>
+
                 </div>
               </form>
             </div>

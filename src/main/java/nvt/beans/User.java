@@ -39,19 +39,16 @@ public class User implements Serializable {
 	@Column(name = "password", unique = false, nullable = false)
 	protected String password;
 	
-	@Column(name = "name", unique = false, nullable = false)
+	@Column(name = "name", unique = false, nullable = true)
 	protected String name;
 	
-	@Column(name = "last_name", unique = false, nullable = false)
+	@Column(name = "last_name", unique = false, nullable = true)
 	protected String lastName;
 	
-	@Column(name = "phone_number", unique = false, nullable = false)
+	@Column(name = "phone_number", unique = false, nullable = true)
 	protected String phoneNumber;
 	
-	@Column(name = "loged", unique = false, nullable = false)
-	private boolean loged;
-	
-	@Column(name = "authenticated", unique = false, nullable = false)
+	@Column(name = "authenticated", unique = false, nullable = true)
 	private boolean authenticated;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, mappedBy = "user") @JsonIgnore
@@ -100,26 +97,6 @@ public class User implements Serializable {
 		this.phoneNumber = phoneNumber;
 		this.images = images;
 		
-	}
-
-	
-	public User(int id, String email, String username, String password, String name, String lastName,
-			String phoneNumber, Set<Image> images, Set<AgentRating> agentRatings,
-			Set<RealEstateComment> comments, Set<RealEstateRating> ratings, Set<RealEstateReport> reports) {
-		this.id = id;
-		this.email = email;
-		this.username = username;
-		this.password = password;
-		this.name = name;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
-		this.loged = false;
-		this.authenticated = false;
-		this.images = images;
-		this.agentRatings = agentRatings;
-		this.comments = comments;
-		this.ratings = ratings;
-		this.reports = reports;
 	}
 
 	
@@ -180,14 +157,7 @@ public class User implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public boolean isLoged() {
-		return loged;
-	}
-
-	public void setLoged(boolean loged) {
-		this.loged = loged;
-	}
-
+	
 	public boolean isAuthenticated() {
 		return authenticated;
 	}

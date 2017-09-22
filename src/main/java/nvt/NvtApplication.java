@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import nvt.beans.AdvertisementType;
 import nvt.beans.Agent;
@@ -116,97 +117,54 @@ public class NvtApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... arg0) throws Exception {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-	
-		Image image11 = new Image("user1", "a");
-		imageRepository.save(image11);
-		Image image12 = new Image("user2", "a");
-		imageRepository.save(image12);
-		Set<Image> userImages = new HashSet<Image>();
-		userImages.add(image11);
-		userImages.add(image12);
-		Image image13 = new Image("user3", "a");
-		imageRepository.save(image13);
-		Image image14 = new Image("user4", "a");
-		imageRepository.save(image14);
-		Image image15 = new Image("user5", "a");
-		imageRepository.save(image15);
-		Image image16 = new Image("user6", "a");
-		imageRepository.save(image16);
-		Image image17 = new Image("user7", "a");
-		imageRepository.save(image17);
-		Image image18 = new Image("user8", "a");
-		imageRepository.save(image18);
-		Image image19 = new Image("user9", "a");
-		imageRepository.save(image19);
-		Image image20 = new Image("user10", "a");
-		imageRepository.save(image20);
 		
-		Image image31 = new Image("user1", "a");
-		imageRepository.save(image31);
-		Image image32 = new Image("user2", "a");
-		imageRepository.save(image32);
-		Image image33 = new Image("user3", "a");
-		imageRepository.save(image33);
-		Image image34 = new Image("user4", "a");
-		imageRepository.save(image34);
-		Image image35 = new Image("user5", "a");
-		imageRepository.save(image35);
-		Image image36 = new Image("user6", "a");
-		imageRepository.save(image36);
-		Image image37 = new Image("user7", "a");
-		imageRepository.save(image37);
-		Image image38 = new Image("user8", "a");
-		imageRepository.save(image38);
-		Image image39 = new Image("user9", "a");
-		imageRepository.save(image39);
-		Image image40 = new Image("user10", "a");
-		imageRepository.save(image40);
-		
-		User user1 = new User("ivana.unitedforce@gmail.com", "josh", "123", "Josh", "Duhamel", "065-123-456");
+
+			
+		User user1 = new User("ivana.unitedforce@gmail.com", "iv", encoder.encode(encoder.encode("123")), "Josh", "Duhamel", "065-123-456");
 		//userRepository.save(user1);
-		User user2 = new User("iva17.igodina@gmail.com", "matthew", "123", "Matthew", "McConaughey", "065-456-789");
+		User user2 = new User("iva17.igodina@gmail.com", "matthew", encoder.encode("123"), "Matthew", "McConaughey", "065-456-789");
 		//userRepository.save(user2);
-		User user3 = new User("iva17.iigodina@gmail.com", "bradley", "123", "Bradley", "Cooper", "065-789-123");
+		User user3 = new User("iva17.iigodina@gmail.com", "bradley", encoder.encode("123"), "Bradley", "Cooper", "065-789-123");
 		//userRepository.save(user3);
-		User user4 = new User("iva17.iiigodina@gmail.com", "leonardo", "123", "Leonardo", "DiCaprio", "063-123-456");
+		User user4 = new User("iva17.iiigodina@gmail.com", "leonardo", encoder.encode("123"), "Leonardo", "DiCaprio", "063-123-456");
 		//userRepository.save(user4);
-		User user5 = new User("blake.lively@gmail.com", "blake", "123", "Blake", "Lively", "063-456-789");
+		User user5 = new User("blake.lively@gmail.com", "blake", encoder.encode("123"), "Blake", "Lively", "063-456-789");
 		//userRepository.save(user5);
-		User user6 = new User("ryan.reynolds@gmail.com", "ryan", "123", "Ryan", "Reynolds", "063-789-123");
+		User user6 = new User("ryan.reynolds@gmail.com", "ryan", encoder.encode("123"), "Ryan", "Reynolds", "063-789-123");
 		//userRepository.save(user6);
-		User user7 = new User("jessica.alba@gmail.com", "jessica", "123", "Jessica", "Alba", "062-123-456");
+		User user7 = new User("jessica.alba@gmail.com", "jessica", encoder.encode("123"), "Jessica", "Alba", "062-123-456");
 		//userRepository.save(user7);
-		User user8 = new User("eva.mendes@gmail.com", "eva", "123", "Eva", "Mendes", "062-456-789");
+		User user8 = new User("eva.mendes@gmail.com", "eva", encoder.encode("123"), "Eva", "Mendes", "062-456-789");
 		//userRepository.save(user8);
-		User user9 = new User("jessica.alba@gmail.com", "jessica", "123", "Jessica", "Alba", "062-123-456");
+		User user9 = new User("jessica.alba@gmail.com", "jessica", encoder.encode("123"), "Jessica", "Alba", "062-123-456");
 		//userRepository.save(user9);
-		User user10 = new User("natalie.portman@gmail.com", "natalie", "123", "Natalie", "Portman", "062-456-789");
+		User user10 = new User("natalie.portman@gmail.com", "natalie", encoder.encode("123"), "Natalie", "Portman", "062-456-789");
 		//userRepository.save(user10);
 		
 		
 		
-		User user11 = new User("lars.ulrich@gmail.com", "lars", "123", "Lars", "Urlich", "061-123-456");
-		user11.setImages(userImages);
-		user11.setLoged(true);
+		User user11 = new User("lars.ulrich@gmail.com", "lars", encoder.encode("123"), "Lars", "Urlich", "061-123-456");
+	
 		userRepository.save(user11);
-		User user12 = new User("james.hatfield@gmail.com", "james", "123", "James", "Hatfield", "061-456-789");
+		User user12 = new User("james.hatfield@gmail.com", "james", encoder.encode("123"), "James", "Hatfield", "061-456-789");
 		userRepository.save(user12);
-		User user13 = new User("til.linderman@gmail.com", "til", "123", "Til", "Linderman", "061-789-123");
+		User user13 = new User("til.linderman@gmail.com", "til", encoder.encode("123"), "Til", "Linderman", "061-789-123");
 		userRepository.save(user13);
-		User user14 = new User("lily.aldridge@gmail.com", "lily", "123", "Lily", "Aldridge", "060-123-456");
+		User user14 = new User("lily.aldridge@gmail.com", "lily", encoder.encode("123"), "Lily", "Aldridge", "060-123-456");
 		userRepository.save(user14);
-		User user15 = new User("alessandra.ambrosio@gmail.com", "alessandra", "123", "Alessandra", "Ambrosio", "060-456-789");
+		User user15 = new User("alessandra.ambrosio@gmail.com", "alessandra", encoder.encode("123"), "Alessandra", "Ambrosio", "060-456-789");
 		userRepository.save(user15);
-		User user16 = new User("tyra.banks@gmail.com", "tyra", "123", "Tyra", "Banks", "060-789-123");
+		User user16 = new User("tyra.banks@gmail.com", "tyra", encoder.encode("123"), "Tyra", "Banks", "060-789-123");
 		userRepository.save(user16);
-		User user17 = new User("stella.maxwell@gmail.com", "jessica", "123", "Jessica", "Alba", "066-123-456");
+		User user17 = new User("stella.maxwell@gmail.com", "jessica", encoder.encode("123"), "Jessica", "Alba", "066-123-456");
 		userRepository.save(user17);
-		User user18 = new User("behati.prinslo@gmail.com", "behati", "123", "Behati", "Prinslo", "066-456-789");
+		User user18 = new User("behati.prinslo@gmail.com", "behati", encoder.encode("123"), "Behati", "Prinslo", "066-456-789");
 		userRepository.save(user18);
-		User user19 = new User("martha.hunt@gmail.com", "martha", "123", "Martha", "Hunt", "069-123-456");
+		User user19 = new User("martha.hunt@gmail.com", "martha", encoder.encode("123"), "Martha", "Hunt", "069-123-456");
 		userRepository.save(user19);
-		User user20 = new User("romee.strijd@gmail.com", "romee", "123", "Romee", "Strijd", "069-456-789");
+		User user20 = new User("romee.strijd@gmail.com", "romee", encoder.encode("123"), "Romee", "Strijd", "069-456-789");
 		userRepository.save(user20);
 		
 		Location location1 = new Location(44.8023505, 20.4719586, "Beograd", "Vračar", "Krunska", "11000");
@@ -246,22 +204,8 @@ public class NvtApplication implements CommandLineRunner {
 		WorkingTime workingTime1 = new WorkingTime("09.00", "18.0", "Zatvoreno", "Zatvoreno");
 		workingTimeRepository.save(workingTime1);
 		
-		Image image26 = new Image("company1", "a");
-		imageRepository.save(image26);
-		Image image27 = new Image("company2", "a");
-		imageRepository.save(image27);
-		Image image28 = new Image("company3", "a");
-		imageRepository.save(image28);
-		Image image29 = new Image("company4", "a");
-		imageRepository.save(image29);
-		Image image30 = new Image("user5", "a");
-		imageRepository.save(image30);
 		
-		Set<Image> companyImages = new HashSet<Image>();
-		companyImages.add(image26);
-		companyImages.add(image27);
 		Company company1 = new Company("001", "BEST REAL ESTATE", "company", "063-282-558", "www.bestrealestate.rs", location11, workingTime1);
-		company1.setImages(companyImages);
 		companyRepository.save(company1);
 		Company company2 = new Company("002", "MENTOR REAL ESTATE BELGRADE", "company", "011-30-89-080", "m", location12, workingTime1);
 		companyRepository.save(company2);
@@ -375,56 +319,29 @@ public class NvtApplication implements CommandLineRunner {
 		AdvertisementType advertisementType2 = new AdvertisementType("RENT");
 		advertisementTypeRepository.save(advertisementType2);
 		
-		Image image1 = new Image("house1", "1");
-		imageRepository.save(image1);
-		Image image2 = new Image("house2", "1");
-		imageRepository.save(image2);
-		Image image3 = new Image("house3", "1");
-		imageRepository.save(image3);
-		Image image4 = new Image("house4", "1");
-		imageRepository.save(image4);
-		Image image5 = new Image("house5", "1");
-		imageRepository.save(image5);
-		Set<Image> images = new HashSet<Image>();
-		images.add(image1);
-		images.add(image2);
-		images.add(image3);
-		images.add(image4);
-		images.add(image5);
-		
 		RealEstate realEstate1 = new RealEstate("naziv1..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 500.0, 50.0, 2, 1, 1, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
-		realEstate1.setImages(images);
+		
 		realEstateRepository.save(realEstate1);
 		RealEstate realEstate2 = new RealEstate("naziv2..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 1500.0, 150.0, 2, 5, 2, 2015, true, true, location2, realEstateType3, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
+	
 		realEstateRepository.save(realEstate2);
 		RealEstate realEstate3 = new RealEstate("naziv3..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 5000.0, 300.0, 3, 7, 2, 2015, true, true, location3, realEstateType4, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
+		
 		realEstateRepository.save(realEstate3);
 
-		
-		
-		Image image6 = new Image("house6", "1", realEstate2);
-		imageRepository.save(image6);
-		Image image7 = new Image("house7", "1", realEstate2);
-		imageRepository.save(image7);
-		Image image8 = new Image("house8", "1", realEstate2);
-		imageRepository.save(image8);
-		Image image9 = new Image("house9", "1", realEstate2);
-		imageRepository.save(image9);
-		Image image10 = new Image("house10", "1", realEstate2);
-		imageRepository.save(image10);
+		Image image1 = new Image("home.jpg", "app/images/home.jpg".getBytes(), "image/jpeg");
+		image1.setRealEstate(realEstate3);
+		imageRepository.save(image1);
+		Image image2 = new Image("home.jpg", "app/images/home.jpg".getBytes(), "image/jpeg");
+		image2.setRealEstate(realEstate2);
+		imageRepository.save(image2);
+		Image image3 = new Image("home.jpg", "app/images/home.jpg".getBytes(), "image/jpeg");
+		image3.setRealEstate(realEstate1);
+		imageRepository.save(image3);
+		Image image4 = new Image("home.jpg", "app/images/home.jpg".getBytes(), "image/jpeg");
+		imageRepository.save(image4);
+	
 
-		
-		Image image21 = new Image("house11", "1", realEstate3);
-		imageRepository.save(image21);
-		Image image22 = new Image("house12", "1", realEstate3);
-		imageRepository.save(image22);
-		Image image23 = new Image("house13", "1", realEstate3);
-		imageRepository.save(image23);
-		Image image24 = new Image("house14", "1", realEstate3);
-		imageRepository.save(image24);
-		Image image25 = new Image("house15", "1", realEstate3);
-		imageRepository.save(image25);
-		
 	
 		RealEstateIndoors realEstateIndoors = new RealEstateIndoors(realEstate1, indoorFeature1);
 		realEstateIndoorsRepository.save(realEstateIndoors);

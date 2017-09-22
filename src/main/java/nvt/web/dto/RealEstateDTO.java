@@ -35,6 +35,7 @@ public class RealEstateDTO {
 	private boolean verified;
 	private UserDTO user;
 	private AdvertisementTypeDTO advertisementType;
+	private ImageDTO image; 
 	private Set<ImageDTO> images; 
 	private Set<RealEstateCommentDTO> comments;
 	private Set<RealEstateRatingDTO> ratings;
@@ -43,69 +44,6 @@ public class RealEstateDTO {
 	private Set<RealEstateOutdoorsDTO> outdoors;
 
 
-	public RealEstateCommentDTO toDTO(RealEstateComment realEstateComment) {
-		RealEstateCommentDTO realEstateCommentDTO = new RealEstateCommentDTO();
-		
-		realEstateCommentDTO.setId(realEstateComment.getId());
-		realEstateCommentDTO.setComment(realEstateComment.getComment());
-		realEstateCommentDTO.setPosted(realEstateComment.getPosted());
-		realEstateCommentDTO.setUser(new UserDTO(realEstateComment.getUser()));
-		//realEstateCommentDTO.setRealEstate(new RealEstateDTO(realEstateComment.getRealEstate()));
-		
-		return realEstateCommentDTO;
-	}
-	
-	public RealEstateRatingDTO toDTO(RealEstateRating realEstateRating) {
-		RealEstateRatingDTO realEstateRatingDTO = new RealEstateRatingDTO();
-		
-		realEstateRatingDTO.setId(realEstateRating.getId());
-		realEstateRatingDTO.setRate(realEstateRating.getRate());
-		realEstateRatingDTO.setPosted(realEstateRating.getPosted());
-		realEstateRatingDTO.setUser(new UserDTO(realEstateRating.getUser()));
-		//realEstateRatingDTO.setRealEstate(this);
-		
-		return realEstateRatingDTO;
-	}
-	
-	public RealEstateReportDTO toDTO(RealEstateReport realEstateReport) {
-		RealEstateReportDTO realEstateReportDTO = new RealEstateReportDTO();
-		
-		realEstateReportDTO.setId(realEstateReport.getId());
-		realEstateReportDTO.setReport(realEstateReport.getReport());
-		realEstateReportDTO.setPosted(realEstateReport.getPosted());
-		realEstateReportDTO.setUser( new UserDTO(realEstateReport.getUser()));
-		//realEstateReportDTO.setRealEstate(this);
-		
-		return realEstateReportDTO;
-	}
-	
-	public RealEstateIndoorsDTO toDTO(RealEstateIndoors indoors) {
-		RealEstateIndoorsDTO realEstateIndoorsDTO = new RealEstateIndoorsDTO();
-		
-		realEstateIndoorsDTO.setId(indoors.getId());
-		realEstateIndoorsDTO.setIndoorFeature(new IndoorFeatureDTO(indoors.getIndoorFeature()));
-		
-		return realEstateIndoorsDTO;
-	}
-	
-	public RealEstateOutdoorsDTO toDTO(RealEstateOutdoors outdoors) {
-		RealEstateOutdoorsDTO realEstateOudoorsDTO = new RealEstateOutdoorsDTO();
-		
-		realEstateOudoorsDTO.setId(outdoors.getId());
-		realEstateOudoorsDTO.setOutdoorFeature(new OutdoorFeatureDTO(outdoors.getOutdoorFeature()));
-		
-		return realEstateOudoorsDTO;
-	}
-	
-	public ImageDTO toDTO(Image image) {
-		ImageDTO imageDTO = new ImageDTO();
-		
-		imageDTO.setId(image.getId());
-		imageDTO.setName(image.getName());
-		imageDTO.setFile(image.getFile());
-		
-		return imageDTO;
-	}
 	
 	public RealEstateDTO() {
 		
@@ -135,41 +73,13 @@ public class RealEstateDTO {
 		user = new UserDTO(realEstate.getUser());
 		advertisementType = new AdvertisementTypeDTO(realEstate.getAdvertisementType());
 		
-		comments = new HashSet<RealEstateCommentDTO>();
-		for (RealEstateComment realEstateComment : realEstate.getComments()) {
-			RealEstateCommentDTO realEstateCommentDTO = toDTO(realEstateComment);
-			comments.add(realEstateCommentDTO);
+		Set<Image> im = realEstate.getImages();
+	
+		for (Image i : im) {
+			image = new ImageDTO(i);
+			
 		}
 		
-		ratings = new HashSet<RealEstateRatingDTO>();
-		for (RealEstateRating realEstateRating : realEstate.getRatings()) {
-			RealEstateRatingDTO realEstateRatingDTO = toDTO(realEstateRating);
-			ratings.add(realEstateRatingDTO);
-		}
-		
-		reports = new HashSet<RealEstateReportDTO>();
-		for (RealEstateReport realEstateReport : realEstate.getReports()) {
-			RealEstateReportDTO realEstateReportDTO = toDTO(realEstateReport);
-			reports.add(realEstateReportDTO);
-		}
-		
-		indoors = new HashSet<RealEstateIndoorsDTO>();
-		for(RealEstateIndoors realEstateIndoors : realEstate.getIndoors()) {
-			RealEstateIndoorsDTO realEstateIndoorsDTO = toDTO(realEstateIndoors);
-			indoors.add(realEstateIndoorsDTO);
-		}
-		
-		outdoors = new HashSet<RealEstateOutdoorsDTO>();
-		for(RealEstateOutdoors realEstateOutdoors : realEstate.getOutdoors()) {
-			RealEstateOutdoorsDTO realEstateOutdoorsDTO = toDTO(realEstateOutdoors);
-			outdoors.add(realEstateOutdoorsDTO);
-		}
-		
-		images = new HashSet<ImageDTO>();
-		for (Image image : realEstate.getImages()) {
-			ImageDTO imageDTO = toDTO(image);
-			images.add(imageDTO);
-		}
 	}
 
 
@@ -389,6 +299,14 @@ public class RealEstateDTO {
 
 	public void setReports(Set<RealEstateReportDTO> reports) {
 		this.reports = reports;
+	}
+
+	public ImageDTO getImage() {
+		return image;
+	}
+
+	public void setImage(ImageDTO image) {
+		this.image = image;
 	}
 	
 	

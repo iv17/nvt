@@ -22,14 +22,17 @@ public class Image implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false , unique = true)
-	private int id;
+	private int id;	
 	
 	@Column(name = "name", unique = false, nullable = true)
 	private String name;
 	
-	@Column(name = "file", unique = false, nullable = true)
-	private String file;
+	@Column(name = "file", unique = false, nullable = true, columnDefinition = "LONGTEXT")
+	private byte [] file;
 	
+	@Column(name = "mimeType", unique = false, nullable = true)
+	private String mimeType;
+
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
 	@JoinColumn(name = "realestate_id", referencedColumnName = "id", nullable = true)
 	private RealEstate realEstate;
@@ -45,41 +48,16 @@ public class Image implements Serializable {
 	
 	public Image() { }
 
-	public Image(String name, String file) {
+	public Image(String name, byte [] file) {
 		this.name = name;
 		this.file = file;
 	}
 
-	
-	public Image(String name, String file, RealEstate realEstate) {
+	public Image(String name, byte [] file, String mimeType) {
 		this.name = name;
 		this.file = file;
-		this.realEstate = realEstate;
+		this.mimeType = mimeType;
 	}
-	
-
-	public Image(String name, String file, User user) {
-		this.name = name;
-		this.file = file;
-		this.user = user;
-	}
-
-
-	public Image(String name, String file, Company company) {
-		this.name = name;
-		this.file = file;
-		this.company = company;
-	}
-	
-	
-	public Image(int id, String name, String file, RealEstate realEstate) {
-		this.id = id;
-		this.name = name;
-		this.file = file;
-		this.realEstate = realEstate;
-	}
-
-
 	public int getId() {
 		return id;
 	}
@@ -96,12 +74,20 @@ public class Image implements Serializable {
 		this.name = name;
 	}
 
-	public String getFile() {
+	public byte[] getFile() {
 		return file;
 	}
 
-	public void setFile(String file) {
+	public void setFile(byte[] file) {
 		this.file = file;
+	}
+
+	public String getMimeType() {
+		return mimeType;
+	}
+
+	public void setMimeType(String mimeType) {
+		this.mimeType = mimeType;
 	}
 
 	public RealEstate getRealEstate() {

@@ -71,8 +71,7 @@ public class UserController {
 		if (userService.findByUsername(userDTO.getUsername()) == null
 				|| userService.findByEmail(userDTO.getEmail()) == null) {
 
-			System.out.println(userDTO.getPassword());
-			System.out.println(userDTO.getRepeated_password());
+			
 			if (userDTO.getPassword().equals(userDTO.getRepeated_password())) {
 
 				user.setName(userDTO.getName());
