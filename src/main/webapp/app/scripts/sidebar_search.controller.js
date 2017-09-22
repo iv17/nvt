@@ -112,6 +112,14 @@
 		$scope.selectedCities= [];
 		$scope.selectedBlocks = [];
 		$scope.selectedStreets = [];
+
+
+		$scope.button = {
+				smartButtonMaxItems: 3,
+				smartButtonTextConverter: function(itemText, originalItem) {
+					return itemText;
+				}
+		};
 	}
 	]);
 })();

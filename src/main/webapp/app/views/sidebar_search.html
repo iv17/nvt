@@ -1,124 +1,128 @@
-    <div data-scrollable>
-      <div class = "category">zip code </div>
-      <div class = "sidebar-block equal-padding">
-        <div class = "form-group input-group margin-none">
-          <div ng-dropdown-multiselect="" options="zipCodeLabels" selected-model="selectedZipCodes"></div>
-        </div>
-      </div>
-      <div class = "category">city </div>
-      <div class = "sidebar-block equal-padding">
-        <div class = "form-group input-group margin-none">
-          <div ng-dropdown-multiselect="" options="cityLabels" selected-model="selectedCities"></div>
-        </div>
-      </div>
-      <div class = "category">block </div>
-      <div class = "sidebar-block equal-padding">
-        <div class = "form-group input-group margin-none">
-          <div ng-dropdown-multiselect="" options="blockLabels" selected-model="selectedBlocks"></div>
-        </div>
-      </div>
-      <div class = "category">street </div>
-      <div class = "sidebar-block equal-padding">
-        <div class = "form-group input-group margin-none">
-          <div ng-dropdown-multiselect="" options="streetLabels" selected-model="selectedStreets"></div>
-        </div>
-      </div>
-      <div class = "category">advertisement type</div>
-      <div class = "sidebar-block equal-padding">
-        <div class = "form-group input-group margin-none">
-          <div ng-dropdown-multiselect="" options="advertisemntTypeLabels" selected-model="selectedAdvertisementTypes"></div>
-        </div>
-      </div>
-      <div class = "category">realestate type</div>
-      <div class = "sidebar-block equal-padding">
-        <div class = "row margin-none">
-          <div class = "form-group input-group margin-none">
-            <div ng-dropdown-multiselect="" options="realEstateTypeLabels" selected-model="selectedRealEstateTypes"></div>
-          </div>
-        </div>
-      </div>
-      <div class = "category">price</div>
-      <div class = "sidebar-block">
-        <div class = "form-group input-group margin-none">
-          <div class = "row margin-none">
-            <div class = "col-xs-6 padding-none">
-              <input class = "form-control" type = "text" placeholder = "min .." ng-model="minPrice">
-            </div>
-            <div class ="col-xs-6 padding-none">
-              <input class = "form-control" type = "text" placeholder = "max .." ng-model="maxPrice">
-            </div>
-          </div>
-          <div class = "input-group-btn">
-            <button type = "button" class = "btn btn-primary"><i class = "fa fa-search"></i></button>
-          </div>
-        </div>
-      </div>
-      <div class = "category">surface</div>
-      <div class = "sidebar-block">
 
-        <div class = "form-group input-group margin-none">
-          <div class = "row margin-none">
-            <div class = "col-xs-6 padding-none">
-              <input class = "form-control" type = "text" placeholder = "min .." ng-model="minSurface">
-            </div>
-            <div class ="col-xs-6 padding-none">
-              <input class = "form-control" type = "text" placeholder = "max .." ng-model="maxSurface">
-            </div>
-          </div>
-          <div class = "input-group-btn">
-            <button type = "button" class = "btn btn-primary"><i class = "fa fa-search"></i></button>
-          </div>
-        </div>
-      </div>
-      <div class = "category">floor</div>
-      <div class = "sidebar-block">
+<div data-scrollable>
+	<div class="category">zip code</div>
+	<div class="sidebar-block equal-padding">
+		<div ng-dropdown-multiselect="" options="zipCodeLabels"
+			selected-model="selectedZipCodes" extra-settings="button"></div>
+	</div>
+	<div class="category">city</div>
+	<div class="sidebar-block equal-padding">
+		<div ng-dropdown-multiselect="" options="cityLabels"
+			selected-model="selectedCities" extra-settings="button"></div>
+	</div>
+	<div class="category">block</div>
+	<div class="sidebar-block equal-padding">
+		<div ng-dropdown-multiselect="" options="blockLabels"
+			selected-model="selectedBlocks" extra-settings="button"></div>
+	</div>
+	<div class="category">advertisement type</div>
+	<div class="sidebar-block equal-padding">
+		<div ng-dropdown-multiselect="" options="advertisemntTypeLabels"
+			selected-model="selectedAdvertisementTypes" extra-settings="button"></div>
+	</div>
+	<div class="category">realestate type</div>
+	<div class="sidebar-block">
+		<div ng-dropdown-multiselect="" options="realEstateTypeLabels"
+			selected-model="selectedRealEstateTypes" extra-settings="button"></div>
+	</div>
+	<div class="category">price</div>
+	<div class="sidebar-block">
+		<div class="form-group input-group margin-none">
+			<div class="row margin-none">
+				<div class="col-xs-6 padding-none">
+					<input class="form-control" type="text" placeholder="min .."
+						ng-model="minPrice">
+				</div>
+				<div class="col-xs-6 padding-none">
+					<input class="form-control" type="text" placeholder="max .."
+						ng-model="maxPrice">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="category">surface</div>
+	<div class="sidebar-block">
+		<div class="form-group input-group margin-none">
+			<div class="row margin-none">
+				<div class="col-xs-6 padding-none">
+					<input class="form-control" type="text" placeholder="min .."
+						ng-model="minSurface">
+				</div>
+				<div class="col-xs-6 padding-none">
+					<input class="form-control" type="text" placeholder="max .."
+						ng-model="maxSurface">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="category">floor</div>
+	<div class="sidebar-block">
+		<div class="form-group input-group margin-none">
+			<div class="row margin-none">
+				<div class="col-xs-6 padding-none">
+					<input class="form-control" type="text" placeholder="min .."
+						ng-model="minFloor">
+				</div>
+				<div class="col-xs-6 padding-none">
+					<input class="form-control" type="text" placeholder="max .."
+						ng-model="maxFloor">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="category">rooms</div>
+	<div class="sidebar-block">
+		<div class="form-group input-group margin-none">
+			<div class="row margin-none">
+				<div class="col-xs-6 padding-none">
+					<input class="form-control" type="text" placeholder="min .."
+						ng-model="minRooms">
+				</div>
+				<div class="col-xs-6 padding-none">
+					<input class="form-control" type="text" placeholder="max .."
+						ng-model="maxRooms">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="category">bathrooms</div>
+	<div class="sidebar-block">
+		<div class="form-group input-group margin-none">
+			<div class="row margin-none">
+				<div class="col-xs-6 padding-none">
+					<input class="form-control" type="text" placeholder="min .."
+						ng-model="minBathrooms">
+				</div>
+				<div class="col-xs-6 padding-none">
+					<input class="form-control" type="text" placeholder="max .."
+						ng-model="maxBathrooms">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="category"></div>
+	<div class="sidebar-block">
+		<div class="form-group input-group margin-none">
+			<div class="row margin-none">
 
-        <div class = "form-group input-group margin-none">
-          <div class = "row margin-none">
-            <div class = "col-xs-6 padding-none">
-              <input class = "form-control" type = "text" placeholder = "min .." ng-model="minFloor">
-            </div>
-            <div class ="col-xs-6 padding-none">
-              <input class = "form-control" type = "text" placeholder = "max .." ng-model="maxFloor">
-            </div>
-          </div>
-          <div class = "input-group-btn">
-            <button type = "button" class = "btn btn-primary"><i class = "fa fa-search"></i></button>
-          </div>
-        </div>
-      </div>
-      <div class = "category">rooms</div>
-      <div class = "sidebar-block">
+				<a
+					ui-sref="search({
+              search: {
+              selectedZipCodes: selectedZipCodes,
+              selectedCities: selectedCities,
+              selectedBlocks: selectedBlocks,
+              selectedAdvertisementTypes: selectedAdvertisementTypes,
+              selectedRealEstateTypes: selectedRealEstateTypes,
+              minPrice: minPrice,
+              maxPrice: maxPrice,
+              minSurface: minSurface,
+              maxSurface: maxSurface
+            }
 
-        <div class = "form-group input-group margin-none">
-          <div class = "row margin-none">
-            <div class = "col-xs-6 padding-none">
-              <input class = "form-control" type = "text" placeholder = "min .." ng-model="minRooms">
-            </div>
-            <div class ="col-xs-6 padding-none">
-              <input class = "form-control" type = "text" placeholder = "max .." ng-model="maxRooms">
-            </div>
-          </div>
-          <div class = "input-group-btn">
-            <button type = "button" class = "btn btn-primary"><i class = "fa fa-search"></i></button>
-          </div>
-        </div>
-      </div>
-      <div class = "category">bathrooms</div>
-      <div class = "sidebar-block">
-
-        <div class = "form-group input-group margin-none">
-          <div class = "row margin-none">
-            <div class = "col-xs-6 padding-none">
-              <input class = "form-control" type = "text" placeholder = "min .." ng-model="minBathrooms">
-            </div>
-            <div class ="col-xs-6 padding-none">
-              <input class = "form-control" type = "text" placeholder = "max .." ng-model="maxBathrooms">
-            </div>
-          </div>
-          <div class = "input-group-btn">
-            <button type = "button" class = "btn btn-primary"><i class = "fa fa-search"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
+            })"
+					class="btn btn btn-primary">Search &nbsp;<i
+					class="fa fa-search"></i></a>
+			</div>
+		</div>
+	</div>
+</div>

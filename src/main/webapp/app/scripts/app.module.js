@@ -37,6 +37,26 @@
 					}
 				}
 			})
+			.state('search', {
+				url: "/search/{search: json}",
+				params: {search : null},
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+						templateUrl: 'app/views/sidebar_search.html',
+						controller: 'SidebarSearchController'
+					},
+					'content@': {
+						templateUrl: 'app/views/content/realEstatesList.html',
+						controller: 'SearchController'
+					}
+				}
+			})
 			.state('login', {
 				url: "/login/:username/:password",
 				views: {
@@ -113,7 +133,6 @@
 						controller: 'RealEstateController'
 					}
 				}
-
 			});
 		}])
 		// run se izvrsava pre svega ostalog
