@@ -27,5 +27,11 @@ public class ZipCodeDTO {
 	public void setLabel(String label) {
 		this.label = label;
 	}
+
+	@Override
+	public String toString() {
+		return "ZipCodeDTO [id=" + id + ", label=" + label + "]";
+	}
+	
 	
 }

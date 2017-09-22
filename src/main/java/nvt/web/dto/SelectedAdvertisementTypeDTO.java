@@ -1,16 +1,16 @@
 package nvt.web.dto;
 
-public class CityDTO {
+public class SelectedAdvertisementTypeDTO {
 
 	private int id;
 	private String label;
 	
 	
-	public CityDTO() {
+	public SelectedAdvertisementTypeDTO() {
 	
 	}
 	
-	public CityDTO(int id, String label) {
+	public SelectedAdvertisementTypeDTO(int id, String label) {
 		this.id = id;
 		this.label = label;
 	}
@@ -30,7 +30,7 @@ public class CityDTO {
 
 	@Override
 	public String toString() {
-		return "CityDTO [id=" + id + ", label=" + label + "]";
+		return "SelectedAdvertisementTypeDTO [id=" + id + ", label=" + label + "]";
 	}
 	
 	

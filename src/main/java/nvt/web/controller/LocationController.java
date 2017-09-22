@@ -76,6 +76,7 @@ public class LocationController {
 		List<ZipCodeDTO> dtos = new ArrayList<>();
 		for (String string : zipCodes) {
 			ZipCodeDTO dto = new ZipCodeDTO();
+			dto.setId(locationService.findByZipCode(string).get(0).getId());
 			dto.setLabel(string);
 			dtos.add(dto);
 		}
@@ -101,6 +102,7 @@ public class LocationController {
 		List<CityDTO> dtos = new ArrayList<>();
 		for (String string : cities) {
 			CityDTO dto = new CityDTO();
+			dto.setId(locationService.findByCity(string).get(0).getId());
 			dto.setLabel(string);
 			dtos.add(dto);
 		}
@@ -126,6 +128,7 @@ public class LocationController {
 		List<BlockDTO> dtos = new ArrayList<>();
 		for (String string : blocks) {
 			BlockDTO dto = new BlockDTO();
+			dto.setId(locationService.findByBlock(string).get(0).getId());
 			dto.setLabel(string);
 			dtos.add(dto);
 		}

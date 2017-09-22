@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,10 +33,16 @@ import nvt.service.RealEstateRatingService;
 import nvt.service.RealEstateReportService;
 import nvt.service.RealEstateService;
 import nvt.service.RealEstateTypeService;
+import nvt.web.dto.BlockDTO;
+import nvt.web.dto.CityDTO;
 import nvt.web.dto.RealEstateCommentDTO;
 import nvt.web.dto.RealEstateDTO;
 import nvt.web.dto.RealEstateRatingDTO;
 import nvt.web.dto.RealEstateReportDTO;
+import nvt.web.dto.SearchDTO;
+import nvt.web.dto.SelectedAdvertisementTypeDTO;
+import nvt.web.dto.SelectedRealEstateTypeDTO;
+import nvt.web.dto.ZipCodeDTO;
 
 @RestController
 @RequestMapping(value = "api/realEstates")
@@ -75,7 +82,71 @@ public class RealEstateController {
 	protected OutdoorFeatureService outdoorFeatureService;
 	
 	
-	
+	@RequestMapping(
+			value = "/search",
+			method = RequestMethod.POST
+			)
+	public ResponseEntity<List<RealEstateDTO>> searchByUsername(@RequestBody SearchDTO searchDTO) {
+
+		System.out.println(searchDTO.getSelectedZipCodes());
+		System.out.println(searchDTO.getSelectedCities());
+		System.out.println(searchDTO.getSelectedBlocks());
+		System.out.println(searchDTO.getSelectedAdvertisementTypes());
+		System.out.println(searchDTO.getSelectedRealEstateTypes());
+		//SKIDANJE PARAMETARA
+		ArrayList<ZipCodeDTO> selectedZipCodes;
+		ArrayList<CityDTO> selectedCities;
+		ArrayList<BlockDTO> selectedBlocks;
+		ArrayList<SelectedAdvertisementTypeDTO> selectedAdvertisementTypes;
+		ArrayList<SelectedRealEstateTypeDTO> selectedRealEstateTypes;
+		
+		int minPrice;
+		int maxPrice;
+		int minSurface;
+		int maxSurface;
+		
+		if(searchDTO.getSelectedZipCodes() != null) {
+			selectedZipCodes = searchDTO.getSelectedZipCodes();
+			for (ZipCodeDTO dto : selectedZipCodes) {
+				System.out.println(dto.toString());
+			}
+		}
+		if(searchDTO.getSelectedCities() != null) {
+			selectedCities = searchDTO.getSelectedCities();
+			for (CityDTO dto : selectedCities) {
+				System.out.println(dto.toString());
+			}
+		}
+		if(searchDTO.getSelectedBlocks() != null) {
+			selectedBlocks = searchDTO.getSelectedBlocks();
+			for (BlockDTO dto : selectedBlocks) {
+				System.out.println(dto.toString());
+			}
+		}
+		if(searchDTO.getSelectedAdvertisementTypes() != null) {
+			selectedAdvertisementTypes = searchDTO.getSelectedAdvertisementTypes();
+			for (SelectedAdvertisementTypeDTO dto : selectedAdvertisementTypes) {
+				System.out.println(dto.toString());
+			}
+		}
+		if(searchDTO.getSelectedRealEstateTypes() != null) {
+			selectedRealEstateTypes = searchDTO.getSelectedRealEstateTypes();
+			for (SelectedRealEstateTypeDTO dto : selectedRealEstateTypes) {
+				System.out.println(dto.toString());
+			}
+		}
+		if(searchDTO.getMinPrice() != -1) { minPrice = searchDTO.getMinPrice(); }
+		if(searchDTO.getMaxPrice() != -1) { maxPrice = searchDTO.getMaxPrice(); }
+		if(searchDTO.getMinSurface() != -1) { minSurface = searchDTO.getMinSurface(); }
+		if(searchDTO.getMaxSurface() != -1) { maxSurface = searchDTO.getMinSurface(); }
+
+		
+		List<RealEstate> realEstates = realEstateService.findAll();
+		List<RealEstateDTO> realEstatesDTO = null;
+		return new ResponseEntity<List<RealEstateDTO>>(realEstatesDTO, HttpStatus.OK);
+
+	}
+
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<RealEstateDTO> createRealEstate(@RequestBody RealEstateDTO realEstateDTO) {
@@ -288,44 +359,6 @@ public class RealEstateController {
 	}
 
 
-	@RequestMapping(value = "/location/{city}", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateDTO>> findByCity(@PathVariable String city) {
-	
-		List<Location> locations = locationService.findByCity(city);
-	
-		List<RealEstate> realEstates = findByLocations(locations);
-	
-		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
-	
-		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
-	}
-
-
-	@RequestMapping(value = "/location/{block}", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateDTO>> findByBlock(@PathVariable String block) {
-	
-		List<Location> locations = locationService.findByBlock(block);
-	
-		List<RealEstate> realEstates = findByLocations(locations);
-	
-		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
-	
-		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
-	}
-
-
-	@RequestMapping(value = "/location/{street}", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateDTO>> findByStreet(@PathVariable String street) {
-	
-		List<Location> locations = locationService.findByStreet(street);
-	
-		List<RealEstate> realEstates = findByLocations(locations);
-	
-		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
-	
-		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
-	}
-
 
 	/*
 	 * PRETRAGE
@@ -347,31 +380,4 @@ public class RealEstateController {
 	}
 
 
-	/*
-	 * PRETRAGE
-	 */
-	
-	@RequestMapping(value = "/location/{zipCode}", method = RequestMethod.GET)
-	public ResponseEntity<List<RealEstateDTO>> findByZipCode(@PathVariable String zipCode) {
-	
-		List<Location> locations = locationService.findByZipCode(zipCode);
-	
-		List<RealEstate> realEstates = findByLocations(locations);
-	
-		List<RealEstateDTO> realEstateDTOs = realEstates2realEsateDTOs(realEstates);
-	
-		return new ResponseEntity<List<RealEstateDTO>>(realEstateDTOs, HttpStatus.OK);
-	}
-
-
-	public List<RealEstate> findByLocations(List<Location> locations) {
-
-		List<RealEstate> realEstates = new ArrayList<RealEstate>();
-		for (Location location : locations) {
-			List<RealEstate> tempRealEstates = realEstateService.findByLocation(location);
-			realEstates.addAll(tempRealEstates);
-		}
-
-		return realEstates;
-	}
 }

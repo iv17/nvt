@@ -27,6 +27,11 @@ public class BlockDTO {
 	public void setLabel(String label) {
 		this.label = label;
 	}
+
+	@Override
+	public String toString() {
+		return "BlockDTO [id=" + id + ", label=" + label + "]";
+	}
 	
 	
 }

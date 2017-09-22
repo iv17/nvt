@@ -69,7 +69,7 @@
 
 			for(var i=0; i< locations.length; i++) {
 				var block = { 'id': locations[i].id, 'label': locations[i].label };
-
+				$log.log(block);
 				blockLabels.push(block);
 
 			}
@@ -83,7 +83,7 @@
 
 			for(var i=0; i< locations.length; i++) {
 				var street = { 'id': locations[i].id, 'label': locations[i].label };
-
+				$log.log(street);
 				streetLabels.push(street);
 
 			}

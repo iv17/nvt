@@ -26,6 +26,12 @@
 			});
 		};	//kraj funkcije getRealEstate
 
+		retVal.search = function(search)	{
+			return Restangular.all("realEstates/search").post(search).then(function(response) {
+				return response;
+			});
+		};
+
 		return retVal;
 	}]);	//kraj Restangular-a
 
