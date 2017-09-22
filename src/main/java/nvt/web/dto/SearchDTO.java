@@ -11,10 +11,10 @@ public class SearchDTO {
 	private ArrayList<SelectedAdvertisementTypeDTO> selectedAdvertisementTypes;
 	private ArrayList<SelectedRealEstateTypeDTO> selectedRealEstateTypes;
 	
-	private int minPrice;
-	private int maxPrice;
-	private int minSurface;
-	private int maxSurface;
+	private double minPrice;
+	private double maxPrice;
+	private double minSurface;
+	private double maxSurface;
 	
 	
 	public SearchDTO() {
@@ -24,8 +24,8 @@ public class SearchDTO {
 	
 	public SearchDTO(ArrayList<ZipCodeDTO> selectedZipCodes, ArrayList<CityDTO> selectedCities,
 			ArrayList<BlockDTO> selectedBlocks, ArrayList<SelectedAdvertisementTypeDTO> selectedAdvertisementTypes,
-			ArrayList<SelectedRealEstateTypeDTO> selectedRealEstateTypes, int minPrice, int maxPrice, int minSurface,
-			int maxSurface) {
+			ArrayList<SelectedRealEstateTypeDTO> selectedRealEstateTypes, double minPrice, double maxPrice, double minSurface,
+			double maxSurface) {
 		super();
 		this.selectedZipCodes = selectedZipCodes;
 		this.selectedCities = selectedCities;
@@ -69,28 +69,28 @@ public class SearchDTO {
 	public void setSelectedRealEstateTypes(ArrayList<SelectedRealEstateTypeDTO> selectedRealEstateTypes) {
 		this.selectedRealEstateTypes = selectedRealEstateTypes;
 	}
-	public int getMinPrice() {
+	public double getMinPrice() {
 		return minPrice;
 	}
-	public void setMinPrice(int minPrice) {
+	public void setMinPrice(double minPrice) {
 		this.minPrice = minPrice;
 	}
-	public int getMaxPrice() {
+	public double getMaxPrice() {
 		return maxPrice;
 	}
-	public void setMaxPrice(int maxPrice) {
+	public void setMaxPrice(double maxPrice) {
 		this.maxPrice = maxPrice;
 	}
-	public int getMinSurface() {
+	public double getMinSurface() {
 		return minSurface;
 	}
-	public void setMinSurface(int minSurface) {
+	public void setMinSurface(double minSurface) {
 		this.minSurface = minSurface;
 	}
-	public int getMaxSurface() {
+	public double getMaxSurface() {
 		return maxSurface;
 	}
-	public void setMaxSurface(int maxSurface) {
+	public void setMaxSurface(double maxSurface) {
 		this.maxSurface = maxSurface;
 	}
 

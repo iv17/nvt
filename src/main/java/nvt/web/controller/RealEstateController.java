@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -88,61 +87,82 @@ public class RealEstateController {
 			)
 	public ResponseEntity<List<RealEstateDTO>> searchByUsername(@RequestBody SearchDTO searchDTO) {
 
-		System.out.println(searchDTO.getSelectedZipCodes());
-		System.out.println(searchDTO.getSelectedCities());
-		System.out.println(searchDTO.getSelectedBlocks());
-		System.out.println(searchDTO.getSelectedAdvertisementTypes());
-		System.out.println(searchDTO.getSelectedRealEstateTypes());
-		//SKIDANJE PARAMETARA
-		ArrayList<ZipCodeDTO> selectedZipCodes;
-		ArrayList<CityDTO> selectedCities;
-		ArrayList<BlockDTO> selectedBlocks;
-		ArrayList<SelectedAdvertisementTypeDTO> selectedAdvertisementTypes;
-		ArrayList<SelectedRealEstateTypeDTO> selectedRealEstateTypes;
+	
+		ArrayList<ZipCodeDTO> selectedZipCodes = new ArrayList<>();
+		ArrayList<CityDTO> selectedCities = new ArrayList<>();
+		ArrayList<BlockDTO> selectedBlocks = new ArrayList<>();
+		ArrayList<SelectedAdvertisementTypeDTO> selectedAdvertisementTypes = new ArrayList<>();
+		ArrayList<SelectedRealEstateTypeDTO> selectedRealEstateTypes = new ArrayList<>();
 		
-		int minPrice;
-		int maxPrice;
-		int minSurface;
-		int maxSurface;
+		double minPrice = -1;
+		double maxPrice = -1;
+		double minSurface = -1;
+		double maxSurface = -1;
 		
 		if(searchDTO.getSelectedZipCodes() != null) {
 			selectedZipCodes = searchDTO.getSelectedZipCodes();
-			for (ZipCodeDTO dto : selectedZipCodes) {
-				System.out.println(dto.toString());
-			}
 		}
 		if(searchDTO.getSelectedCities() != null) {
 			selectedCities = searchDTO.getSelectedCities();
-			for (CityDTO dto : selectedCities) {
-				System.out.println(dto.toString());
-			}
 		}
 		if(searchDTO.getSelectedBlocks() != null) {
 			selectedBlocks = searchDTO.getSelectedBlocks();
-			for (BlockDTO dto : selectedBlocks) {
-				System.out.println(dto.toString());
-			}
 		}
 		if(searchDTO.getSelectedAdvertisementTypes() != null) {
 			selectedAdvertisementTypes = searchDTO.getSelectedAdvertisementTypes();
-			for (SelectedAdvertisementTypeDTO dto : selectedAdvertisementTypes) {
-				System.out.println(dto.toString());
-			}
 		}
 		if(searchDTO.getSelectedRealEstateTypes() != null) {
 			selectedRealEstateTypes = searchDTO.getSelectedRealEstateTypes();
-			for (SelectedRealEstateTypeDTO dto : selectedRealEstateTypes) {
-				System.out.println(dto.toString());
-			}
 		}
 		if(searchDTO.getMinPrice() != -1) { minPrice = searchDTO.getMinPrice(); }
 		if(searchDTO.getMaxPrice() != -1) { maxPrice = searchDTO.getMaxPrice(); }
 		if(searchDTO.getMinSurface() != -1) { minSurface = searchDTO.getMinSurface(); }
-		if(searchDTO.getMaxSurface() != -1) { maxSurface = searchDTO.getMinSurface(); }
+		if(searchDTO.getMaxSurface() != -1) { maxSurface = searchDTO.getMaxSurface(); }
 
 		
 		List<RealEstate> realEstates = realEstateService.findAll();
-		List<RealEstateDTO> realEstatesDTO = null;
+		List<RealEstate> searches = new ArrayList<>();
+		for (RealEstate  r : realEstates) {
+			
+			if(selectedAdvertisementTypes.size() != 0) {
+				for (SelectedAdvertisementTypeDTO a : selectedAdvertisementTypes) {
+					if(r.getAdvertisementType().getName().equals(a.getLabel())) {
+						if(selectedRealEstateTypes.size() != 0) {
+							for (SelectedRealEstateTypeDTO s : selectedRealEstateTypes) {
+								if(r.getRealEstateType().getName().equals(s.getLabel())) {
+									if(selectedZipCodes.size() != 0) {
+										for (ZipCodeDTO z : selectedZipCodes) {
+											if(r.getLocation().getZipCode().equals(z.getLabel())) {
+												if(selectedCities.size() != 0) {
+													for (CityDTO c : selectedCities) {
+														if(r.getLocation().getCity().equals(c.getLabel())) {
+															if(selectedBlocks.size() != 0) {
+																for (BlockDTO b : selectedBlocks) {
+																	if(r.getLocation().getBlock().equals(b.getLabel())) {
+																		if(minPrice != -1 && maxPrice != -1 && minPrice < maxPrice && minPrice <= r.getPrice() && r.getPrice() <= maxPrice) {
+																			if(minSurface != -1 && maxSurface != -1 && minSurface < maxSurface && minSurface <= r.getSurface() && r.getSurface() <= maxSurface) {
+																
+																				searches.add(r);
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		
+		}
+		List<RealEstateDTO> realEstatesDTO = realEstates2realEsateDTOs(searches);
 		return new ResponseEntity<List<RealEstateDTO>>(realEstatesDTO, HttpStatus.OK);
 
 	}

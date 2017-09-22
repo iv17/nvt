@@ -10,11 +10,10 @@
 		AdvertisementTypeResource.getAdvertisementTypes().then(function(items) {
 			var advertisementTypes = items;
 			var advertisemntTypeLabels = [];
+
 			for(var i=0; i< advertisementTypes.length; i++) {
-				var labeled = {
-						'id': advertisementTypes[i].id,
-						'label': advertisementTypes[i].name
-				};
+				var labeled = { 'id': advertisementTypes[i].id, 'label': advertisementTypes[i].name };
+
 				advertisemntTypeLabels.push(labeled);
 			}
 			$scope.advertisemntTypeLabels = advertisemntTypeLabels;
@@ -23,11 +22,10 @@
 		RealEstateTypeResource.getRealEstateTypes().then(function(items) {
 			var realEstateTypes = items;
 			var realEstateTypeLabels = [];
+
 			for(var i=0; i< realEstateTypes.length; i++) {
-				var labeled = {
-						'id': realEstateTypes[i].id,
-						'label': realEstateTypes[i].name
-				};
+				var labeled = { 'id': realEstateTypes[i].id, 'label': realEstateTypes[i].name };
+
 				realEstateTypeLabels.push(labeled);
 			}
 			$scope.realEstateTypeLabels = realEstateTypeLabels;
@@ -56,9 +54,7 @@
 				var city = { 'id': locations[i].id, 'label': locations[i].label };
 
 				cityLabels.push(city);
-
 			}
-
 			$scope.cityLabels = cityLabels;
 
 		});
@@ -69,9 +65,8 @@
 
 			for(var i=0; i< locations.length; i++) {
 				var block = { 'id': locations[i].id, 'label': locations[i].label };
-				$log.log(block);
-				blockLabels.push(block);
 
+				blockLabels.push(block);
 			}
 
 			$scope.blockLabels = blockLabels;
@@ -83,9 +78,8 @@
 
 			for(var i=0; i< locations.length; i++) {
 				var street = { 'id': locations[i].id, 'label': locations[i].label };
-				$log.log(street);
-				streetLabels.push(street);
 
+				streetLabels.push(street);
 			}
 
 			$scope.streetLabels = streetLabels;
@@ -94,11 +88,10 @@
 		HeatingTypeResource.getHeatingTypes().then(function(items) {
 			var heatingTypes = items;
 			var heatingTypeLabels = [];
+
 			for(var i=0; i< heatingTypes.length; i++) {
-				var labeled = {
-						'id': heatingTypes[i].id,
-						'label': heatingTypes[i].name
-				};
+				var labeled = { 'id': heatingTypes[i].id, 'label': heatingTypes[i].name };
+
 				heatingTypeLabels.push(labeled);
 			}
 			$scope.heatingTypeLabels = heatingTypeLabels;

@@ -10,9 +10,6 @@
 		var selectedZipCodes = $stateParams.search.selectedZipCodes;
 		var selectedCities = $stateParams.search.selectedCities;
 		var selectedBlocks = $stateParams.search.selectedBlocks;
-		for (var i = 0; i < selectedBlocks.length; i++) {
-			$log.log(selectedBlocks[i]);
-		}
 		var selectedAdvertisementTypes = $stateParams.search.selectedAdvertisementTypes;
 		var selectedRealEstateTypes = $stateParams.search.selectedRealEstateTypes;
 		var minPrice = $stateParams.search.minPrice;
