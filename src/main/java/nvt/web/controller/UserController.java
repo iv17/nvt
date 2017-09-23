@@ -152,7 +152,7 @@ public class UserController {
 
 
 	@RequestMapping(
-			value = "/realEstates", // id - id user-a ciji su snippeti
+			value = "/realEstates", 
 			method = RequestMethod.POST, 
 			consumes = "application/json"
 			)

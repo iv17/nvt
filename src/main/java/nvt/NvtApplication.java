@@ -1,8 +1,6 @@
 package nvt;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import nvt.beans.AdvertisementType;
 import nvt.beans.Agent;
-import nvt.beans.AgentRating;
 import nvt.beans.Company;
 import nvt.beans.HeatingType;
 import nvt.beans.Image;
@@ -23,8 +20,6 @@ import nvt.beans.RealEstate;
 import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateIndoors;
 import nvt.beans.RealEstateOutdoors;
-import nvt.beans.RealEstateRating;
-import nvt.beans.RealEstateReport;
 import nvt.beans.RealEstateType;
 import nvt.beans.User;
 import nvt.beans.WorkingTime;
@@ -119,54 +114,7 @@ public class NvtApplication implements CommandLineRunner {
 	public void run(String... arg0) throws Exception {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-		
 
-			
-		User user1 = new User("ivana.unitedforce@gmail.com", "iv", encoder.encode(encoder.encode("123")), "Josh", "Duhamel", "065-123-456");
-		//userRepository.save(user1);
-		User user2 = new User("iva17.igodina@gmail.com", "matthew", encoder.encode("123"), "Matthew", "McConaughey", "065-456-789");
-		//userRepository.save(user2);
-		User user3 = new User("iva17.iigodina@gmail.com", "bradley", encoder.encode("123"), "Bradley", "Cooper", "065-789-123");
-		//userRepository.save(user3);
-		User user4 = new User("iva17.iiigodina@gmail.com", "leonardo", encoder.encode("123"), "Leonardo", "DiCaprio", "063-123-456");
-		//userRepository.save(user4);
-		User user5 = new User("blake.lively@gmail.com", "blake", encoder.encode("123"), "Blake", "Lively", "063-456-789");
-		//userRepository.save(user5);
-		User user6 = new User("ryan.reynolds@gmail.com", "ryan", encoder.encode("123"), "Ryan", "Reynolds", "063-789-123");
-		//userRepository.save(user6);
-		User user7 = new User("jessica.alba@gmail.com", "jessica", encoder.encode("123"), "Jessica", "Alba", "062-123-456");
-		//userRepository.save(user7);
-		User user8 = new User("eva.mendes@gmail.com", "eva", encoder.encode("123"), "Eva", "Mendes", "062-456-789");
-		//userRepository.save(user8);
-		User user9 = new User("jessica.alba@gmail.com", "jessica", encoder.encode("123"), "Jessica", "Alba", "062-123-456");
-		//userRepository.save(user9);
-		User user10 = new User("natalie.portman@gmail.com", "natalie", encoder.encode("123"), "Natalie", "Portman", "062-456-789");
-		//userRepository.save(user10);
-		
-		
-		
-		User user11 = new User("lars.ulrich@gmail.com", "lars", encoder.encode("123"), "Lars", "Urlich", "061-123-456");
-	
-		userRepository.save(user11);
-		User user12 = new User("james.hatfield@gmail.com", "james", encoder.encode("123"), "James", "Hatfield", "061-456-789");
-		userRepository.save(user12);
-		User user13 = new User("til.linderman@gmail.com", "til", encoder.encode("123"), "Til", "Linderman", "061-789-123");
-		userRepository.save(user13);
-		User user14 = new User("lily.aldridge@gmail.com", "lily", encoder.encode("123"), "Lily", "Aldridge", "060-123-456");
-		userRepository.save(user14);
-		User user15 = new User("alessandra.ambrosio@gmail.com", "alessandra", encoder.encode("123"), "Alessandra", "Ambrosio", "060-456-789");
-		userRepository.save(user15);
-		User user16 = new User("tyra.banks@gmail.com", "tyra", encoder.encode("123"), "Tyra", "Banks", "060-789-123");
-		userRepository.save(user16);
-		User user17 = new User("stella.maxwell@gmail.com", "jessica", encoder.encode("123"), "Jessica", "Alba", "066-123-456");
-		userRepository.save(user17);
-		User user18 = new User("behati.prinslo@gmail.com", "behati", encoder.encode("123"), "Behati", "Prinslo", "066-456-789");
-		userRepository.save(user18);
-		User user19 = new User("martha.hunt@gmail.com", "martha", encoder.encode("123"), "Martha", "Hunt", "069-123-456");
-		userRepository.save(user19);
-		User user20 = new User("romee.strijd@gmail.com", "romee", encoder.encode("123"), "Romee", "Strijd", "069-456-789");
-		userRepository.save(user20);
-		
 		Location location1 = new Location(44.8023505, 20.4719586, "Beograd", "Vračar", "Krunska", "11000");
 		locationRepository.save(location1);
 		Location location2 = new Location(44.8192953, 20.4486969, "Beograd", "Beton hala", "Karađorđeva 2-4", "11000");
@@ -216,28 +164,61 @@ public class NvtApplication implements CommandLineRunner {
 		Company company5 = new Company("005", "FOX nekretnine", "company", "011-24-02-386", "foxnekretnine.com", location15, workingTime1);
 		companyRepository.save(company5);
 
+		User user11 = new User("ivana.unitedforce@gmail.com", "iv", encoder.encode("123"), "Lars", "Urlich", "061-123-456");
+		userRepository.save(user11);
+		User user12 = new User("james.hatfield@gmail.com", "james", encoder.encode("123"), "James", "Hatfield", "061-456-789");
+		userRepository.save(user12);
+		User user13 = new User("til.linderman@gmail.com", "til", encoder.encode("123"), "Til", "Linderman", "061-789-123");
+		userRepository.save(user13);
+		User user14 = new User("lily.aldridge@gmail.com", "lily", encoder.encode("123"), "Lily", "Aldridge", "060-123-456");
+		userRepository.save(user14);
+		User user15 = new User("alessandra.ambrosio@gmail.com", "alessandra", encoder.encode("123"), "Alessandra", "Ambrosio", "060-456-789");
+		userRepository.save(user15);
+			
+		Image image01 = new Image("woman-1.jpg", "app/images/users/woman-1.jpg".getBytes(), "image/jpeg");
+		image01.setUser(user11);
+		imageRepository.save(image01);
+		Image image02 = new Image("guy-1.jpg", "app/images/users/guy-1.jpg".getBytes(), "image/jpeg");
+		image02.setUser(user12);
+		imageRepository.save(image02);
+		Image image03 = new Image("guy-2.jpg", "app/images/users/guy-2.jpg".getBytes(), "image/jpeg");
+		image03.setUser(user13);
+		imageRepository.save(image03);
+		Image image04 = new Image("woman-2.jpg", "app/images/users/woman-2.jpg".getBytes(), "image/jpeg");
+		image04.setUser(user14);
+		imageRepository.save(image04);
+		Image image05 = new Image("woman-3.jpg", "app/images/users/woman-3.jpg".getBytes(), "image/jpeg");
+		image05.setUser(user15);
+		imageRepository.save(image05);
 		
-		Agent agent1 = new Agent(user1, company1);
-		agentRepository.save(agent1);
-		Agent agent2 = new Agent(user2, company1);
-		agentRepository.save(agent2);
-		Agent agent3 = new Agent(user3, company1);
-		agentRepository.save(agent3);
-		Agent agent4 = new Agent(user4, company2);
-		agentRepository.save(agent4);
-		Agent agent5 = new Agent(user5, company2);
-		agentRepository.save(agent5);
-		Agent agent6 = new Agent(user6, company2);
-		agentRepository.save(agent6);
-		Agent agent7 = new Agent(user7, company3);
-		agentRepository.save(agent7);
-		Agent agent8 = new Agent(user8, company3);
-		agentRepository.save(agent8);
-		Agent agent9 = new Agent(user9, company3);
-		agentRepository.save(agent9);
-		Agent agent10 = new Agent(user10, company4);
-		agentRepository.save(agent10);
+		User user21 = new User("iva17.igodina@gmail.com", "matthew", encoder.encode("123"), "Matthew", "McConaughey", "065-456-789");
+		User user22 = new User("iva17.iigodina@gmail.com", "bradley", encoder.encode("123"), "Bradley", "Cooper", "065-789-123");
+		User user23 = new User("iva17.iiigodina@gmail.com", "leonardo", encoder.encode("123"), "Leonardo", "DiCaprio", "063-123-456");
+		User user24 = new User("blake.lively@gmail.com", "blake", encoder.encode("123"), "Blake", "Lively", "063-456-789");
 
+		
+		Agent agent1 = new Agent(user21, company1);
+		agentRepository.save(agent1);
+		Agent agent2 = new Agent(user22, company1);
+		agentRepository.save(agent2);
+		Agent agent3 = new Agent(user23, company2);
+		agentRepository.save(agent3);
+		Agent agent4 = new Agent(user24, company3);
+		agentRepository.save(agent4);
+		
+		Image image06 = new Image("guy-3.jpg", "app/images/users/guy-3.jpg".getBytes(), "image/jpeg");
+		image06.setUser(agent1);
+		imageRepository.save(image06);
+		Image image07 = new Image("guy-4.jpg", "app/images/users/guy-4.jpg".getBytes(), "image/jpeg");
+		image07.setUser(agent2);
+		imageRepository.save(image07);
+		Image image08 = new Image("woman-3.jpg", "app/images/users/woman-3.jpg".getBytes(), "image/jpeg");
+		image08.setUser(agent3);
+		imageRepository.save(image08);
+		Image image09 = new Image("woman-4.jpg", "app/images/users/woman-4.jpg".getBytes(), "image/jpeg");
+		image09.setUser(agent4);
+		imageRepository.save(image09);
+		
 		
 		IndoorFeature indoorFeature1 = new IndoorFeature("Floorboards");
 		indoorFeatureRepository.save(indoorFeature1);
@@ -319,27 +300,102 @@ public class NvtApplication implements CommandLineRunner {
 		AdvertisementType advertisementType2 = new AdvertisementType("RENT");
 		advertisementTypeRepository.save(advertisementType2);
 		
-		RealEstate realEstate1 = new RealEstate("naziv1..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 500.0, 50.0, 2, 1, 1, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
-		
+		RealEstate realEstate1 = new RealEstate("Trosoban stan", "Trosoban, luksuzno opremljen stan, kod \"Dvanaeste gimnazije\" u ulici "
+				+ "Vojvode Stepa.\n" + 
+				"Stan se sastoji od predsoblja, dve spavaće sobe, dnevne sobe, kuhinje, kupatila, toaleta i poseduje garažno mesto"
+				+ " čija je cena 12000 eura.\n" + 
+				"U blizini se nalazi nekoliko fakulteta (Saobraćajni, FON, i FPN), Visoka škola elektrotenike i računarstva,"
+				+ " osnovna škola \"Filip Filipović\", studentski dom \"4. APRIL\".",
+				257000.0, 100.0, 2, 4, 2, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);	
 		realEstateRepository.save(realEstate1);
-		RealEstate realEstate2 = new RealEstate("naziv2..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 1500.0, 150.0, 2, 5, 2, 2015, true, true, location2, realEstateType3, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
-	
+		RealEstate realEstate2 = new RealEstate("Dvosoban stan", "Luksuzno opremljen stan na Vračaru u novogradnji sa velikom garažom.\n" + 
+				"\n" + 
+				"Stan se sastoji iz predsoblja, dnevne sobe sa velikom kuhinjom i šank trpezarijom, sa izlazom na dve terase,"
+				+ " spavaće sobe koja takođe ima izlaz na jednu od terasa, kupatila i garderobera.", 
+				190000.0, 75.0, 2, 5, 2, 2015, true, true, location2, realEstateType3, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
 		realEstateRepository.save(realEstate2);
-		RealEstate realEstate3 = new RealEstate("naziv3..", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", 5000.0, 300.0, 3, 7, 2, 2015, true, true, location3, realEstateType4, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
-		
+		RealEstate realEstate3 = new RealEstate("Troiposoban stan","Moderan i svetao stan u novijoj zgradi na prelepoj lokaciji pogodnoj "
+				+ "za aktivan život ali i za odmor. U neposrdenoj okolini parkova, vrtica, osnovnih skola, gimnazija,svih stanica gradskog"
+				+ " prevoza, pijaca, biblioteka i pozorista. \nSa slobodnom parking zonom u ulici, u blizini samog centra grada,"
+				+ " dobro povezan za uključenjem na auto put. \nU zgradi sa malim brojem stanova. Unutar zgarde nalazi se bašta sa fontanom,"
+				+ " zelenom površinom i opremom za odmor i opuštanje.", 
+				850.0, 120.0, 3, 3, 2, 2015, true, true, location3, realEstateType4, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
 		realEstateRepository.save(realEstate3);
+		RealEstate realEstate4 = new RealEstate("Duplex stan + kabinet", "Penthaus duplex kompletno opremljen modernim nameštajem i najnovijom "
+				+ "belom tehnikom. Elegantan dizajn pruža osećaj udobnosti i komfora. Prostire se na dva nivoa.\n" + 
+				"Na prvom nivou se nalazi  veliki dnevni boravak, u produžetku se nastavlja trpezarijski deo i kuhinja, "
+				+ "sa druge strane je prostrana zastakljena terasa sa garniturom za sedenje.\n" + 
+				"Duž cele terase nalaze se klizni prozori, tako da se njihovim pomeranjem dobija otvoren prostor. ",
+				1500.0, 150.0, 2, 1, 1, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);	
+		realEstateRepository.save(realEstate4);
+		RealEstate realEstate5 = new RealEstate("Salonac", "Petosoban salonski stan u zgradi sa najlepšom fasadom u ulici Kralja Petra.\n" + 
+				"Zgrada je locirana između ulica Kneza Mihaila i Gospodar Jevremove.\n" + 
+				"Stan se nalazi na četvrtom spratu u zgradi od šest spratova, opremljen je, funkcionalan, može da se koristi za stanovanje i za poslovni prostor.",
+				1500.0, 150.0, 2, 5, 2, 2015, true, true, location2, realEstateType3, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
+		realEstateRepository.save(realEstate5);
 
-		Image image1 = new Image("home.jpg", "app/images/home.jpg".getBytes(), "image/jpeg");
-		image1.setRealEstate(realEstate3);
+		Image image1 = new Image("11.jpg", "app/images/properties/11.jpg".getBytes(), "image/jpeg");
+		image1.setRealEstate(realEstate1);
 		imageRepository.save(image1);
-		Image image2 = new Image("home.jpg", "app/images/home.jpg".getBytes(), "image/jpeg");
-		image2.setRealEstate(realEstate2);
+		Image image2 = new Image("12.jpg", "app/images/properties/12.jpg".getBytes(), "image/jpeg");
+		image2.setRealEstate(realEstate1);
 		imageRepository.save(image2);
-		Image image3 = new Image("home.jpg", "app/images/home.jpg".getBytes(), "image/jpeg");
+		Image image3 = new Image("13.jpg", "app/images/properties/13.jpg".getBytes(), "image/jpeg");
 		image3.setRealEstate(realEstate1);
 		imageRepository.save(image3);
-		Image image4 = new Image("home.jpg", "app/images/home.jpg".getBytes(), "image/jpeg");
+		Image image4 = new Image("14.jpg", "app/images/properties/14.jpg".getBytes(), "image/jpeg");
+		image4.setRealEstate(realEstate1);
 		imageRepository.save(image4);
+	
+		Image image5 = new Image("21.jpg", "app/images/properties/21.jpg".getBytes(), "image/jpeg");
+		image5.setRealEstate(realEstate2);
+		imageRepository.save(image5);
+		Image image6 = new Image("22.jpg", "app/images/properties/22.jpg".getBytes(), "image/jpeg");
+		image6.setRealEstate(realEstate2);
+		imageRepository.save(image6);
+		Image image7 = new Image("23.jpg", "app/images/properties/23.jpg".getBytes(), "image/jpeg");
+		image7.setRealEstate(realEstate2);
+		imageRepository.save(image7);
+		
+		Image image8 = new Image("31.jpg", "app/images/properties/31.jpg".getBytes(), "image/jpeg");
+		image8.setRealEstate(realEstate3);
+		imageRepository.save(image8);
+		Image image9 = new Image("32.jpg", "app/images/properties/32.jpg".getBytes(), "image/jpeg");
+		image9.setRealEstate(realEstate3);
+		imageRepository.save(image9);
+		Image image10 = new Image("33.jpg", "app/images/properties/33.jpg".getBytes(), "image/jpeg");
+		image10.setRealEstate(realEstate3);
+		imageRepository.save(image10);
+		Image image11 = new Image("34.jpg", "app/images/properties/34.jpg".getBytes(), "image/jpeg");
+		image11.setRealEstate(realEstate3);
+		imageRepository.save(image11);
+	
+		Image image12 = new Image("41.jpg", "app/images/properties/41.jpg".getBytes(), "image/jpeg");
+		image12.setRealEstate(realEstate4);
+		imageRepository.save(image12);
+		Image image13 = new Image("42.jpg", "app/images/properties/42.jpg".getBytes(), "image/jpeg");
+		image13.setRealEstate(realEstate4);
+		imageRepository.save(image13);
+		Image image14 = new Image("43.jpg", "app/images/properties/43.jpg".getBytes(), "image/jpeg");
+		image14.setRealEstate(realEstate4);
+		imageRepository.save(image14);
+		Image image15 = new Image("44.jpg", "app/images/properties/44.jpg".getBytes(), "image/jpeg");
+		image15.setRealEstate(realEstate4);
+		imageRepository.save(image15);
+	
+		
+		Image image16 = new Image("51.jpg", "app/images/properties/51.jpg".getBytes(), "image/jpeg");
+		image16.setRealEstate(realEstate5);
+		imageRepository.save(image16);
+		Image image17 = new Image("52.jpg", "app/images/properties/52.jpg".getBytes(), "image/jpeg");
+		image17.setRealEstate(realEstate5);
+		imageRepository.save(image17);
+		Image image18 = new Image("53.jpg", "app/images/properties/53.jpg".getBytes(), "image/jpeg");
+		image18.setRealEstate(realEstate5);
+		imageRepository.save(image18);
+		Image image19 = new Image("54.jpg", "app/images/properties/54.jpg".getBytes(), "image/jpeg");
+		image19.setRealEstate(realEstate5);
+		imageRepository.save(image19);
 	
 
 	
@@ -365,97 +421,7 @@ public class NvtApplication implements CommandLineRunner {
 		realEstateCommentRepository.save(realEstateComment4);
 		RealEstateComment realEstateComment5 = new RealEstateComment("..", new Date(), realEstate1, user15);
 		realEstateCommentRepository.save(realEstateComment5);
-		RealEstateComment realEstateComment6 = new RealEstateComment("..aaaa", new Date(), realEstate2, user16);
-		realEstateCommentRepository.save(realEstateComment6);
-		RealEstateComment realEstateComment7 = new RealEstateComment(".aaaa.", new Date(), realEstate2, user16);
-		realEstateCommentRepository.save(realEstateComment7);
-		RealEstateComment realEstateComment8 = new RealEstateComment("aa..", new Date(), realEstate2, user18);
-		realEstateCommentRepository.save(realEstateComment8);
-		RealEstateComment realEstateComment9 = new RealEstateComment("..", new Date(), realEstate3, user18);
-		realEstateCommentRepository.save(realEstateComment9);
-		RealEstateComment realEstateComment10 = new RealEstateComment("..", new Date(), realEstate3, user19);
-		realEstateCommentRepository.save(realEstateComment10);
-
-		
-		RealEstateRating realEstateRating1 = new RealEstateRating(5, new Date(), realEstate1, user11);
-		realEstateRatingRepository.save(realEstateRating1);
-		RealEstateRating realEstateRating2 = new RealEstateRating(5, new Date(), realEstate1, user12);
-		realEstateRatingRepository.save(realEstateRating2);
-		RealEstateRating realEstateRating3 = new RealEstateRating(4, new Date(), realEstate1, user13);
-		realEstateRatingRepository.save(realEstateRating3);
-		RealEstateRating realEstateRating4 = new RealEstateRating(4, new Date(), realEstate1, user14);
-		realEstateRatingRepository.save(realEstateRating4);
-		RealEstateRating realEstateRating5 = new RealEstateRating(3, new Date(), realEstate1, user15);
-		realEstateRatingRepository.save(realEstateRating5);
-		RealEstateRating realEstateRating6 = new RealEstateRating(1, new Date(), realEstate1, user16);
-		realEstateRatingRepository.save(realEstateRating6);
-		RealEstateRating realEstateRating7 = new RealEstateRating(3, new Date(), realEstate2, user11);
-		realEstateRatingRepository.save(realEstateRating7);
-		RealEstateRating realEstateRating8 = new RealEstateRating(1, new Date(), realEstate2, user12);
-		realEstateRatingRepository.save(realEstateRating8);
-		RealEstateRating realEstateRating9 = new RealEstateRating(2, new Date(), realEstate2, user13);
-		realEstateRatingRepository.save(realEstateRating9);
-		RealEstateRating realEstateRating10 = new RealEstateRating(1, new Date(), realEstate2, user14);
-		realEstateRatingRepository.save(realEstateRating10);
-		RealEstateRating realEstateRating11 = new RealEstateRating(2, new Date(), realEstate2, user15);
-		realEstateRatingRepository.save(realEstateRating11);
-		RealEstateRating realEstateRating12 = new RealEstateRating(3, new Date(), realEstate2, user16);
-		realEstateRatingRepository.save(realEstateRating12);
-		RealEstateRating realEstateRating13 = new RealEstateRating(5, new Date(), realEstate3, user11);
-		realEstateRatingRepository.save(realEstateRating13);
-		RealEstateRating realEstateRating14 = new RealEstateRating(4, new Date(), realEstate3, user12);
-		realEstateRatingRepository.save(realEstateRating14);
-		RealEstateRating realEstateRating15 = new RealEstateRating(5, new Date(), realEstate3, user13);
-		realEstateRatingRepository.save(realEstateRating15);
-
-		
-		RealEstateReport realEstateReport1 = new RealEstateReport("..", new Date(), realEstate2, user17);
-		realEstateReportRepository.save(realEstateReport1);
-		RealEstateReport realEstateReport2 = new RealEstateReport("..", new Date(), realEstate2, user18);
-		realEstateReportRepository.save(realEstateReport2);
-		RealEstateReport realEstateReport3 = new RealEstateReport("..", new Date(), realEstate2, user19);
-		realEstateReportRepository.save(realEstateReport3);
-		RealEstateReport realEstateReport4 = new RealEstateReport("..", new Date(), realEstate2, user20);
-		realEstateReportRepository.save(realEstateReport4);
-		RealEstateReport realEstateReport5 = new RealEstateReport("..", new Date(), realEstate2, user18);
-		realEstateReportRepository.save(realEstateReport5);
-		RealEstateReport realEstateReport6 = new RealEstateReport("..", new Date(), realEstate3, user19);
-		realEstateReportRepository.save(realEstateReport6);
-		RealEstateReport realEstateReport7 = new RealEstateReport("..", new Date(), realEstate3, user20);
-		realEstateReportRepository.save(realEstateReport7);
-
-		
-		AgentRating agentRating1 = new AgentRating(5, new Date(), agent1, user11);
-		agentRatingRepository.save(agentRating1);
-		AgentRating agentRating2 = new AgentRating(5, new Date(), agent1,  user12);
-		agentRatingRepository.save(agentRating2);
-		AgentRating agentRating3 = new AgentRating(4, new Date(), agent1, user13);
-		agentRatingRepository.save(agentRating3);
-		AgentRating agentRating4 = new AgentRating(3, new Date(), agent1, user14);
-		agentRatingRepository.save(agentRating4);
-		AgentRating agentRating5 = new AgentRating(3, new Date(), agent1, user15);
-		agentRatingRepository.save(agentRating5);
-		AgentRating agentRating6 = new AgentRating(3, new Date(), agent1, user16);
-		agentRatingRepository.save(agentRating6);
-		AgentRating agentRating7 = new AgentRating(5, new Date(), agent1, user17);
-		agentRatingRepository.save(agentRating7);
-		AgentRating agentRating8 = new AgentRating(4, new Date(), agent1, user18);
-		agentRatingRepository.save(agentRating8);
-		AgentRating agentRating9 = new AgentRating(1, new Date(), agent1, user19);
-		agentRatingRepository.save(agentRating9);
-		AgentRating agentRating10 = new AgentRating(1, new Date(), agent2, user20);
-		agentRatingRepository.save(agentRating10);
-		AgentRating agentRating11 = new AgentRating(1, new Date(), agent2, user11);
-		agentRatingRepository.save(agentRating11);
-		AgentRating agentRating12 = new AgentRating(2, new Date(), agent2, user12);
-		agentRatingRepository.save(agentRating12);
-		AgentRating agentRating13 = new AgentRating(2, new Date(), agent2, user13);
-		agentRatingRepository.save(agentRating13);
-		AgentRating agentRating14 = new AgentRating(3, new Date(), agent2, user14);
-		agentRatingRepository.save(agentRating14);
-		AgentRating agentRating15 = new AgentRating(3, new Date(), agent2, user15);
-		agentRatingRepository.save(agentRating15);
-		
+	
 
 		
 	}

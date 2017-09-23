@@ -55,16 +55,18 @@
                   </div>
                 </div>
                 <div class = "text-center">
-                  <a ui-sref = "register({ name: name, lastname: lastname, email: email, username: username, password: password, repeated_password: repeated_password})" class = "btn btn-primary">sign up <i class = "fa fa-sign-in"></i></a>
-
+                  <a ui-sref = "register({ name: name,
+                     lastname: lastname,
+                     email: email,
+                    username: username,
+                    password: password,
+                    repeated_password: repeated_password})" class = "btn btn-primary">sign up <i class = "fa fa-sign-in"></i></a>
                 </div>
               </form>
             </div>
           </li>
           <li class = "dropdown">
-            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
-            <i class = "fa fa-fw fa-lock"></i> Login
-            </a>
+            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"><i class = "fa fa-fw fa-lock"></i> Login</a>
             <div class = "dropdown-menu dropdown-size-280">
               <form name = "signIn">
                 <div class = "form-group">
@@ -80,7 +82,7 @@
                   </div>
                 </div>
                 <div class = "text-center">
-                  <a ui-sref = "login({ username: username, password: password})" class = "btn btn-primary">sign in <i class = "fa fa-sign-in"></i></a>
+                  <a ui-sref = "login({ username: username, password: password})" class = "btn btn-primary">login <i class = "fa fa-sign-in"></i></a>
 
                 </div>
               </form>
@@ -88,12 +90,12 @@
           </li>
           <li class = "dropdown user">
             <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
-            <img alt = "" class = "img-circle" /> {{ logedUser.name }}<span class = "caret"></span>
+            <img ng-src="{{ loggedUser.image.fileString }}" class = "img-circle" /> {{ logedUser.name }}<span class = "caret"></span>
             </a>
             <ul class = "dropdown-menu" role = "menu">
-              <li><a href = "#"><i class = "fa fa-user"></i>profile</a></li>
-              <li><a href = "#"><i class = "fa fa-wrench"></i>my adverts</a></li>
-              <li><a href = "#"><i class = "fa fa-sign-out"></i>logout</a></li>
+              <li><a ui-sref="user_profile()"><i class = "fa fa-user"></i>profile</a></li>
+              <li><a ui-sref = "user_adverts()"><i class = "fa fa-wrench"></i>my adverts</a></li>
+              <li><a ui-sref = "logout()"><i class = "fa fa-sign-out"></i>logout</a></li>
             </ul>
           </li>
         </ul>

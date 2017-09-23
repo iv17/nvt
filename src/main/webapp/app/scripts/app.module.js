@@ -32,7 +32,7 @@
 						controller: 'SidebarSearchController'
 					},
 					'content@': {
-						templateUrl: 'app/views/content/realEstatesList.html',
+						templateUrl: 'app/views/content/propertiesList.html',
 						controller: 'RealEstatesController'
 					}
 				}
@@ -52,7 +52,7 @@
 						controller: 'SidebarSearchController'
 					},
 					'content@': {
-						templateUrl: 'app/views/content/realEstatesList.html',
+						templateUrl: 'app/views/content/propertiesList.html',
 						controller: 'SearchController'
 					}
 				}
@@ -125,7 +125,7 @@
 						controller: 'SidebarSearchController'
 					},
 					'content@': {
-						templateUrl: 'app/views/content/property_details/property_detail.html',
+						templateUrl: 'app/views/content/property.html',
 						controller: 'RealEstateController'
 					}
 				}

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -37,8 +38,7 @@ public class Image implements Serializable {
 	@JoinColumn(name = "realestate_id", referencedColumnName = "id", nullable = true)
 	private RealEstate realEstate;
 	
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
+	@OneToOne
 	private User user;
 	
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)

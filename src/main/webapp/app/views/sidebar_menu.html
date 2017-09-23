@@ -1,28 +1,19 @@
     <div data-scrollable>
       <ul class = "sidebar-menu sm-bordered sm-icons-block sm-icons-right">
         <li class = "hasSubmenu">
-          <a ui-sref = "#hiden"><i class = "fa fa-star"></i><span>hiden</span></a>
-          <ul id = "hiden" class = "in">
-          </ul>
-        </li>
-        <li class = "hasSubmenu">
-          <a href = "#discover"><i class = "fa fa-star"></i><span>discover</span></a>
+          <a ui-sref = "#discover"><i class = "fa fa-star"></i><span>discover</span></a>
           <ul id = "discover" class = "in">
-            <li class = "active"><a href = "index.html"><i class = "fa fa-map-marker"></i><span>full screen map</span></a></li>
-            <li><a ui-sref = "map-listing-list.html"><i class = "fa fa-list"></i><span>map listing - list</span></a></li>
-            <li><a ui-sref = "map-listing-grid.html"><i class = "fa fa-th"></i><span>map listing - grid</span></a></li>
-            <li><a ui-sref = "listing.html"><i class = "fa fa-list"></i><span>listing - list</span></a></li>
-            <li><a ui-sref = "listing-grid.html"><i class = "fa fa-th"></i><span>listing - grid</span></a></li>
-            <li><a ui-sref = "listing-map.html"><i class = "fa fa-map-marker"></i><span>listing - map</span></a></li>
+            <li class = "active"><a ui-sref = "home()"><i class = "fa fa-list"></i><span>properties - list</span></a></li>
+            <li><a ui-sref = "realestates_grid()"><i class = "fa fa-th"></i><span>properties - grid </span></a></li>
+            <li><a ui-sref = "realestates_map()"><i class = "fa fa-map-marker"></i><span>full screen map</span></a></li>
           </ul>
         </li>
         <li class = "hasSubmenu">
           <a href = "#property"><i class = "fa fa-home"></i><span>property</span></a>
           <ul id = "property">
-            <li><a ui-sref = "map-property.html"><i class = "fa fa-map-marker"></i><span>map + property</span></a></li>
-            <li><a ui-sref = "property.html"><i class = "fa fa-list"></i><span>property details</span></a></li>
+            <li><a ui-sref = "realestate({id:1})"><i class = "fa fa-list"></i><span>property details</span></a></li>
           </ul>
         </li>
-        <li><a ui-sref = "map-edit.html"><i class = "fa fa-pencil"></i><span>add property</span></a></li>
+        <li><a ui-sref = "open_add_realestate()"><i class = "fa fa-pencil"></i><span>add property</span></a></li>
       </ul>
     </div>

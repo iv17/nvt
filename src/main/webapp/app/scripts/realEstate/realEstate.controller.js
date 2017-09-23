@@ -10,7 +10,10 @@
 
 		RealEstateResource.getRealEstate(realEstateId).then(function(item) {
 			$scope.realEstate = item;
+			$scope.myInterval = 3000;
 		});
+
+
 	}
 	]);
 })();

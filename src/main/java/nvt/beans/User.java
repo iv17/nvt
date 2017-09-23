@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -51,8 +52,8 @@ public class User implements Serializable {
 	@Column(name = "authenticated", unique = false, nullable = true)
 	private boolean authenticated;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, mappedBy = "user") @JsonIgnore
-	private Set<Image> images;
+	@OneToOne
+	private Image image;
 
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "user") @JsonIgnore
 	private Set<AgentRating> agentRatings;
@@ -86,20 +87,7 @@ public class User implements Serializable {
 		this.phoneNumber = phoneNumber;
 		
 	}
-	
-	public User(String email, String username, String password, String name, String lastName,
-			String phoneNumber, Set<Image> images) {
-		this.email = email;
-		this.username = username;
-		this.password = password;
-		this.name = name;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
-		this.images = images;
-		
-	}
 
-	
 	
 	public int getId() {
 		return id;
@@ -166,14 +154,13 @@ public class User implements Serializable {
 		this.authenticated = authenticated;
 	}
 
-	public Set<Image> getImages() {
-		return images;
+	public Image getImage() {
+		return image;
 	}
 
-	public void setImages(Set<Image> images) {
-		this.images = images;
+	public void setImage(Image image) {
+		this.image = image;
 	}
-
 
 	public Set<AgentRating> getAgentRatings() {
 		return agentRatings;

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,8 +26,6 @@ public class LocationController {
 
 	@Autowired
 	protected LocationService locationService;
-	
-	
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<LocationDTO>> getLocations() {
@@ -170,20 +167,4 @@ public class LocationController {
 	    return listWithoutDuplicates;
 	}
 	
-	
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<LocationDTO> saveLocation(@RequestBody LocationDTO locationDTO) {
-		
-		Location location = new Location();
-		location.setCity(locationDTO.getCity());
-		location.setBlock(locationDTO.getBlock());
-		location.setStreet(locationDTO.getStreet());
-		location.setZipCode(locationDTO.getZipCode());
-		
-		locationService.save(location);
-		
-		LocationDTO newLocationDTO = new LocationDTO(location);
-		
-		return new ResponseEntity<LocationDTO>(newLocationDTO, HttpStatus.CREATED);
-	}
 }

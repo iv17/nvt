@@ -33,7 +33,6 @@ public class AdvertisementType implements Serializable {
 	private Set<RealEstate> realEstates;
 
 	
-	
 	public AdvertisementType() {
 		
 	}

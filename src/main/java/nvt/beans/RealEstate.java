@@ -33,7 +33,7 @@ public class RealEstate implements Serializable {
 	@Column(name = "name", unique = false, nullable = false)
 	private String name;
 
-	@Column(name = "description", unique = false, nullable = false)
+	@Column(name = "description", unique = false, nullable = false, columnDefinition = "LONGTEXT")
 	private String description;
 
 	@Column(name = "price", unique = false, nullable = false)
@@ -72,7 +72,6 @@ public class RealEstate implements Serializable {
 	@JoinColumn(name = "heating_type_id", referencedColumnName = "id", nullable = true) 
 	private HeatingType heatingType;
 
-	//advertisement
 	@Column(name = "posted", unique = false, nullable = true)
 	private Date posted;
 

@@ -33,8 +33,6 @@ public class RealEstateIndoors implements Serializable {
 	private IndoorFeature indoorFeature;
 
 	
-	
-	
 	public RealEstateIndoors() {
 
 	}

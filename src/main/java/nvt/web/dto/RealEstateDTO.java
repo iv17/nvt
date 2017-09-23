@@ -6,11 +6,6 @@ import java.util.Set;
 
 import nvt.beans.Image;
 import nvt.beans.RealEstate;
-import nvt.beans.RealEstateComment;
-import nvt.beans.RealEstateIndoors;
-import nvt.beans.RealEstateOutdoors;
-import nvt.beans.RealEstateRating;
-import nvt.beans.RealEstateReport;
 
 public class RealEstateDTO {
 
@@ -36,7 +31,7 @@ public class RealEstateDTO {
 	private UserDTO user;
 	private AdvertisementTypeDTO advertisementType;
 	private ImageDTO image; 
-	private Set<ImageDTO> images; 
+	private Set<ImageDTO> images = new HashSet<>(); 
 	private Set<RealEstateCommentDTO> comments;
 	private Set<RealEstateRatingDTO> ratings;
 	private Set<RealEstateReportDTO> reports;
@@ -77,7 +72,7 @@ public class RealEstateDTO {
 	
 		for (Image i : im) {
 			image = new ImageDTO(i);
-			
+			images.add(image);
 		}
 		
 	}

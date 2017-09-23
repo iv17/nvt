@@ -1,8 +1,5 @@
 package nvt.web.dto;
 
-import java.util.Set;
-
-import nvt.beans.Image;
 import nvt.beans.User;
 
 public class UserDTO {
@@ -17,18 +14,8 @@ public class UserDTO {
 	protected String phoneNumber;
 	protected boolean loged;
 	protected boolean authenticated;
-	private Set<ImageDTO> images; 
+	private ImageDTO image; 
 
-	public ImageDTO toDTO(Image image) {
-		ImageDTO imageDTO = new ImageDTO();
-		
-		imageDTO.setId(image.getId());
-		imageDTO.setName(image.getName());
-		imageDTO.setFile(image.getFile());
-		
-		return imageDTO;
-	}
-	
 	public UserDTO() {
 		
 	}
@@ -42,8 +29,10 @@ public class UserDTO {
 		name = user.getName();
 		lastName = user.getLastName();
 		phoneNumber = user.getPhoneNumber();
-	
-		authenticated = user.isAuthenticated();
+		if(user.getImage() != null) {
+			image = new ImageDTO(user.getImage());
+		}
+		
 
 	}
 
@@ -120,13 +109,16 @@ public class UserDTO {
 		this.authenticated = authenticated;
 	}
 
-	public Set<ImageDTO> getImages() {
-		return images;
+	
+	public ImageDTO getImage() {
+		return image;
 	}
 
-	public void setImages(Set<ImageDTO> images) {
-		this.images = images;
+
+	public void setImage(ImageDTO image) {
+		this.image = image;
 	}
+
 
 	public String getRepeated_password() {
 		return repeated_password;
