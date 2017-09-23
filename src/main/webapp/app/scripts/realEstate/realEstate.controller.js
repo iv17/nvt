@@ -13,6 +13,10 @@
 			$scope.realEstate = item;
 		});
 
+		RealEstateResource.comments(realEstateId).then(function(items) {
+			$scope.realEstateComments = items;
+		});
+
 		RealEstateResource.indoors(realEstateId).then(function(items) {
 			$scope.indoors = items;
 			for (var i = 0; i < items.length; i++) {

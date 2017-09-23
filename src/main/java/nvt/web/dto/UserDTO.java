@@ -31,6 +31,7 @@ public class UserDTO {
 		phoneNumber = user.getPhoneNumber();
 		if(user.getImage() != null) {
 			image = new ImageDTO(user.getImage());
+			System.out.println(image.getFileString());
 		}
 		
 

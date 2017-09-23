@@ -416,16 +416,16 @@ public class NvtApplication implements CommandLineRunner {
 		RealEstateOutdoors realEstateOutdoors6 = new RealEstateOutdoors(realEstate3, outdoorFeature10);
 		realEstateOutdoorsRepository.save(realEstateOutdoors6);
 		
-		
-		RealEstateComment realEstateComment1 = new RealEstateComment("comentarrr..", new Date(), realEstate1, user11);
+
+		RealEstateComment realEstateComment1 = new RealEstateComment("Lep stan!", new Date(), realEstate1, user15);
 		realEstateCommentRepository.save(realEstateComment1);
-		RealEstateComment realEstateComment2 = new RealEstateComment(".comentarrr.", new Date(), realEstate1, user12);
+		RealEstateComment realEstateComment2 = new RealEstateComment("Veoma lepo!", new Date(), realEstate1, user12);
 		realEstateCommentRepository.save(realEstateComment2);
-		RealEstateComment realEstateComment3 = new RealEstateComment(".comentarrr3.", new Date(), realEstate1, user13);
+		RealEstateComment realEstateComment3 = new RealEstateComment("Skupo!", new Date(), realEstate1, user13);
 		realEstateCommentRepository.save(realEstateComment3);
-		RealEstateComment realEstateComment4 = new RealEstateComment(".comentarrr2.", new Date(), realEstate1, user14);
+		RealEstateComment realEstateComment4 = new RealEstateComment("Lepo namesteno.", new Date(), realEstate2, user14);
 		realEstateCommentRepository.save(realEstateComment4);
-		RealEstateComment realEstateComment5 = new RealEstateComment("..", new Date(), realEstate1, user15);
+		RealEstateComment realEstateComment5 = new RealEstateComment("Preskupo!", new Date(), realEstate2, user15);
 		realEstateCommentRepository.save(realEstateComment5);
 	
 

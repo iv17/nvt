@@ -39,6 +39,7 @@ public class Image implements Serializable {
 	private RealEstate realEstate;
 	
 	@OneToOne
+	@JoinColumn(name = "id")
 	private User user;
 	
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
