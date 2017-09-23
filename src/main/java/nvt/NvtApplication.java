@@ -220,60 +220,9 @@ public class NvtApplication implements CommandLineRunner {
 		imageRepository.save(image09);
 		
 		
-		IndoorFeature indoorFeature1 = new IndoorFeature("Floorboards");
-		indoorFeatureRepository.save(indoorFeature1);
-		IndoorFeature indoorFeature2 = new IndoorFeature("Built-in Wardrobes");
-		indoorFeatureRepository.save(indoorFeature2);
-		IndoorFeature indoorFeature3 = new IndoorFeature("Dishwasher");
-		indoorFeatureRepository.save(indoorFeature3);
-		IndoorFeature indoorFeature4 = new IndoorFeature("Air Conditioning");
-		indoorFeatureRepository.save(indoorFeature4);
-		IndoorFeature indoorFeature5 = new IndoorFeature("Intercom");
-		indoorFeatureRepository.save(indoorFeature5);
-		IndoorFeature indoorFeature6 = new IndoorFeature("Indoor Spa");
-		indoorFeatureRepository.save(indoorFeature6);
-		IndoorFeature indoorFeature7 = new IndoorFeature("Broadband Internet Available");
-		indoorFeatureRepository.save(indoorFeature7);
-		IndoorFeature indoorFeature8 = new IndoorFeature("Ducted Heating");
-		indoorFeatureRepository.save(indoorFeature8);
-		IndoorFeature indoorFeature9 = new IndoorFeature("Ducted Cooling");
-		indoorFeatureRepository.save(indoorFeature9);
-		IndoorFeature indoorFeature10 = new IndoorFeature("Rumpus Room");
-		indoorFeatureRepository.save(indoorFeature10);
-		IndoorFeature indoorFeature11 = new IndoorFeature("Alarm System");
-		indoorFeatureRepository.save(indoorFeature11);
-		IndoorFeature indoorFeature12 = new IndoorFeature("Ensuite");	
-		indoorFeatureRepository.save(indoorFeature12);
-		IndoorFeature indoorFeature13 = new IndoorFeature("Dusted vacum system");
-		indoorFeatureRepository.save(indoorFeature13);
-		IndoorFeature indoorFeature14 = new IndoorFeature("Open fireplace");
-		indoorFeatureRepository.save(indoorFeature14);
-		IndoorFeature indoorFeature15 = new IndoorFeature("a");
-		indoorFeatureRepository.save(indoorFeature15);
-
 	
-		OutdoorFeature outdoorFeature1 = new OutdoorFeature("Secure Parking");
-		outdoorFeatureRepository.save(outdoorFeature1);
-		OutdoorFeature outdoorFeature2 = new OutdoorFeature("Courtyard");
-		outdoorFeatureRepository.save(outdoorFeature2);
-		OutdoorFeature outdoorFeature3 = new OutdoorFeature("Shed");
-		outdoorFeatureRepository.save(outdoorFeature3);
-		OutdoorFeature outdoorFeature4 = new OutdoorFeature("Deck");
-		outdoorFeatureRepository.save(outdoorFeature4);
-		OutdoorFeature outdoorFeature5 = new OutdoorFeature("Balcony");
-		outdoorFeatureRepository.save(outdoorFeature5);
-		OutdoorFeature outdoorFeature6 = new OutdoorFeature("Swimming Pool");
-		outdoorFeatureRepository.save(outdoorFeature6);
-		OutdoorFeature outdoorFeature7 = new OutdoorFeature("Carpot");
-		outdoorFeatureRepository.save(outdoorFeature7);
-		OutdoorFeature outdoorFeature8 = new OutdoorFeature("Garage");
-		outdoorFeatureRepository.save(outdoorFeature8);
-		OutdoorFeature outdoorFeature9 = new OutdoorFeature("Tenis court");
-		outdoorFeatureRepository.save(outdoorFeature9);
-		OutdoorFeature outdoorFeature10 = new OutdoorFeature("Outside spa");
-		outdoorFeatureRepository.save(outdoorFeature10);
-
 	
+		
 		HeatingType heatingType1 = new HeatingType("Forced Air");
 		heatingTypeRepository.save(heatingType1);
 		HeatingType heatingType2 = new HeatingType("Hydronic");
@@ -306,13 +255,13 @@ public class NvtApplication implements CommandLineRunner {
 				+ " čija je cena 12000 eura.\n" + 
 				"U blizini se nalazi nekoliko fakulteta (Saobraćajni, FON, i FPN), Visoka škola elektrotenike i računarstva,"
 				+ " osnovna škola \"Filip Filipović\", studentski dom \"4. APRIL\".",
-				257000.0, 100.0, 2, 4, 2, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);	
+				257000.0, 100.0, 2, 4, 2, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType1);	
 		realEstateRepository.save(realEstate1);
 		RealEstate realEstate2 = new RealEstate("Dvosoban stan", "Luksuzno opremljen stan na Vračaru u novogradnji sa velikom garažom.\n" + 
 				"\n" + 
 				"Stan se sastoji iz predsoblja, dnevne sobe sa velikom kuhinjom i šank trpezarijom, sa izlazom na dve terase,"
 				+ " spavaće sobe koja takođe ima izlaz na jednu od terasa, kupatila i garderobera.", 
-				190000.0, 75.0, 2, 5, 2, 2015, true, true, location2, realEstateType3, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
+				190000.0, 75.0, 2, 5, 2, 2015, true, true, location2, realEstateType3, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType1);
 		realEstateRepository.save(realEstate2);
 		RealEstate realEstate3 = new RealEstate("Troiposoban stan","Moderan i svetao stan u novijoj zgradi na prelepoj lokaciji pogodnoj "
 				+ "za aktivan život ali i za odmor. U neposrdenoj okolini parkova, vrtica, osnovnih skola, gimnazija,svih stanica gradskog"
@@ -385,16 +334,87 @@ public class NvtApplication implements CommandLineRunner {
 		imageRepository.save(image18);
 		
 	
-		RealEstateIndoors realEstateIndoors = new RealEstateIndoors(realEstate1, indoorFeature1);
-		realEstateIndoorsRepository.save(realEstateIndoors);
+		
+		IndoorFeature indoorFeature1 = new IndoorFeature("Floorboards");
+		indoorFeatureRepository.save(indoorFeature1);
+		IndoorFeature indoorFeature2 = new IndoorFeature("Built-in Wardrobes");
+		indoorFeatureRepository.save(indoorFeature2);
+		IndoorFeature indoorFeature3 = new IndoorFeature("Dishwasher");
+		indoorFeatureRepository.save(indoorFeature3);
+		IndoorFeature indoorFeature4 = new IndoorFeature("Air Conditioning");
+		indoorFeatureRepository.save(indoorFeature4);
+		IndoorFeature indoorFeature6 = new IndoorFeature("Indoor Spa");
+		indoorFeatureRepository.save(indoorFeature6);
+		IndoorFeature indoorFeature7 = new IndoorFeature("Broadband Internet Available");
+		indoorFeatureRepository.save(indoorFeature7);
+		IndoorFeature indoorFeature8 = new IndoorFeature("Ducted Heating");
+		indoorFeatureRepository.save(indoorFeature8);
+		IndoorFeature indoorFeature9 = new IndoorFeature("Ducted Cooling");
+		indoorFeatureRepository.save(indoorFeature9);
+		IndoorFeature indoorFeature10 = new IndoorFeature("Rumpus Room");
+		indoorFeatureRepository.save(indoorFeature10);
+		IndoorFeature indoorFeature11 = new IndoorFeature("Alarm System");
+		indoorFeatureRepository.save(indoorFeature11);
+		IndoorFeature indoorFeature13 = new IndoorFeature("Dusted vacum system");
+		indoorFeatureRepository.save(indoorFeature13);
+		IndoorFeature indoorFeature14 = new IndoorFeature("Open fireplace");
+		indoorFeatureRepository.save(indoorFeature14);
+		
+
+		RealEstateIndoors realEstateIndoors1 = new RealEstateIndoors(realEstate1, indoorFeature3);
+		realEstateIndoorsRepository.save(realEstateIndoors1);
 		RealEstateIndoors realEstateIndoors2 = new RealEstateIndoors(realEstate1, indoorFeature2);
 		realEstateIndoorsRepository.save(realEstateIndoors2);
+		RealEstateIndoors realEstateIndoors3 = new RealEstateIndoors(realEstate1, indoorFeature11);
+		realEstateIndoorsRepository.save(realEstateIndoors3);
+		RealEstateIndoors realEstateIndoors4 = new RealEstateIndoors(realEstate2, indoorFeature4);
+		realEstateIndoorsRepository.save(realEstateIndoors4);
+		RealEstateIndoors realEstateIndoors5 = new RealEstateIndoors(realEstate2, indoorFeature1);
+		realEstateIndoorsRepository.save(realEstateIndoors5);
+		RealEstateIndoors realEstateIndoors6 = new RealEstateIndoors(realEstate2, indoorFeature3);
+		realEstateIndoorsRepository.save(realEstateIndoors6);
+		RealEstateIndoors realEstateIndoors7 = new RealEstateIndoors(realEstate3, indoorFeature4);
+		realEstateIndoorsRepository.save(realEstateIndoors7);
+		RealEstateIndoors realEstateIndoors8 = new RealEstateIndoors(realEstate3, indoorFeature2);
+		realEstateIndoorsRepository.save(realEstateIndoors8);
+		RealEstateIndoors realEstateIndoors9 = new RealEstateIndoors(realEstate4, indoorFeature11);
+		realEstateIndoorsRepository.save(realEstateIndoors9);
+		RealEstateIndoors realEstateIndoors10 = new RealEstateIndoors(realEstate5, indoorFeature14);
+		realEstateIndoorsRepository.save(realEstateIndoors10);
 		
-		
-		RealEstateOutdoors realEstateOutdoors = new RealEstateOutdoors(realEstate2, outdoorFeature1);
-		realEstateOutdoorsRepository.save(realEstateOutdoors);
-		
-		
+		OutdoorFeature outdoorFeature1 = new OutdoorFeature("Secure Parking");
+		outdoorFeatureRepository.save(outdoorFeature1);
+		OutdoorFeature outdoorFeature2 = new OutdoorFeature("Courtyard");
+		outdoorFeatureRepository.save(outdoorFeature2);
+		OutdoorFeature outdoorFeature3 = new OutdoorFeature("Shed");
+		outdoorFeatureRepository.save(outdoorFeature3);
+		OutdoorFeature outdoorFeature4 = new OutdoorFeature("Deck");
+		outdoorFeatureRepository.save(outdoorFeature4);
+		OutdoorFeature outdoorFeature5 = new OutdoorFeature("Balcony");
+		outdoorFeatureRepository.save(outdoorFeature5);
+		OutdoorFeature outdoorFeature6 = new OutdoorFeature("Swimming Pool");
+		outdoorFeatureRepository.save(outdoorFeature6);
+		OutdoorFeature outdoorFeature7 = new OutdoorFeature("Carpot");
+		outdoorFeatureRepository.save(outdoorFeature7);
+		OutdoorFeature outdoorFeature8 = new OutdoorFeature("Garage");
+		outdoorFeatureRepository.save(outdoorFeature8);
+		OutdoorFeature outdoorFeature9 = new OutdoorFeature("Tenis court");
+		outdoorFeatureRepository.save(outdoorFeature9);
+		OutdoorFeature outdoorFeature10 = new OutdoorFeature("Outside spa");
+		outdoorFeatureRepository.save(outdoorFeature10);
+
+		RealEstateOutdoors realEstateOutdoors1 = new RealEstateOutdoors(realEstate1, outdoorFeature1);
+		realEstateOutdoorsRepository.save(realEstateOutdoors1);
+		RealEstateOutdoors realEstateOutdoors2 = new RealEstateOutdoors(realEstate1, outdoorFeature8);
+		realEstateOutdoorsRepository.save(realEstateOutdoors2);
+		RealEstateOutdoors realEstateOutdoors3 = new RealEstateOutdoors(realEstate2, outdoorFeature5);
+		realEstateOutdoorsRepository.save(realEstateOutdoors3);
+		RealEstateOutdoors realEstateOutdoors4 = new RealEstateOutdoors(realEstate2, outdoorFeature1);
+		realEstateOutdoorsRepository.save(realEstateOutdoors4);
+		RealEstateOutdoors realEstateOutdoors5 = new RealEstateOutdoors(realEstate3, outdoorFeature8);
+		realEstateOutdoorsRepository.save(realEstateOutdoors5);
+		RealEstateOutdoors realEstateOutdoors6 = new RealEstateOutdoors(realEstate3, outdoorFeature10);
+		realEstateOutdoorsRepository.save(realEstateOutdoors6);
 		
 		
 		RealEstateComment realEstateComment1 = new RealEstateComment("comentarrr..", new Date(), realEstate1, user11);

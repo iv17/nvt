@@ -39,7 +39,7 @@
 						<p>
 							<!--ui-sref = 'stateName({param:value, param:value})' -->
 							<a ui-sref = "realEstate({realEstateId: realEstate.id})">
-							<img ng-src= "{{ realEstate.image.fileString }} " width = "150" />
+							<img ng-src= "{{ realEstate.image.fileString }} " width = "250" />
 							</a>
 						</p>
 						<div class = "text-center text-primary">
@@ -62,7 +62,8 @@
 						<p>
 							<span class = "label label-grey-100"> {{ realEstate.advertisementType.name }}</span>
 							<span class = "label label-grey-100"><i class = "fa fa-home fa-fw"></i> {{ realEstate.realEstateType.name }} </span>
-							<span class = "label label-grey-100">&euro; {{ realEstate.price }}</span>
+							<span class = "label label-grey-100">&euro; {{ realEstate.price | number : 2}}</span>
+							<span class = "label label-grey-100"> {{ realEstate.surface }} m2</span>
 							<span class = "label label-grey-100"><i class = "fa fa-fw icon icon-bed"></i> {{ realEstate.rooms }} rooms </span>
 							<span class = "label label-grey-100"><i class = "fa fa-fw icon icon-toilet"></i> {{ realEstate.bathrooms }} bathrooms</span>
 						</p>

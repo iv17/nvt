@@ -16,6 +16,8 @@ import nvt.beans.AdvertisementType;
 import nvt.beans.HeatingType;
 import nvt.beans.Location;
 import nvt.beans.RealEstate;
+import nvt.beans.RealEstateIndoors;
+import nvt.beans.RealEstateOutdoors;
 import nvt.beans.RealEstateType;
 import nvt.service.AdvertisementTypeService;
 import nvt.service.AgentService;
@@ -30,6 +32,8 @@ import nvt.service.RealEstateService;
 import nvt.service.RealEstateTypeService;
 import nvt.web.dto.BlockDTO;
 import nvt.web.dto.CityDTO;
+import nvt.web.dto.IndoorFeatureDTO;
+import nvt.web.dto.OutdoorFeatureDTO;
 import nvt.web.dto.RealEstateDTO;
 import nvt.web.dto.SearchDTO;
 import nvt.web.dto.SelectedAdvertisementTypeDTO;
@@ -237,6 +241,39 @@ public class RealEstateController {
 
 		return new ResponseEntity<RealEstateDTO>(realEstateDTO, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/{id}/indoors", method = RequestMethod.GET)
+	public ResponseEntity<List<IndoorFeatureDTO>> getIndoors(@PathVariable Integer id){
+
+		RealEstate realEstate = realEstateService.findById(id);
+		if(realEstate == null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		List<IndoorFeatureDTO> indoors = new ArrayList<>();
+		for (RealEstateIndoors realEstateIndoors : realEstate.getIndoors()) {
+			IndoorFeatureDTO f = new IndoorFeatureDTO(realEstateIndoors.getIndoorFeature());
+			indoors.add(f);
+		}
+		
+		return new ResponseEntity<List<IndoorFeatureDTO>>(indoors, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/{id}/outdoors", method = RequestMethod.GET)
+	public ResponseEntity<List<OutdoorFeatureDTO>> getOutdoors(@PathVariable Integer id){
+
+		RealEstate realEstate = realEstateService.findById(id);
+		if(realEstate == null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		List<OutdoorFeatureDTO> outdoors = new ArrayList<>();
+		for (RealEstateOutdoors realEstateOutdoors : realEstate.getOutdoors()) {
+			OutdoorFeatureDTO f = new OutdoorFeatureDTO(realEstateOutdoors.getOutdoorFeature());
+			outdoors.add(f);
+		}
+		
+		return new ResponseEntity<List<OutdoorFeatureDTO>>(outdoors, HttpStatus.OK);
+	}
+
 
 
 

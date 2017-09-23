@@ -1,7 +1,6 @@
 <div class = "container-fluid">
 	<div id = "carousel-example-generic" class = "carousel slide cover overlay overflow-hidden margin-bottom-none max-height-500" data-ride = "carousel">
-		<div class = "ribbon-heading ribbon-primary h4 inline absolute left margin-none">&euro;{{realEstate.price}}</div>
-
+		<div class = "ribbon-heading ribbon-primary h4 inline absolute left margin-none">&euro;{{realEstate.price | number : 2}}</div>
 		<ol class = "carousel-indicators">
 			<li data-target="#carousel-example-generic" ng-repeat="image in realEstate.images" ng-class="{active: (image.broj === 0)}" data-slide-to="{{image.broj}}"></li>
 		</ol>
@@ -32,6 +31,7 @@
 
 	<div class = "property-meta">
 		<ul>
+			<li class="property-meta-item"><i class="fa fa-fw icon icon-home-2"></i> {{ realEstate.surface }} m2</li>
 			<li class="property-meta-item"><i class="fa fa-fw icon icon-home-2"></i> {{ realEstate.realEstateType.name }}</li>
 			<li class="property-meta-item"><i class="fa fa-fw icon icon-bed"></i> {{ realEstate.rooms }} Bedrooms</li>
 			<li class="property-meta-item"><i class="fa fa-fw icon icon-toilet"></i> {{ realEstate.bathrooms}} Bathrooms</li>
@@ -52,34 +52,85 @@
 	</div>
 	<div class = "panel panel-default">
 		<div class = "panel-heading">
-			<h4 class = "panel-title">Facilities</h4>			<!-- SREDITI OVO-->
+			<h4 class = "panel-title">indoors</h4>
 		</div>
 		<div class = "panel-body">
 			<div class = "row">
 				<div class = "col-sm-4 col-xs-6">
 					<ul class = "property-facilities">
-						<div ng-repeat = "i in realEstate.indoors">
-							<li><i class="icon icon-wifi-2 primary"></i> {{ i.indoorFeature.name }}</li>
-						</div>
-						<li><i class="icon icon-shovel"></i> Garden</li>
-						<li><i class="md md-directions-car"></i> Garage</li>
-						<li><i class="md md-directions-bus"></i> Bus</li>
+						<li ng-show="floorboards == 'Floorboards'"><i class="fa fa-home primary"></i> Floorboards</li>
+						<li ng-show="floorboards != 'Floorboards'"><i class="fa fa-home"></i> Floorboards</li>
+						<li ng-show="builtInWardrobes == 'Built-in Wardrobes'"><i class="fa fa-home primary"></i> Built-in Wardrobes</li>
+						<li ng-show="builtInWardrobes != 'Built-in Wardrobes'"><i class="fa fa-home"></i> Built-in Wardrobes</li>
+						<li ng-show="dishwasher == 'Dishwasher'"><i class="fa fa-home primary"></i> Dishwasher</li>
+						<li ng-show="dishwasher != 'Dishwasher'"><i class="fa fa-home"></i> Dishwasher</li>
+						<li ng-show="airConditioning == 'Air Conditioning'"><i class="fa fa-home primary"></i> Air Conditioning</li>
+						<li ng-show="airConditioning != 'Air Conditioning'"><i class="fa fa-home"></i> Air Conditioning</li>
 					</ul>
 				</div>
 				<div class="col-sm-4 col-xs-6">
 					<ul class="property-facilities">
-						<li><i class="md md-local-mall"></i> Mall</li>
-						<li><i class="md md-local-bar"></i> Restaurant</li>
-						<li><i class="md md-local-laundry-service"></i> Washing</li>
-						<li><i class="icon icon-no-smoking"></i> No Smoking</li>
+						<li ng-show="indoorSpa == 'Indoor Spa'"><i class="fa fa-home primary"></i> Indoor Spa</li>
+						<li ng-show="indoorSpa != 'Indoor Spa'"><i class="fa fa-home"></i> Indoor Spa</li>
+						<li ng-show="broadbandInternetAvailable == 'Broadband Internet Available'"><i class="fa fa-home primary"></i> Broadband Internet Available</li>
+						<li ng-show="broadbandInternetAvailable != 'Broadband Internet Available'"><i class="fa fa-home"></i> Broadband Internet Available</li>
+						<li ng-show="ductedHeating == 'Ducted Heating'"><i class="fa fa-home primary"></i> Ducted Heating</li>
+						<li ng-show="ductedHeating != 'Ducted Heating'"><i class="fa fa-home"></i> Ducted Heating</li>
+						<li ng-show="ductedCooling == 'Ducted Cooling'"><i class="fa fa-home primary"></i> Ducted Cooling</li>
+						<li ng-show="ductedCooling != 'Ducted Cooling'"><i class="fa fa-home"></i> Ducted Cooling</li>
 					</ul>
 				</div>
 				<div class="col-sm-4 hidden-xs">
 					<ul class="property-facilities">
-						<li><i class="icon icon-shovel"></i> Garden</li>
-						<li><i class="icon icon-wifi-2"></i> Internet</li>
-						<li><i class="md md-directions-car"></i> Garage</li>
-						<li><i class="md md-directions-bus"></i> Bus</li>
+						<li ng-show="rumpusRoom == 'Rumpus Room'"><i class="fa fa-home primary"></i> Rumpus Room</li>
+						<li ng-show="rumpusRoom != 'Rumpus Room'"><i class="fa fa-home"></i> Rumpus Room</li>
+						<li ng-show="alarmSystem == 'Alarm System'"><i class="fa fa-home primary"></i> Alarm System</li>
+						<li ng-show="alarmSystem != 'Alarm System'"><i class="fa fa-home"></i> Alarm System</li>
+						<li ng-show="dustedVacumSystem == 'Dusted vacum system'"><i class="fa fa-home primary"></i> Dusted vacum system</li>
+						<li ng-show="dustedVacumSystem != 'Dusted vacum system'"><i class="fa fa-home"></i> Dusted vacum system</li>
+						<li ng-show="openFireplace == 'Open fireplace'"><i class="fa fa-home primary"></i> Open fireplace</li>
+						<li ng-show="openFireplace != 'Open fireplace'"><i class="fa fa-home"></i> Open fireplace</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class = "panel panel-default">
+		<div class = "panel-heading">
+			<h4 class = "panel-title">outdoors</h4>
+		</div>
+		<div class = "panel-body">
+			<div class = "row">
+				<div class = "col-sm-4 col-xs-6">
+					<ul class = "property-facilities">
+						<li ng-show="secureParking == 'Secure Parking'"><i class="fa fa-home primary"></i> Secure Parking</li>
+						<li ng-show="secureParking != 'Secure Parking'"><i class="fa fa-home"></i> Secure Parking</li>
+						<li ng-show="courtyard == 'Courtyard'"><i class="fa fa-home primary"></i> Courtyard</li>
+						<li ng-show="courtyard != 'Courtyard'"><i class="fa fa-home"></i> Courtyard</li>
+						<li ng-show="shed == 'Shed'"><i class="fa fa-home primary"></i> Shed</li>
+						<li ng-show="shed != 'Shed'"><i class="fa fa-home"></i> Shed</li>
+						<li ng-show="deck == 'Deck'"><i class="fa fa-home primary"></i> Deck</li>
+						<li ng-show="deck != 'Deck'"><i class="fa fa-home"></i> Deck</li>
+					</ul>
+				</div>
+				<div class="col-sm-4 col-xs-6">
+					<ul class="property-facilities">
+						<li ng-show="balcony == 'Balcony'"><i class="fa fa-home primary"></i> Balcony</li>
+						<li ng-show="balcony != 'Balcony'"><i class="fa fa-home"></i> Balcony</li>
+						<li ng-show="swimmingPool == 'Swimming Pool'"><i class="fa fa-home primary"></i> Swimming Pool</li>
+						<li ng-show="swimmingPool != 'Swimming Pool'"><i class="fa fa-home"></i> Swimming Pool</li>
+						<li ng-show="carpot == 'Carpot'"><i class="fa fa-home primary"></i> Carpot</li>
+						<li ng-show="carpot != 'Carpot'"><i class="fa fa-home"></i> Carpot</li>
+						<li ng-show="garage == 'Garage'"><i class="fa fa-home primary"></i> Garage</li>
+						<li ng-show="garage != 'Garage'"><i class="fa fa-home"></i> Garage</li>
+					</ul>
+				</div>
+				<div class="col-sm-4 hidden-xs">
+					<ul class="property-facilities">
+						<li ng-show="tenisCourt == 'Tenis court'"><i class="fa fa-home primary"></i> Tenis court</li>
+						<li ng-show="tenisCourt != 'Tenis court'"><i class="fa fa-home"></i> Tenis court</li>
+						<li ng-show="outsideSpa == 'Outside spa'"><i class="fa fa-home primary"></i> Outside spa</li>
+						<li ng-show="outsideSpa != 'Outside spa'"><i class="fa fa-home"></i> Outside spa</li>
 					</ul>
 				</div>
 			</div>

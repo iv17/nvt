@@ -32,6 +32,18 @@
 			});
 		};
 
+		retVal.indoors = function(id)	{
+			return Restangular.one("realEstates", id).getList("indoors").then(function(response) {
+				return response;
+			});
+		};
+
+		retVal.outdoors = function(id)	{
+			return Restangular.one("realEstates", id).getList("outdoors").then(function(response) {
+				return response;
+			});
+		};
+
 		return retVal;
 	}]);	//kraj Restangular-a
 
