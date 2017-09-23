@@ -3,23 +3,22 @@
 		<div class = "ribbon-heading ribbon-primary h4 inline absolute left margin-none">&euro;{{realEstate.price}}</div>
 
 		<ol class = "carousel-indicators">
-			<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="3"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="4"></li>
+			<li data-target="#carousel-example-generic" ng-repeat="image in realEstate.images" ng-class="{active: (image.broj === 0)}" data-slide-to="{{image.broj}}"></li>
 		</ol>
-		<div class = "carousel-inner" role = "listbox" >
-			<div class = "item active">
-				<img ng-src= "{{ realEstate.image.fileString }} " class =" width-100pc">
-			</div>
-			<div ng-repeat= "image in realEstate.images">
-			<div class = "item">
+		<div class = "carousel-inner" >
+			<div ng-class="{item: true, active: (image.broj === 0)}" ng-repeat= "image in realEstate.images">
 				<img ng-src= "{{ image.fileString }} " class =" width-100pc">
+				<a class="left carousel-control" role="button"  data-target="#carousel-example-generic" data-slide-to="{{image.broj === 0 ? image.broj+2 : image.broj-1 }}">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" role="button" data-target="#carousel-example-generic" data-slide-to="{{image.broj === 2 ? image.broj-2 : image.broj+1 }}">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
 			</div>
-			</div>
-
 		</div>
+
 		<div class = "overlay overlay-bg-black">
 			<div class = "v-bottom">
 				<div class = "page-section">
@@ -27,16 +26,8 @@
 					<p class = "text-subhead text-overlay">{{ realEstate.location.street }}, {{ realEstate.location.block }}, {{ realEstate.location.city }}</p>
 				</div>
 			</div>
-
 		</div>
-		<a class="left carousel-control" ng-href="#carousel-example-generic" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="right carousel-control" ng-href="#carousel-example-generic" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
+
 	</div>
 
 	<div class = "property-meta">

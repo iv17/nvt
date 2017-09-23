@@ -343,10 +343,7 @@ public class NvtApplication implements CommandLineRunner {
 		Image image3 = new Image("13.jpg", "app/images/properties/13.jpg".getBytes(), "image/jpeg");
 		image3.setRealEstate(realEstate1);
 		imageRepository.save(image3);
-		Image image4 = new Image("14.jpg", "app/images/properties/14.jpg".getBytes(), "image/jpeg");
-		image4.setRealEstate(realEstate1);
-		imageRepository.save(image4);
-	
+		
 		Image image5 = new Image("21.jpg", "app/images/properties/21.jpg".getBytes(), "image/jpeg");
 		image5.setRealEstate(realEstate2);
 		imageRepository.save(image5);
@@ -366,10 +363,7 @@ public class NvtApplication implements CommandLineRunner {
 		Image image10 = new Image("33.jpg", "app/images/properties/33.jpg".getBytes(), "image/jpeg");
 		image10.setRealEstate(realEstate3);
 		imageRepository.save(image10);
-		Image image11 = new Image("34.jpg", "app/images/properties/34.jpg".getBytes(), "image/jpeg");
-		image11.setRealEstate(realEstate3);
-		imageRepository.save(image11);
-	
+			
 		Image image12 = new Image("41.jpg", "app/images/properties/41.jpg".getBytes(), "image/jpeg");
 		image12.setRealEstate(realEstate4);
 		imageRepository.save(image12);
@@ -379,11 +373,7 @@ public class NvtApplication implements CommandLineRunner {
 		Image image14 = new Image("43.jpg", "app/images/properties/43.jpg".getBytes(), "image/jpeg");
 		image14.setRealEstate(realEstate4);
 		imageRepository.save(image14);
-		Image image15 = new Image("44.jpg", "app/images/properties/44.jpg".getBytes(), "image/jpeg");
-		image15.setRealEstate(realEstate4);
-		imageRepository.save(image15);
-	
-		
+			
 		Image image16 = new Image("51.jpg", "app/images/properties/51.jpg".getBytes(), "image/jpeg");
 		image16.setRealEstate(realEstate5);
 		imageRepository.save(image16);
@@ -393,11 +383,7 @@ public class NvtApplication implements CommandLineRunner {
 		Image image18 = new Image("53.jpg", "app/images/properties/53.jpg".getBytes(), "image/jpeg");
 		image18.setRealEstate(realEstate5);
 		imageRepository.save(image18);
-		Image image19 = new Image("54.jpg", "app/images/properties/54.jpg".getBytes(), "image/jpeg");
-		image19.setRealEstate(realEstate5);
-		imageRepository.save(image19);
-	
-
+		
 	
 		RealEstateIndoors realEstateIndoors = new RealEstateIndoors(realEstate1, indoorFeature1);
 		realEstateIndoorsRepository.save(realEstateIndoors);

@@ -1,7 +1,9 @@
 package nvt.web.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import nvt.beans.Image;
@@ -69,12 +71,17 @@ public class RealEstateDTO {
 		advertisementType = new AdvertisementTypeDTO(realEstate.getAdvertisementType());
 		
 		Set<Image> im = realEstate.getImages();
-	
-		for (Image i : im) {
-			image = new ImageDTO(i);
-			images.add(image);
+		List<Image> temp = new ArrayList<Image>();
+		for (Image image : im) {
+			temp.add(image);
 		}
 		
+		for (int i = 0; i < temp.size(); i++) {
+			
+			image = new ImageDTO(temp.get(i));
+			image.setBroj(i);
+			images.add(image);
+		}
 	}
 
 

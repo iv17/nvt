@@ -5,6 +5,7 @@ import nvt.beans.Image;
 public class ImageDTO {
 
 	private int id;	
+	private int broj;
 	private String name;
 	private byte[] file;
 	
@@ -52,5 +53,14 @@ public class ImageDTO {
 	public void setFileString(String fileString) {
 		this.fileString = fileString;
 	}
+
+	public int getBroj() {
+		return broj;
+	}
+
+	public void setBroj(int broj) {
+		this.broj = broj;
+	}
+	
 	
 }
