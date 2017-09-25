@@ -34,6 +34,7 @@ import nvt.service.RealEstateTypeService;
 import nvt.web.dto.BlockDTO;
 import nvt.web.dto.CityDTO;
 import nvt.web.dto.IndoorFeatureDTO;
+import nvt.web.dto.LatLngDTO;
 import nvt.web.dto.OutdoorFeatureDTO;
 import nvt.web.dto.RealEstateCommentDTO;
 import nvt.web.dto.RealEstateDTO;
@@ -244,6 +245,25 @@ public class RealEstateController {
 		return new ResponseEntity<RealEstateDTO>(realEstateDTO, HttpStatus.OK);
 	}
 	
+	
+	
+	@RequestMapping(value = "/latlng", method = RequestMethod.POST)
+	public ResponseEntity<RealEstateDTO> getRealEstateLatLng(@RequestBody LatLngDTO latlng){
+
+		
+		double lat = latlng.getLat();
+		double lng = round(latlng.getLng(), 7);
+		
+		Location location = locationService.findByCoordinates(lat, lng).get(0);
+		RealEstate realEstate = realEstateService.findByLocation(location).get(0);
+		if(realEstate == null){
+			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
+		}
+		RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
+
+		return new ResponseEntity<RealEstateDTO>(realEstateDTO, HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/{id}/indoors", method = RequestMethod.GET)
 	public ResponseEntity<List<IndoorFeatureDTO>> getIndoors(@PathVariable Integer id){
 
@@ -304,5 +324,14 @@ public class RealEstateController {
 		return realEstateDTOs;
 	}
 
+	
+	public static double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+
+	    long factor = (long) Math.pow(10, places);
+	    value = value * factor;
+	    long tmp = Math.round(value);
+	    return (double) tmp / factor;
+	}
 
 }

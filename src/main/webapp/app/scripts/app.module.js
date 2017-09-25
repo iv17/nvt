@@ -149,6 +149,27 @@
 						controller: 'RealEstateController'
 					}
 				}
+			})
+			.state('realEstateLatLng', {
+				//url: "/realEstateLatLng/:latlng",
+				url: "/realEstateLatLng/{latlng: json}",
+				params: {latlng : null},
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+						templateUrl: 'app/views/sidebar_search.html',
+						controller: 'SidebarSearchController'
+					},
+					'content@': {
+						templateUrl: 'app/views/content/property.html',
+						controller: 'RealEstateLatLngController'
+					}
+				}
 			});
 		}])
 		// run se izvrsava pre svega ostalog
