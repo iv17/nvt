@@ -11,7 +11,8 @@
 		'ui.bootstrap',
 		'lodash',
 		'ngStorage',
-		'angularjs-dropdown-multiselect'
+		'angularjs-dropdown-multiselect',
+		'ngMap'
 		])
 		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 			function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -34,6 +35,25 @@
 					'content@': {
 						templateUrl: 'app/views/content/propertiesList.html',
 						controller: 'RealEstatesController'
+					}
+				}
+			})
+			.state('realestates_map', {
+				url: "/realestates_map",
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+						templateUrl: 'app/views/sidebar_search.html',
+						controller: 'SidebarSearchController'
+					},
+					'content@': {
+						templateUrl: 'app/views/content/map_search.html',
+						controller: 'MapController'
 					}
 				}
 			})

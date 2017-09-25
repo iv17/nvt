@@ -1,0 +1,18 @@
+<div>
+  <div class = "form-group">
+    <div class = "input-group">
+      <input places-auto-complete types="['geocode']" on-place-changed="placeMarker()" />
+    </div>
+  </div>
+  <ng-map id="mapa" center="{{center}}" zoom="13" on-click="getpos($event)" style='width: 100%'>
+    <div ng-repeat = "latlng in lls">
+      <marker position="{{latlng}}"
+        on-dragend="getpos($event)"
+        animation="DROP"
+        draggable="true"
+        icon="app/images/markers/building-01.png"
+        ></marker>
+      </div>
+    </ng-map>
+    {{latlng}}
+<div>
