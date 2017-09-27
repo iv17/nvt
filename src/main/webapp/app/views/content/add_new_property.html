@@ -15,7 +15,7 @@
 	        ></marker>
 	    </ng-map>
 </div>
-<aside class = "sidebar right sidebar-size-xs-1 sidebar-size-lg-48pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" id = sidebar-edit data-toggle-layout = true data-toggle-bar = true>
+<div class = "sidebar right sidebar-size-xs-1 sidebar-size-lg-48pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" >
 	<div data-scrollable>
 		<form name = "addProperty">
 			<div class = "sidebar-block">
@@ -23,6 +23,10 @@
 			</div>
 			<div class = "sidebar-block">
 				<h4 class = "category">general information</h4>
+				<div class = "form-group">
+						<label for = "name" class = "sidebar-text">upload images:</label>
+						<input type = "file"  multiple  onchange="angular.element(this).scope().fileNameChanged(this)" class = "form-control">
+				</div>
 				<div class = "form-group">
 					<div class = "input-group">
 						<label for = "name" class = "sidebar-text">name:</label>
@@ -37,10 +41,8 @@
 				</div>
 				<div class = "form-group">
 					<label class = "sidebar-text">realestate type:</label>
-					<div class="sidebar-block">
 						<div ng-dropdown-multiselect="" options="realEstateTypeLabels"
 							selected-model="selectedRealEstateTypes"></div>
-					</div>
 				</div>
 				<div class = "form-group">
 					<div class = "input-group">
@@ -73,11 +75,9 @@
 					</div>
 				</div>
 				<div class = "form-group">
-					<label for = "heatingType" class = "sidebar-text">heating type:</label>
-					<div class="sidebar-block">
+					<label class = "sidebar-text">heating type:</label>
 						<div ng-dropdown-multiselect="" options="heatingTypeLabels"
 							selected-model="selectedHeatingTypes"></div>
-					</div>
 				</div>
 				<div class = "form-group">
 					<label >filed</label>
@@ -107,20 +107,16 @@
 			</div>
 			<div class = "form-group">
 				<label  class = "sidebar-text">indoors:</label>
-				<div class="sidebar-block">
 					<div ng-dropdown-multiselect="" options="indoorLabels"
 						selected-model="selectedIndoors"></div>
-				</div>
 			</div>
 			<div class = "form-group">
 				<label class = "sidebar-text">outdoors:</label>
-				<div class="sidebar-block">
 					<div ng-dropdown-multiselect="" options="outdoorLabels"
-						selected-model="selectedOutdoors" extra-setting="button"></div>
-				</div>
+						selected-model="selectedOutdoors" extra-settings="button"></div>
 			</div>
 			<div class = "form-group">
-				<label for = "advertisementType" class = "sidebar-text">advertisement type:</label>
+				<label class = "sidebar-text">advertisement type:</label>
 				<div ng-dropdown-multiselect="" options="advertisemntTypeLabels"
 					selected-model="selectedAdvertisementTypes" extra-settings="button"></div>
 			</div>
@@ -159,5 +155,5 @@
 			</div>
 		</form>
 	</div>
-</aside>
+</div>
 </div>

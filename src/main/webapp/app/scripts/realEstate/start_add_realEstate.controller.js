@@ -3,18 +3,16 @@
 
 	angular
 	.module('nvtApp')
-	.controller('StartAddRealEstateController', ['$scope', '$state', '_', 'AdvertisementTypeResource',
+	.controller('StartAddRealEstateController', ['$scope', '$rootScope', '$state', '_', 'AdvertisementTypeResource',
 		'RealEstateTypeResource', 'HeatingTypeResource', 'IndoorResource', 'OutdoorResource', '$log',
-		function($scope, $state, _, AdvertisementTypeResource, RealEstateTypeResource, HeatingTypeResource,
+		function($scope, $rootScope, $state, _, AdvertisementTypeResource, RealEstateTypeResource, HeatingTypeResource,
 			IndoorResource, OutdoorResource, $log) {
 
-  		//$scope.center = [44.7992456, 20.4023128];
+  		$scope.center = [44.7992456, 20.4023128];
 			$scope.getpos = function (event) {
 					$scope.lat = event.latLng.lat();
 					$scope.lng = event.latLng.lng();
 					$scope.latlng = [event.latLng.lat(), event.latLng.lng()];
-
-
 			};
 
 			$scope.placeMarker = function(){
@@ -23,6 +21,18 @@
 					$scope.center = [loc.lat(), loc.lng()];
 			};
 
+			$scope.fileNameChanged = function (ele) {
+				var files = ele.files;
+				var l = files.length;
+				var namesArr = [];
+
+				for (var i = 0; i < l; i++) {
+					namesArr.push(files[i].name);
+				}
+				$rootScope.namesArr = namesArr;
+			};
+
+			
 			AdvertisementTypeResource.getAdvertisementTypes().then(function(items) {
 				var advertisementTypes = items;
 				var advertisemntTypeLabels = [];

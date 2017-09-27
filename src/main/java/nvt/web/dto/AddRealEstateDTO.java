@@ -23,6 +23,7 @@ public class AddRealEstateDTO {
 	private ArrayList<Double> latlng;
 	private ArrayList<SelectedIndoorFeatureDTO> selectedIndoors;
 	private ArrayList<SelectedOutdoorFeatureDTO> selectedOutdoors;
+	private ArrayList<String> images;
 	
 	
 	public AddRealEstateDTO() {
@@ -151,6 +152,12 @@ public class AddRealEstateDTO {
 	}
 	public void setSelectedOutdoors(ArrayList<SelectedOutdoorFeatureDTO> selectedOutdoors) {
 		this.selectedOutdoors = selectedOutdoors;
+	}
+	public ArrayList<String> getImages() {
+		return images;
+	}
+	public void setImages(ArrayList<String> images) {
+		this.images = images;
 	}
 
 	

@@ -23,6 +23,7 @@ import com.google.code.geocoder.model.LatLng;
 
 import nvt.beans.AdvertisementType;
 import nvt.beans.HeatingType;
+import nvt.beans.Image;
 import nvt.beans.IndoorFeature;
 import nvt.beans.Location;
 import nvt.beans.OutdoorFeature;
@@ -32,8 +33,8 @@ import nvt.beans.RealEstateIndoors;
 import nvt.beans.RealEstateOutdoors;
 import nvt.beans.RealEstateType;
 import nvt.service.AdvertisementTypeService;
-import nvt.service.AgentService;
 import nvt.service.HeatingTypeService;
+import nvt.service.ImageService;
 import nvt.service.IndoorFeatureService;
 import nvt.service.LocationService;
 import nvt.service.OutdoorFeatureService;
@@ -86,7 +87,7 @@ public class RealEstateController {
 	protected HeatingTypeService heatingTypeService;
 	
 	@Autowired
-	protected AgentService agentService;
+	protected ImageService imageService;
 	
 	@Autowired
 	protected AdvertisementTypeService advertisementTypeService;
@@ -287,6 +288,16 @@ public class RealEstateController {
 		
 		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
 		realEstateService.save(realEstate);
+		
+
+		ArrayList<String> names = realEstateDTO.getImages();
+		for (String string : names) {
+			String file = "app/images/markers/" + string;
+			Image im = new Image(string, file.getBytes());
+			im.setRealEstate(realEstate);
+			imageService.save(im);	
+		}
+		
 		
 		for (RealEstateIndoors realEstateIndoors : indoors) {
 			realEstateIndoors.setRealEstate(realEstate);

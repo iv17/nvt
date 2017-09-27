@@ -3,9 +3,9 @@
 
 	angular
 	.module('nvtApp')
-	.controller('AddRealEstateController', ['$scope', '$state', '_', 'RealEstateResource', '$log', '$stateParams',
-	 '$window','toastr',  '$localStorage',
-		function($scope, $state, _, RealEstateResource, $log, $stateParams, $window, toastr, $localStorage) {
+	.controller('AddRealEstateController', ['$scope', '$rootScope', '$state', '_', 'RealEstateResource', '$log', '$stateParams',
+		'$window','toastr',  '$localStorage', 'Upload',
+		function($scope, $rootScope, $state, _, RealEstateResource, $log, $stateParams, $window, toastr, $localStorage, Upload) {
 
 		var name = $stateParams.myParams.name;
 		var description = $stateParams.myParams.description;
@@ -24,23 +24,27 @@
 		var selectedIndoors = $stateParams.myParams.selectedIndoors;
 		var selectedOutdoors = $stateParams.myParams.selectedOutdoors;
 
+		var images = $rootScope.namesArr;
+
 		var realestate = {
-			name: name,
-			description: description,
-			selectedRealEstateTypes: selectedRealEstateTypes,
-			surface: surface,
-			floor: floor,
-			bathrooms: bathrooms,
-			constructedYear: constructedYear,
-			selectedHeatingTypes: selectedHeatingTypes,
-			filed: filed,
-			furnished: furnished,
-			selectedAdvertisementTypes: selectedAdvertisementTypes,
-			price: price,
-			latlng: latlng,
-			selectedIndoors: selectedIndoors,
-			selectedOutdoors: selectedOutdoors
+				name: name,
+				description: description,
+				selectedRealEstateTypes: selectedRealEstateTypes,
+				surface: surface,
+				floor: floor,
+				bathrooms: bathrooms,
+				constructedYear: constructedYear,
+				selectedHeatingTypes: selectedHeatingTypes,
+				filed: filed,
+				furnished: furnished,
+				selectedAdvertisementTypes: selectedAdvertisementTypes,
+				price: price,
+				latlng: latlng,
+				selectedIndoors: selectedIndoors,
+				selectedOutdoors: selectedOutdoors,
+				images: images
 		};
+
 
 		RealEstateResource.addRealEstate(realestate).then(function(item) {
 			$scope.realEstate = item;
@@ -51,10 +55,11 @@
 		})
 		.catch(function(error){
 			$window.location.href = '/#/home';
-				toastr.error("Greska!");
+			toastr.error("Greska!");
 		});
 
 
 	}
 	]);
+
 })();
