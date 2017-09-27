@@ -2,7 +2,9 @@ package nvt.web.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +23,9 @@ import com.google.code.geocoder.model.LatLng;
 
 import nvt.beans.AdvertisementType;
 import nvt.beans.HeatingType;
+import nvt.beans.IndoorFeature;
 import nvt.beans.Location;
+import nvt.beans.OutdoorFeature;
 import nvt.beans.RealEstate;
 import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateIndoors;
@@ -34,6 +38,8 @@ import nvt.service.IndoorFeatureService;
 import nvt.service.LocationService;
 import nvt.service.OutdoorFeatureService;
 import nvt.service.RealEstateCommentService;
+import nvt.service.RealEstateIndoorsService;
+import nvt.service.RealEstateOutdoorsService;
 import nvt.service.RealEstateRatingService;
 import nvt.service.RealEstateReportService;
 import nvt.service.RealEstateService;
@@ -49,6 +55,8 @@ import nvt.web.dto.RealEstateCommentDTO;
 import nvt.web.dto.RealEstateDTO;
 import nvt.web.dto.SearchDTO;
 import nvt.web.dto.SelectedAdvertisementTypeDTO;
+import nvt.web.dto.SelectedIndoorFeatureDTO;
+import nvt.web.dto.SelectedOutdoorFeatureDTO;
 import nvt.web.dto.SelectedRealEstateTypeDTO;
 import nvt.web.dto.ZipCodeDTO;
 
@@ -89,6 +97,11 @@ public class RealEstateController {
 	@Autowired
 	protected OutdoorFeatureService outdoorFeatureService;
 	
+	@Autowired
+	protected RealEstateIndoorsService indoorsService;
+	
+	@Autowired
+	protected RealEstateOutdoorsService outdoorsService;
 	
 	@RequestMapping(
 			value = "/search",
@@ -249,10 +262,41 @@ public class RealEstateController {
 		
 		realEstate.setLocation(location);
 		
+		ArrayList<SelectedIndoorFeatureDTO> is = realEstateDTO.getSelectedIndoors();
+		Set<RealEstateIndoors> indoors = new HashSet<RealEstateIndoors>();
+		for (SelectedIndoorFeatureDTO selectedIndoorFeatureDTO : is) {
+			IndoorFeature i = indoorFeatureService.findById(selectedIndoorFeatureDTO.getId());
+			RealEstateIndoors ii = new RealEstateIndoors();
+			ii.setIndoorFeature(i);
+			
+			indoors.add(ii);
+		}
+		realEstate.setIndoors(indoors);
+		
+		ArrayList<SelectedOutdoorFeatureDTO> of = realEstateDTO.getSelectedOutdoors();
+		Set<RealEstateOutdoors> outdoors = new HashSet<RealEstateOutdoors>();
+		for (SelectedOutdoorFeatureDTO selectedOutdoorFeatureDTO : of) {
+			OutdoorFeature o = outdoorFeatureService.findById(selectedOutdoorFeatureDTO.getId());
+			RealEstateOutdoors oo = new RealEstateOutdoors();
+			oo.setOutdoorFeature(o);
+			
+			outdoors.add(oo);
+		}
+		realEstate.setOutdoors(outdoors);
+		
+		
 		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
-		
-		
 		realEstateService.save(realEstate);
+		
+		for (RealEstateIndoors realEstateIndoors : indoors) {
+			realEstateIndoors.setRealEstate(realEstate);
+			indoorsService.save(realEstateIndoors);
+		}
+		for (RealEstateOutdoors realEstateOutdoors : outdoors) {
+			realEstateOutdoors.setRealEstate(realEstate);
+			outdoorsService.save(realEstateOutdoors);
+		}
+		
 		
 		return new ResponseEntity<RealEstateDTO>(newRealEstateDTO, HttpStatus.CREATED);
 	}

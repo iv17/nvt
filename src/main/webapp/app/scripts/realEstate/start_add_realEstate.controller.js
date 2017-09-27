@@ -4,10 +4,11 @@
 	angular
 	.module('nvtApp')
 	.controller('StartAddRealEstateController', ['$scope', '$state', '_', 'AdvertisementTypeResource',
-		'RealEstateTypeResource', 'HeatingTypeResource', '$log',
-		function($scope, $state, _, AdvertisementTypeResource, RealEstateTypeResource, HeatingTypeResource, $log) {
+		'RealEstateTypeResource', 'HeatingTypeResource', 'IndoorResource', 'OutdoorResource', '$log',
+		function($scope, $state, _, AdvertisementTypeResource, RealEstateTypeResource, HeatingTypeResource,
+			IndoorResource, OutdoorResource, $log) {
 
-  		$scope.center = [44.7992456, 20.4023128];
+  		//$scope.center = [44.7992456, 20.4023128];
 			$scope.getpos = function (event) {
 					$scope.lat = event.latLng.lat();
 					$scope.lng = event.latLng.lng();
@@ -58,10 +59,35 @@
 				$scope.heatingTypeLabels = heatingTypeLabels;
 			});
 
+			IndoorResource.getIndoors().then(function(items) {
+				var indoors = items;
+				var indoorLabels = [];
+
+				for(var i=0; i< indoors.length; i++) {
+					var labeled = { 'id': indoors[i].id, 'label': indoors[i].name };
+
+					indoorLabels.push(labeled);
+				}
+				$scope.indoorLabels = indoorLabels;
+			});
+
+			OutdoorResource.getOutdoors().then(function(items) {
+				var outdoors = items;
+				var outdoorLabels = [];
+
+				for(var i=0; i< outdoors.length; i++) {
+					var labeled = { 'id': outdoors[i].id, 'label': outdoors[i].name };
+
+					outdoorLabels.push(labeled);
+				}
+				$scope.outdoorLabels = outdoorLabels;
+			});
+
 			$scope.selectedAdvertisementTypes = [];
 			$scope.selectedRealEstateTypes = [];
 			$scope.selectedHeatingTypes = [];
-
+			$scope.selectedIndoors = [];
+			$scope.selectedOutdoors = [];
 
 			$scope.button = {
 					smartButtonMaxItems: 3,

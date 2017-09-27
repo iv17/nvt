@@ -21,6 +21,8 @@
 		var selectedAdvertisementTypes = $stateParams.myParams.selectedAdvertisementTypes;
 		var price = $stateParams.myParams.price;
 		var latlng = $stateParams.myParams.latlng;
+		var selectedIndoors = $stateParams.myParams.selectedIndoors;
+		var selectedOutdoors = $stateParams.myParams.selectedOutdoors;
 
 		var realestate = {
 			name: name,
@@ -35,9 +37,11 @@
 			furnished: furnished,
 			selectedAdvertisementTypes: selectedAdvertisementTypes,
 			price: price,
-			latlng: latlng
+			latlng: latlng,
+			selectedIndoors: selectedIndoors,
+			selectedOutdoors: selectedOutdoors
 		};
-		
+
 		RealEstateResource.addRealEstate(realestate).then(function(item) {
 			$scope.realEstate = item;
 

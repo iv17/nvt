@@ -21,6 +21,8 @@ public class AddRealEstateDTO {
 	private ArrayList<SelectedHeatingTypeDTO> selectedHeatingTypes;
 	
 	private ArrayList<Double> latlng;
+	private ArrayList<SelectedIndoorFeatureDTO> selectedIndoors;
+	private ArrayList<SelectedOutdoorFeatureDTO> selectedOutdoors;
 	
 	
 	public AddRealEstateDTO() {
@@ -137,6 +139,18 @@ public class AddRealEstateDTO {
 	}
 	public void setLatlng(ArrayList<Double> latlng) {
 		this.latlng = latlng;
+	}
+	public ArrayList<SelectedIndoorFeatureDTO> getSelectedIndoors() {
+		return selectedIndoors;
+	}
+	public void setSelectedIndoors(ArrayList<SelectedIndoorFeatureDTO> selectedIndoors) {
+		this.selectedIndoors = selectedIndoors;
+	}
+	public ArrayList<SelectedOutdoorFeatureDTO> getSelectedOutdoors() {
+		return selectedOutdoors;
+	}
+	public void setSelectedOutdoors(ArrayList<SelectedOutdoorFeatureDTO> selectedOutdoors) {
+		this.selectedOutdoors = selectedOutdoors;
 	}
 
 	
