@@ -20,6 +20,7 @@ public class AddRealEstateDTO {
 	private ArrayList<SelectedRealEstateTypeDTO> selectedRealEstateTypes;
 	private ArrayList<SelectedHeatingTypeDTO> selectedHeatingTypes;
 	
+	private ArrayList<Double> latlng;
 	
 	
 	public AddRealEstateDTO() {
@@ -130,6 +131,12 @@ public class AddRealEstateDTO {
 	}
 	public void setSelectedHeatingTypes(ArrayList<SelectedHeatingTypeDTO> selectedHeatingTypes) {
 		this.selectedHeatingTypes = selectedHeatingTypes;
+	}
+	public ArrayList<Double> getLatlng() {
+		return latlng;
+	}
+	public void setLatlng(ArrayList<Double> latlng) {
+		this.latlng = latlng;
 	}
 
 	

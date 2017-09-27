@@ -7,6 +7,21 @@
 		'RealEstateTypeResource', 'HeatingTypeResource', '$log',
 		function($scope, $state, _, AdvertisementTypeResource, RealEstateTypeResource, HeatingTypeResource, $log) {
 
+  		$scope.center = [44.7992456, 20.4023128];
+			$scope.getpos = function (event) {
+					$scope.lat = event.latLng.lat();
+					$scope.lng = event.latLng.lng();
+					$scope.latlng = [event.latLng.lat(), event.latLng.lng()];
+
+
+			};
+
+			$scope.placeMarker = function(){
+					var loc = this.getPlace().geometry.location;
+					$scope.latlng = [loc.lat(), loc.lng()];
+					$scope.center = [loc.lat(), loc.lng()];
+			};
+
 			AdvertisementTypeResource.getAdvertisementTypes().then(function(items) {
 				var advertisementTypes = items;
 				var advertisemntTypeLabels = [];

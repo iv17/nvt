@@ -20,6 +20,7 @@
 		var furnished = $stateParams.myParams.furnished;
 		var selectedAdvertisementTypes = $stateParams.myParams.selectedAdvertisementTypes;
 		var price = $stateParams.myParams.price;
+		var latlng = $stateParams.myParams.latlng;
 
 		var realestate = {
 			name: name,
@@ -33,8 +34,10 @@
 			filed: filed,
 			furnished: furnished,
 			selectedAdvertisementTypes: selectedAdvertisementTypes,
-			price: price
+			price: price,
+			latlng: latlng
 		};
+		
 		RealEstateResource.addRealEstate(realestate).then(function(item) {
 			$scope.realEstate = item;
 

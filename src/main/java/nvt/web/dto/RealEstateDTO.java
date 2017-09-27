@@ -1,12 +1,9 @@
 package nvt.web.dto;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import nvt.beans.Image;
 import nvt.beans.RealEstate;
 
 public class RealEstateDTO {
@@ -60,7 +57,7 @@ public class RealEstateDTO {
 		filed = realEstate.isFiled();
 		furnished = realEstate.isFurnished();
 		
-		//location = new LocationDTO(realEstate.getLocation());
+		location = new LocationDTO(realEstate.getLocation());
 		realEstateType = new RealEstateTypeDTO(realEstate.getRealEstateType());
 		heatingType = new HeatingTypeDTO(realEstate.getHeatingType());
 		posted = realEstate.getPosted();

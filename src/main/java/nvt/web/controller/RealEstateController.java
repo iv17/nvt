@@ -13,6 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.code.geocoder.Geocoder;
+import com.google.code.geocoder.GeocoderRequestBuilder;
+import com.google.code.geocoder.model.GeocodeResponse;
+import com.google.code.geocoder.model.GeocoderRequest;
+import com.google.code.geocoder.model.LatLng;
+
 import nvt.beans.AdvertisementType;
 import nvt.beans.HeatingType;
 import nvt.beans.Location;
@@ -32,6 +38,7 @@ import nvt.service.RealEstateRatingService;
 import nvt.service.RealEstateReportService;
 import nvt.service.RealEstateService;
 import nvt.service.RealEstateTypeService;
+import nvt.util.Util;
 import nvt.web.dto.AddRealEstateDTO;
 import nvt.web.dto.BlockDTO;
 import nvt.web.dto.CityDTO;
@@ -175,7 +182,7 @@ public class RealEstateController {
 			)
 	public ResponseEntity<RealEstateDTO> createRealEstate(@RequestBody AddRealEstateDTO realEstateDTO) {
 
-		System.out.println(realEstateDTO.toString());
+		
 		RealEstate realEstate = new RealEstate();
 		realEstate.setName(realEstateDTO.getName());
 		realEstate.setDescription(realEstateDTO.getDescription());
@@ -222,6 +229,26 @@ public class RealEstateController {
 		}
 		realEstate.setAdvertisementType(advertisementType);
 		
+		ArrayList<Double> latlng = realEstateDTO.getLatlng(); 
+		double lat = latlng.get(0);
+		double lng = Util.round(latlng.get(1), 7);
+		
+		final Geocoder geocoder = new Geocoder();
+		GeocoderRequest geocoderRequest = new GeocoderRequestBuilder().setLocation(new LatLng(String.valueOf(lat), String.valueOf(latlng.get(1)))).setLanguage("en").getGeocoderRequest();
+		GeocodeResponse geocoderResponse = geocoder.geocode(geocoderRequest);
+		
+		
+		Location location = new Location();
+		location.setCoord1(lat);
+		location.setCoord2(lng);
+
+		location.setStreet(geocoderResponse.getResults().get(0).getFormattedAddress().split(",")[0]);
+		location.setCity(geocoderResponse.getResults().get(0).getFormattedAddress().split(",")[1]);
+		location.setBlock(geocoderResponse.getResults().get(1).getFormattedAddress().split(",")[0]);
+		locationService.save(location);
+		
+		realEstate.setLocation(location);
+		
 		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
 		
 		
@@ -261,7 +288,7 @@ public class RealEstateController {
 
 		
 		double lat = latlng.getLat();
-		double lng = round(latlng.getLng(), 7);
+		double lng = Util.round(latlng.getLng(), 7);
 		
 		Location location = locationService.findByCoordinates(lat, lng).get(0);
 		RealEstate realEstate = realEstateService.findByLocation(location).get(0);
@@ -334,13 +361,5 @@ public class RealEstateController {
 	}
 
 	
-	public static double round(double value, int places) {
-	    if (places < 0) throw new IllegalArgumentException();
-
-	    long factor = (long) Math.pow(10, places);
-	    value = value * factor;
-	    long tmp = Math.round(value);
-	    return (double) tmp / factor;
-	}
-
+	
 }
