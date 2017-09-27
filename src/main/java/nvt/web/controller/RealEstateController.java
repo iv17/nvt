@@ -1,6 +1,7 @@
 package nvt.web.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ import nvt.service.RealEstateRatingService;
 import nvt.service.RealEstateReportService;
 import nvt.service.RealEstateService;
 import nvt.service.RealEstateTypeService;
+import nvt.web.dto.AddRealEstateDTO;
 import nvt.web.dto.BlockDTO;
 import nvt.web.dto.CityDTO;
 import nvt.web.dto.IndoorFeatureDTO;
@@ -167,11 +169,13 @@ public class RealEstateController {
 
 	}
 
-	
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<RealEstateDTO> createRealEstate(@RequestBody RealEstateDTO realEstateDTO) {
+	@RequestMapping(
+			value = "/add",
+			method = RequestMethod.POST
+			)
+	public ResponseEntity<RealEstateDTO> createRealEstate(@RequestBody AddRealEstateDTO realEstateDTO) {
 
-		
+		System.out.println(realEstateDTO.toString());
 		RealEstate realEstate = new RealEstate();
 		realEstate.setName(realEstateDTO.getName());
 		realEstate.setDescription(realEstateDTO.getDescription());
@@ -180,41 +184,46 @@ public class RealEstateController {
 		realEstate.setFloor(realEstateDTO.getFloor());
 		realEstate.setRooms(realEstateDTO.getRooms());
 		realEstate.setBathrooms(realEstateDTO.getBathrooms());
-		realEstate.setFiled(realEstateDTO.isFiled());
-		realEstate.setFurnished(realEstateDTO.isFurnished());
+		if(realEstateDTO.getFiled().equals("true")) {
+			realEstate.setFiled(true);
+		} else {
+			realEstate.setFiled(false);
+		}
+		if(realEstateDTO.getFurnished().equals("true")) {
+			realEstate.setFurnished(true);
+		} else {
+			realEstate.setFurnished(false);
+		}
+		
 		realEstate.setConstructedYear(realEstateDTO.getConstructedYear());
 		
-		Location location = locationService.findById(realEstateDTO.getLocation().getId());
-		if(location == null) {
-			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
-		}
-		realEstate.setLocation(location);
 		
-		RealEstateType realEstateType = realEstateTypeService.findById(realEstateDTO.getRealEstateType().getId());
+		RealEstateType realEstateType = realEstateTypeService.findById(realEstateDTO.getSelectedRealEstateTypes().get(0).getId());
 		if(realEstateType == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
 		realEstate.setRealEstateType(realEstateType);
 		
-		HeatingType heatingType = heatingTypeService.findById(realEstateDTO.getHeatingType().getId());
+		HeatingType heatingType = heatingTypeService.findById(realEstateDTO.getSelectedHeatingTypes().get(0).getId());
 		if(heatingType == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
 		realEstate.setHeatingType(heatingType);
 		
-		realEstate.setPosted(realEstateDTO.getPosted());
-		realEstate.setUpdated(realEstateDTO.getUpdated());
-		realEstate.setDuration(realEstateDTO.getDuration());
-		realEstate.setInappropriate(realEstateDTO.isInappropriate());
-		realEstate.setVerified(realEstateDTO.isVerified());
+		realEstate.setPosted(new Date());
+		realEstate.setUpdated(new Date());
+		realEstate.setDuration(0);
+		realEstate.setInappropriate(false);
+		realEstate.setVerified(true);
 		
-		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
-		
-		AdvertisementType  advertisementType = advertisementTypeService.findById(realEstateDTO.getAdvertisementType().getId());
+		AdvertisementType  advertisementType = advertisementTypeService.findById(realEstateDTO.getSelectedAdvertisementTypes().get(0).getId());
 		if(advertisementType == null) {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
 		realEstate.setAdvertisementType(advertisementType);
+		
+		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
+		
 		
 		realEstateService.save(realEstate);
 		

@@ -4,11 +4,8 @@
 	angular
 	.module('nvtApp')
 	.controller('AddRealEstateController', ['$scope', '$state', '_', 'RealEstateResource', '$log', '$stateParams',
-		function($scope, $state, _, RealEstateResource, $log, $stateParams) {
-
-
-		var params = $stateParams.myParams;
-		$log.log(params);
+	 '$window','toastr',  '$localStorage',
+		function($scope, $state, _, RealEstateResource, $log, $stateParams, $window, toastr, $localStorage) {
 
 		var name = $stateParams.myParams.name;
 		var description = $stateParams.myParams.description;
@@ -25,11 +22,31 @@
 		var price = $stateParams.myParams.price;
 
 		var realestate = {
-
+			name: name,
+			description: description,
+			selectedRealEstateTypes: selectedRealEstateTypes,
+			surface: surface,
+			floor: floor,
+			bathrooms: bathrooms,
+			constructedYear: constructedYear,
+			selectedHeatingTypes: selectedHeatingTypes,
+			filed: filed,
+			furnished: furnished,
+			selectedAdvertisementTypes: selectedAdvertisementTypes,
+			price: price
 		};
-		RealEstateResource.addRealEstate(realestate).then(function(items) {
-			$scope.realEstates = items;
+		RealEstateResource.addRealEstate(realestate).then(function(item) {
+			$scope.realEstate = item;
+
+			$log.log($scope.realEstate);
+			$window.location.href = '/#/home';
+			toastr.success('Dodali ste nekretninu!');
+		})
+		.catch(function(error){
+			$window.location.href = '/#/home';
+				toastr.error("Greska!");
 		});
+
 
 	}
 	]);

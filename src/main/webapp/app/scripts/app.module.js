@@ -204,7 +204,6 @@
 						controller: 'SidebarSearchController'
 					},
 					'content@': {
-						templateUrl: 'app/views/content/propertiesList.html',
 						controller: 'AddRealEstateController'
 					}
 				}

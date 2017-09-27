@@ -61,11 +61,11 @@ public class RealEstate implements Serializable {
 	private boolean furnished;
 
 	@ManyToOne @JsonIgnore
-	@JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "location_id", referencedColumnName = "id", nullable = true)
 	private Location location;
 
 	@ManyToOne @JsonIgnore
-	@JoinColumn(name = "real_estate_type_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "real_estate_type_id", referencedColumnName = "id", nullable = true)
 	private RealEstateType realEstateType;
 
 	@ManyToOne @JsonIgnore

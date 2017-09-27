@@ -59,7 +59,8 @@ public class RealEstateDTO {
 		constructedYear = realEstate.getConstructedYear(); 
 		filed = realEstate.isFiled();
 		furnished = realEstate.isFurnished();
-		location = new LocationDTO(realEstate.getLocation());
+		
+		//location = new LocationDTO(realEstate.getLocation());
 		realEstateType = new RealEstateTypeDTO(realEstate.getRealEstateType());
 		heatingType = new HeatingTypeDTO(realEstate.getHeatingType());
 		posted = realEstate.getPosted();
@@ -67,10 +68,10 @@ public class RealEstateDTO {
 		duration = realEstate.getDuration();
 		inappropriate = realEstate.isInappropriate();
 		verified = realEstate.isVerified();
-		user = new UserDTO(realEstate.getUser());
+		//user = new UserDTO(realEstate.getUser());
 		advertisementType = new AdvertisementTypeDTO(realEstate.getAdvertisementType());
 		
-		Set<Image> im = realEstate.getImages();
+		/*Set<Image> im = realEstate.getImages();
 		List<Image> temp = new ArrayList<Image>();
 		for (Image image : im) {
 			temp.add(image);
@@ -81,7 +82,7 @@ public class RealEstateDTO {
 			image = new ImageDTO(temp.get(i));
 			image.setBroj(i);
 			images.add(image);
-		}
+		}*/
 	}
 
 
@@ -309,6 +310,20 @@ public class RealEstateDTO {
 
 	public void setImage(ImageDTO image) {
 		this.image = image;
+	}
+
+
+	@Override
+	public String toString() {
+		return "RealEstateDTO [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
+				+ ", surface=" + surface + ", floor=" + floor + ", rooms=" + rooms + ", bathrooms=" + bathrooms
+				+ ", constructedYear=" + constructedYear + ", filed=" + filed + ", furnished=" + furnished
+				+ ", location=" + location + ", realEstateType=" + realEstateType + ", heatingType=" + heatingType
+				+ ", posted=" + posted + ", updated=" + updated + ", duration=" + duration + ", inappropriate="
+				+ inappropriate + ", verified=" + verified + ", user=" + user + ", advertisementType="
+				+ advertisementType + ", image=" + image + ", images=" + images + ", comments=" + comments
+				+ ", ratings=" + ratings + ", reports=" + reports + ", indoors=" + indoors + ", outdoors=" + outdoors
+				+ "]";
 	}
 	
 	
