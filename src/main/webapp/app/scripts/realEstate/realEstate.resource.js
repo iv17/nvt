@@ -37,6 +37,12 @@
 			});
 		};
 
+		retVal.addRealEstate = function(realestate)	{
+			return Restangular.all("realEstates/add").post(realestate).then(function(response) {
+				return response;
+			});
+		};
+
 		retVal.indoors = function(id)	{
 			return Restangular.one("realEstates", id).getList("indoors").then(function(response) {
 				return response;

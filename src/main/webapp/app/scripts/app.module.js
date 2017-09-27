@@ -151,7 +151,6 @@
 				}
 			})
 			.state('realEstateLatLng', {
-				//url: "/realEstateLatLng/:latlng",
 				url: "/realEstateLatLng/{latlng: json}",
 				params: {latlng : null},
 				views: {
@@ -168,6 +167,45 @@
 					'content@': {
 						templateUrl: 'app/views/content/property.html',
 						controller: 'RealEstateLatLngController'
+					}
+				}
+			})
+			.state('open_add_realEstate', {
+				url: "/open_add_realEstate",
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+						templateUrl: 'app/views/sidebar_search.html',
+						controller: 'SidebarSearchController'
+					},
+					'content@': {
+						templateUrl: 'app/views/content/add_new_property.html',
+						controller: 'StartAddRealEstateController'
+					}
+				}
+			})
+			.state('add_realestate', {
+				url: "/add_realestate/{myParams: json}",
+				params: {myParams : null},
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+						templateUrl: 'app/views/sidebar_search.html',
+						controller: 'SidebarSearchController'
+					},
+					'content@': {
+						templateUrl: 'app/views/content/propertiesList.html',
+						controller: 'AddRealEstateController'
 					}
 				}
 			});

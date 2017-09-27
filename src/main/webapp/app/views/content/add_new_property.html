@@ -1,3 +1,5 @@
+<div>
+
 <aside class = "sidebar right sidebar-size-xs-1 sidebar-size-lg-48pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" id = sidebar-edit data-toggle-layout = true data-toggle-bar = true>
 	<div data-scrollable>
 		<form name = "addProperty">
@@ -19,11 +21,11 @@
 					</div>
 				</div>
 				<div class = "form-group">
-					<label for = "apartmentType" class = "sidebar-text">apartment type:</label>
-					<select id = "apartmentType" class = "selectpicker">
-						<option>Apartment</option>
-						<option>House</option>
-					</select>
+					<label for = "apartmentType" class = "sidebar-text">realestate type:</label>
+					<div class="sidebar-block">
+						<div ng-dropdown-multiselect="" options="realEstateTypeLabels"
+							selected-model="selectedRealEstateTypes" extra-settings="button"></div>
+					</div>
 				</div>
 				<div class = "form-group">
 					<div class = "input-group">
@@ -40,7 +42,7 @@
 				<div class = "form-group">
 					<div class = "input-group">
 						<label for = "rooms" class = "sidebar-text">rooms:</label>
-						<input type = "number" min = "1" max = "10" id = "name" ng-model = "name" class = "form-control" placeholder = "rooms">
+						<input type = "number" min = "1" max = "10" id = "name" ng-model = "rooms" class = "form-control" placeholder = "rooms">
 					</div>
 				</div>
 				<div class = "form-group">
@@ -57,58 +59,74 @@
 				</div>
 				<div class = "form-group">
 					<label for = "heatingType" class = "sidebar-text">heating type:</label>
-					<select id = "heatingType" class = "selectpicker">
-						<option>heatingType</option>
-						<option>heatingType</option>
-					</select>
+					<div class="sidebar-block">
+						<div ng-dropdown-multiselect="" options="heatingTypeLabels"
+							selected-model="selectedHeatingTypes" extra-settings="button"></div>
+					</div>
 				</div>
 				<div class = "form-group">
-					<label class = "control-label col-md-3 col-sm-3 col-xs-12">filed</label>
-					<div class = "col-md-6 col-sm-6 col-xs-12">
-						<div id = "filed" class = "btn-group" data-toggle = "buttons">
-							<label class = "btn btn-default" data-toggle-class = "btn-primary" data-toggle-passive-class = "btn-default">
-							<input type = "radio" name = "filed" value = "true"> &nbsp; yes &nbsp;
+					<label >filed</label>
+					<div>
+						<div class = "btn-group">
+							<label class = "btn btn-default">
+							<input type = "radio" ng-model="filed" name = "filed" value = "true"> &nbsp; yes &nbsp;
 							</label>
-							<label class = "btn btn-primary" data-toggle-class = "btn-primary" data-toggle-passive-class = "btn-default">
-							<input type = "radio" name = "filed" value = "false"> no
+							<label class = "btn btn-primary">
+							<input type = "radio" ng-model="filed" name = "filed" value = "false"> no
 							</label>
 						</div>
 					</div>
 				</div>
 				<div class = "form-group">
-					<label class = "control-label col-md-3 col-sm-3 col-xs-12">furnished</label>
-					<div class = "col-md-6 col-sm-6 col-xs-12">
-						<div id = "furnished" class = "btn-group" data-toggle = "buttons">
-							<label class = "btn btn-default" data-toggle-class = "btn-primary" data-toggle-passive-class = "btn-default">
-							<input type = "radio" name = "furnished" value = "true"> &nbsp; yes &nbsp;
+					<label>furnished</label>
+					<div>
+						<div class = "btn-group" >
+							<label class = "btn btn-default">
+							<input type="radio" ng-model='furnished' ng-value="true"> &nbsp; yes &nbsp;
 							</label>
-							<label class = "btn btn-primary" data-toggle-class = "btn-primary" data-toggle-passive-class = "btn-default">
-							<input type = "radio" name = "furnished" value = "false"> no
+							<label class = "btn btn-primary">
+							<input type="radio" ng-model='furnished' ng-value="false"> no
 							</label>
 						</div>
 					</div>
+			</div>
+
+			<div class = "form-group">
+				<label for = "advertisementType" class = "sidebar-text">advertisement type:</label>
+				<div ng-dropdown-multiselect="" options="advertisemntTypeLabels"
+					selected-model="selectedAdvertisementTypes" extra-settings="button"></div>
+			</div>
+			<div class = "form-group">
+				<div class = "input-group">
+					<label for = "price" class = "sidebar-text">price: (&euro;)</label>
+					<input type = "text" id = "price" ng-model = "price" class = "form-control" placeholder = "price">
 				</div>
 			</div>
-			<div class = "sidebar-block">
-				<h4 class = "category">commercial</h4>
-				<div class = "form-group">
-					<label for = "advertisementType" class = "sidebar-text">advertisement type:</label>
-					<select id = "advertisementType" class = "selectpicker">
-						<option value="1">Rent</option>
-						<option value="2" selected>Sell</option>
-					</select>
-				</div>
-				<div class = "form-group">
-					<div class = "input-group">
-						<label for = "price" class = "sidebar-text">price: (&euro;)</label>
-						<input type = "text" id = "price" ng-model = "price" class = "form-control" placeholder = "price">
-					</div>
-				</div>
-			</div>
+		</div>
 			<div class = "sidebar-block equal-padding">
-				<button type = "submit" class = "btn btn-primary">save</button>
+				<a
+					ui-sref="add_realestate({
+              myParams: {
+              name: name,
+              description: description,
+    					selectedRealEstateTypes: selectedRealEstateTypes,
+							surface: surface,
+							floor: floor,
+              rooms: rooms,
+              bathrooms: bathrooms,
+              constructedYear: constructedYear,
+              selectedHeatingTypes: selectedHeatingTypes,
+							filed: filed,
+							furnished: furnished,
+							selectedAdvertisementTypes: selectedAdvertisementTypes,
+							price: price
+            }
+
+            })"
+					class="btn btn btn-primary">save </a>
 				<button type = "button" class = "btn btn-default"><i class = "fa fa-times fa-fw"></i> cancel</button>
 			</div>
 		</form>
 	</div>
 </aside>
+</div>
