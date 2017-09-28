@@ -12,8 +12,7 @@
 		'lodash',
 		'ngStorage',
 		'angularjs-dropdown-multiselect',
-		'ngMap',
-		'ngFileUpload'
+		'ngMap'
 		])
 		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 			function($stateProvider, $urlRouterProvider, $locationProvider) {

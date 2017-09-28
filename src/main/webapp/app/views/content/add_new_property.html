@@ -1,21 +1,6 @@
 <div>
-	<p>&nbsp;</p>
-	<div>
-	  <div class = "form-group">
-	    <div class = "input-group">
-	      <input places-auto-complete types="['geocode']" on-place-changed="placeMarker()" />
-	    </div>
-	  </div>
-	  <ng-map id="mapa" center="{{center}}" zoom="12" on-click="getpos($event)" style='width: 100%'>
-	      <marker position="{{latlng}}"
-	        on-click="getpos($event)"
-	        animation="DROP"
-	        draggable="false"
-	        icon="app/images/markers/building-01.png"
-	        ></marker>
-	    </ng-map>
-</div>
-<div class = "sidebar right sidebar-size-xs-1 sidebar-size-lg-48pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" >
+
+<div class = "sidebar right sidebar-size-xs-1 sidebar-size-lg-29pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" >
 	<div data-scrollable>
 		<form name = "addProperty">
 			<div class = "sidebar-block">
@@ -156,4 +141,27 @@
 		</form>
 	</div>
 </div>
+
+<div class = "sidebar left sidebar-size-xs-1 sidebar-size-lg-71pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" >
+<p>&nbsp;</p>
+	<div>
+		<div class = "form-group">
+			<div class = "input-group">
+				<input places-auto-complete types="['geocode']" on-place-changed="placeMarker()" />
+			</div>
+		</div>
+		<ng-map id="mapa" center="{{center}}" zoom="12" on-click="getpos($event)" style='width: 100%'>
+				<marker position="{{latlng}}"
+					on-click="getpos($event)"
+					animation="DROP"
+					draggable="false"
+					icon="app/images/markers/building-01.png"
+					></marker>
+			</ng-map>
+	</div>
+</div>
+
+<!--
+
+-->
 </div>
