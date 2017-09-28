@@ -137,26 +137,20 @@
 		</div>
 	</div>
 	<h4>Comments</h4>
-	<form>
-		<div class = "form-group input-group">
-			<input type = "text" class = "form-control" placeholder = "Your comment ..">
-			<span class = "input-group-btn">
-			<button class = "btn btn-primary" type = "button"><i class = "fa fa-plus"></i></button>
-			</span>
-		</div>
-	</form>
-
 	<section class = "panel panel-default">
 		<div class="panel-body">
 			<div class="input-group">
 				<input type="text" ng-model="commentText" class="form-control" placeholder="Write comment...">
-				<div class="input-group-btn"><a class="btn btn-primary" ui-sref="create_comment({commentText: commentText})"> <i class="fa fa-comment"></i> Comment</a></div>
+				<div class="input-group-btn"><a class="btn btn-primary" ui-sref="create_comment({commentText: commentText, realEstateId: realEstate.id})"> <i class="fa fa-comment"></i> Comment</a></div>
 			</div>
 			<p>&nbsp;</p>
 			<div ng-repeat="comment in realEstateComments">
 				<div class="media">
-					<div class="media-left">
+					<div class="media-left" ng-show="comment.user != null">
 						<a href=""> <img ng-src= "{{ comment.user.image.fileString }} " width="60" class="img-rounded media-object"></a>
+					</div>
+					<div class="media-left" ng-show="comment.user == null">
+						<a href=""> <img ng-src= "app/images/users/user.png " width="60" class="img-rounded media-object"></a>
 					</div>
 					<div class="media-body">
 						<div class="panel panel-default">
@@ -164,7 +158,8 @@
 								<div class="pull-right">
 									<small class="text-muted">{{ comment.posted | date: "short"}}</small>
 								</div>
-								<a href="#">{{ comment.user.username}}</a>
+								<a ng-show="comment.user != null" href="#">{{ comment.user.username}}</a>
+								<a ng-show="comment.user == null">GUEST</a>
 							</div>
 							<div class="panel-body">{{ comment.comment }}</div>
 						</div>

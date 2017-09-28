@@ -142,7 +142,7 @@
 					},
 					'sidebar_search@': {
 						templateUrl: 'app/views/sidebar_search.html',
-						controller: 'SidebarSearchController'
+						controller: 'SidebarSearchController' <!-- OVDE PRIKAZATI ZVEZDICE-->
 					},
 					'content@': {
 						templateUrl: 'app/views/content/property.html',
@@ -205,6 +205,25 @@
 					},
 					'content@': {
 						controller: 'AddRealEstateController'
+					}
+				}
+			})
+			.state('create_comment', {
+				url: "/create_comment/:commentText/:realEstateId",
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+						templateUrl: 'app/views/sidebar_search.html',
+						controller: 'SidebarSearchController'
+					},
+					'content@': {
+						templateUrl: 'app/views/content/property.html',
+						controller: 'CreateCommentController'
 					}
 				}
 			});

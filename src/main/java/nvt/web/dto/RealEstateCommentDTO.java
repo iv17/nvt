@@ -22,8 +22,13 @@ public class RealEstateCommentDTO {
 		id = realEstateComment.getId();
 		comment = realEstateComment.getComment(); 
 		posted = realEstateComment.getPosted();
-		realEstate = new RealEstateDTO(realEstateComment.getRealEstate());
-		user = new UserDTO(realEstateComment.getUser());
+		if(realEstateComment.getRealEstate() != null) {
+			realEstate = new RealEstateDTO(realEstateComment.getRealEstate());
+		}
+		if(realEstateComment.getUser() != null) {
+			user = new UserDTO(realEstateComment.getUser());
+		}
+		
 	}
 
 	
