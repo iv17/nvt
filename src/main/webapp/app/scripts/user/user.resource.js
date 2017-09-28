@@ -32,6 +32,42 @@
 			});
 		};
 
+		retVal.getUserById = function(id) {
+			return Restangular.one("users", id).get().then(function(response) {
+				return response;
+			});
+		};
+
+		retVal.getUserRealEstates = function(id) {
+			return Restangular.one("users", id).getList("realEstates").then(function(response) {
+				return response;
+			});
+		};
+
+		retVal.getUserRealEstates = function(id) {
+			return Restangular.one("users", id).getList("realEstates").then(function(response) {
+				return response;
+			});
+		};
+
+		retVal.getUserComments = function(id) {
+			return Restangular.one("users", id).getList("comments").then(function(response) {
+				return response;
+			});
+		};
+
+		retVal.getUserRatings = function(id) {
+			return Restangular.one("users", id).getList("ratings").then(function(response) {
+				return response;
+			});
+		};
+
+		retVal.getUserReports = function(id) {
+			return Restangular.one("users", id).getList("reports").then(function(response) {
+				return response;
+			});
+		};
+
 		return retVal;
 	}]);
 

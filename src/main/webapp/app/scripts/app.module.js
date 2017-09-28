@@ -131,6 +131,25 @@
 					}
 				}
 			})
+			.state('user_profile', {
+				url: "/user_profile/:userId",
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+						templateUrl: 'app/views/sidebar_search.html',
+						controller: 'SidebarSearchController'
+					},
+					'content@': {
+						templateUrl: 'app/views/content/user_profile.html',
+						controller: 'UserController'
+					}
+				}
+			})
 			.state('realEstate', {
 				url: "/realEstate/:realEstateId",
 				views: {

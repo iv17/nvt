@@ -93,8 +93,8 @@
             <img ng-src="{{ loggedUser.image.fileString }}" class = "img-circle" /> {{ logedUser.name }}<span class = "caret"></span>
             </a>
             <ul class = "dropdown-menu" role = "menu">
-              <li><a ui-sref="user_profile()"><i class = "fa fa-user"></i>profile</a></li>
-              <li><a ui-sref = "user_adverts()"><i class = "fa fa-wrench"></i>my adverts</a></li>
+              <li><a ui-sref = "user_profile({userId: loggedUser.id})"><i class = "fa fa-user"></i>user profile</a></li>
+              <li><a ui-sref = "user_adverts({userId: loggedUser.id})"><i class = "fa fa-wrench"></i>my adverts</a></li>
               <li><a ui-sref = "logout()"><i class = "fa fa-sign-out"></i>logout</a></li>
             </ul>
           </li>

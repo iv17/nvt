@@ -1,5 +1,7 @@
 package nvt.web.dto;
 
+import java.util.Date;
+
 import nvt.beans.User;
 
 public class UserDTO {
@@ -14,8 +16,10 @@ public class UserDTO {
 	protected String phoneNumber;
 	protected boolean loged;
 	protected boolean authenticated;
-	private ImageDTO image; 
-
+	protected ImageDTO image; 
+	protected Date date;
+	
+	
 	public UserDTO() {
 		
 	}
@@ -29,6 +33,7 @@ public class UserDTO {
 		name = user.getName();
 		lastName = user.getLastName();
 		phoneNumber = user.getPhoneNumber();
+		date = new Date();
 		if(user.getImage() != null) {
 			image = new ImageDTO(user.getImage());
 		}
@@ -126,6 +131,15 @@ public class UserDTO {
 
 	public void setRepeated_password(String repeated_password) {
 		this.repeated_password = repeated_password;
+	}
+
+
+	public Date getDate() {
+		return new Date();
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	

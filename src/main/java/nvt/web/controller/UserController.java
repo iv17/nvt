@@ -22,13 +22,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import nvt.beans.RealEstate;
+import nvt.beans.RealEstateComment;
+import nvt.beans.RealEstateRating;
+import nvt.beans.RealEstateReport;
 import nvt.beans.User;
 import nvt.conf.TokenUtils;
 import nvt.repository.ImageRepository;
-import nvt.service.AgentRatingService;
+import nvt.service.RealEstateService;
 import nvt.service.UserService;
 import nvt.web.dto.LoginResponseDTO;
+import nvt.web.dto.RealEstateCommentDTO;
 import nvt.web.dto.RealEstateDTO;
+import nvt.web.dto.RealEstateRatingDTO;
+import nvt.web.dto.RealEstateReportDTO;
 import nvt.web.dto.UserDTO;
 
 @RestController
@@ -39,7 +45,7 @@ public class UserController {
 	protected UserService userService;
 
 	@Autowired
-	protected AgentRatingService agentRatingService;
+	protected RealEstateService realEstateService;
 
 	@Autowired
 	protected ImageRepository imageRepository;
@@ -176,8 +182,113 @@ public class UserController {
 
 	}
 
+	@RequestMapping(
+			value = "/{id}/realEstates", 
+			method = RequestMethod.GET
+			)
+	public ResponseEntity<List<RealEstateDTO>> getUserRealEstates(@PathVariable Integer id) {
 
+		if(userService.findById(id) != null) {
 
+			User user = userService.findById(id);
 
+			if(user.getRealEstates() == null) {
+				return new ResponseEntity<List<RealEstateDTO>>(HttpStatus.NOT_FOUND);
+			}
+			Set<RealEstate> realEstateSet = user.getRealEstates();
+			List<RealEstateDTO> realEstatesDTO = new ArrayList<RealEstateDTO>();
+			
+			for (RealEstate realEstate : realEstateSet) {
+				RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
+				realEstatesDTO.add(realEstateDTO);
+			}
+			return new ResponseEntity<List<RealEstateDTO>>(realEstatesDTO, HttpStatus.OK);
 
+		}
+		return new ResponseEntity<List<RealEstateDTO>>(HttpStatus.NOT_FOUND);
+
+	}
+	
+	@RequestMapping(
+			value = "/{id}/comments", 
+			method = RequestMethod.GET
+			)
+	public ResponseEntity<List<RealEstateCommentDTO>> getUserComments(@PathVariable Integer id) {
+
+		if(userService.findById(id) != null) {
+
+			User user = userService.findById(id);
+
+			if(user.getComments() == null) {
+				return new ResponseEntity<List<RealEstateCommentDTO>>(HttpStatus.NOT_FOUND);
+			}
+			Set<RealEstateComment> commentsSet = user.getComments();
+			List<RealEstateCommentDTO> realEstateCommentsDTO = new ArrayList<RealEstateCommentDTO>();
+			
+			for (RealEstateComment comment : commentsSet) {
+				RealEstateCommentDTO commentDTO = new RealEstateCommentDTO(comment);
+				realEstateCommentsDTO.add(commentDTO);
+			}
+			return new ResponseEntity<List<RealEstateCommentDTO>>(realEstateCommentsDTO, HttpStatus.OK);
+
+		}
+		return new ResponseEntity<List<RealEstateCommentDTO>>(HttpStatus.NOT_FOUND);
+
+	}
+
+	@RequestMapping(
+			value = "/{id}/reports", 
+			method = RequestMethod.GET
+			)
+	public ResponseEntity<List<RealEstateReportDTO>> getUserReports(@PathVariable Integer id) {
+
+		if(userService.findById(id) != null) {
+
+			User user = userService.findById(id);
+
+			if(user.getReports() == null) {
+				return new ResponseEntity<List<RealEstateReportDTO>>(HttpStatus.NOT_FOUND);
+			}
+			Set<RealEstateReport> reportSet = user.getReports();
+			List<RealEstateReportDTO> reportsDTO = new ArrayList<RealEstateReportDTO>();
+			
+			for (RealEstateReport report : reportSet) {
+				RealEstateReportDTO reportDTO = new RealEstateReportDTO(report);
+				reportsDTO.add(reportDTO);
+			}
+			return new ResponseEntity<List<RealEstateReportDTO>>(reportsDTO, HttpStatus.OK);
+
+		}
+		return new ResponseEntity<List<RealEstateReportDTO>>(HttpStatus.NOT_FOUND);
+
+	}
+	
+	@RequestMapping(
+			value = "/{id}/ratings", 
+			method = RequestMethod.GET
+			)
+	public ResponseEntity<List<RealEstateRatingDTO>> getUserRatings(@PathVariable Integer id) {
+
+		if(userService.findById(id) != null) {
+
+			User user = userService.findById(id);
+
+			if(user.getRatings() == null) {
+				return new ResponseEntity<List<RealEstateRatingDTO>>(HttpStatus.NOT_FOUND);
+			}
+			Set<RealEstateRating> ratingSet = user.getRatings();
+			List<RealEstateRatingDTO> ratingsDTO = new ArrayList<RealEstateRatingDTO>();
+			
+			for (RealEstateRating rating : ratingSet) {
+				RealEstateRatingDTO ratingDTO = new RealEstateRatingDTO(rating);
+				ratingsDTO.add(ratingDTO);
+			}
+			return new ResponseEntity<List<RealEstateRatingDTO>>(ratingsDTO, HttpStatus.OK);
+
+		}
+		return new ResponseEntity<List<RealEstateRatingDTO>>(HttpStatus.NOT_FOUND);
+
+	}
+
+	
 }

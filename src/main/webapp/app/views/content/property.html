@@ -147,10 +147,10 @@
 			<div ng-repeat="comment in realEstateComments">
 				<div class="media">
 					<div class="media-left" ng-show="comment.user != null">
-						<a href=""> <img ng-src= "{{ comment.user.image.fileString }} " width="60" class="img-rounded media-object"></a>
+						<a ui-sref="user_profile({userId: comment.user.id})"> <img ng-src= "{{ comment.user.image.fileString }} " width="60" class="img-rounded media-object"></a>
 					</div>
 					<div class="media-left" ng-show="comment.user == null">
-						<a href=""> <img ng-src= "app/images/users/user.png " width="60" class="img-rounded media-object"></a>
+						<a> <img ng-src= "app/images/users/user.png " width="60" class="img-rounded media-object"></a>
 					</div>
 					<div class="media-body">
 						<div class="panel panel-default">
@@ -158,7 +158,7 @@
 								<div class="pull-right">
 									<small class="text-muted">{{ comment.posted | date: "short"}}</small>
 								</div>
-								<a ng-show="comment.user != null" href="#">{{ comment.user.username}}</a>
+								<a ng-show="comment.user != null" ui-sref="user_profile({userId: comment.user.id})">{{ comment.user.username}}</a>
 								<a ng-show="comment.user == null">GUEST</a>
 							</div>
 							<div class="panel-body">{{ comment.comment }}</div>
