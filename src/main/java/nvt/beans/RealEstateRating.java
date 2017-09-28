@@ -32,11 +32,11 @@ public class RealEstateRating implements Serializable {
 	private Date posted;
 	
 	@ManyToOne @JsonIgnore
-	@JoinColumn(name = "real_estate_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "real_estate_id", referencedColumnName = "id", nullable = true)
 	private RealEstate realEstate;
 	
 	@ManyToOne @JsonIgnore
-	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
 	private User user;
 
 	

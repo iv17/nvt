@@ -20,6 +20,7 @@ import nvt.beans.RealEstate;
 import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateIndoors;
 import nvt.beans.RealEstateOutdoors;
+import nvt.beans.RealEstateRating;
 import nvt.beans.RealEstateType;
 import nvt.beans.User;
 import nvt.beans.WorkingTime;
@@ -429,6 +430,19 @@ public class NvtApplication implements CommandLineRunner {
 		realEstateCommentRepository.save(realEstateComment5);
 	
 
+		RealEstateRating realEstateRating1 = new RealEstateRating(5, new Date(), realEstate1, user15);
+		realEstateRatingRepository.save(realEstateRating1);
+		RealEstateRating realEstateRating2 = new RealEstateRating(3, new Date(), realEstate1, user15);
+		realEstateRatingRepository.save(realEstateRating2);
+		RealEstateRating realEstateRating3 = new RealEstateRating(4, new Date(), realEstate1, user15);
+		realEstateRatingRepository.save(realEstateRating3);
+		RealEstateRating realEstateRating4 = new RealEstateRating(2, new Date(), realEstate1, user15);
+		realEstateRatingRepository.save(realEstateRating4);
+		RealEstateRating realEstateRating5 = new RealEstateRating(1, new Date(), realEstate1, user15);
+		realEstateRatingRepository.save(realEstateRating5);
+		RealEstateRating realEstateRating6 = new RealEstateRating(2, new Date(), realEstate1, user15);
+		realEstateRatingRepository.save(realEstateRating6);
+		
 		
 	}
 	

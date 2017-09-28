@@ -170,7 +170,24 @@
 		</div>
 		<p>&nbsp;</p>
 	</section>
+	<h4>Rating</h4>
+	<section class = "panel panel-default">
+		<div class="panel-body">
+			<div class="input-group">
+            <div star-rating rating="rate" read-only="false" max-rating="5"></div>
+			</div>&nbsp;{{ rate }}
+				<div class="input-group-btn"><a class="btn btn-primary" ui-sref="rate_realEstate({rate: rate, realEstateId: realEstate.id})"> <i class="fa fa-star"></i> Rate it</a></div>
 
+			<p>&nbsp;</p>
+			<div class="input-group">Srednja vrednost: <div star-rating rating="srednjaVrednost" read-only="true" max-rating="5"></div></div>&nbsp;
+			<div class="input-group">{{realEstateRatings1}} / {{ukupno}}<div star-rating rating="1" read-only="true" max-rating="5"></div></div>
+			<div class="input-group">{{realEstateRatings2}} / {{ukupno}}<div star-rating rating="2" read-only="true" max-rating="5"></div></div>
+			<div class="input-group">{{realEstateRatings3}} / {{ukupno}}<div star-rating rating="3" read-only="true" max-rating="5"></div></div>
+			<div class="input-group">{{realEstateRatings4}} / {{ukupno}}<div star-rating rating="4" read-only="true" max-rating="5"></div></div>
+			<div class="input-group">{{realEstateRatings5}} / {{ukupno}}<div star-rating rating="5" read-only="true" max-rating="5"></div></div>
+		</div>
+		<p>&nbsp;</p>
+	</section>
 	<h4>Related properties</h4>
 	<div class = "slick-basic slick-slider" data-items = "4" data-items-lg = "4" data-items-md = "3" data-items-sm = "2" data-items-xs = "1">
 		<div class = "item">

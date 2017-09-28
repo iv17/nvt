@@ -20,8 +20,11 @@ public class RealEstateRatingDTO {
 		id = realEstateRating.getId();
 		rate = realEstateRating.getRate();
 		posted = realEstateRating.getPosted();
-		realEstate = new RealEstateDTO(realEstateRating.getRealEstate());
-		user = new UserDTO(realEstateRating.getUser());
+		if(realEstateRating.getRealEstate() != null) {
+			realEstate = new RealEstateDTO(realEstateRating.getRealEstate());
+		}
+		
+		//user = new UserDTO(realEstateRating.getUser());
 	}
 	
 

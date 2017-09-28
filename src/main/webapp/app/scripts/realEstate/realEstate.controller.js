@@ -3,11 +3,29 @@
 
 	angular
 	.module('nvtApp')
-	.controller('RealEstateController', ['$scope', '$state', '_', 'RealEstateResource', '$log', '$stateParams',
-		function($scope, $state, _, RealEstateResource, $log, $stateParams) {
+	.controller('RealEstateController', ['$scope', '$rootScope', '$state', '_', 'RealEstateResource', '$log', '$stateParams',
+		function($scope, $rootScope, $state, _, RealEstateResource, $log, $stateParams) {
 
+		$scope.rate = 0;
+		$scope.realEstateRatings1 = $rootScope.ratings1;
+		$scope.realEstateRatings2 = $rootScope.ratings2;
+		$scope.realEstateRatings3 = $rootScope.ratings3;
+		$scope.realEstateRatings4 = $rootScope.ratings4;
+		$scope.realEstateRatings5 = $rootScope.ratings5;
+		$scope.ukupno = $rootScope.ukupno;
+		$scope.srednjaVrednost = $rootScope.srednjaVrednost;
+		$rootScope.ratings1 = null;
+		$rootScope.ratings2 = null;
+		$rootScope.ratings3 = null;
+		$rootScope.ratings4 = null;
+		$rootScope.ratings5 = null;
+		$rootScope.ukupno = null;
+		$rootScope.srednjaVrednost = null;
+		
 		var realEstateId = $stateParams.realEstateId;
-
+		var realEstate = {
+			id: realEstateId
+		};
 
 		RealEstateResource.getRealEstate(realEstateId).then(function(item) {
 			$scope.realEstate = item;
@@ -16,6 +34,7 @@
 		RealEstateResource.comments(realEstateId).then(function(items) {
 			$scope.realEstateComments = items;
 		});
+
 
 		RealEstateResource.indoors(realEstateId).then(function(items) {
 			$scope.indoors = items;

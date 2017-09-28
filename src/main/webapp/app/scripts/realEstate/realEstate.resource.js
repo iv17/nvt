@@ -61,6 +61,12 @@
 			});
 		};
 
+		retVal.ratings = function(realEstate)	{
+			return Restangular.all("realEstates/ratings").post(realEstate).then(function(response) {
+				return response;
+			});
+		};
+
 		return retVal;
 	}]);	//kraj Restangular-a
 

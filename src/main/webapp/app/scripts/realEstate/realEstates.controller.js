@@ -10,6 +10,7 @@
 			$scope.realEstates = items;
 		});
 
+
 	}
 	]);
 })();

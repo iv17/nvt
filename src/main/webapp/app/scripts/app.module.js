@@ -12,7 +12,8 @@
 		'lodash',
 		'ngStorage',
 		'angularjs-dropdown-multiselect',
-		'ngMap'
+		'ngMap',
+		'star-rating'
 		])
 		.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 			function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -160,8 +161,24 @@
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
 					'sidebar_search@': {
-						templateUrl: 'app/views/sidebar_search.html',
-						controller: 'SidebarSearchController' <!-- OVDE PRIKAZATI ZVEZDICE-->
+
+					},
+					'content@': {
+						controller: 'RatingsController'
+					}
+				}
+			})
+			.state('realEstate2', {
+				url: "/realEstate2/:realEstateId",
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+
 					},
 					'content@': {
 						templateUrl: 'app/views/content/property.html',
@@ -180,8 +197,7 @@
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
 					'sidebar_search@': {
-						templateUrl: 'app/views/sidebar_search.html',
-						controller: 'SidebarSearchController'
+
 					},
 					'content@': {
 						templateUrl: 'app/views/content/property.html',
@@ -199,8 +215,7 @@
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
 					'sidebar_search@': {
-						templateUrl: 'app/views/sidebar_search.html',
-						controller: 'SidebarSearchController'
+
 					},
 					'content@': {
 						templateUrl: 'app/views/content/add_new_property.html',
@@ -219,8 +234,7 @@
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
 					'sidebar_search@': {
-						templateUrl: 'app/views/sidebar_search.html',
-						controller: 'SidebarSearchController'
+
 					},
 					'content@': {
 						controller: 'AddRealEstateController'
@@ -237,12 +251,30 @@
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
 					'sidebar_search@': {
-						templateUrl: 'app/views/sidebar_search.html',
-						controller: 'SidebarSearchController'
+
 					},
 					'content@': {
 						templateUrl: 'app/views/content/property.html',
 						controller: 'CreateCommentController'
+					}
+				}
+			})
+			.state('rate_realEstate', {
+				url: "/rate_realEstate/:rate/:realEstateId",
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+
+					},
+					'content@': {
+						templateUrl: 'app/views/content/property.html',
+						controller: 'RateRealEstateController',
+						controllerAs: 'rateCtrl'
 					}
 				}
 			});
