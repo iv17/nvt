@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,20 +33,6 @@ public class OutdoorFeatureController {
 		}
 		
 		return new ResponseEntity<List<OutdoorFeatureDTO>>(outdoorFeaturesDTOs, HttpStatus.OK);
-	}
-	
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<OutdoorFeatureDTO> getOutdoorFeature(@PathVariable Integer id) {
-		
-		OutdoorFeature outdoorFeature = outdoorFeatureService.findById(id);
-		
-		if(outdoorFeature == null) {
-			return new ResponseEntity<OutdoorFeatureDTO>(HttpStatus.NOT_FOUND);
-		}
-		OutdoorFeatureDTO outdoorFeatureDTO = new OutdoorFeatureDTO(outdoorFeature);
-		
-		return new ResponseEntity<OutdoorFeatureDTO>(outdoorFeatureDTO, HttpStatus.OK);
 	}
 	
 }

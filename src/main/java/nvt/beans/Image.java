@@ -38,11 +38,9 @@ public class Image implements Serializable {
 	@JoinColumn(name = "realestate_id", referencedColumnName = "id", nullable = true)
 	private RealEstate realEstate;
 	
-	
 	@OneToOne
 	@JoinColumn(name = "id")
 	private User user;
-	
 	
 	@OneToOne
 	@JoinColumn(name = "id")
@@ -60,6 +58,8 @@ public class Image implements Serializable {
 		this.file = file;
 		this.mimeType = mimeType;
 	}
+	
+	
 	public int getId() {
 		return id;
 	}

@@ -8,10 +8,10 @@
 		function($scope, $rootScope, $state, _, CompanyResource, $stateParams, $log, $window,
 				toastr, $localStorage) {
 
-          CompanyResource.getCompanies()
-      		.then(function(items) {
-      			$scope.companies = items;
-      		});
+		CompanyResource.getCompanies()
+		.then(function(items) {
+			$scope.companies = items;
+		});
 
 	}
 	]);

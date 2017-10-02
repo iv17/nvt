@@ -6,11 +6,11 @@ import nvt.beans.RealEstateComment;
 
 public class RealEstateCommentDTO {
 
-	private int id;
-	private String comment;
-	private Date posted;
-	private RealEstateDTO realEstate;
-	private UserDTO user;
+	protected int id;
+	protected String comment;
+	protected Date posted;
+	protected RealEstateDTO realEstate;
+	protected UserDTO user;
 
 	
 	public RealEstateCommentDTO() {

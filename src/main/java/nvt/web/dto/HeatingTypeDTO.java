@@ -4,8 +4,8 @@ import nvt.beans.HeatingType;
 
 public class HeatingTypeDTO {
 
-	private int id;
-	private String name;
+	protected int id;
+	protected String name;
 	
 	
 	public HeatingTypeDTO() {

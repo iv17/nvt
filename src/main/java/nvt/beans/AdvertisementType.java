@@ -37,21 +37,11 @@ public class AdvertisementType implements Serializable {
 		
 	}
 	
-	
 	public AdvertisementType(String name) {
 		this.name = name;
 	}
-
 	
 	public AdvertisementType(String name, Set<RealEstate> realEstates) {
-		this.name = name;
-		this.realEstates = realEstates;
-	}
-	
-
-	public AdvertisementType(int id, String name, Set<RealEstate> realEstates) {
-		
-		this.id = id;
 		this.name = name;
 		this.realEstates = realEstates;
 	}

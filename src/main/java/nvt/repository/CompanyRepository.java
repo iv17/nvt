@@ -7,6 +7,5 @@ import nvt.beans.Company;
 public interface CompanyRepository extends JpaRepository<Company, Integer> {
 
 	Company findById(int id);
-
 	Company findByUsername(String username);	
 }

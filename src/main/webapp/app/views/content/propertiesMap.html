@@ -1,0 +1,47 @@
+<nav class = "navbar navbar-default navbar-static-top">
+	<div class = "container-fluid">
+		<div class = "navbar-header">
+			<a class = "toggle pull-right margin-none visible-xs" data-toggle = "collapse" href = "#navbar"><i class = "fa fa-sliders fa-rotate-90"></i></a>
+		</div>
+		<div id = "navbar" class = "navbar-collapse collapse">
+			<ul class = "nav navbar-nav navbar-left-m">
+				<li><a ui-sref = "home()"><i class = "fa fa-list fa-fw"></i> List</a></li>
+				<li class = "active"><a ui-sref = "realestates_map()"><i class = "fa fa-map-marker fa-fw"></i> Map</a></li>
+			</ul>
+			<div class = "navbar-right">
+				<div class = "navbar-text">Sort by:</div>
+				<ul class = "nav navbar-nav">
+					<li class = "dropdown">
+						<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+						Date Added <span class = "caret"></span>
+						<span class = "sr-only">(current)</span>
+						</a>
+						<ul class = "dropdown-menu">
+							<li class = "active"><a href = "#">Latest</a></li>
+							<li><a ui-sref = "#">Oldest</a></li>
+							<li><a ui-sref = "#">Price - ASC</a></li>
+							<li><a ui-sref = "#">Price - DESC</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+<div class = "form-group">
+	<div class = "input-group">
+		<input places-auto-complete types="['geocode']" on-place-changed="placeMarker()" />
+	</div>
+</div>
+<ng-map id="mapa" center="{{center}}" zoom="12" on-click="getpos($event)" style='width: 100%'>
+	<div ng-repeat = "latlng in lls">
+		<marker position="{{latlng}}"
+			on-click="getpos($event)"
+			animation="DROP"
+			draggable="false"
+			icon="app/images/markers/building-01.png"
+			></marker>
+	</div>
+</ng-map>
+<div>

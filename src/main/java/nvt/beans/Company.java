@@ -62,37 +62,13 @@ public class Company extends User {
 		
 	}
 
-	
+
 	public String getPropertyNo() {
 		return propertyNo;
 	}
 
 	public void setPropertyNo(String propertyNo) {
 		this.propertyNo = propertyNo;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
 	}
 
 	public String getWebAddress() {
@@ -111,6 +87,14 @@ public class Company extends User {
 		this.location = location;
 	}
 
+	public Image getCompanyImage() {
+		return companyImage;
+	}
+
+	public void setCompanyImage(Image companyImage) {
+		this.companyImage = companyImage;
+	}
+
 	public WorkingTime getWorkingTime() {
 		return workingTime;
 	}
@@ -118,7 +102,7 @@ public class Company extends User {
 	public void setWorkingTime(WorkingTime workingTime) {
 		this.workingTime = workingTime;
 	}
-	
+
 	public Set<Agent> getAgents() {
 		return agents;
 	}
@@ -126,19 +110,6 @@ public class Company extends User {
 	public void setAgents(Set<Agent> agents) {
 		this.agents = agents;
 	}
-
-
-	public Image getCompanyImage() {
-		return companyImage;
-	}
-
-
-	public void setCompanyImage(Image companyImage) {
-		this.companyImage = companyImage;
-	}
-
-
-	
 
 
 }

@@ -15,7 +15,7 @@
 			$scope.user = item;
 		});
 
-    UserResource.getUserRealEstates(userId)
+		UserResource.getUserRealEstates(userId)
 		.then(function(items) {
 			$scope.userRealEstates = items;
 			$scope.numRealEstates = items.length;

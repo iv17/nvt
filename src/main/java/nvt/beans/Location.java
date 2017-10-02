@@ -76,20 +76,6 @@ public class Location implements Serializable {
 	}
 
 	
-	public Location(int id, double coord1, double coord2, String city, String block, String street, String zipCode,
-			Set<RealEstate> realEstates) {
-	
-		this.id = id;
-		this.coord1 = coord1;
-		this.coord2 = coord2;
-		this.city = city;
-		this.block = block;
-		this.street = street;
-		this.zipCode = zipCode;
-		this.realEstates = realEstates;
-	}
-
-	
 	public int getId() {
 		return id;
 	}

@@ -4,13 +4,13 @@ import nvt.beans.Location;
 
 public class LocationDTO {
 
-	private int id;
-	private double coord1;
-	private double coord2;
-	private String city;
-	private String block;
-	private String street;
-	private String zipCode;
+	protected int id;
+	protected double coord1;
+	protected double coord2;
+	protected String city;
+	protected String block;
+	protected String street;
+	protected String zipCode;
 	
 	
 	public LocationDTO() {

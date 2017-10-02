@@ -8,7 +8,6 @@ public class ImageDTO {
 	private int broj;
 	private String name;
 	private byte[] file;
-	
 	private String fileString;
 	
 	public ImageDTO() {

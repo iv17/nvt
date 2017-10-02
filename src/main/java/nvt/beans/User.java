@@ -49,9 +49,6 @@ public class User implements Serializable {
 	@Column(name = "phone_number", unique = false, nullable = true)
 	protected String phoneNumber;
 	
-	@Column(name = "authenticated", unique = false, nullable = true)
-	private boolean authenticated;
-	
 	@OneToOne(mappedBy = "user")
 	private Image image;
 
@@ -150,15 +147,6 @@ public class User implements Serializable {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-
-	
-	public boolean isAuthenticated() {
-		return authenticated;
-	}
-
-	public void setAuthenticated(boolean authenticated) {
-		this.authenticated = authenticated;
 	}
 
 	public Image getImage() {

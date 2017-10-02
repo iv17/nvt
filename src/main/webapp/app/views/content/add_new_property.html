@@ -1,156 +1,153 @@
 <div>
-
-<div class = "sidebar right sidebar-size-xs-1 sidebar-size-lg-29pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" >
-	<div data-scrollable>
-		<form name = "addProperty">
-			<div class = "sidebar-block">
-				<h1 class = "text-h3 sidebar-heading">add new property</h1>
-			</div>
-			<div class = "sidebar-block">
-				<h4 class = "category">general information</h4>
-				<div class = "form-group">
+	<div class = "sidebar right sidebar-size-xs-1 sidebar-size-lg-29pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" >
+		<div data-scrollable>
+			<form name = "addProperty">
+				<div class = "sidebar-block">
+					<h1 class = "text-h3 sidebar-heading">add new property</h1>
+				</div>
+				<div class = "sidebar-block">
+					<h4 class = "category">general information</h4>
+					<div class = "form-group">
 						<label for = "name" class = "sidebar-text">upload images:</label>
 						<input type = "file"  multiple  onchange="angular.element(this).scope().fileNameChanged(this)" class = "form-control">
-				</div>
-				<div class = "form-group">
-					<div class = "input-group">
-						<label for = "name" class = "sidebar-text">name:</label>
-						<input type = "text" id = "name" ng-model = "name" class = "form-control" placeholder = "name">
 					</div>
-				</div>
-				<div class = "form-group">
-					<div class = "input-group">
-						<label for = "description" class = "sidebar-text">description:</label>
-						<textarea id = "description" ng-model = "description" class = "form-control" placeholder = "description" rows = "5"/>
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "name" class = "sidebar-text">name:</label>
+							<input type = "text" ng-model = "name" class = "form-control" placeholder = "name">
+						</div>
 					</div>
-				</div>
-				<div class = "form-group">
-					<label class = "sidebar-text">realestate type:</label>
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "description" class = "sidebar-text">description:</label>
+							<textarea ng-model = "description" class = "form-control" placeholder = "description" rows = "5"/>
+						</div>
+					</div>
+					<div class = "form-group">
+						<label class = "sidebar-text">realestate type:</label>
 						<div ng-dropdown-multiselect="" options="realEstateTypeLabels"
 							selected-model="selectedRealEstateTypes"></div>
-				</div>
-				<div class = "form-group">
-					<div class = "input-group">
-						<label for = "surface" class = "sidebar-text">surface:</label>
-						<input type = "surface" min = "30" max = "300" id = "surface" ng-model = "surface" class = "form-control" placeholder = "surface">
 					</div>
-				</div>
-				<div class = "form-group">
-					<div class = "input-group">
-						<label for = "floor" class = "sidebar-text">floor:</label>
-						<input type = "number" min = "1" max = "100" id = "floor" ng-model = "floor" class = "form-control" placeholder = "floor">
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "surface" class = "sidebar-text">surface:</label>
+							<input type = "surface" min = "30" max = "300" ng-model = "surface" class = "form-control" placeholder = "surface">
+						</div>
 					</div>
-				</div>
-				<div class = "form-group">
-					<div class = "input-group">
-						<label for = "rooms" class = "sidebar-text">rooms:</label>
-						<input type = "number" min = "1" max = "10" id = "name" ng-model = "rooms" class = "form-control" placeholder = "rooms">
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "floor" class = "sidebar-text">floor:</label>
+							<input type = "number" min = "1" max = "100" ng-model = "floor" class = "form-control" placeholder = "floor">
+						</div>
 					</div>
-				</div>
-				<div class = "form-group">
-					<div class = "input-group">
-						<label for = "bathrooms" class = "sidebar-text">bathrooms:</label>
-						<input type = "number" min = "1" max = "10" id = "bathrooms" ng-model = "bathrooms" class = "form-control" placeholder = "bathrooms">
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "rooms" class = "sidebar-text">rooms:</label>
+							<input type = "number" min = "1" max = "10" ng-model = "rooms" class = "form-control" placeholder = "rooms">
+						</div>
 					</div>
-				</div>
-				<div class = "form-group">
-					<div class = "input-group">
-						<label for = "constructedYear" class = "sidebar-text">year of construction:</label>
-						<input type = "constructedYear" min = "1970" max = "2017" id = "constructedYear" ng-model = "constructedYear" class = "form-control" placeholder = "year of construction">
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "bathrooms" class = "sidebar-text">bathrooms:</label>
+							<input type = "number" min = "1" max = "10" ng-model = "bathrooms" class = "form-control" placeholder = "bathrooms">
+						</div>
 					</div>
-				</div>
-				<div class = "form-group">
-					<label class = "sidebar-text">heating type:</label>
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "constructedYear" class = "sidebar-text">year of construction:</label>
+							<input type = "constructedYear" min = "1970" max = "2017" ng-model = "constructedYear" class = "form-control" placeholder = "year of construction">
+						</div>
+					</div>
+					<div class = "form-group">
+						<label class = "sidebar-text">heating type:</label>
 						<div ng-dropdown-multiselect="" options="heatingTypeLabels"
 							selected-model="selectedHeatingTypes"></div>
-				</div>
-				<div class = "form-group">
-					<label >filed</label>
-					<div>
-						<div class = "btn-group">
-							<label class = "btn btn-default">
-							<input type = "radio" ng-model="filed" name = "filed" value = "true"> &nbsp; yes &nbsp;
-							</label>
-							<label class = "btn btn-primary">
-							<input type = "radio" ng-model="filed" name = "filed" value = "false"> no
-							</label>
+					</div>
+					<div class = "form-group">
+						<label >filed</label>
+						<div>
+							<div class = "btn-group">
+								<label class = "btn btn-default">
+								<input type = "radio" ng-model="filed" name = "filed" value = "true"> &nbsp; yes &nbsp;
+								</label>
+								<label class = "btn btn-primary">
+								<input type = "radio" ng-model="filed" name = "filed" value = "false"> no
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class = "form-group">
+						<label>furnished</label>
+						<div>
+							<div class = "btn-group" >
+								<label class = "btn btn-default">
+								<input type="radio" ng-model='furnished' ng-value="true"> &nbsp; yes &nbsp;
+								</label>
+								<label class = "btn btn-primary">
+								<input type="radio" ng-model='furnished' ng-value="false"> no
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class = "form-group">
+						<label  class = "sidebar-text">indoors:</label>
+						<div ng-dropdown-multiselect="" options="indoorLabels"
+							selected-model="selectedIndoors"></div>
+					</div>
+					<div class = "form-group">
+						<label class = "sidebar-text">outdoors:</label>
+						<div ng-dropdown-multiselect="" options="outdoorLabels"
+							selected-model="selectedOutdoors" extra-settings="button"></div>
+					</div>
+					<div class = "form-group">
+						<label class = "sidebar-text">advertisement type:</label>
+						<div ng-dropdown-multiselect="" options="advertisemntTypeLabels"
+							selected-model="selectedAdvertisementTypes" extra-settings="button"></div>
+					</div>
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "price" class = "sidebar-text">price: (&euro;)</label>
+							<input type = "text" id = "price" ng-model = "price" class = "form-control" placeholder = "price">
 						</div>
 					</div>
 				</div>
-				<div class = "form-group">
-					<label>furnished</label>
-					<div>
-						<div class = "btn-group" >
-							<label class = "btn btn-default">
-							<input type="radio" ng-model='furnished' ng-value="true"> &nbsp; yes &nbsp;
-							</label>
-							<label class = "btn btn-primary">
-							<input type="radio" ng-model='furnished' ng-value="false"> no
-							</label>
-						</div>
-					</div>
-			</div>
-			<div class = "form-group">
-				<label  class = "sidebar-text">indoors:</label>
-					<div ng-dropdown-multiselect="" options="indoorLabels"
-						selected-model="selectedIndoors"></div>
-			</div>
-			<div class = "form-group">
-				<label class = "sidebar-text">outdoors:</label>
-					<div ng-dropdown-multiselect="" options="outdoorLabels"
-						selected-model="selectedOutdoors" extra-settings="button"></div>
-			</div>
-			<div class = "form-group">
-				<label class = "sidebar-text">advertisement type:</label>
-				<div ng-dropdown-multiselect="" options="advertisemntTypeLabels"
-					selected-model="selectedAdvertisementTypes" extra-settings="button"></div>
-			</div>
+				<div class = "sidebar-block equal-padding">
+					<a
+						ui-sref="add_realestate({
+						myParams: {
+						name: name,
+						description: description,
+						selectedRealEstateTypes: selectedRealEstateTypes,
+						surface: surface,
+						floor: floor,
+						rooms: rooms,
+						bathrooms: bathrooms,
+						constructedYear: constructedYear,
+						selectedHeatingTypes: selectedHeatingTypes,
+						filed: filed,
+						furnished: furnished,
+						selectedAdvertisementTypes: selectedAdvertisementTypes,
+						price: price,
+						latlng: latlng,
+						selectedIndoors: selectedIndoors,
+						selectedOutdoors: selectedOutdoors
+						}
+						})"
+						class="btn btn btn-primary">save </a>
+					<button type = "button" class = "btn btn-default"><i class = "fa fa-times fa-fw"></i> cancel</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class = "sidebar left sidebar-size-xs-1 sidebar-size-lg-71pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" >
+		<p>&nbsp;</p>
+		<div>
 			<div class = "form-group">
 				<div class = "input-group">
-					<label for = "price" class = "sidebar-text">price: (&euro;)</label>
-					<input type = "text" id = "price" ng-model = "price" class = "form-control" placeholder = "price">
+					<input places-auto-complete types="['geocode']" on-place-changed="placeMarker()" />
 				</div>
 			</div>
-		</div>
-			<div class = "sidebar-block equal-padding">
-				<a
-					ui-sref="add_realestate({
-              myParams: {
-              name: name,
-              description: description,
-    					selectedRealEstateTypes: selectedRealEstateTypes,
-							surface: surface,
-							floor: floor,
-              rooms: rooms,
-              bathrooms: bathrooms,
-              constructedYear: constructedYear,
-              selectedHeatingTypes: selectedHeatingTypes,
-							filed: filed,
-							furnished: furnished,
-							selectedAdvertisementTypes: selectedAdvertisementTypes,
-							price: price,
-							latlng: latlng,
-							selectedIndoors: selectedIndoors,
-							selectedOutdoors: selectedOutdoors
-            }
-
-            })"
-					class="btn btn btn-primary">save </a>
-				<button type = "button" class = "btn btn-default"><i class = "fa fa-times fa-fw"></i> cancel</button>
-			</div>
-		</form>
-	</div>
-</div>
-
-<div class = "sidebar left sidebar-size-xs-1 sidebar-size-lg-71pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" >
-<p>&nbsp;</p>
-	<div>
-		<div class = "form-group">
-			<div class = "input-group">
-				<input places-auto-complete types="['geocode']" on-place-changed="placeMarker()" />
-			</div>
-		</div>
-		<ng-map id="mapa" center="{{center}}" zoom="12" on-click="getpos($event)" style='width: 100%'>
+			<ng-map id="mapa" center="{{center}}" zoom="12" on-click="getpos($event)" style='width: 100%'>
 				<marker position="{{latlng}}"
 					on-click="getpos($event)"
 					animation="DROP"
@@ -158,6 +155,6 @@
 					icon="app/images/markers/building-01.png"
 					></marker>
 			</ng-map>
+		</div>
 	</div>
-</div>
 </div>

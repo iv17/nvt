@@ -55,7 +55,7 @@
 						controller: 'SidebarSearchController'
 					},
 					'content@': {
-						templateUrl: 'app/views/content/map_search.html',
+						templateUrl: 'app/views/content/propertiesMap.html',
 						controller: 'MapController'
 					}
 				}
@@ -120,7 +120,8 @@
 				}
 			})
 			.state('register', {
-				url: "/register/:name/:lastname/:email/:username/:password/:repeated_password/:selectedCompany",
+				url: "/register/{myParams: json}",
+				params: {myParams : null},
 				views: {
 					'navbar@': {
 						templateUrl: 'app/views/navbar.html',
@@ -139,7 +140,8 @@
 				}
 			})
 			.state('register_company', {
-				url: "/register_company/:username/:propertyNo/:email/:webAddress/:phoneNumber/:password/:repeated_password",
+				url: "/register_company/{myParams: json}",
+				params: {myParams : null},
 				views: {
 					'navbar@': {
 						templateUrl: 'app/views/navbar.html',
@@ -167,10 +169,6 @@
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
-					'sidebar_search@': {
-						templateUrl: 'app/views/sidebar_search.html',
-						controller: 'SidebarSearchController'
-					},
 					'content@': {
 						templateUrl: 'app/views/content/user_profile.html',
 						controller: 'UserController'
@@ -187,10 +185,6 @@
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
-					'sidebar_search@': {
-						templateUrl: 'app/views/sidebar_search.html',
-						controller: 'SidebarSearchController'
-					},
 					'content@': {
 						templateUrl: 'app/views/content/company_profile.html',
 						controller: 'CompanyController'
@@ -206,10 +200,6 @@
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
-					},
-					'sidebar_search@': {
-						templateUrl: 'app/views/sidebar_search.html',
-						controller: 'SidebarSearchController'
 					},
 					'content@': {
 						templateUrl: 'app/views/content/add_new_agent.html',
@@ -228,10 +218,6 @@
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
-					'sidebar_search@': {
-						templateUrl: 'app/views/sidebar_search.html',
-						controller: 'SidebarSearchController'
-					},
 					'content@': {
 						templateUrl: 'app/views/content/company_profile.html',
 						controller: 'AddAgentController'
@@ -248,9 +234,6 @@
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
-					'sidebar_search@': {
-
-					},
 					'content@': {
 						controller: 'RatingsController'
 					}
@@ -265,9 +248,6 @@
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
-					},
-					'sidebar_search@': {
-
 					},
 					'content@': {
 						templateUrl: 'app/views/content/property.html',
@@ -286,9 +266,6 @@
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
-					'sidebar_search@': {
-
-					},
 					'content@': {
 						templateUrl: 'app/views/content/property.html',
 						controller: 'RealEstateLatLngController'
@@ -304,9 +281,6 @@
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
-					},
-					'sidebar_search@': {
-
 					},
 					'content@': {
 						templateUrl: 'app/views/content/add_new_property.html',
@@ -325,9 +299,6 @@
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
-					'sidebar_search@': {
-
-					},
 					'content@': {
 						controller: 'AddRealEstateController'
 					}
@@ -342,9 +313,6 @@
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
-					},
-					'sidebar_search@': {
-
 					},
 					'content@': {
 						templateUrl: 'app/views/content/property.html',
@@ -362,9 +330,6 @@
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
-					'sidebar_search@': {
-
-					},
 					'content@': {
 						templateUrl: 'app/views/content/property.html',
 						controller: 'CreateReportController'
@@ -381,13 +346,9 @@
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
 					},
-					'sidebar_search@': {
-
-					},
 					'content@': {
 						templateUrl: 'app/views/content/property.html',
-						controller: 'RateRealEstateController',
-						controllerAs: 'rateCtrl'
+						controller: 'RateRealEstateController'
 					}
 				}
 			});

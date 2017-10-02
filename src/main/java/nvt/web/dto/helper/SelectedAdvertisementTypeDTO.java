@@ -1,9 +1,9 @@
-package nvt.web.dto;
+package nvt.web.dto.helper;
 
 public class SelectedAdvertisementTypeDTO {
 
-	private int id;
-	private String label;
+	protected int id;
+	protected String label;
 	
 	
 	public SelectedAdvertisementTypeDTO() {
@@ -18,20 +18,18 @@ public class SelectedAdvertisementTypeDTO {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getLabel() {
 		return label;
 	}
+	
 	public void setLabel(String label) {
 		this.label = label;
 	}
 
-	@Override
-	public String toString() {
-		return "SelectedAdvertisementTypeDTO [id=" + id + ", label=" + label + "]";
-	}
-	
 	
 }

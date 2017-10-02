@@ -44,13 +44,6 @@ public class RealEstateIndoors implements Serializable {
 	}
 
 	
-	public RealEstateIndoors(int id, RealEstate realEstate, IndoorFeature indoorFeature) {
-		this.id = id;
-		this.realEstate = realEstate;
-		this.indoorFeature = indoorFeature;
-	}
-
-	
 	public int getId() {
 		return id;
 	}

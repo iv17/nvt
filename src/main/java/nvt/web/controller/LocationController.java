@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import nvt.beans.Location;
 import nvt.service.LocationService;
-import nvt.web.dto.BlockDTO;
-import nvt.web.dto.CityDTO;
 import nvt.web.dto.LocationDTO;
-import nvt.web.dto.StreetDTO;
-import nvt.web.dto.ZipCodeDTO;
+import nvt.web.dto.helper.BlockDTO;
+import nvt.web.dto.helper.CityDTO;
+import nvt.web.dto.helper.StreetDTO;
+import nvt.web.dto.helper.ZipCodeDTO;
 
 @RestController
 @RequestMapping(value = "api/locations")

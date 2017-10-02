@@ -48,14 +48,6 @@ public class HeatingType implements Serializable {
 		this.name = name;
 		this.realEstates = realEstates;
 	}
-
-	
-	public HeatingType(int id, String name, Set<RealEstate> realEstates) {
-		this.id = id;
-		this.name = name;
-		this.realEstates = realEstates;
-	}
-
 	
 	
 	public int getId() {

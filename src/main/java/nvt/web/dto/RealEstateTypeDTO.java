@@ -4,15 +4,13 @@ import nvt.beans.RealEstateType;
 
 public class RealEstateTypeDTO {
 
-	private int id;
-	private String name;
-	
+	protected int id;
+	protected String name;
 	
 	
 	public RealEstateTypeDTO() {
 		
 	}
-	
 	
 	public RealEstateTypeDTO(RealEstateType realEstateType) {
 		id = realEstateType.getId();

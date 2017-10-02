@@ -4,30 +4,24 @@ import nvt.beans.RealEstateIndoors;
 
 public class RealEstateIndoorsDTO {
 
-	private int id;
-	private RealEstateDTO realEstate;
-	private IndoorFeatureDTO indoorFeature;
-	
-	
+	protected int id;
+	protected RealEstateDTO realEstate;
+	protected IndoorFeatureDTO indoorFeature;
 	
 	public RealEstateIndoorsDTO() {
 		
 	}
 
-
 	public RealEstateIndoorsDTO(RealEstateIndoors indoors) {
 		id = indoors.getId();
-		realEstate = new RealEstateDTO(indoors.getRealEstate()); 
-		indoorFeature = new IndoorFeatureDTO(indoors.getIndoorFeature());
+		if(indoors.getRealEstate() != null) {
+			realEstate = new RealEstateDTO(indoors.getRealEstate()); 
+		}
+		if(indoors.getIndoorFeature() != null) {
+			indoorFeature = new IndoorFeatureDTO(indoors.getIndoorFeature());
+		}
+		
 	}
-	
-
-	public RealEstateIndoorsDTO(int id, RealEstateDTO realEstate, IndoorFeatureDTO indoorFeature) {
-		this.id = id;
-		this.realEstate = realEstate;
-		this.indoorFeature = indoorFeature;
-	}
-	
 
 	public int getId() {
 		return id;

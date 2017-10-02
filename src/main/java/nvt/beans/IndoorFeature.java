@@ -50,13 +50,6 @@ public class IndoorFeature implements Serializable {
 	}
 
 	
-	public IndoorFeature(int id, String name, Set<RealEstateIndoors> indoors) {
-		this.id = id;
-		this.name = name;
-		this.indoors = indoors;
-	}
-
-	
 	public int getId() {
 		return id;
 	}

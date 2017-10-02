@@ -7,20 +7,20 @@
 		'$log', '$window','toastr',
 		function($scope, $state, _, CompanyResource, $stateParams, $log, $window, toastr) {
 
-		var username = $stateParams.username;
-		var propertyNo = $stateParams.propertyNo;
-		var email = $stateParams.email;
-		var webAddress = $stateParams.webAddress;
-		var phoneNumber = $stateParams.phoneNumber;
-    var password = $stateParams.password;
-		var repeated_password = $stateParams.repeated_password;
+		var username = $stateParams.myParams.username;
+		var propertyNo = $stateParams.myParams.propertyNo;
+		var email = $stateParams.myParams.email;
+		var webAddress = $stateParams.myParams.webAddress;
+		var phoneNumber = $stateParams.myParams.phoneNumber;
+		var password = $stateParams.myParams.password;
+		var repeated_password = $stateParams.myParams.repeated_password;
 
 		var company = {
 				username: username,
 				propertyNo: propertyNo,
 				email: email,
 				webAddress: webAddress,
-        phoneNumber: phoneNumber,
+				phoneNumber: phoneNumber,
 				password: password,
 				repeated_password: repeated_password
 		};

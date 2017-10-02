@@ -8,21 +8,21 @@
 		function($scope, $rootScope, $state, _, CompanyResource, $log, $stateParams, $window, toastr, $localStorage) {
 
 		var name = $stateParams.myParams.name;
-    var lastname = $stateParams.myParams.lastname;
-    var email = $stateParams.myParams.email;
-    var phoneNumber = $stateParams.myParams.phoneNumber;
-    var username = $stateParams.myParams.username;
-    var password = $stateParams.myParams.password;
-    var companyId = $stateParams.myParams.companyId;
+		var lastname = $stateParams.myParams.lastname;
+		var email = $stateParams.myParams.email;
+		var phoneNumber = $stateParams.myParams.phoneNumber;
+		var username = $stateParams.myParams.username;
+		var password = $stateParams.myParams.password;
+		var companyId = $stateParams.myParams.companyId;
 
 		var agent = {
 				name: name,
 				lastname: lastname,
-        email: email,
-        phoneNumber: phoneNumber,
-        username: username,
-        password: password,
-        companyId: companyId
+				email: email,
+				phoneNumber: phoneNumber,
+				username: username,
+				password: password,
+				companyId: companyId
 		};
 
 

@@ -1,7 +1,6 @@
 package nvt.beans;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
@@ -81,11 +80,6 @@ public class RealEstate implements Serializable {
 	@Column(name = "duration", unique = false, nullable = true)
 	private int duration;
 
-	@Column(name = "inappropriate", unique = false, nullable = true)
-	private boolean inappropriate;
-
-	@Column(name = "verified", unique = false, nullable = true)
-	private boolean verified;
 	
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
@@ -115,17 +109,14 @@ public class RealEstate implements Serializable {
 	private Set<RealEstateReport> reports;
 
 
-
 	public RealEstate() {
 
 	}
 
-
 	public RealEstate(String name, String description, double price, double surface, int floor, int rooms,
 			int bathrooms, int constructedYear, boolean filed, boolean furnished,
 			Location location, RealEstateType realEstateType, HeatingType heatingType,
-			Date posted, Date updated, Integer duration, Boolean inappropriate, Boolean verified,
-			User user, AdvertisementType advertisementType) {
+			Date posted, Integer duration, User user, AdvertisementType advertisementType) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
@@ -140,150 +131,119 @@ public class RealEstate implements Serializable {
 		this.realEstateType = realEstateType;
 		this.heatingType = heatingType;
 		this.posted = posted;
-		this.updated = updated;
 		this.duration = duration;
-		this.inappropriate = inappropriate;
-		this.verified = verified;
 		this.user = user;
 		this.advertisementType = advertisementType;
 	}
 
 
-	
 	public int getId() {
 		return id;
 	}
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
 	public String getName() {
 		return name;
 	}
-
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
 	public String getDescription() {
 		return description;
 	}
-
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-
 	public double getPrice() {
 		return price;
 	}
-
 
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
-
 	public double getSurface() {
 		return surface;
 	}
-
 
 	public void setSurface(double surface) {
 		this.surface = surface;
 	}
 
-
 	public int getFloor() {
 		return floor;
 	}
-
 
 	public void setFloor(int floor) {
 		this.floor = floor;
 	}
 
-
 	public int getRooms() {
 		return rooms;
 	}
-
 
 	public void setRooms(int rooms) {
 		this.rooms = rooms;
 	}
 
-
 	public int getBathrooms() {
 		return bathrooms;
 	}
-
 
 	public void setBathrooms(int bathrooms) {
 		this.bathrooms = bathrooms;
 	}
 
-
 	public int getConstructedYear() {
 		return constructedYear;
 	}
-
 
 	public void setConstructedYear(int constructedYear) {
 		this.constructedYear = constructedYear;
 	}
 
-
 	public boolean isFiled() {
 		return filed;
 	}
-
 
 	public void setFiled(boolean filed) {
 		this.filed = filed;
 	}
 
-
 	public boolean isFurnished() {
 		return furnished;
 	}
-
 
 	public void setFurnished(boolean furnished) {
 		this.furnished = furnished;
 	}
 
-
 	public Location getLocation() {
 		return location;
 	}
-
 
 	public void setLocation(Location location) {
 		this.location = location;
 	}
 
-
 	public RealEstateType getRealEstateType() {
 		return realEstateType;
 	}
-
 
 	public void setRealEstateType(RealEstateType realEstateType) {
 		this.realEstateType = realEstateType;
 	}
 
-
 	public HeatingType getHeatingType() {
 		return heatingType;
 	}
-
 
 	public void setHeatingType(HeatingType heatingType) {
 		this.heatingType = heatingType;
@@ -293,61 +253,24 @@ public class RealEstate implements Serializable {
 		return posted;
 	}
 
-	public String getPostedString() {
-
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
-		return sdf.format(posted);
-	}
-
 	public void setPosted(Date posted) {
 		this.posted = posted;
 	}
 
-
 	public Date getUpdated() {
 		return updated;
-	}
-
-	public String getUpdatedString() {
-
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
-		return sdf.format(updated);
 	}
 	
 	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
 
-
 	public int getDuration() {
 		return duration;
 	}
 
-
 	public void setDuration(int duration) {
 		this.duration = duration;
-	}
-
-
-	public boolean isInappropriate() {
-		return inappropriate;
-	}
-
-
-	public void setInappropriate(boolean inappropriate) {
-		this.inappropriate = inappropriate;
-	}
-
-
-	public boolean isVerified() {
-		return verified;
-	}
-
-
-	public void setVerified(boolean verified) {
-		this.verified = verified;
 	}
 
 	public User getUser() {
@@ -358,86 +281,60 @@ public class RealEstate implements Serializable {
 		this.user = user;
 	}
 
-
 	public AdvertisementType getAdvertisementType() {
 		return advertisementType;
 	}
-
 
 	public void setAdvertisementType(AdvertisementType advertisementType) {
 		this.advertisementType = advertisementType;
 	}
 
-
 	public Set<Image> getImages() {
 		return images;
 	}
-
 
 	public void setImages(Set<Image> images) {
 		this.images = images;
 	}
 
-
 	public Set<RealEstateIndoors> getIndoors() {
 		return indoors;
 	}
-
 
 	public void setIndoors(Set<RealEstateIndoors> indoors) {
 		this.indoors = indoors;
 	}
 
-
 	public Set<RealEstateOutdoors> getOutdoors() {
 		return outdoors;
 	}
-
 
 	public void setOutdoors(Set<RealEstateOutdoors> outdoors) {
 		this.outdoors = outdoors;
 	}
 
-
 	public Set<RealEstateComment> getComments() {
 		return comments;
 	}
-
 
 	public void setComments(Set<RealEstateComment> comments) {
 		this.comments = comments;
 	}
 
-
 	public Set<RealEstateRating> getRatings() {
 		return ratings;
 	}
-
 
 	public void setRatings(Set<RealEstateRating> ratings) {
 		this.ratings = ratings;
 	}
 
-
 	public Set<RealEstateReport> getReports() {
 		return reports;
 	}
 
-
 	public void setReports(Set<RealEstateReport> reports) {
 		this.reports = reports;
 	}
-
-
-	@Override
-	public String toString() {
-		return "RealEstate [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", surface=" + surface + ", floor=" + floor + ", rooms=" + rooms + ", bathrooms=" + bathrooms
-				+ ", constructedYear=" + constructedYear + ", filed=" + filed + ", furnished=" + furnished
-				+ ", location=" + location + ", realEstateType=" + realEstateType + ", heatingType=" + heatingType
-				+ ", images=" + images + ", indoors=" + indoors + ", outdoors=" + outdoors + ", comments=" + comments + ", ratings=" + ratings + ", reports=" + reports + "]";
-	}
-
-
 
 }

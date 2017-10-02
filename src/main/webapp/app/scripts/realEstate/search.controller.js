@@ -19,15 +19,15 @@
 
 
 		var search = {
-			selectedZipCodes: selectedZipCodes,
-			selectedCities: selectedCities,
-			selectedBlocks: selectedBlocks,
-			selectedAdvertisementTypes: selectedAdvertisementTypes,
-			selectedRealEstateTypes: selectedRealEstateTypes,
-			minPrice: minPrice,
-			maxPrice: maxPrice,
-			minSurface: minSurface,
-			maxSurface: maxSurface
+				selectedZipCodes: selectedZipCodes,
+				selectedCities: selectedCities,
+				selectedBlocks: selectedBlocks,
+				selectedAdvertisementTypes: selectedAdvertisementTypes,
+				selectedRealEstateTypes: selectedRealEstateTypes,
+				minPrice: minPrice,
+				maxPrice: maxPrice,
+				minSurface: minSurface,
+				maxSurface: maxSurface
 		};
 
 
@@ -37,7 +37,7 @@
 			toastr.success('');
 		})
 		.catch(function(error){
-				toastr.error("Greska!");
+			toastr.error("Greska!");
 		});
 
 	}

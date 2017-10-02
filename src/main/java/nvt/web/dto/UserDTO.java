@@ -10,12 +10,9 @@ public class UserDTO {
 	protected String email;
 	protected String username;
 	protected String password;
-	private String repeated_password; // samo za registraciju
 	protected String name;
 	protected String lastName;
 	protected String phoneNumber;
-	protected boolean loged;
-	protected boolean authenticated;
 	protected ImageDTO image; 
 	protected Date date;
 	
@@ -37,8 +34,6 @@ public class UserDTO {
 		if(user.getImage() != null) {
 			image = new ImageDTO(user.getImage());
 		}
-		
-
 	}
 
 
@@ -97,23 +92,6 @@ public class UserDTO {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
-	public boolean isLoged() {
-		return loged;
-	}
-
-	public void setLoged(boolean loged) {
-		this.loged = loged;
-	}
-
-	public boolean isAuthenticated() {
-		return authenticated;
-	}
-
-	public void setAuthenticated(boolean authenticated) {
-		this.authenticated = authenticated;
-	}
-
 	
 	public ImageDTO getImage() {
 		return image;
@@ -123,16 +101,6 @@ public class UserDTO {
 	public void setImage(ImageDTO image) {
 		this.image = image;
 	}
-
-
-	public String getRepeated_password() {
-		return repeated_password;
-	}
-
-	public void setRepeated_password(String repeated_password) {
-		this.repeated_password = repeated_password;
-	}
-
 
 	public Date getDate() {
 		return new Date();

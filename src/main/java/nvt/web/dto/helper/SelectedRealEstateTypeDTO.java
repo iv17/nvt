@@ -1,16 +1,16 @@
-package nvt.web.dto;
+package nvt.web.dto.helper;
 
-public class CityDTO {
+public class SelectedRealEstateTypeDTO {
 
-	private int id;
-	private String label;
+	protected int id;
+	protected String label;
 	
 	
-	public CityDTO() {
+	public SelectedRealEstateTypeDTO() {
 	
 	}
 	
-	public CityDTO(int id, String label) {
+	public SelectedRealEstateTypeDTO(int id, String label) {
 		this.id = id;
 		this.label = label;
 	}
@@ -18,20 +18,17 @@ public class CityDTO {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getLabel() {
 		return label;
 	}
+	
 	public void setLabel(String label) {
 		this.label = label;
 	}
 
-	@Override
-	public String toString() {
-		return "CityDTO [id=" + id + ", label=" + label + "]";
-	}
-	
-	
 }

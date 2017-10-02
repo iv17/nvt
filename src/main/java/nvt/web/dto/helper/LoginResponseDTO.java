@@ -1,4 +1,6 @@
-package nvt.web.dto;
+package nvt.web.dto.helper;
+
+import nvt.web.dto.UserDTO;
 
 public class LoginResponseDTO {
 

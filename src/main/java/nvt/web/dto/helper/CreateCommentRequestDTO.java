@@ -1,9 +1,9 @@
-package nvt.web.dto;
+package nvt.web.dto.helper;
 
 public class CreateCommentRequestDTO {
 
-	private int realEstateId;
-	private String text;
+	protected int realEstateId;
+	protected String text;
 	
 	
 	public CreateCommentRequestDTO() {

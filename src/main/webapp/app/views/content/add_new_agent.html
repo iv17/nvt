@@ -1,185 +1,177 @@
 <div>
-
-<div class = "sidebar right sidebar-size-xs-1 sidebar-size-lg-29pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" >
-	<div data-scrollable>
-		<form name = "addProperty">
-			<div class = "sidebar-block">
-				<h1 class = "text-h3 sidebar-heading">add new agent</h1>
-			</div>
-			<div class = "sidebar-block">
-				<h4 class = "category">general information</h4>
-				<div class = "form-group">
-					<div class = "input-group">
-						<label for = "name" class = "sidebar-text">name:</label>
-						<input type = "text" id = "name" ng-model = "name" class = "form-control" placeholder = "name">
+	<div class = "sidebar right sidebar-size-xs-1 sidebar-size-lg-29pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" >
+		<div data-scrollable>
+			<form name = "addProperty">
+				<div class = "sidebar-block">
+					<h1 class = "text-h3 sidebar-heading">add new agent</h1>
+				</div>
+				<div class = "sidebar-block">
+					<h4 class = "category">general information</h4>
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "name" class = "sidebar-text">name:</label>
+							<input type = "text" ng-model = "name" class = "form-control" placeholder = "name">
+						</div>
+					</div>
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "description" class = "sidebar-text">last name:</label>
+							<input type = "text" ng-model = "lastname" class = "form-control" placeholder = "last name">
+						</div>
+					</div>
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "email" class = "sidebar-text">email:</label>
+							<input type = "email" ng-model = "email" class = "form-control" placeholder = "email">
+						</div>
+					</div>
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "phoneNumber" class = "sidebar-text">phone number:</label>
+							<input type = "text" id = "phoneNumber" ng-model = "phoneNumber" class = "form-control" placeholder = "phoneNumber">
+						</div>
+					</div>
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "username" class = "sidebar-text">username:</label>
+							<input type = "text" ng-model = "username" class = "form-control" placeholder = "username">
+						</div>
+					</div>
+					<div class = "form-group">
+						<div class = "input-group">
+							<label for = "password" class = "sidebar-text">password:</label>
+							<input type = "password"  ng-model = "password" class = "form-control" placeholder = "password">
+						</div>
 					</div>
 				</div>
-				<div class = "form-group">
-					<div class = "input-group">
-						<label for = "description" class = "sidebar-text">last name:</label>
-					<input type = "text" id = "name" ng-model = "lastname" class = "form-control" placeholder = "last name">
-					</div>
+				<div class = "sidebar-block equal-padding">
+					<a
+						ui-sref="add_agent({
+						myParams: {
+						name: name,
+						lastname: lastname,
+						email: email,
+						username: username,
+						password: password,
+						phoneNumber: phoneNumber,
+						companyId: company.id
+						}
+						})"
+						class="btn btn btn-primary">save </a>
+					<button type = "button" class = "btn btn-default"><i class = "fa fa-times fa-fw"></i> cancel</button>
 				</div>
-        <div class = "form-group">
-					<div class = "input-group">
-						<label for = "email" class = "sidebar-text">email:</label>
-					<input type = "email" id = "email" ng-model = "email" class = "form-control" placeholder = "email">
-					</div>
-				</div>
-        <div class = "form-group">
-					<div class = "input-group">
-						<label for = "phoneNumber" class = "sidebar-text">phone number:</label>
-					<input type = "text" id = "phoneNumber" ng-model = "phoneNumber" class = "form-control" placeholder = "phoneNumber">
-					</div>
-				</div>
-        <div class = "form-group">
-          <div class = "input-group">
-            <label for = "username" class = "sidebar-text">username:</label>
-          <input type = "text" ng-model = "username" class = "form-control" placeholder = "username">
-          </div>
-        </div>
-        <div class = "form-group">
-					<div class = "input-group">
-						<label for = "password" class = "sidebar-text">password:</label>
-					<input type = "password"  ng-model = "password" class = "form-control" placeholder = "password">
-					</div>
-				</div>
+			</form>
 		</div>
-			<div class = "sidebar-block equal-padding">
-				<a
-					ui-sref="add_agent({
-              myParams: {
-                name: name,
-                lastname: lastname,
-                email: email,
-                username: username,
-                password: password,
-                phoneNumber: phoneNumber,
-								companyId: company.id
-            }
-
-            })"
-					class="btn btn btn-primary">save </a>
-				<button type = "button" class = "btn btn-default"><i class = "fa fa-times fa-fw"></i> cancel</button>
-			</div>
-		</form>
 	</div>
-</div>
-
-<div class = "sidebar left sidebar-size-xs-1 sidebar-size-lg-71pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" >
-<p>&nbsp;</p>
-
-<div class="container-fluid">
-  <div class="media media-grid media-clearfix-xs">
-    <div class="media-left">
-      <div class="width-250 width-auto-xs">
-        <div class="panel panel-default widget-company-1 text-center">
-          <div class="avatar">
-            <img ng-src="{{company.companyImage.fileString}}"  class="img-circle">
-            <h3>{{ company.username }}</h3>
-              <h4>{{ company.propertyNo }}</h4>
-
-          </div>
-          <div class="profile-icons margin-none">
-            <span><i class="fa fa-fw icon icon-home-2"></i> {{ numRealEstates }}</span>
-            <span><i class="fa fa-star"></i> {{ numRatings }}</span>
-          </div>
-        </div>
-        <!-- Contact -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Contact
-          </div>
-          <ul class="icon-list icon-list-block">
-            <li><i class="fa fa-envelope fa-fw"></i> {{ company.email }}</li>
-            <li><i class="fa fa-phone fa-fw"></i> {{ company.phoneNumber}}</li>
-            <li><i class="fa fa-external-link fa-fw"></i> {{ company.webAddress}}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="media-body">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-heading panel-heading-gray">
-              <a class="btn btn-white btn-xs pull-right"><i class="fa fa-pencil"></i></a>
-              <i class="fa fa-fw fa-info-circle"></i> About
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled profile-about margin-none">
-                <li class="padding-v-5">
-                  <div class="row">
-                    <div class="col-sm-4"><span class="text-muted">Name</span></div>
-                    <div class="col-sm-8">{{ company.username }}</div>
-                  </div>
-                </li>
-                <li class="padding-v-5">
-                  <div class="row">
-                    <div class="col-sm-4"><span class="text-muted">Date of Establishment</span></div>
-                    <div class="col-sm-8">{{ company.date | date: "medium"}}</div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="panel panel-default">
-            <div class="panel-heading panel-heading-gray">
-              <div class="pull-right">
-                <a ui-sref="add_agent({agentId: agentId})" class="btn btn-primary btn-xs">Add <i class="fa fa-plus"></i></a>
-              </div>
-              <i class="icon-user-1"></i> Agents
-            </div>
-            <div class="panel-body">
-              <ul class="img-grid" ng-repeat="agent in companyAgents">
-                <li>
-                  <a ui-sref="user_profile({userId: agent.id})">
-                    <img ng-src="{{agent.image.fileString}}" class="img-circle"/>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading panel-heading-gray">
-          <i class="fa fa-fw icon icon-home-2"></i> company realestates
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div ng-repeat = "realEstate in companyRealEstates">
-            <div class="col-md-4">
-              <div class = "panel panel-default relative">
-                <div class = "ribbon-heading ribbon-primary inline absolute left margin-none">{{ realEstate.advertisementType.name }}</div>
-                <div class = "cover hover overlay margin-none">
-                  <img ng-src = "{{ realEstate.image.fileString }}"class = "img-responsive" />
-                  <a ui-sref = "realEstate({realEstateId: realEstate.id})" class="overlay overlay-full overlay-bg-black overlay-hover">
-                  <span class = "v-center"><span class = "btn btn-circle btn-white"><i class = "fa fa-eye"></i></span></span>
-                  </a>
-                </div>
-                <div class = "panel-body">
-                  <h4 class = "margin-v-0-5">{{ realEstate.name}}</h4>
-                  <p>
-                    <span class = "label label-grey-100">{{ realEstate.location.street }}</span>
-                    <span class = "label label-grey-100">{{ realEstate.location.block }} , {{ realEstate.location.city }}</span>
-                  </p>
-                  <span class = "label label-grey-100">{{ realEstate.surface }}m2</span>
-                  <span class = "label label-grey-100">&euro;{{ realEstate.price }}</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-</div>
+	<div class = "sidebar left sidebar-size-xs-1 sidebar-size-lg-71pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" >
+		<p>&nbsp;</p>
+		<div class="container-fluid">
+			<div class="media media-grid media-clearfix-xs">
+				<div class="media-left">
+					<div class="width-250 width-auto-xs">
+						<div class="panel panel-default widget-company-1 text-center">
+							<div class="avatar">
+								<img ng-src="{{company.companyImage.fileString}}"  class="img-circle">
+								<h3>{{ company.username }}</h3>
+								<h4>{{ company.propertyNo }}</h4>
+							</div>
+							<div class="profile-icons margin-none">
+								<span><i class="fa fa-fw icon icon-home-2"></i> {{ numRealEstates }}</span>
+								<span><i class="fa fa-star"></i> {{ numRatings }}</span>
+							</div>
+						</div>
+						<!-- Contact -->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								Contact
+							</div>
+							<ul class="icon-list icon-list-block">
+								<li><i class="fa fa-envelope fa-fw"></i> {{ company.email }}</li>
+								<li><i class="fa fa-phone fa-fw"></i> {{ company.phoneNumber}}</li>
+								<li><i class="fa fa-external-link fa-fw"></i> {{ company.webAddress}}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="media-body">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="panel panel-default">
+								<div class="panel-heading panel-heading-gray">
+									<a class="btn btn-white btn-xs pull-right"><i class="fa fa-pencil"></i></a>
+									<i class="fa fa-fw fa-info-circle"></i> About
+								</div>
+								<div class="panel-body">
+									<ul class="list-unstyled profile-about margin-none">
+										<li class="padding-v-5">
+											<div class="row">
+												<div class="col-sm-4"><span class="text-muted">Name</span></div>
+												<div class="col-sm-8">{{ company.username }}</div>
+											</div>
+										</li>
+										<li class="padding-v-5">
+											<div class="row">
+												<div class="col-sm-4"><span class="text-muted">Date of Establishment</span></div>
+												<div class="col-sm-8">{{ company.date | date: "medium"}}</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="panel panel-default">
+								<div class="panel-heading panel-heading-gray">
+									<div class="pull-right">
+										<a ui-sref="add_agent({agentId: agentId})" class="btn btn-primary btn-xs">Add <i class="fa fa-plus"></i></a>
+									</div>
+									<i class="icon-user-1"></i> Agents
+								</div>
+								<div class="panel-body">
+									<ul class="img-grid" ng-repeat="agent in companyAgents">
+										<li>
+											<a ui-sref="user_profile({userId: agent.id})">
+											<img ng-src="{{agent.image.fileString}}" class="img-circle"/>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading panel-heading-gray">
+							<i class="fa fa-fw icon icon-home-2"></i> company realestates
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div ng-repeat = "realEstate in companyRealEstates">
+									<div class="col-md-4">
+										<div class = "panel panel-default relative">
+											<div class = "ribbon-heading ribbon-primary inline absolute left margin-none">{{ realEstate.advertisementType.name }}</div>
+											<div class = "cover hover overlay margin-none">
+												<img ng-src = "{{ realEstate.image.fileString }}"class = "img-responsive" />
+												<a ui-sref = "realEstate({realEstateId: realEstate.id})" class="overlay overlay-full overlay-bg-black overlay-hover">
+												<span class = "v-center"><span class = "btn btn-circle btn-white"><i class = "fa fa-eye"></i></span></span>
+												</a>
+											</div>
+											<div class = "panel-body">
+												<h4 class = "margin-v-0-5">{{ realEstate.name}}</h4>
+												<p>
+													<span class = "label label-grey-100">{{ realEstate.location.street }}</span>
+													<span class = "label label-grey-100">{{ realEstate.location.block }} , {{ realEstate.location.city }}</span>
+												</p>
+												<span class = "label label-grey-100">{{ realEstate.surface }}m2</span>
+												<span class = "label label-grey-100">&euro;{{ realEstate.price }}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

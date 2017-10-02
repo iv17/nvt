@@ -20,19 +20,19 @@ import nvt.beans.RealEstate;
 import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateRating;
 import nvt.beans.RealEstateReport;
+import nvt.beans.WorkingTime;
 import nvt.service.AgentService;
 import nvt.service.CompanyService;
 import nvt.service.ImageService;
 import nvt.service.LocationService;
 import nvt.service.WorkingTimeService;
-import nvt.web.dto.AddAgentDTO;
 import nvt.web.dto.AgentDTO;
 import nvt.web.dto.CompanyDTO;
 import nvt.web.dto.RealEstateCommentDTO;
 import nvt.web.dto.RealEstateDTO;
 import nvt.web.dto.RealEstateRatingDTO;
 import nvt.web.dto.RealEstateReportDTO;
-import nvt.web.dto.UserDTO;
+import nvt.web.dto.helper.AddAgentDTO;
 
 @RestController
 @RequestMapping(value = "api/companies")
@@ -52,8 +52,8 @@ public class CompanyController {
 
 	@Autowired
 	protected ImageService imageService;
-	
-	
+
+
 	@RequestMapping(
 			value = "/registration",
 			method = RequestMethod.POST,
@@ -65,7 +65,6 @@ public class CompanyController {
 		Company company = new Company();
 		if (companyService.findByUsername(companyDTO.getUsername()) == null) {
 
-			
 			if (companyDTO.getPassword().equals(companyDTO.getRepeated_password())) {
 
 				company.setPropertyNo(companyDTO.getPropertyNo());
@@ -75,11 +74,14 @@ public class CompanyController {
 				company.setPhoneNumber(companyDTO.getPhoneNumber());
 				company.setPassword(encoder.encode(companyDTO.getPassword()));
 				
-				CompanyDTO newcompanyDTO = new CompanyDTO(company);
+				WorkingTime workingTime = new WorkingTime("09:00", "17:00", "10:00", "15:00");
+				workingTimeService.save(workingTime);
+				company.setWorkingTime(workingTime);
 
 				companyService.save(company);
+				CompanyDTO registeredCompanyDTO = new CompanyDTO(company);
 
-				return new ResponseEntity<CompanyDTO>(newcompanyDTO, HttpStatus.CREATED);
+				return new ResponseEntity<CompanyDTO>(registeredCompanyDTO, HttpStatus.CREATED);
 			}
 			return new ResponseEntity<CompanyDTO>(HttpStatus.BAD_REQUEST);
 
@@ -89,7 +91,7 @@ public class CompanyController {
 		}
 
 	}
-	
+
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<CompanyDTO>> getCompanies() {
@@ -119,6 +121,61 @@ public class CompanyController {
 		return new ResponseEntity<CompanyDTO>(companyDTO, HttpStatus.OK);
 	}
 
+	@RequestMapping(
+			value = "/{id}/agents", 
+			method = RequestMethod.GET
+			)
+	public ResponseEntity<List<AgentDTO>> getCompanyAgents(@PathVariable Integer id) {
+
+		if(companyService.findById(id) != null) {
+
+			Company company = companyService.findById(id);
+
+			if(company.getAgents() == null) {
+				return new ResponseEntity<List<AgentDTO>>(HttpStatus.NOT_FOUND);
+			}
+			Set<Agent> agentSet = company.getAgents();
+			List<AgentDTO> agentsDTO = new ArrayList<AgentDTO>();
+
+			for (Agent agent : agentSet) {
+				AgentDTO agentDTO = new AgentDTO(agent);
+				agentsDTO.add(agentDTO);
+			}
+			return new ResponseEntity<List<AgentDTO>>(agentsDTO, HttpStatus.OK);
+
+		}
+		return new ResponseEntity<List<AgentDTO>>(HttpStatus.NOT_FOUND);
+
+	}
+
+	@RequestMapping(
+			value = "/add",
+			method = RequestMethod.POST
+			)
+	public ResponseEntity<CompanyDTO> addAgent(@RequestBody AddAgentDTO agentDTO) {
+
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+		if(agentDTO != null) {
+			Agent agent  = new Agent();
+			agent.setName(agentDTO.getName());
+			agent.setLastName(agentDTO.getLastName());
+			agent.setUsername(agentDTO.getUsername());
+			agent.setPassword(encoder.encode(agentDTO.getPassword()));
+			agent.setEmail(agentDTO.getEmail());
+			agent.setPhoneNumber(agentDTO.getPhoneNumber());
+			agent.setCompany(companyService.findById(agentDTO.getCompanyId()));
+
+			agentService.save(agent);
+
+			Company company = companyService.findById(agentDTO.getCompanyId());
+			CompanyDTO companyDTO = new CompanyDTO(company);
+
+			return new ResponseEntity<CompanyDTO>(companyDTO, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<CompanyDTO>(HttpStatus.BAD_REQUEST);
+		}
+	}
 	
 	@RequestMapping(
 			value = "/{id}/realEstates", 
@@ -135,7 +192,7 @@ public class CompanyController {
 			}
 			Set<RealEstate> realEstateSet = company.getRealEstates();
 			List<RealEstateDTO> realEstatesDTO = new ArrayList<RealEstateDTO>();
-			
+
 			for (RealEstate realEstate : realEstateSet) {
 				RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
 				realEstatesDTO.add(realEstateDTO);
@@ -146,7 +203,7 @@ public class CompanyController {
 		return new ResponseEntity<List<RealEstateDTO>>(HttpStatus.NOT_FOUND);
 
 	}
-	
+
 	@RequestMapping(
 			value = "/{id}/comments", 
 			method = RequestMethod.GET
@@ -162,7 +219,7 @@ public class CompanyController {
 			}
 			Set<RealEstateComment> commentsSet = company.getComments();
 			List<RealEstateCommentDTO> realEstateCommentsDTO = new ArrayList<RealEstateCommentDTO>();
-			
+
 			for (RealEstateComment comment : commentsSet) {
 				RealEstateCommentDTO commentDTO = new RealEstateCommentDTO(comment);
 				realEstateCommentsDTO.add(commentDTO);
@@ -189,7 +246,7 @@ public class CompanyController {
 			}
 			Set<RealEstateReport> reportSet = company.getReports();
 			List<RealEstateReportDTO> reportsDTO = new ArrayList<RealEstateReportDTO>();
-			
+
 			for (RealEstateReport report : reportSet) {
 				RealEstateReportDTO reportDTO = new RealEstateReportDTO(report);
 				reportsDTO.add(reportDTO);
@@ -200,7 +257,7 @@ public class CompanyController {
 		return new ResponseEntity<List<RealEstateReportDTO>>(HttpStatus.NOT_FOUND);
 
 	}
-	
+
 	@RequestMapping(
 			value = "/{id}/ratings", 
 			method = RequestMethod.GET
@@ -216,7 +273,7 @@ public class CompanyController {
 			}
 			Set<RealEstateRating> ratingSet = company.getRatings();
 			List<RealEstateRatingDTO> ratingsDTO = new ArrayList<RealEstateRatingDTO>();
-			
+
 			for (RealEstateRating rating : ratingSet) {
 				RealEstateRatingDTO ratingDTO = new RealEstateRatingDTO(rating);
 				ratingsDTO.add(ratingDTO);
@@ -227,62 +284,6 @@ public class CompanyController {
 		return new ResponseEntity<List<RealEstateRatingDTO>>(HttpStatus.NOT_FOUND);
 
 	}
+
 	
-	@RequestMapping(
-			value = "/{id}/agents", 
-			method = RequestMethod.GET
-			)
-	public ResponseEntity<List<AgentDTO>> getCompanyAgents(@PathVariable Integer id) {
-
-		if(companyService.findById(id) != null) {
-
-			Company company = companyService.findById(id);
-
-			if(company.getAgents() == null) {
-				return new ResponseEntity<List<AgentDTO>>(HttpStatus.NOT_FOUND);
-			}
-			Set<Agent> agentSet = company.getAgents();
-			List<AgentDTO> agentsDTO = new ArrayList<AgentDTO>();
-			
-			for (Agent agent : agentSet) {
-				AgentDTO agentDTO = new AgentDTO(agent);
-				agentsDTO.add(agentDTO);
-			}
-			return new ResponseEntity<List<AgentDTO>>(agentsDTO, HttpStatus.OK);
-
-		}
-		return new ResponseEntity<List<AgentDTO>>(HttpStatus.NOT_FOUND);
-
-	}
-	
-	@RequestMapping(
-			value = "/add",
-			method = RequestMethod.POST
-			)
-	public ResponseEntity<CompanyDTO> addAgent(@RequestBody AddAgentDTO agentDTO) {
-		
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		
-		if(agentDTO != null) {
-			Agent agent  = new Agent();
-			agent.setName(agentDTO.getName());
-			agent.setLastName(agentDTO.getLastName());
-			agent.setUsername(agentDTO.getUsername());
-			agent.setPassword(encoder.encode(agentDTO.getPassword()));
-			agent.setEmail(agentDTO.getEmail());
-			agent.setPhoneNumber(agentDTO.getPhoneNumber());
-			agent.setCompany(companyService.findById(agentDTO.getCompanyId()));
-			
-			agentService.save(agent);
-			
-			Company company = companyService.findById(agentDTO.getCompanyId());
-			CompanyDTO companyDTO = new CompanyDTO(company);
-			
-			return new ResponseEntity<CompanyDTO>(companyDTO, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<CompanyDTO>(HttpStatus.BAD_REQUEST);
-		}
-	
-		
-	}
 }

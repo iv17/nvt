@@ -33,9 +33,6 @@
 			toastr.error("Greska!");
 		});
 
-
-
-
 	}
 	]);
 })();

@@ -7,15 +7,13 @@
 		'$log', '$window','toastr',
 		function($scope, $state, _, UserResource, $stateParams, $log, $window, toastr) {
 
-		var name = $stateParams.name;
-		var lastname = $stateParams.lastName;
-		var email = $stateParams.email;
-		var username = $stateParams.username;
-		var password = $stateParams.password;
-		var repeated_password = $stateParams.repeated_password;
-		var companyId = $stateParams.selectedCompany;
-		
-		$log.log(companyId);
+		var name = $stateParams.myParams.name;
+		var lastname = $stateParams.myParams.lastName;
+		var email = $stateParams.myParams.email;
+		var username = $stateParams.myParams.username;
+		var password = $stateParams.myParams.password;
+		var repeated_password = $stateParams.myParams.repeated_password;
+		var companyId = $stateParams.myParams.selectedCompany;
 
 		var user = {
 				name: name,

@@ -21,7 +21,7 @@
 			$scope.numAgents = items.length;
 		});
 
-    CompanyResource.getCompanyRealEstates(companyId)
+		CompanyResource.getCompanyRealEstates(companyId)
 		.then(function(items) {
 			$scope.companyRealEstates = items;
 			$scope.numRealEstates = items.length;

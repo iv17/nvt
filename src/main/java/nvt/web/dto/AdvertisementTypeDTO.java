@@ -4,8 +4,8 @@ import nvt.beans.AdvertisementType;
 
 public class AdvertisementTypeDTO {
 
-	private int id;
-	private String name;
+	protected int id;
+	protected String name;
 	
 	
 	public AdvertisementTypeDTO(AdvertisementType advertisementType) {

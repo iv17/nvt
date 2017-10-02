@@ -25,9 +25,6 @@ public class RealEstateReport implements Serializable {
 	@Column(name = "id", nullable = false , unique = true)
 	private int id;
 	
-	@Column(name = "report", unique = false, nullable = true)
-	private String report;
-	
 	@Column(name = "posted", unique = false, nullable = true)
 	private Date posted;
 	
@@ -46,22 +43,12 @@ public class RealEstateReport implements Serializable {
 	}
 
 	
-	public RealEstateReport(String report, Date posted, RealEstate realEstate, User user) {
-		this.report = report;
+	public RealEstateReport(Date posted, RealEstate realEstate, User user) {
 		this.posted = posted;
 		this.realEstate = realEstate;
 		this.user = user;
 	}
 
-	
-	public RealEstateReport(int id, String report, Date posted, RealEstate realEstate, User user) {
-		this.id = id;
-		this.report = report;
-		this.posted = posted;
-		this.realEstate = realEstate;
-		this.user = user;
-	}
-	
 
 	public int getId() {
 		return id;
@@ -69,14 +56,6 @@ public class RealEstateReport implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getReport() {
-		return report;
-	}
-
-	public void setReport(String report) {
-		this.report = report;
 	}
 
 	public Date getPosted() {

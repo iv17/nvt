@@ -4,14 +4,13 @@ import nvt.beans.OutdoorFeature;
 
 public class OutdoorFeatureDTO {
 
-	private int id;
-	private String name;
+	protected int id;
+	protected String name;
 	
 	
 	public OutdoorFeatureDTO() {
 		
 	}
-	
 	
 	public OutdoorFeatureDTO(OutdoorFeature outdoorFeature) {
 		id = outdoorFeature.getId();

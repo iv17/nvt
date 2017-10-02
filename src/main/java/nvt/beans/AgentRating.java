@@ -38,24 +38,12 @@ public class AgentRating implements Serializable {
 	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
 	private User user;
-
-	
 	
 	public AgentRating() {
 		
 	}
-
 	
 	public AgentRating(int rate, Date posted, Agent agent, User user) {
-		this.rate = rate;
-		this.posted = posted;
-		this.agent = agent;
-		this.user = user;
-	}
-
-	
-	public AgentRating(int id, int rate, Date posted, Agent agent, User user) {
-		this.id = id;
 		this.rate = rate;
 		this.posted = posted;
 		this.agent = agent;

@@ -31,13 +31,11 @@ public class OutdoorFeature implements Serializable {
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "realEstate") @JsonIgnore
 	private Set<RealEstateOutdoors> outdoors;
-	
-	
+
 	
 	public OutdoorFeature() {
 		
 	}
-	
 
 	public OutdoorFeature(String name) {
 		this.name = name;
@@ -45,13 +43,6 @@ public class OutdoorFeature implements Serializable {
 
 	
 	public OutdoorFeature(String name, Set<RealEstateOutdoors> outdoors) {
-		this.name = name;
-		this.outdoors = outdoors;
-	}
-
-	
-	public OutdoorFeature(int id, String name, Set<RealEstateOutdoors> outdoors) {
-		this.id = id;
 		this.name = name;
 		this.outdoors = outdoors;
 	}

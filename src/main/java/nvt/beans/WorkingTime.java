@@ -54,17 +54,6 @@ public class WorkingTime implements Serializable {
 		this.vikendOd = vikendOd;
 		this.vikendDo = vikendDo;
 	}
-
-	
-	public WorkingTime(int id, String radniDanOd, String radniDanDo, String vikendOd, String vikendDo,
-			Set<Company> companies) {
-		this.id = id;
-		this.radniDanOd = radniDanOd;
-		this.radniDanDo = radniDanDo;
-		this.vikendOd = vikendOd;
-		this.vikendDo = vikendDo;
-		this.companies = companies;
-	}
 	
 
 	public int getId() {

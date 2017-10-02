@@ -42,19 +42,6 @@ public class RealEstateType implements Serializable {
 	public RealEstateType(String name) {
 		this.name = name;
 	}
-	
-	
-	public RealEstateType(String name, Set<RealEstate> realEstates) {
-		this.name = name;
-		this.realEstates = realEstates;
-	}
-
-	
-	public RealEstateType(int id, String name, Set<RealEstate> realEstates) {
-		this.id = id;
-		this.name = name;
-		this.realEstates = realEstates;
-	}
 
 	
 	public int getId() {

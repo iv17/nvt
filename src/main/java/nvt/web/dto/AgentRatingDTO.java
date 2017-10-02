@@ -6,11 +6,11 @@ import nvt.beans.AgentRating;
 
 public class AgentRatingDTO {
 
-	private int id;
-	private int rate;
-	private Date posted;
-	private AgentDTO agent;
-	private UserDTO user;
+	protected int id;
+	protected int rate;
+	protected Date posted;
+	protected AgentDTO agent;
+	protected UserDTO user;
 
 	
 	public AgentRatingDTO() {

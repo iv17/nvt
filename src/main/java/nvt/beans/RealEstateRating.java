@@ -52,16 +52,6 @@ public class RealEstateRating implements Serializable {
 		this.realEstate = realEstate;
 		this.user = user;
 	}
-
-	
-	public RealEstateRating(int id, int rate, Date posted, RealEstate realEstate, User user) {
-		this.id = id;
-		this.rate = rate;
-		this.posted = posted;
-		this.realEstate = realEstate;
-		this.user = user;
-	}
-
 	
 	public int getId() {
 		return id;

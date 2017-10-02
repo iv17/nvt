@@ -39,8 +39,6 @@ public class RealEstateComment implements Serializable {
 	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
 	private User user;
 
-	
-	
 	public RealEstateComment() {
 		
 	}
@@ -52,17 +50,7 @@ public class RealEstateComment implements Serializable {
 		this.user = user;
 	}
 	
-	
-	public RealEstateComment(int id, String comment, Date posted, RealEstate realEstate,
-			User user) {
-		this.id = id;
-		this.comment = comment;
-		this.posted = posted;
-		this.realEstate = realEstate;
-		this.user = user;
-	}
 
-	
 	public int getId() {
 		return id;
 	}

@@ -31,7 +31,6 @@ import nvt.beans.RealEstate;
 import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateIndoors;
 import nvt.beans.RealEstateOutdoors;
-import nvt.beans.RealEstateRating;
 import nvt.beans.RealEstateReport;
 import nvt.beans.RealEstateType;
 import nvt.service.AdvertisementTypeService;
@@ -48,23 +47,25 @@ import nvt.service.RealEstateReportService;
 import nvt.service.RealEstateService;
 import nvt.service.RealEstateTypeService;
 import nvt.util.Util;
-import nvt.web.dto.AddRealEstateDTO;
-import nvt.web.dto.BlockDTO;
-import nvt.web.dto.CityDTO;
 import nvt.web.dto.IndoorFeatureDTO;
-import nvt.web.dto.LatLngDTO;
 import nvt.web.dto.OutdoorFeatureDTO;
-import nvt.web.dto.RatingsResponseDTO;
 import nvt.web.dto.RealEstateCommentDTO;
 import nvt.web.dto.RealEstateDTO;
-import nvt.web.dto.RealEstateRatingDTO;
+import nvt.web.dto.RealEstateIndoorsDTO;
+import nvt.web.dto.RealEstateOutdoorsDTO;
 import nvt.web.dto.RealEstateReportDTO;
-import nvt.web.dto.SearchDTO;
-import nvt.web.dto.SelectedAdvertisementTypeDTO;
-import nvt.web.dto.SelectedIndoorFeatureDTO;
-import nvt.web.dto.SelectedOutdoorFeatureDTO;
-import nvt.web.dto.SelectedRealEstateTypeDTO;
-import nvt.web.dto.ZipCodeDTO;
+import nvt.web.dto.helper.AddRealEstateDTO;
+import nvt.web.dto.helper.BlockDTO;
+import nvt.web.dto.helper.CityDTO;
+import nvt.web.dto.helper.LatLngDTO;
+import nvt.web.dto.helper.RatingsResponseDTO;
+import nvt.web.dto.helper.RealEstateResponseDTO;
+import nvt.web.dto.helper.SearchDTO;
+import nvt.web.dto.helper.SelectedAdvertisementTypeDTO;
+import nvt.web.dto.helper.SelectedIndoorFeatureDTO;
+import nvt.web.dto.helper.SelectedOutdoorFeatureDTO;
+import nvt.web.dto.helper.SelectedRealEstateTypeDTO;
+import nvt.web.dto.helper.ZipCodeDTO;
 
 @RestController
 @RequestMapping(value = "api/realEstates")
@@ -169,7 +170,6 @@ public class RealEstateController {
 																	if(r.getLocation().getBlock().equals(b.getLabel())) {
 																		if(minPrice != -1 && maxPrice != -1 && minPrice < maxPrice && minPrice <= r.getPrice() && r.getPrice() <= maxPrice) {
 																			if(minSurface != -1 && maxSurface != -1 && minSurface < maxSurface && minSurface <= r.getSurface() && r.getSurface() <= maxSurface) {
-																
 																				searches.add(r);
 																			}
 																		}
@@ -210,6 +210,11 @@ public class RealEstateController {
 		realEstate.setFloor(realEstateDTO.getFloor());
 		realEstate.setRooms(realEstateDTO.getRooms());
 		realEstate.setBathrooms(realEstateDTO.getBathrooms());
+		realEstate.setConstructedYear(realEstateDTO.getConstructedYear());
+		realEstate.setPosted(new Date());
+		realEstate.setUpdated(new Date());
+		realEstate.setDuration(60);
+		
 		if(realEstateDTO.getFiled().equals("true")) {
 			realEstate.setFiled(true);
 		} else {
@@ -220,9 +225,6 @@ public class RealEstateController {
 		} else {
 			realEstate.setFurnished(false);
 		}
-		
-		realEstate.setConstructedYear(realEstateDTO.getConstructedYear());
-		
 		
 		RealEstateType realEstateType = realEstateTypeService.findById(realEstateDTO.getSelectedRealEstateTypes().get(0).getId());
 		if(realEstateType == null) {
@@ -235,12 +237,6 @@ public class RealEstateController {
 			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
 		}
 		realEstate.setHeatingType(heatingType);
-		
-		realEstate.setPosted(new Date());
-		realEstate.setUpdated(new Date());
-		realEstate.setDuration(0);
-		realEstate.setInappropriate(false);
-		realEstate.setVerified(true);
 		
 		AdvertisementType  advertisementType = advertisementTypeService.findById(realEstateDTO.getSelectedAdvertisementTypes().get(0).getId());
 		if(advertisementType == null) {
@@ -290,9 +286,9 @@ public class RealEstateController {
 		}
 		realEstate.setOutdoors(outdoors);
 		
-		
-		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
 		realEstateService.save(realEstate);
+		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
+		
 		
 
 		ArrayList<String> names = realEstateDTO.getImages();
@@ -330,21 +326,55 @@ public class RealEstateController {
 
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<RealEstateDTO> getRealEstate(@PathVariable Integer id){
+	public ResponseEntity<RealEstateResponseDTO> getRealEstate(@PathVariable Integer id){
 
 		RealEstate realEstate = realEstateService.findById(id);
 		if(realEstate == null){
-			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<RealEstateResponseDTO>(HttpStatus.NOT_FOUND);
 		}
 		RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
+		
+		Set<RealEstateComment> comments = realEstate.getComments();
+		List<RealEstateCommentDTO> commentsDTO = new ArrayList<RealEstateCommentDTO>();
+		for (RealEstateComment c : comments) {
+			RealEstateCommentDTO commentDTO = new RealEstateCommentDTO(c);
+			commentsDTO.add(commentDTO);
+		}
+		Set<RealEstateReport> reports = realEstate.getReports();
+		List<RealEstateReportDTO> reportsDTO = new ArrayList<RealEstateReportDTO>();
+		for (RealEstateReport r : reports) {
+			RealEstateReportDTO reportDTO = new RealEstateReportDTO(r);
+			reportsDTO.add(reportDTO);
+		}
+		Set<RealEstateIndoors> indoors = realEstate.getIndoors();
+		List<RealEstateIndoorsDTO> indoorsDTO = new ArrayList<RealEstateIndoorsDTO>();
+		for (RealEstateIndoors i : indoors) {
+			RealEstateIndoorsDTO indoorDTO = new RealEstateIndoorsDTO(i);
+			indoorsDTO.add(indoorDTO);
+		}
+		Set<RealEstateOutdoors> outdoors = realEstate.getOutdoors();
+		List<RealEstateOutdoorsDTO> outdoorsDTO = new ArrayList<RealEstateOutdoorsDTO>();
+		for (RealEstateOutdoors o : outdoors) {
+			RealEstateOutdoorsDTO outdoorDTO = new RealEstateOutdoorsDTO(o);
+			outdoorsDTO.add(outdoorDTO);
+		}
+		RatingsResponseDTO ratings = Util.ratings(realEstate);
 
-		return new ResponseEntity<RealEstateDTO>(realEstateDTO, HttpStatus.OK);
+		RealEstateResponseDTO realEstateResponseDTO = new RealEstateResponseDTO();
+		realEstateResponseDTO.setRealEstate(realEstateDTO);
+		realEstateResponseDTO.setComments(commentsDTO);
+		realEstateResponseDTO.setReports(reportsDTO);
+		realEstateResponseDTO.setIndoors(indoorsDTO);
+		realEstateResponseDTO.setOutdoors(outdoorsDTO);
+		realEstateResponseDTO.setRatings(ratings);
+		
+		return new ResponseEntity<RealEstateResponseDTO>(realEstateResponseDTO, HttpStatus.OK);
 	}
 	
 	
 	
 	@RequestMapping(value = "/latlng", method = RequestMethod.POST)
-	public ResponseEntity<RealEstateDTO> getRealEstateLatLng(@RequestBody LatLngDTO latlng){
+	public ResponseEntity<RealEstateResponseDTO> getRealEstateLatLng(@RequestBody LatLngDTO latlng){
 
 		
 		double lat = latlng.getLat();
@@ -353,11 +383,45 @@ public class RealEstateController {
 		Location location = locationService.findByCoordinates(lat, lng).get(0);
 		RealEstate realEstate = realEstateService.findByLocation(location).get(0);
 		if(realEstate == null){
-			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<RealEstateResponseDTO>(HttpStatus.NOT_FOUND);
 		}
 		RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
 
-		return new ResponseEntity<RealEstateDTO>(realEstateDTO, HttpStatus.OK);
+		
+		Set<RealEstateComment> comments = realEstate.getComments();
+		List<RealEstateCommentDTO> commentsDTO = new ArrayList<RealEstateCommentDTO>();
+		for (RealEstateComment c : comments) {
+			RealEstateCommentDTO commentDTO = new RealEstateCommentDTO(c);
+			commentsDTO.add(commentDTO);
+		}
+		Set<RealEstateReport> reports = realEstate.getReports();
+		List<RealEstateReportDTO> reportsDTO = new ArrayList<RealEstateReportDTO>();
+		for (RealEstateReport r : reports) {
+			RealEstateReportDTO reportDTO = new RealEstateReportDTO(r);
+			reportsDTO.add(reportDTO);
+		}
+		Set<RealEstateIndoors> indoors = realEstate.getIndoors();
+		List<RealEstateIndoorsDTO> indoorsDTO = new ArrayList<RealEstateIndoorsDTO>();
+		for (RealEstateIndoors i : indoors) {
+			RealEstateIndoorsDTO indoorDTO = new RealEstateIndoorsDTO(i);
+			indoorsDTO.add(indoorDTO);
+		}
+		Set<RealEstateOutdoors> outdoors = realEstate.getOutdoors();
+		List<RealEstateOutdoorsDTO> outdoorsDTO = new ArrayList<RealEstateOutdoorsDTO>();
+		for (RealEstateOutdoors o : outdoors) {
+			RealEstateOutdoorsDTO outdoorDTO = new RealEstateOutdoorsDTO(o);
+			outdoorsDTO.add(outdoorDTO);
+		}
+		RatingsResponseDTO ratings = Util.ratings(realEstate);
+
+		RealEstateResponseDTO realEstateResponseDTO = new RealEstateResponseDTO();
+		realEstateResponseDTO.setRealEstate(realEstateDTO);
+		realEstateResponseDTO.setComments(commentsDTO);
+		realEstateResponseDTO.setReports(reportsDTO);
+		realEstateResponseDTO.setIndoors(indoorsDTO);
+		realEstateResponseDTO.setOutdoors(outdoorsDTO);
+		realEstateResponseDTO.setRatings(ratings);
+		return new ResponseEntity<RealEstateResponseDTO>(realEstateResponseDTO, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/{id}/indoors", method = RequestMethod.GET)
@@ -415,35 +479,8 @@ public class RealEstateController {
 		if(realEstate == null){
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		List<RealEstateRatingDTO> ratings1 = new ArrayList<RealEstateRatingDTO>();
-		List<RealEstateRatingDTO> ratings2 = new ArrayList<RealEstateRatingDTO>();
-		List<RealEstateRatingDTO> ratings3 = new ArrayList<RealEstateRatingDTO>();
-		List<RealEstateRatingDTO> ratings4 = new ArrayList<RealEstateRatingDTO>();
-		List<RealEstateRatingDTO> ratings5 = new ArrayList<RealEstateRatingDTO>();
-		double sum = 0;
-		for (RealEstateRating r : realEstate.getRatings()) {
-			sum += r.getRate();
-			RealEstateRatingDTO rr = new RealEstateRatingDTO(r);
-			if(rr.getRate() == 1) {ratings1.add(rr);}
-			if(rr.getRate() == 2) {ratings2.add(rr);}
-			if(rr.getRate() == 3) {ratings3.add(rr);}
-			if(rr.getRate() == 4) {ratings4.add(rr);}
-			if(rr.getRate() == 5) {ratings5.add(rr);}
-			
-		}
-		int r1 = ratings1.size();
-		int r2 = ratings2.size();
-		int r3 = ratings3.size();
-		int r4 = ratings4.size();
-		int r5 = ratings5.size();
-		int ukupno = realEstate.getRatings().size();
-		double srednjaVrednost = 0;
-		if(ukupno > 0) {
-			srednjaVrednost = sum/realEstate.getRatings().size();
-			srednjaVrednost = Util.round(srednjaVrednost, 1);
-		}
+		RatingsResponseDTO ratings = Util.ratings(realEstate);
 		
-		RatingsResponseDTO ratings = new RatingsResponseDTO(r1, r2, r3, r4, r5, ukupno, srednjaVrednost);
 		return new ResponseEntity<RatingsResponseDTO>(ratings, HttpStatus.OK);
 	}
 

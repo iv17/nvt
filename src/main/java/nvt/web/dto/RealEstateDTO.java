@@ -11,34 +11,32 @@ import nvt.beans.RealEstate;
 
 public class RealEstateDTO {
 
-	private int id;
-	private String name;
-	private String description;
-	private double price;
-	private double surface;
-	private int floor;
-	private int rooms;
-	private int bathrooms;
-	private int constructedYear;
-	private boolean filed;
-	private boolean furnished;
-	private LocationDTO location;
-	private RealEstateTypeDTO realEstateType;
-	private HeatingTypeDTO heatingType;
-	private Date posted;
-	private Date updated;
-	private int duration;
-	private boolean inappropriate;
-	private boolean verified;
-	private UserDTO user;
-	private AdvertisementTypeDTO advertisementType;
-	private ImageDTO image; 
-	private Set<ImageDTO> images = new HashSet<>(); 
-	private Set<RealEstateCommentDTO> comments;
-	private Set<RealEstateRatingDTO> ratings;
-	private Set<RealEstateReportDTO> reports;
-	private Set<RealEstateIndoorsDTO> indoors;
-	private Set<RealEstateOutdoorsDTO> outdoors;
+	protected int id;
+	protected String name;
+	protected String description;
+	protected double price;
+	protected double surface;
+	protected int floor;
+	protected int rooms;
+	protected int bathrooms;
+	protected int constructedYear;
+	protected boolean filed;
+	protected boolean furnished;
+	protected LocationDTO location;
+	protected RealEstateTypeDTO realEstateType;
+	protected HeatingTypeDTO heatingType;
+	protected Date posted;
+	protected Date updated;
+	protected int duration;
+	protected UserDTO user;
+	protected AdvertisementTypeDTO advertisementType;
+	protected ImageDTO image; 
+	protected Set<ImageDTO> images = new HashSet<ImageDTO>(); 
+	protected Set<RealEstateCommentDTO> comments;
+	protected Set<RealEstateRatingDTO> ratings;
+	protected Set<RealEstateReportDTO> reports;
+	protected Set<RealEstateIndoorsDTO> indoors;
+	protected Set<RealEstateOutdoorsDTO> outdoors;
 
 
 	
@@ -60,17 +58,25 @@ public class RealEstateDTO {
 		filed = realEstate.isFiled();
 		furnished = realEstate.isFurnished();
 		
-		location = new LocationDTO(realEstate.getLocation());
-		realEstateType = new RealEstateTypeDTO(realEstate.getRealEstateType());
-		heatingType = new HeatingTypeDTO(realEstate.getHeatingType());
+		if(realEstate.getUser() != null) {
+			user = new UserDTO(realEstate.getUser());
+		}
+		if(realEstate.getAdvertisementType() != null) {
+			advertisementType = new AdvertisementTypeDTO(realEstate.getAdvertisementType());	
+		}
+		if(realEstate.getLocation() != null) {
+			location = new LocationDTO(realEstate.getLocation());	
+		}
+		if(realEstate.getRealEstateType() != null) {
+			realEstateType = new RealEstateTypeDTO(realEstate.getRealEstateType());
+		}
+		if(realEstate.getHeatingType() != null) {
+			heatingType = new HeatingTypeDTO(realEstate.getHeatingType());	
+		}
 		posted = realEstate.getPosted();
 		updated = realEstate.getUpdated();
 		duration = realEstate.getDuration();
-		inappropriate = realEstate.isInappropriate();
-		verified = realEstate.isVerified();
-		//user = new UserDTO(realEstate.getUser());
-		advertisementType = new AdvertisementTypeDTO(realEstate.getAdvertisementType());
-		
+
 		if(realEstate.getImages() != null) {
 			Set<Image> im = realEstate.getImages();
 			List<Image> temp = new ArrayList<Image>();
@@ -224,23 +230,6 @@ public class RealEstateDTO {
 		this.duration = duration;
 	}
 
-	public boolean isInappropriate() {
-		return inappropriate;
-	}
-
-	public void setInappropriate(boolean inappropriate) {
-		this.inappropriate = inappropriate;
-	}
-
-	public boolean isVerified() {
-		return verified;
-	}
-
-	public void setVerified(boolean verified) {
-		this.verified = verified;
-	}
-
-	
 	public UserDTO getUser() {
 		return user;
 	}
@@ -314,20 +303,5 @@ public class RealEstateDTO {
 		this.image = image;
 	}
 
-
-	@Override
-	public String toString() {
-		return "RealEstateDTO [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", surface=" + surface + ", floor=" + floor + ", rooms=" + rooms + ", bathrooms=" + bathrooms
-				+ ", constructedYear=" + constructedYear + ", filed=" + filed + ", furnished=" + furnished
-				+ ", location=" + location + ", realEstateType=" + realEstateType + ", heatingType=" + heatingType
-				+ ", posted=" + posted + ", updated=" + updated + ", duration=" + duration + ", inappropriate="
-				+ inappropriate + ", verified=" + verified + ", user=" + user + ", advertisementType="
-				+ advertisementType + ", image=" + image + ", images=" + images + ", comments=" + comments
-				+ ", ratings=" + ratings + ", reports=" + reports + ", indoors=" + indoors + ", outdoors=" + outdoors
-				+ "]";
-	}
-	
-	
 	
 }

@@ -5,7 +5,7 @@
 		function(Restangular, _, $log) {
 		'use strict';
 
-		var retVal = {};	//JSON objekat koji prosledjujemo controller-u
+		var retVal = {};
 
 		retVal.register = function(Company)	{
 			return Restangular.all("companies/registration").post(Company).then(function(response) {
@@ -63,4 +63,4 @@
 		return retVal;
 	}]);
 
-})(); //odmah se izvrsava
+})(); 

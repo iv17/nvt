@@ -28,14 +28,11 @@ public class Agent extends User {
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "agent") @JsonIgnore
 	private Set<AgentRating> agentRatings;
-
-	
 	
 	public Agent() {
 		super();
 	}
 
-	
 	public Agent(User user, Company company) {
 		super();
 		this.email = user.getEmail();

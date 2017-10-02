@@ -34,13 +34,13 @@ import nvt.service.CompanyService;
 import nvt.service.RealEstateService;
 import nvt.service.UserService;
 import nvt.web.dto.AgentDTO;
-import nvt.web.dto.LoginResponseDTO;
 import nvt.web.dto.RealEstateCommentDTO;
 import nvt.web.dto.RealEstateDTO;
 import nvt.web.dto.RealEstateRatingDTO;
 import nvt.web.dto.RealEstateReportDTO;
-import nvt.web.dto.RegistrationDTO;
 import nvt.web.dto.UserDTO;
+import nvt.web.dto.helper.LoginResponseDTO;
+import nvt.web.dto.helper.RegistrationDTO;
 
 @RestController
 @RequestMapping(value = "api/users")
@@ -61,7 +61,7 @@ public class UserController {
 	@Autowired
 	protected ImageRepository imageRepository;
 
-	//====================Security====================
+	
 	@Autowired
 	AuthenticationManager authenticationManager;
 
@@ -70,9 +70,6 @@ public class UserController {
 
 	@Autowired
 	TokenUtils tokenUtils;
-	//====================Security====================
-
-
 
 
 	@RequestMapping(

@@ -1,8 +1,6 @@
 package nvt;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -50,71 +48,72 @@ public class NvtApplication implements CommandLineRunner {
 
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@Autowired
 	LocationRepository locationRepository;
-	
+
 	@Autowired
 	WorkingTimeRepository workingTimeRepository;
-	
+
 	@Autowired
 	CompanyRepository companyRepository;
-	
+
 	@Autowired
 	AgentRepository agentRepository;
-	
+
 	@Autowired
 	IndoorFeatureRepository indoorFeatureRepository;
-	
+
 	@Autowired
 	OutdoorFeatureRepository outdoorFeatureRepository;
-	
+
 	@Autowired
 	HeatingTypeRepository heatingTypeRepository;
-	
+
 	@Autowired
 	RealEstateTypeRepository realEstateTypeRepository;
-	
+
 	@Autowired
 	RealEstateRepository realEstateRepository;
-	
+
 	@Autowired 
 	AdvertisementTypeRepository advertisementTypeRepository;
-	
+
 	@Autowired
 	RealEstateCommentRepository realEstateCommentRepository;
-	
+
 	@Autowired
 	RealEstateRatingRepository realEstateRatingRepository;
-	
+
 	@Autowired 
 	RealEstateReportRepository realEstateReportRepository;
-	
+
 	@Autowired
 	AgentRatingRepository agentRatingRepository;
-	
+
 	@Autowired
 	RealEstateIndoorsRepository realEstateIndoorsRepository;
-	
+
 	@Autowired 
 	RealEstateOutdoorsRepository realEstateOutdoorsRepository;
-	
+
 	@Autowired
 	ImageRepository imageRepository;
-	
-	
-	
+
+
+
 	public static void main(String[] args) {
-		
+
 		SpringApplication.run(NvtApplication.class);
-		
+
 		System.out.println("\n\n\n\n\t\t\t\tIVANA");
 	}
 
-	
-	
+
+
 	@Override
 	public void run(String... arg0) throws Exception {
+
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 
@@ -138,8 +137,8 @@ public class NvtApplication implements CommandLineRunner {
 		locationRepository.save(location9);
 		Location location10  = new Location(44.7823568, 20.4166448, "Beograd", "Banovo Brdo", "Požeška 40", "11000");
 		locationRepository.save(location10);
-		
-		
+
+
 		Location location11  = new Location(44.7972173, 20.4015128, "Beograd", "Neimar", "Patrijarha Varnave 20", "11000");
 		locationRepository.save(location11);
 		Location location12  = new Location(44.7992456, 20.4023128, "Beograd", "Vračar", "Makenzijeva 67", "11000");
@@ -150,11 +149,11 @@ public class NvtApplication implements CommandLineRunner {
 		locationRepository.save(location14);
 		Location location15  = new Location(44.7809182, 20.3820123, "Beograd", "Crveni krst", "Metohijska 11", "11000");
 		locationRepository.save(location15);
-		
-		
+
+
 		WorkingTime workingTime1 = new WorkingTime("09.00", "18.0", "Zatvoreno", "Zatvoreno");
 		workingTimeRepository.save(workingTime1);
-		
+
 		Company company1 = new Company("bestrealesate@gmail.com", "BEST REAL ESTATE", encoder.encode("123"), "063-282-558", "0001", "www.bestrealestate.rs", location11, workingTime1);
 		companyRepository.save(company1);
 		Company company2 = new Company("mentor@gmail.com", "MENTOR REAL ESTATE BELGRADE", encoder.encode("123"), "063-282-558", "0002", "www.bestrealestate.rs", location12, workingTime1);
@@ -182,10 +181,10 @@ public class NvtApplication implements CommandLineRunner {
 		Image image24 = new Image("r1.jpg", "app/images/companies/r1.jpg".getBytes(), "image/jpeg");
 		image24.setCompany(company5);
 		imageRepository.save(image24);
-		
-		
-	
-		
+
+
+
+
 		User user11 = new User("ivana.unitedforce@gmail.com", "iv", encoder.encode("123"), "Lars", "Urlich", "061-123-456");
 		userRepository.save(user11);
 		User user12 = new User("james.hatfield@gmail.com", "james", encoder.encode("123"), "James", "Hatfield", "061-456-789");
@@ -196,7 +195,7 @@ public class NvtApplication implements CommandLineRunner {
 		userRepository.save(user14);
 		User user15 = new User("alessandra.ambrosio@gmail.com", "alessandra", encoder.encode("123"), "Alessandra", "Ambrosio", "060-456-789");
 		userRepository.save(user15);
-			
+
 		Image image01 = new Image("woman-1.jpg", "app/images/users/woman-1.jpg".getBytes(), "image/jpeg");
 		image01.setUser(user11);
 		imageRepository.save(image01);
@@ -212,13 +211,13 @@ public class NvtApplication implements CommandLineRunner {
 		Image image05 = new Image("woman-3.jpg", "app/images/users/woman-3.jpg".getBytes(), "image/jpeg");
 		image05.setUser(user15);
 		imageRepository.save(image05);
-		
+
 		User user21 = new User("iva17.igodina@gmail.com", "matthew", encoder.encode("123"), "Matthew", "McConaughey", "065-456-789");
 		User user22 = new User("iva17.iigodina@gmail.com", "bradley", encoder.encode("123"), "Bradley", "Cooper", "065-789-123");
 		User user23 = new User("iva17.iiigodina@gmail.com", "leonardo", encoder.encode("123"), "Leonardo", "DiCaprio", "063-123-456");
 		User user24 = new User("blake.lively@gmail.com", "blake", encoder.encode("123"), "Blake", "Lively", "063-456-789");
 
-		
+
 		Agent agent1 = new Agent(user21, company1);
 		agentRepository.save(agent1);
 		Agent agent2 = new Agent(user22, company1);
@@ -227,7 +226,7 @@ public class NvtApplication implements CommandLineRunner {
 		agentRepository.save(agent3);
 		Agent agent4 = new Agent(user24, company3);
 		agentRepository.save(agent4);
-		
+
 		Image image06 = new Image("guy-3.jpg", "app/images/users/guy-3.jpg".getBytes(), "image/jpeg");
 		image06.setUser(agent1);
 		imageRepository.save(image06);
@@ -240,9 +239,9 @@ public class NvtApplication implements CommandLineRunner {
 		Image image09 = new Image("woman-4.jpg", "app/images/users/woman-4.jpg".getBytes(), "image/jpeg");
 		image09.setUser(agent4);
 		imageRepository.save(image09);
-		
-	
-		
+
+
+
 		HeatingType heatingType1 = new HeatingType("Forced Air");
 		heatingTypeRepository.save(heatingType1);
 		HeatingType heatingType2 = new HeatingType("Hydronic");
@@ -254,7 +253,7 @@ public class NvtApplication implements CommandLineRunner {
 		HeatingType heatingType5 = new HeatingType("Steam Radiant");
 		heatingTypeRepository.save(heatingType5);
 
-		
+
 		RealEstateType realEstateType1 = new RealEstateType("APARTMENT");
 		realEstateTypeRepository.save(realEstateType1);
 		RealEstateType realEstateType2 = new RealEstateType("FLAT");
@@ -268,39 +267,39 @@ public class NvtApplication implements CommandLineRunner {
 		advertisementTypeRepository.save(advertisementType1);
 		AdvertisementType advertisementType2 = new AdvertisementType("RENT");
 		advertisementTypeRepository.save(advertisementType2);
-		
+
 		RealEstate realEstate1 = new RealEstate("Trosoban stan", "Trosoban, luksuzno opremljen stan, kod \"Dvanaeste gimnazije\" u ulici "
 				+ "Vojvode Stepa.\n" + 
 				"Stan se sastoji od predsoblja, dve spavaće sobe, dnevne sobe, kuhinje, kupatila, toaleta i poseduje garažno mesto"
 				+ " čija je cena 12000 eura.\n" + 
 				"U blizini se nalazi nekoliko fakulteta (Saobraćajni, FON, i FPN), Visoka škola elektrotenike i računarstva,"
 				+ " osnovna škola \"Filip Filipović\", studentski dom \"4. APRIL\".",
-				257000.0, 100.0, 2, 4, 2, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType1);	
+				257000.0, 100.0, 2, 4, 2, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), 48, agent1, advertisementType1);	
 		realEstateRepository.save(realEstate1);
 		RealEstate realEstate2 = new RealEstate("Dvosoban stan", "Luksuzno opremljen stan na Vračaru u novogradnji sa velikom garažom.\n" + 
 				"\n" + 
 				"Stan se sastoji iz predsoblja, dnevne sobe sa velikom kuhinjom i šank trpezarijom, sa izlazom na dve terase,"
 				+ " spavaće sobe koja takođe ima izlaz na jednu od terasa, kupatila i garderobera.", 
-				190000.0, 75.0, 2, 5, 2, 2015, true, true, location2, realEstateType3, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType1);
+				190000.0, 75.0, 2, 5, 2, 2015, true, true, location2, realEstateType3, heatingType1, new Date(), 48, agent1, advertisementType1);
 		realEstateRepository.save(realEstate2);
 		RealEstate realEstate3 = new RealEstate("Troiposoban stan","Moderan i svetao stan u novijoj zgradi na prelepoj lokaciji pogodnoj "
 				+ "za aktivan život ali i za odmor. U neposrdenoj okolini parkova, vrtica, osnovnih skola, gimnazija,svih stanica gradskog"
 				+ " prevoza, pijaca, biblioteka i pozorista. \nSa slobodnom parking zonom u ulici, u blizini samog centra grada,"
 				+ " dobro povezan za uključenjem na auto put. \nU zgradi sa malim brojem stanova. Unutar zgarde nalazi se bašta sa fontanom,"
 				+ " zelenom površinom i opremom za odmor i opuštanje.", 
-				850.0, 120.0, 3, 3, 2, 2015, true, true, location3, realEstateType4, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
+				850.0, 120.0, 3, 3, 2, 2015, true, true, location3, realEstateType4, heatingType1, new Date(), 48, agent1, advertisementType2);
 		realEstateRepository.save(realEstate3);
 		RealEstate realEstate4 = new RealEstate("Duplex stan + kabinet", "Penthaus duplex kompletno opremljen modernim nameštajem i najnovijom "
 				+ "belom tehnikom. Elegantan dizajn pruža osećaj udobnosti i komfora. Prostire se na dva nivoa.\n" + 
 				"Na prvom nivou se nalazi  veliki dnevni boravak, u produžetku se nastavlja trpezarijski deo i kuhinja, "
 				+ "sa druge strane je prostrana zastakljena terasa sa garniturom za sedenje.\n" + 
 				"Duž cele terase nalaze se klizni prozori, tako da se njihovim pomeranjem dobija otvoren prostor. ",
-				1500.0, 150.0, 2, 1, 1, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);	
+				1500.0, 150.0, 2, 1, 1, 2015, true, true, location1, realEstateType2, heatingType1, new Date(), 48, agent1, advertisementType2);	
 		realEstateRepository.save(realEstate4);
 		RealEstate realEstate5 = new RealEstate("Salonac", "Petosoban salonski stan u zgradi sa najlepšom fasadom u ulici Kralja Petra.\n" + 
 				"Zgrada je locirana između ulica Kneza Mihaila i Gospodar Jevremove.\n" + 
 				"Stan se nalazi na četvrtom spratu u zgradi od šest spratova, opremljen je, funkcionalan, može da se koristi za stanovanje i za poslovni prostor.",
-				1500.0, 150.0, 2, 5, 2, 2015, true, true, location2, realEstateType3, heatingType1, new Date(), new Date(), 48, false, false, agent1, advertisementType2);
+				1500.0, 150.0, 2, 5, 2, 2015, true, true, location2, realEstateType3, heatingType1, new Date(), 48, agent1, advertisementType2);
 		realEstateRepository.save(realEstate5);
 
 		Image image1 = new Image("11.jpg", "app/images/properties/11.jpg".getBytes(), "image/jpeg");
@@ -312,7 +311,7 @@ public class NvtApplication implements CommandLineRunner {
 		Image image3 = new Image("13.jpg", "app/images/properties/13.jpg".getBytes(), "image/jpeg");
 		image3.setRealEstate(realEstate1);
 		imageRepository.save(image3);
-		
+
 		Image image5 = new Image("21.jpg", "app/images/properties/21.jpg".getBytes(), "image/jpeg");
 		image5.setRealEstate(realEstate2);
 		imageRepository.save(image5);
@@ -322,7 +321,7 @@ public class NvtApplication implements CommandLineRunner {
 		Image image7 = new Image("23.jpg", "app/images/properties/23.jpg".getBytes(), "image/jpeg");
 		image7.setRealEstate(realEstate2);
 		imageRepository.save(image7);
-		
+
 		Image image8 = new Image("31.jpg", "app/images/properties/31.jpg".getBytes(), "image/jpeg");
 		image8.setRealEstate(realEstate3);
 		imageRepository.save(image8);
@@ -332,7 +331,7 @@ public class NvtApplication implements CommandLineRunner {
 		Image image10 = new Image("33.jpg", "app/images/properties/33.jpg".getBytes(), "image/jpeg");
 		image10.setRealEstate(realEstate3);
 		imageRepository.save(image10);
-			
+
 		Image image12 = new Image("41.jpg", "app/images/properties/41.jpg".getBytes(), "image/jpeg");
 		image12.setRealEstate(realEstate4);
 		imageRepository.save(image12);
@@ -342,7 +341,7 @@ public class NvtApplication implements CommandLineRunner {
 		Image image14 = new Image("43.jpg", "app/images/properties/43.jpg".getBytes(), "image/jpeg");
 		image14.setRealEstate(realEstate4);
 		imageRepository.save(image14);
-			
+
 		Image image16 = new Image("51.jpg", "app/images/properties/51.jpg".getBytes(), "image/jpeg");
 		image16.setRealEstate(realEstate5);
 		imageRepository.save(image16);
@@ -352,9 +351,9 @@ public class NvtApplication implements CommandLineRunner {
 		Image image18 = new Image("53.jpg", "app/images/properties/53.jpg".getBytes(), "image/jpeg");
 		image18.setRealEstate(realEstate5);
 		imageRepository.save(image18);
-		
-	
-		
+
+
+
 		IndoorFeature indoorFeature1 = new IndoorFeature("Floorboards");
 		indoorFeatureRepository.save(indoorFeature1);
 		IndoorFeature indoorFeature2 = new IndoorFeature("Built-in Wardrobes");
@@ -379,7 +378,7 @@ public class NvtApplication implements CommandLineRunner {
 		indoorFeatureRepository.save(indoorFeature13);
 		IndoorFeature indoorFeature14 = new IndoorFeature("Open fireplace");
 		indoorFeatureRepository.save(indoorFeature14);
-		
+
 
 		RealEstateIndoors realEstateIndoors1 = new RealEstateIndoors(realEstate1, indoorFeature3);
 		realEstateIndoorsRepository.save(realEstateIndoors1);
@@ -401,7 +400,7 @@ public class NvtApplication implements CommandLineRunner {
 		realEstateIndoorsRepository.save(realEstateIndoors9);
 		RealEstateIndoors realEstateIndoors10 = new RealEstateIndoors(realEstate5, indoorFeature14);
 		realEstateIndoorsRepository.save(realEstateIndoors10);
-		
+
 		OutdoorFeature outdoorFeature1 = new OutdoorFeature("Secure Parking");
 		outdoorFeatureRepository.save(outdoorFeature1);
 		OutdoorFeature outdoorFeature2 = new OutdoorFeature("Courtyard");
@@ -435,7 +434,7 @@ public class NvtApplication implements CommandLineRunner {
 		realEstateOutdoorsRepository.save(realEstateOutdoors5);
 		RealEstateOutdoors realEstateOutdoors6 = new RealEstateOutdoors(realEstate3, outdoorFeature10);
 		realEstateOutdoorsRepository.save(realEstateOutdoors6);
-		
+
 
 		RealEstateComment realEstateComment1 = new RealEstateComment("Lep stan!", new Date(), realEstate1, user15);
 		realEstateCommentRepository.save(realEstateComment1);
@@ -447,7 +446,7 @@ public class NvtApplication implements CommandLineRunner {
 		realEstateCommentRepository.save(realEstateComment4);
 		RealEstateComment realEstateComment5 = new RealEstateComment("Preskupo!", new Date(), realEstate2, user15);
 		realEstateCommentRepository.save(realEstateComment5);
-	
+
 
 		RealEstateRating realEstateRating1 = new RealEstateRating(5, new Date(), realEstate1, user15);
 		realEstateRatingRepository.save(realEstateRating1);
@@ -461,8 +460,8 @@ public class NvtApplication implements CommandLineRunner {
 		realEstateRatingRepository.save(realEstateRating5);
 		RealEstateRating realEstateRating6 = new RealEstateRating(2, new Date(), realEstate1, user15);
 		realEstateRatingRepository.save(realEstateRating6);
-		
-		
+
+
 	}
-	
+
 }

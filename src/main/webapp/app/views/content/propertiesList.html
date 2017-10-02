@@ -6,7 +6,6 @@
 		<div id = "navbar" class = "navbar-collapse collapse">
 			<ul class = "nav navbar-nav navbar-left-m">
 				<li class = "active"><a ui-sref = "home()"><i class = "fa fa-list fa-fw"></i> List</a></li>
-				<li><a ui-sref = "realestates_grid()"><i class = "fa fa-th fa-fw"></i> Grid</a></li>
 				<li><a ui-sref = "realestates_map()"><i class = "fa fa-map-marker fa-fw"></i> Map</a></li>
 			</ul>
 			<div class = "navbar-right">
@@ -42,11 +41,6 @@
 							<img ng-src= "{{ realEstate.image.fileString }} " width = "250" />
 							</a>
 						</p>
-						<div class = "text-center text-primary">
-							<span class = "fa fa-fw fa-star"></span>
-              <span class = "fa fa-fw fa-star"></span>
-              <span class = "fa fa-fw fa-star"></span>
-						</div>
 					</div>
 					<div class = "media-body">
 						<div class = "pull-right">
@@ -68,23 +62,6 @@
 							<span class = "label label-grey-100"><i class = "fa fa-fw icon icon-toilet"></i> {{ realEstate.bathrooms }} bathrooms</span>
 						</p>
 						<p class = "margin-none"> {{ realEstate.description }}</p>
-						<!--
-							<div ng-repeat = "c in realEstate.comments ">
-							  <span class = "label label-grey-100"><i class="fa fa-fw icon icon-toilet"></i> {{ c.comment }}</span>
-							</div>
-							<div ng-repeat = "r in realEstate.ratings ">
-							  <span class = "label label-grey-100"><i class="fa fa-home fa-fw"></i> {{ r.rate }}</span>
-							</div>
-							<div ng-repeat = "rr in realEstate.reports ">
-							  <span class = "label label-grey-100"><i class="fa fa-home fa-fw"></i> {{ rr.report }}</span>
-							</div>
-							<div ng-repeat = "i in realEstate.outdoors">
-							  <span class = "label label-grey-100"><i class="fa fa-home fa-fw"></i> {{ i.outdoorFeature.name }}</span>
-							</div>
-							<div ng-repeat = "i in realEstate.indoors">
-							  <span class = "label label-grey-100"><i class="fa fa-fw icon icon-toilet"></i> {{ i.indoorFeature.name }}</span>
-							</div>
-							-->
 					</div>
 				</div>
 			</div>

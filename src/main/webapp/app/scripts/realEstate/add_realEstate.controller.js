@@ -48,8 +48,7 @@
 
 		RealEstateResource.addRealEstate(realestate).then(function(item) {
 			$scope.realEstate = item;
-
-			$log.log($scope.realEstate);
+			
 			$window.location.href = '/#/home';
 			toastr.success('Dodali ste nekretninu!');
 		})

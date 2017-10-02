@@ -4,21 +4,23 @@ import nvt.beans.RealEstateOutdoors;
 
 public class RealEstateOutdoorsDTO {
 
-	private int id;
-	private RealEstateDTO realEstate;
-	private OutdoorFeatureDTO outdoorFeature;
-	
-	
-	
+	protected int id;
+	protected RealEstateDTO realEstate;
+	protected OutdoorFeatureDTO outdoorFeature;
+		
 	public RealEstateOutdoorsDTO() {
 		
 	}
 
-
 	public RealEstateOutdoorsDTO(RealEstateOutdoors outdoors) {
 		id = outdoors.getId();
-		realEstate = new RealEstateDTO(outdoors.getRealEstate());
-		outdoorFeature = new OutdoorFeatureDTO(outdoors.getOutdoorFeature());
+		if(outdoors.getOutdoorFeature() != null) {
+			outdoorFeature = new OutdoorFeatureDTO(outdoors.getOutdoorFeature());
+		}
+		if(outdoors.getRealEstate() != null) {
+			realEstate = new RealEstateDTO(outdoors.getRealEstate());	
+		}
+		
 	}
 
 

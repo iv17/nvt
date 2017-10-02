@@ -1,176 +1,176 @@
 <nav class = "navbar navbar-default navbar-fixed-top" role = "navigation">
-  <div class = "container-fluid">
-    <div class = "navbar-header">
-      <a href = "#sidebar-menu" data-toggle = "sidebar-menu" class = "toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
-      <button type = "button" class = "navbar-toggle collapsed" data-toggle = "collapse" data-target = "#main-nav">
-      <span class = "sr-only">Toggle navigation</span>
-      <span class = "icon-bar"></span>
-      <span class = "icon-bar"></span>
-      <span class = "icon-bar"></span>
-      </button>
-      <a href = "#sidebar-map" data-toggle = "sidebar-menu" class = "toggle pull-right visible-xs"><i class = "fa fa-map-marker"></i></a>
-      <a class = "navbar-brand" ui-sref = "#">realestate</a>
-    </div>
-    <div >
-      <div class = "collapse navbar-collapse" id = "main-nav">
-        <ul class = "nav navbar-nav navbar-right ">
-
-          <li class = "dropdown">
-            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"><i class = "fa fa-fw fa-lock"></i> Login</a>
-            <div class = "dropdown-menu dropdown-size-280">
-              <form name = "signIn">
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-user"></i></span>
-                    <input type = "text" id = "username" ng-model = "username" class = "form-control" placeholder = "username">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-key"></i></span>
-                    <input type = "password" id = "password" ng-model = "password" class = "form-control" placeholder = "password">
-                  </div>
-                </div>
-                <div class = "text-center">
-                  <a ui-sref = "login({ username: username, password: password})" class = "btn btn-primary">login <i class = "fa fa-sign-in"></i></a>
-
-                </div>
-              </form>
-            </div>
-          </li>
-          <li class = "dropdown">
-            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"><i class = "fa fa-fw fa-user-plus"></i> Sign Up</a>
-            <div class = "dropdown-menu dropdown-size-280">
-              <form name = "signUp">
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-user"></i></span>
-                    <input type = "text" id = "name" ng-model = "name" class = "form-control" placeholder = "name">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-user"></i></span>
-                    <input type = "text" id = "lastname" ng-model = "lastname" class = "form-control" placeholder = "last name">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-envelope"></i></span>
-                    <input type = "text" id = "email" ng-model = "email" class = "form-control" placeholder = "email">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-user"></i></span>
-                    <input type = "text" name = "username" ng-model = "username" class = "form-control" placeholder = "username">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-key"></i></span>
-                    <input type = "password" name = "password" ng-model = "password" class = "form-control" placeholder = "password">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-key"></i></span>
-                    <input type = "password" name = "password2" ng-model = "repeated_password" class = "form-control" placeholder = "repeat password">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class="input-group">
-                    <span class="input-group-btn">
-                    <select class="form-control"  ng-model="selectedCompany" ng-options="item.username for item in companies">
-                      <option value="" disabled selected>Select company</option>
-                    </select>
-                  </span>
-                  </div>
-                </div>
-                <div class = "text-center">
-                  <a ui-sref = "register({ name: name,
-                     lastname: lastname,
-                     email: email,
-                    username: username,
-                    password: password,
-                    repeated_password: repeated_password,
-                    selectedCompany: selectedCompany.id})" class = "btn btn-primary">sign up  <i class = "fa fa-sign-in"></i></a>
-                </div>
-              </form>
-            </div>
-          </li>
-          <li class = "dropdown">
-            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"><i class = "fa fa-fw fa-users"></i> Register company</a>
-            <div class = "dropdown-menu dropdown-size-280">
-              <form>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-user"></i></span>
-                    <input type = "text" id = "username" ng-model = "username" class = "form-control" placeholder = "name">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-user"></i></span>
-                    <input type = "text" id = "propertyNo" ng-model = "propertyNo" class = "form-control" placeholder = "property no">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-envelope"></i></span>
-                    <input type = "text" id = "email" ng-model = "email" class = "form-control" placeholder = "email">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-user"></i></span>
-                    <input type = "text" name = "webAddress" ng-model = "webAddress" class = "form-control" placeholder = "web address">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-user"></i></span>
-                    <input type = "text" name = "phoneNumber" ng-model = "phoneNumber" class = "form-control" placeholder = "phone number">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-key"></i></span>
-                    <input type = "password" name = "password" ng-model = "password" class = "form-control" placeholder = "password">
-                  </div>
-                </div>
-                <div class = "form-group">
-                  <div class = "input-group">
-                    <span class = "input-group-addon"><i class = "fa fa-key"></i></span>
-                    <input type = "password" name = "password2" ng-model = "repeated_password" class = "form-control" placeholder = "repeat password">
-                  </div>
-                </div>
-                <div class = "text-center">
-                  <a ui-sref = "register_company({ username: username,
-                     propertyNo: propertyNo,
-                     email: email,
-                    webAddress: webAddress,
-                    phoneNumber: phoneNumber,
-                    password: password,
-                    repeated_password: repeated_password})" class = "btn btn-primary">register <i class = "fa fa-sign-in"></i></a>
-                </div>
-              </form>
-            </div>
-          </li>
-          <li class = "dropdown user">
-            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
-            <img ng-show ="loggedUser == true" ng-src="{{ loggedUser.image.fileString }}" class = "img-circle" /> {{ logedUser.name }}<span class = "caret"></span>
-            <img ng-show = "loggedUser == false" ng-src="app/images/users/user.png" class = "img-circle" /> GUEST<span class = "caret"></span>
-            </a>
-            <ul class = "dropdown-menu" role = "menu">
-              <li><a ui-sref = "user_profile({userId: loggedUser.id})"><i class = "fa fa-user"></i>user profile</a></li>
-              <li><a ui-sref = "user_adverts({userId: loggedUser.id})"><i class = "fa fa-wrench"></i>my adverts</a></li>
-              <li><a ui-sref = "logout()"><i class = "fa fa-sign-out"></i>logout</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
+	<div class = "container-fluid">
+		<div class = "navbar-header">
+			<a href = "#sidebar-menu" data-toggle = "sidebar-menu" class = "toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
+			<button type = "button" class = "navbar-toggle collapsed" data-toggle = "collapse" data-target = "#main-nav">
+			<span class = "sr-only">Toggle navigation</span>
+			<span class = "icon-bar"></span>
+			<span class = "icon-bar"></span>
+			<span class = "icon-bar"></span>
+			</button>
+			<a ui-sref = "home()" data-toggle = "sidebar-menu" class = "toggle pull-right visible-xs"><i class = "fa fa-map-marker"></i></a>
+			<a class = "navbar-brand" ui-sref = "home()">realestate</a>
+		</div>
+		<div >
+			<div class = "collapse navbar-collapse" id = "main-nav">
+				<ul class = "nav navbar-nav navbar-right ">
+					<li class = "dropdown">
+						<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"><i class = "fa fa-fw fa-lock"></i> Login</a>
+						<div class = "dropdown-menu dropdown-size-280">
+							<form name = "signIn">
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+										<input type = "text" ng-model = "username" class = "form-control" placeholder = "username">
+									</div>
+								</div>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-key"></i></span>
+										<input type = "password" ng-model = "password" class = "form-control" placeholder = "password">
+									</div>
+								</div>
+								<div class = "text-center">
+									<a ui-sref = "login({ username: username, password: password})" class = "btn btn-primary">login <i class = "fa fa-sign-in"></i></a>
+								</div>
+							</form>
+						</div>
+					</li>
+					<li class = "dropdown">
+						<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"><i class = "fa fa-fw fa-user-plus"></i> Sign Up</a>
+						<div class = "dropdown-menu dropdown-size-280">
+							<form name = "signUp">
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+										<input type = "text" ng-model = "name" class = "form-control" placeholder = "name">
+									</div>
+								</div>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+										<input type = "text" ng-model = "lastname" class = "form-control" placeholder = "last name">
+									</div>
+								</div>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-envelope"></i></span>
+										<input type = "text" ng-model = "email" class = "form-control" placeholder = "email">
+									</div>
+								</div>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+										<input type = "text" ng-model = "username" class = "form-control" placeholder = "username">
+									</div>
+								</div>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-key"></i></span>
+										<input type = "password" ng-model = "password" class = "form-control" placeholder = "password">
+									</div>
+								</div>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-key"></i></span>
+										<input type = "password" ng-model = "repeated_password" class = "form-control" placeholder = "repeat password">
+									</div>
+								</div>
+								If you want to create acount as realestate agent, please select company
+								<div class = "form-group">
+									<div class="input-group">
+										<span class="input-group-btn">
+											<select class="form-control"  ng-model="selectedCompany" ng-options="item.username for item in companies">
+												<option value="" disabled selected>Select company</option>
+											</select>
+										</span>
+									</div>
+								</div>
+								<div class = "text-center">
+									<a ui-sref = "register(
+										{myParams: { name: name,
+										lastname: lastname,
+										email: email,
+										username: username,
+										password: password,
+										repeated_password: repeated_password,
+										selectedCompany: selectedCompany.id}})" class = "btn btn-primary">sign up  <i class = "fa fa-sign-in"></i></a>
+								</div>
+							</form>
+						</div>
+					</li>
+					<li class = "dropdown">
+						<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"><i class = "fa fa-fw fa-users"></i> Register company</a>
+						<div class = "dropdown-menu dropdown-size-280">
+							<form>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+										<input type = "text" ng-model = "username" class = "form-control" placeholder = "name">
+									</div>
+								</div>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+										<input type = "text" ng-model = "propertyNo" class = "form-control" placeholder = "property no">
+									</div>
+								</div>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-envelope"></i></span>
+										<input type = "text" ng-model = "email" class = "form-control" placeholder = "email">
+									</div>
+								</div>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+										<input type = "text" ng-model = "webAddress" class = "form-control" placeholder = "web address">
+									</div>
+								</div>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-user"></i></span>
+										<input type = "text" ng-model = "phoneNumber" class = "form-control" placeholder = "phone number">
+									</div>
+								</div>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-key"></i></span>
+										<input type = "password" ng-model = "password" class = "form-control" placeholder = "password">
+									</div>
+								</div>
+								<div class = "form-group">
+									<div class = "input-group">
+										<span class = "input-group-addon"><i class = "fa fa-key"></i></span>
+										<input type = "password" ng-model = "repeated_password" class = "form-control" placeholder = "repeat password">
+									</div>
+								</div>
+								<div class = "text-center">
+									<a ui-sref = "register_company(
+										{myParams: { username: username,
+										propertyNo: propertyNo,
+										email: email,
+										webAddress: webAddress,
+										phoneNumber: phoneNumber,
+										password: password,
+										repeated_password: repeated_password}})" class = "btn btn-primary">register <i class = "fa fa-sign-in"></i></a>
+								</div>
+							</form>
+						</div>
+					</li>
+					<li class = "dropdown user">
+						<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+						<img ng-show ="loggedUser" ng-src="{{ loggedUser.image.fileString }}" class = "img-circle" /> {{ logedUser.username }}<span class = "caret"></span>
+						<img ng-show = "!loggedUser" ng-src="app/images/users/user.png" class = "img-circle" /> GUEST<span class = "caret"></span>
+						</a>
+						<ul class = "dropdown-menu" role = "menu">
+							<li><a ng-show="loggedUser.propertyNo == null" ui-sref = "user_profile({userId: loggedUser.id})"><i class = "fa fa-user"></i>user profile</a></li>
+							<li><a ng-show="loggedUser.propertyNo != null" ui-sref = "company_profile({companyId: loggedUser.id})"><i class = "fa fa-users"></i>company profile</a></li>
+							<li><a ui-sref = "logout()"><i class = "fa fa-sign-out"></i>logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </nav>

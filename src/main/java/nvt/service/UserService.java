@@ -19,14 +19,11 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-
-	//====================Security====================
 	@Autowired
 	private TokenUtils tokenUtils;
 
 	@Autowired
 	private UserDetailsService userDetailsService;
-	//====================Security====================
 	
 	
 	public User findById(int id) {
@@ -34,7 +31,6 @@ public class UserService {
 	}
 	
 	public User findByUsername(String username) {
-		
 		return userRepository.findByUsername(username);
 	}
 	
@@ -78,8 +74,4 @@ public class UserService {
 		return user;
 	}
 
-
-
-	
-	
 }

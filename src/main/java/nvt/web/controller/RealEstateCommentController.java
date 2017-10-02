@@ -16,12 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import nvt.beans.RealEstate;
 import nvt.beans.RealEstateComment;
+import nvt.beans.RealEstateIndoors;
+import nvt.beans.RealEstateOutdoors;
+import nvt.beans.RealEstateReport;
 import nvt.service.RealEstateCommentService;
 import nvt.service.RealEstateService;
 import nvt.service.UserService;
-import nvt.web.dto.CreateCommentResponseDTO;
+import nvt.util.Util;
 import nvt.web.dto.RealEstateCommentDTO;
 import nvt.web.dto.RealEstateDTO;
+import nvt.web.dto.RealEstateIndoorsDTO;
+import nvt.web.dto.RealEstateOutdoorsDTO;
+import nvt.web.dto.RealEstateReportDTO;
+import nvt.web.dto.helper.CreateCommentRequestDTO;
+import nvt.web.dto.helper.RatingsResponseDTO;
+import nvt.web.dto.helper.RealEstateResponseDTO;
 
 @RestController
 @RequestMapping(value = "api/realEstateComments")
@@ -71,7 +80,7 @@ public class RealEstateCommentController {
 			method = RequestMethod.POST, 
 			consumes = "application/json"
 			)
-	public ResponseEntity<CreateCommentResponseDTO> createComment(@RequestBody nvt.web.dto.CreateCommentRequestDTO createCommentRequest) {
+	public ResponseEntity<RealEstateResponseDTO> createComment(@RequestBody CreateCommentRequestDTO createCommentRequest) {
 
 		int id = createCommentRequest.getRealEstateId();
 		String text = createCommentRequest.getText();
@@ -91,8 +100,7 @@ public class RealEstateCommentController {
 			//comment.setUser(user);
 			comment.setPosted(new Date());
 
-			realEstateCommentService.save(comment); 	//sacuvam komentar
-
+			realEstateCommentService.save(comment); 	
 			Set<RealEstateComment> realEstateComments = realEstate.getComments();
 			realEstateComments.add(comment);	
 
@@ -103,16 +111,41 @@ public class RealEstateCommentController {
 
 			Set<RealEstateComment> comments = realEstate.getComments();
 			List<RealEstateCommentDTO> commentsDTO = new ArrayList<RealEstateCommentDTO>();
-			for (RealEstateComment comm : comments) {
-				RealEstateCommentDTO commentDTO = new RealEstateCommentDTO(comm);
+			for (RealEstateComment c : comments) {
+				RealEstateCommentDTO commentDTO = new RealEstateCommentDTO(c);
 				commentsDTO.add(commentDTO);
 			}
+			Set<RealEstateReport> reports = realEstate.getReports();
+			List<RealEstateReportDTO> reportsDTO = new ArrayList<RealEstateReportDTO>();
+			for (RealEstateReport r : reports) {
+				RealEstateReportDTO reportDTO = new RealEstateReportDTO(r);
+				reportsDTO.add(reportDTO);
+			}
+			Set<RealEstateIndoors> indoors = realEstate.getIndoors();
+			List<RealEstateIndoorsDTO> indoorsDTO = new ArrayList<RealEstateIndoorsDTO>();
+			for (RealEstateIndoors i : indoors) {
+				RealEstateIndoorsDTO indoorDTO = new RealEstateIndoorsDTO(i);
+				indoorsDTO.add(indoorDTO);
+			}
+			Set<RealEstateOutdoors> outdoors = realEstate.getOutdoors();
+			List<RealEstateOutdoorsDTO> outdoorsDTO = new ArrayList<RealEstateOutdoorsDTO>();
+			for (RealEstateOutdoors o : outdoors) {
+				RealEstateOutdoorsDTO outdoorDTO = new RealEstateOutdoorsDTO(o);
+				outdoorsDTO.add(outdoorDTO);
+			}
+			RatingsResponseDTO ratings = Util.ratings(realEstate);
 
-			CreateCommentResponseDTO createCommentResponseDTO = new CreateCommentResponseDTO(realEstateDTO, commentsDTO);
-			return new ResponseEntity<CreateCommentResponseDTO>(createCommentResponseDTO, HttpStatus.CREATED);
+			RealEstateResponseDTO realEstateResponseDTO = new RealEstateResponseDTO();
+			realEstateResponseDTO.setRealEstate(realEstateDTO);
+			realEstateResponseDTO.setComments(commentsDTO);
+			realEstateResponseDTO.setReports(reportsDTO);
+			realEstateResponseDTO.setIndoors(indoorsDTO);
+			realEstateResponseDTO.setOutdoors(outdoorsDTO);
+			realEstateResponseDTO.setRatings(ratings);
+			return new ResponseEntity<RealEstateResponseDTO>(realEstateResponseDTO, HttpStatus.CREATED);
 
 		} else {
-			return new ResponseEntity<CreateCommentResponseDTO>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<RealEstateResponseDTO>(HttpStatus.NOT_FOUND);
 		}
 
 

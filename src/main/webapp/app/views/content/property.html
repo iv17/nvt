@@ -8,16 +8,15 @@
 			<div ng-class="{item: true, active: (image.broj === 0)}" ng-repeat= "image in realEstate.images">
 				<img ng-src= "{{ image.fileString }} " class =" width-100pc">
 				<a class="left carousel-control" role="button"  data-target="#carousel-example-generic" data-slide-to="{{image.broj === 0 ? image.broj+2 : image.broj-1 }}">
-					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
 				</a>
 				<a class="right carousel-control" role="button" data-target="#carousel-example-generic" data-slide-to="{{image.broj === 2 ? image.broj-2 : image.broj+1 }}">
-					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
 				</a>
 			</div>
 		</div>
-
 		<div class = "overlay overlay-bg-black">
 			<div class = "v-bottom">
 				<div class = "page-section">
@@ -26,9 +25,7 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
-
 	<div class = "property-meta">
 		<ul>
 			<li class="property-meta-item"><i class="fa fa-fw icon icon-home-2"></i> {{ realEstate.surface }} m2</li>
@@ -37,7 +34,6 @@
 			<li class="property-meta-item"><i class="fa fa-fw icon icon-toilet"></i> {{ realEstate.bathrooms}} Bathrooms</li>
 		</ul>
 	</div>
-
 	<div class = "panel panel-default">
 		<div class = "panel-heading">
 			<h4 class = "panel-title">description</h4>
@@ -175,25 +171,38 @@
 	<section class = "panel panel-default">
 		<div class="panel-body">
 			<div class="input-group">
-            <div star-rating rating="rate" read-only="false" max-rating="5"></div>
-			</div>&nbsp;{{ rate }}
-				<div class="input-group-btn"><a class="btn btn-primary" ui-sref="rate_realEstate({rate: rate, realEstateId: realEstate.id})"> <i class="fa fa-star"></i> Rate it</a></div>
-
+				<div star-rating rating="rate" read-only="false" max-rating="5"></div>
+			</div>
+			&nbsp;{{ rate }}
+			<div class="input-group-btn"><a class="btn btn-primary" ui-sref="rate_realEstate({rate: rate, realEstateId: realEstate.id})"> <i class="fa fa-star"></i> Rate it</a></div>
 			<p>&nbsp;</p>
-			<div class="input-group">Srednja vrednost: <div star-rating rating="srednjaVrednost" read-only="true" max-rating="5"></div></div>&nbsp;
-			<div class="input-group">{{realEstateRatings1}} / {{ukupno}}<div star-rating rating="1" read-only="true" max-rating="5"></div></div>
-			<div class="input-group">{{realEstateRatings2}} / {{ukupno}}<div star-rating rating="2" read-only="true" max-rating="5"></div></div>
-			<div class="input-group">{{realEstateRatings3}} / {{ukupno}}<div star-rating rating="3" read-only="true" max-rating="5"></div></div>
-			<div class="input-group">{{realEstateRatings4}} / {{ukupno}}<div star-rating rating="4" read-only="true" max-rating="5"></div></div>
-			<div class="input-group">{{realEstateRatings5}} / {{ukupno}}<div star-rating rating="5" read-only="true" max-rating="5"></div></div>
+			<div class="input-group">
+				Srednja vrednost:
+				<div star-rating rating="srednjaVrednost" read-only="true" max-rating="5"></div>
+			</div>
+			&nbsp;
+			<div class="input-group">
+				{{realEstateRatings1}} / {{ukupno}}
+				<div star-rating rating="1" read-only="true" max-rating="5"></div>
+			</div>
+			<div class="input-group">
+				{{realEstateRatings2}} / {{ukupno}}
+				<div star-rating rating="2" read-only="true" max-rating="5"></div>
+			</div>
+			<div class="input-group">
+				{{realEstateRatings3}} / {{ukupno}}
+				<div star-rating rating="3" read-only="true" max-rating="5"></div>
+			</div>
+			<div class="input-group">
+				{{realEstateRatings4}} / {{ukupno}}
+				<div star-rating rating="4" read-only="true" max-rating="5"></div>
+			</div>
+			<div class="input-group">
+				{{realEstateRatings5}} / {{ukupno}}
+				<div star-rating rating="5" read-only="true" max-rating="5"></div>
+			</div>
 		</div>
 		<p>&nbsp;</p>
 	</section>
-	<h4>Related properties</h4>
-	<div class = "slick-basic slick-slider" data-items = "4" data-items-lg = "4" data-items-md = "3" data-items-sm = "2" data-items-xs = "1">
-		<div class = "item">
-			<!--             OVDE TREBA GRID PROPERTY-->
-
-		</div>
-	</div>
+	
 </div>

@@ -31,7 +31,6 @@ public class RealEstateOutdoors implements Serializable {
 	@ManyToOne @JsonIgnore
 	@JoinColumn(name = "outdoor_feature_id", referencedColumnName = "id", nullable = true)
 	private OutdoorFeature outdoorFeature;
-
 	
 	
 	public RealEstateOutdoors() {
@@ -40,13 +39,6 @@ public class RealEstateOutdoors implements Serializable {
 
 
 	public RealEstateOutdoors(RealEstate realEstate, OutdoorFeature outdoorFeature) {
-		this.realEstate = realEstate;
-		this.outdoorFeature = outdoorFeature;
-	}
-
-	
-	public RealEstateOutdoors(int id, RealEstate realEstate, OutdoorFeature outdoorFeature) {
-		this.id = id;
 		this.realEstate = realEstate;
 		this.outdoorFeature = outdoorFeature;
 	}
