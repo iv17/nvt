@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import nvt.beans.Agent;
 import nvt.beans.Company;
 import nvt.beans.RealEstate;
 import nvt.beans.RealEstateComment;
@@ -24,6 +25,7 @@ import nvt.service.CompanyService;
 import nvt.service.ImageService;
 import nvt.service.LocationService;
 import nvt.service.WorkingTimeService;
+import nvt.web.dto.AgentDTO;
 import nvt.web.dto.CompanyDTO;
 import nvt.web.dto.RealEstateCommentDTO;
 import nvt.web.dto.RealEstateDTO;
@@ -221,6 +223,33 @@ public class CompanyController {
 
 		}
 		return new ResponseEntity<List<RealEstateRatingDTO>>(HttpStatus.NOT_FOUND);
+
+	}
+	
+	@RequestMapping(
+			value = "/{id}/agents", 
+			method = RequestMethod.GET
+			)
+	public ResponseEntity<List<AgentDTO>> getCompanyAgents(@PathVariable Integer id) {
+
+		if(companyService.findById(id) != null) {
+
+			Company company = companyService.findById(id);
+
+			if(company.getAgents() == null) {
+				return new ResponseEntity<List<AgentDTO>>(HttpStatus.NOT_FOUND);
+			}
+			Set<Agent> agentSet = company.getAgents();
+			List<AgentDTO> agentsDTO = new ArrayList<AgentDTO>();
+			
+			for (Agent agent : agentSet) {
+				AgentDTO agentDTO = new AgentDTO(agent);
+				agentsDTO.add(agentDTO);
+			}
+			return new ResponseEntity<List<AgentDTO>>(agentsDTO, HttpStatus.OK);
+
+		}
+		return new ResponseEntity<List<AgentDTO>>(HttpStatus.NOT_FOUND);
 
 	}
 }

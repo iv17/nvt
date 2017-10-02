@@ -15,6 +15,12 @@
 			$scope.company = item;
 		});
 
+		CompanyResource.getCompanyAgents(companyId)
+		.then(function(items) {
+			$scope.companyAgents = items;
+			$scope.numAgents = items.length;
+		});
+
     CompanyResource.getCompanyRealEstates(companyId)
 		.then(function(items) {
 			$scope.companyRealEstates = items;

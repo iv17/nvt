@@ -25,6 +25,12 @@
 			});
 		};
 
+		retVal.getCompanyAgents = function(id) {
+			return Restangular.one("companies", id).getList("agents").then(function(response) {
+				return response;
+			});
+		};
+
 		retVal.getCompanyRealEstates = function(id) {
 			return Restangular.one("companies", id).getList("realEstates").then(function(response) {
 				return response;

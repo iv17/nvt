@@ -5,7 +5,7 @@
       <div class="width-250 width-auto-xs">
         <div class="panel panel-default widget-company-1 text-center">
           <div class="avatar">
-            <img ng-src="{{company.companyImage.fileString}}" width="110px" height="110px" alt="" class="img-circle">
+            <img ng-src="{{company.companyImage.fileString}}"  class="img-circle">
             <h3>{{ company.username }}</h3>
               <h4>{{ company.propertyNo }}</h4>
 
@@ -54,7 +54,25 @@
             </div>
           </div>
         </div>
-
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading panel-heading-gray">
+              <div class="pull-right">
+                <a ui-sref="add_agent({agentId: agentId})" class="btn btn-primary btn-xs">Add <i class="fa fa-plus"></i></a>
+              </div>
+              <i class="icon-user-1"></i> Agents
+            </div>
+            <div class="panel-body">
+              <ul class="img-grid" ng-repeat="agent in companyAgents">
+                <li>
+                  <a ui-sref="user_profile({userId: agent.id})">
+                    <img ng-src="{{agent.image.fileString}}" class="img-circle"/>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="panel panel-default">
         <div class="panel-heading panel-heading-gray">
