@@ -24,7 +24,8 @@
 				url: "/",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -43,7 +44,8 @@
 				url: "/realestates_map",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -63,7 +65,8 @@
 				params: {search : null},
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -82,7 +85,8 @@
 				url: "/login/:username/:password",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -100,7 +104,8 @@
 				url: "/logout",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -115,10 +120,11 @@
 				}
 			})
 			.state('register', {
-				url: "/register/:name/:lastname/:email/:username/:password/:repeated_password",
+				url: "/register/:name/:lastname/:email/:username/:password/:repeated_password/:selectedCompany",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -136,7 +142,8 @@
 				url: "/register_company/:username/:propertyNo/:email/:webAddress/:phoneNumber/:password/:repeated_password",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -154,7 +161,8 @@
 				url: "/user_profile/:userId",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -173,7 +181,8 @@
 				url: "/company_profile/:companyId",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -192,7 +201,8 @@
 				url: "/start_add_agent/:companyId",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -212,7 +222,8 @@
 				params: {myParams : null},
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -231,7 +242,8 @@
 				url: "/realEstate/:realEstateId",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -248,7 +260,8 @@
 				url: "/realEstate2/:realEstateId",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -267,7 +280,8 @@
 				params: {latlng : null},
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -285,7 +299,8 @@
 				url: "/open_add_realEstate",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -304,7 +319,8 @@
 				params: {myParams : null},
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -321,7 +337,8 @@
 				url: "/create_comment/:commentText/:realEstateId",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -339,7 +356,8 @@
 				url: "/create_report/:realEstateId",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'
@@ -357,7 +375,8 @@
 				url: "/rate_realEstate/:rate/:realEstateId",
 				views: {
 					'navbar@': {
-						templateUrl: 'app/views/navbar.html'
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
 					},
 					'sidebar_menu@': {
 						templateUrl: 'app/views/sidebar_menu.html'

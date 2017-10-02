@@ -13,6 +13,9 @@
 		var username = $stateParams.username;
 		var password = $stateParams.password;
 		var repeated_password = $stateParams.repeated_password;
+		var companyId = $stateParams.selectedCompany;
+		
+		$log.log(companyId);
 
 		var user = {
 				name: name,
@@ -20,7 +23,8 @@
 				email: email,
 				username: username,
 				password: password,
-				repeated_password: repeated_password
+				repeated_password: repeated_password,
+				companyId: companyId
 		};
 
 		UserResource.register(user)

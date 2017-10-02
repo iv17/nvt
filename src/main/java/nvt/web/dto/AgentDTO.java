@@ -39,7 +39,10 @@ public class AgentDTO extends UserDTO {
 		if(agent.getImage() != null) {
 			image = new ImageDTO(agent.getImage());
 		}
-		company = new CompanyDTO(agent.getCompany());
+		if(agent.getCompany() != null) {
+			company = new CompanyDTO(agent.getCompany());
+		}
+		
 	}
 
 

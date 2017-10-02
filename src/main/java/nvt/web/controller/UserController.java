@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import nvt.beans.Agent;
 import nvt.beans.RealEstate;
 import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateRating;
@@ -28,13 +29,17 @@ import nvt.beans.RealEstateReport;
 import nvt.beans.User;
 import nvt.conf.TokenUtils;
 import nvt.repository.ImageRepository;
+import nvt.service.AgentService;
+import nvt.service.CompanyService;
 import nvt.service.RealEstateService;
 import nvt.service.UserService;
+import nvt.web.dto.AgentDTO;
 import nvt.web.dto.LoginResponseDTO;
 import nvt.web.dto.RealEstateCommentDTO;
 import nvt.web.dto.RealEstateDTO;
 import nvt.web.dto.RealEstateRatingDTO;
 import nvt.web.dto.RealEstateReportDTO;
+import nvt.web.dto.RegistrationDTO;
 import nvt.web.dto.UserDTO;
 
 @RestController
@@ -43,6 +48,12 @@ public class UserController {
 
 	@Autowired
 	protected UserService userService;
+	
+	@Autowired
+	protected AgentService agentService;
+	
+	@Autowired
+	protected CompanyService companyService;
 
 	@Autowired
 	protected RealEstateService realEstateService;
@@ -68,11 +79,11 @@ public class UserController {
 			value = "/registration",
 			method = RequestMethod.POST,
 			consumes = "application/json")
-	public ResponseEntity<UserDTO> registration(@RequestBody UserDTO userDTO) {
+	public ResponseEntity<AgentDTO> registration(@RequestBody RegistrationDTO userDTO) {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-		User user = new User();
+		Agent agent = new Agent();
 
 		if (userService.findByUsername(userDTO.getUsername()) == null
 				|| userService.findByEmail(userDTO.getEmail()) == null) {
@@ -80,23 +91,24 @@ public class UserController {
 			
 			if (userDTO.getPassword().equals(userDTO.getRepeated_password())) {
 
-				user.setName(userDTO.getName());
-				user.setLastName(userDTO.getLastName());
-				user.setEmail(userDTO.getEmail());
-				user.setUsername(userDTO.getUsername());
-				user.setPassword(encoder.encode(userDTO.getPassword()));
+				agent.setName(userDTO.getName());
+				agent.setLastName(userDTO.getLastName());
+				agent.setEmail(userDTO.getEmail());
+				agent.setUsername(userDTO.getUsername());
+				agent.setPassword(encoder.encode(userDTO.getPassword()));
 
-				UserDTO newUserDTO = new UserDTO(user);
-
-				userService.save(user);
-
-				return new ResponseEntity<UserDTO>(newUserDTO, HttpStatus.CREATED);
+				if(userDTO.getCompanyId() != -1) {
+					agent.setCompany(companyService.findById(userDTO.getCompanyId()));
+				} 
+				AgentDTO agentDTO = new AgentDTO(agent);
+				return new ResponseEntity<AgentDTO>(agentDTO, HttpStatus.OK);
+				
 			}
-			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<AgentDTO>(HttpStatus.BAD_REQUEST);
 
 		} else {
 
-			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<AgentDTO>(HttpStatus.BAD_REQUEST);
 		}
 
 	}
