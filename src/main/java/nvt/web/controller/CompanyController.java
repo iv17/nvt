@@ -25,12 +25,14 @@ import nvt.service.CompanyService;
 import nvt.service.ImageService;
 import nvt.service.LocationService;
 import nvt.service.WorkingTimeService;
+import nvt.web.dto.AddAgentDTO;
 import nvt.web.dto.AgentDTO;
 import nvt.web.dto.CompanyDTO;
 import nvt.web.dto.RealEstateCommentDTO;
 import nvt.web.dto.RealEstateDTO;
 import nvt.web.dto.RealEstateRatingDTO;
 import nvt.web.dto.RealEstateReportDTO;
+import nvt.web.dto.UserDTO;
 
 @RestController
 @RequestMapping(value = "api/companies")
@@ -251,5 +253,36 @@ public class CompanyController {
 		}
 		return new ResponseEntity<List<AgentDTO>>(HttpStatus.NOT_FOUND);
 
+	}
+	
+	@RequestMapping(
+			value = "/add",
+			method = RequestMethod.POST
+			)
+	public ResponseEntity<CompanyDTO> addAgent(@RequestBody AddAgentDTO agentDTO) {
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		
+		if(agentDTO != null) {
+			Agent agent  = new Agent();
+			agent.setName(agentDTO.getName());
+			agent.setLastName(agentDTO.getLastName());
+			agent.setUsername(agentDTO.getUsername());
+			agent.setPassword(encoder.encode(agentDTO.getPassword()));
+			agent.setEmail(agentDTO.getEmail());
+			agent.setPhoneNumber(agentDTO.getPhoneNumber());
+			agent.setCompany(companyService.findById(agentDTO.getCompanyId()));
+			
+			agentService.save(agent);
+			
+			Company company = companyService.findById(agentDTO.getCompanyId());
+			CompanyDTO companyDTO = new CompanyDTO(company);
+			
+			return new ResponseEntity<CompanyDTO>(companyDTO, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<CompanyDTO>(HttpStatus.BAD_REQUEST);
+		}
+	
+		
 	}
 }

@@ -188,6 +188,45 @@
 					}
 				}
 			})
+			.state('start_add_agent', {
+				url: "/start_add_agent/:companyId",
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+						templateUrl: 'app/views/sidebar_search.html',
+						controller: 'SidebarSearchController'
+					},
+					'content@': {
+						templateUrl: 'app/views/content/add_new_agent.html',
+						controller: 'CompanyController'
+					}
+				}
+			})
+			.state('add_agent', {
+				url: "/add_agent/{myParams: json}",
+				params: {myParams : null},
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+						templateUrl: 'app/views/sidebar_search.html',
+						controller: 'SidebarSearchController'
+					},
+					'content@': {
+						templateUrl: 'app/views/content/company_profile.html',
+						controller: 'AddAgentController'
+					}
+				}
+			})
 			.state('realEstate', {
 				url: "/realEstate/:realEstateId",
 				views: {

@@ -6,6 +6,7 @@ import nvt.beans.Company;
 
 public class CompanyDTO {
 
+	private int id;
 	private String username;
 	private String propertyNo;
 	private String email;
@@ -23,6 +24,7 @@ public class CompanyDTO {
 	
 	
 	public CompanyDTO(Company company) {
+		id = company.getId();
 		username = company.getUsername();
 		propertyNo = company.getPropertyNo();
 		email = company.getEmail();
@@ -43,6 +45,16 @@ public class CompanyDTO {
 
 
 	
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 	public String getPropertyNo() {
 		return propertyNo;

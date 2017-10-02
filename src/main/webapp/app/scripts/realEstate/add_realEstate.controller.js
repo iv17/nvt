@@ -4,8 +4,8 @@
 	angular
 	.module('nvtApp')
 	.controller('AddRealEstateController', ['$scope', '$rootScope', '$state', '_', 'RealEstateResource', '$log', '$stateParams',
-		'$window','toastr',  '$localStorage', 'Upload',
-		function($scope, $rootScope, $state, _, RealEstateResource, $log, $stateParams, $window, toastr, $localStorage, Upload) {
+		'$window','toastr',  '$localStorage',
+		function($scope, $rootScope, $state, _, RealEstateResource, $log, $stateParams, $window, toastr, $localStorage) {
 
 		var name = $stateParams.myParams.name;
 		var description = $stateParams.myParams.description;

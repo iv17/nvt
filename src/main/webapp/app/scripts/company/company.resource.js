@@ -37,6 +37,12 @@
 			});
 		};
 
+		retVal.addAgent = function(agent)	{
+			return Restangular.all("companies/add").post(agent).then(function(response) {
+				return response;
+			});
+		};
+
 		retVal.getCompanyComments = function(id) {
 			return Restangular.one("companies", id).getList("comments").then(function(response) {
 				return response;
