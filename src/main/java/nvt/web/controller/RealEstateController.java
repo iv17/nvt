@@ -32,6 +32,7 @@ import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateIndoors;
 import nvt.beans.RealEstateOutdoors;
 import nvt.beans.RealEstateRating;
+import nvt.beans.RealEstateReport;
 import nvt.beans.RealEstateType;
 import nvt.service.AdvertisementTypeService;
 import nvt.service.HeatingTypeService;
@@ -57,6 +58,7 @@ import nvt.web.dto.RatingsResponseDTO;
 import nvt.web.dto.RealEstateCommentDTO;
 import nvt.web.dto.RealEstateDTO;
 import nvt.web.dto.RealEstateRatingDTO;
+import nvt.web.dto.RealEstateReportDTO;
 import nvt.web.dto.SearchDTO;
 import nvt.web.dto.SelectedAdvertisementTypeDTO;
 import nvt.web.dto.SelectedIndoorFeatureDTO;
@@ -445,7 +447,25 @@ public class RealEstateController {
 		return new ResponseEntity<RatingsResponseDTO>(ratings, HttpStatus.OK);
 	}
 
+	
 
+	@RequestMapping(value = "/{id}/reports", method = RequestMethod.GET)
+	public ResponseEntity<List<RealEstateReportDTO>> getReports(@PathVariable Integer id){
+
+		RealEstate realEstate = realEstateService.findById(id);
+		if(realEstate == null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		List<RealEstateReportDTO> reports = new ArrayList<RealEstateReportDTO>();
+		for (RealEstateReport r : realEstate.getReports()) {
+			RealEstateReportDTO rr = new RealEstateReportDTO(r);
+			reports.add(rr);
+		}
+		
+		return new ResponseEntity<List<RealEstateReportDTO>>(reports, HttpStatus.OK);
+	}
+	
+	
 	public List<RealEstateDTO> toDTO(List<RealEstate> realEstates) {
 
 		List<RealEstateDTO> realEstateDTOs = new ArrayList<RealEstateDTO>();

@@ -21,7 +21,7 @@
 		$rootScope.ratings5 = null;
 		$rootScope.ukupno = null;
 		$rootScope.srednjaVrednost = null;
-		
+
 		var realEstateId = $stateParams.realEstateId;
 		var realEstate = {
 			id: realEstateId
@@ -33,6 +33,9 @@
 
 		RealEstateResource.comments(realEstateId).then(function(items) {
 			$scope.realEstateComments = items;
+		});
+		RealEstateResource.reports(realEstateId).then(function(items) {
+			$scope.realEstateReports = items;
 		});
 
 

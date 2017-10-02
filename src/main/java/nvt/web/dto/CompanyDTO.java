@@ -1,80 +1,48 @@
 package nvt.web.dto;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
 
 import nvt.beans.Company;
-import nvt.beans.Image;
 
 public class CompanyDTO {
 
-	private int id;
-	private String name;
-	private String password;
+	private String username;
 	private String propertyNo;
-	private String phoneNumber;
+	private String email;
 	private String webAddress;
+	private String phoneNumber;
+	private String password;
+	private String repeated_password;
 	private LocationDTO location;
 	private WorkingTimeDTO workingTime;
-	private Set<ImageDTO> images; 
-	
-	public ImageDTO toDTO(Image image) {
-		ImageDTO imageDTO = new ImageDTO();
-		
-		imageDTO.setId(image.getId());
-		imageDTO.setName(image.getName());
-		imageDTO.setFile(image.getFile());
-		
-		return imageDTO;
-	}
-	
-	
+	private Date date;
+	private ImageDTO companyImage; 
 	public CompanyDTO() {
 		
 	}
 	
 	
 	public CompanyDTO(Company company) {
-		id = company.getId();
-		name = company.getName();
-		password = company.getPassword();
+		username = company.getUsername();
 		propertyNo = company.getPropertyNo();
-		phoneNumber = company.getPhoneNumber();
+		email = company.getEmail();
 		webAddress = company.getWebAddress();
-		location = new LocationDTO(company.getLocation());
-		workingTime = new WorkingTimeDTO(company.getWorkingTime());
-		
-		images = new HashSet<ImageDTO>();
-		for (Image image : company.getImages()) {
-			ImageDTO imageDTO = toDTO(image);
-			images.add(imageDTO);
+		phoneNumber = company.getPhoneNumber();
+		password = company.getPassword();
+		if(company.getLocation() != null) {
+			location = new LocationDTO(company.getLocation());
+		}
+		if(company.getWorkingTime() != null) {
+			workingTime = new WorkingTimeDTO(company.getWorkingTime());
+		}
+	
+		if(company.getCompanyImage() != null) {
+			companyImage = new ImageDTO(company.getCompanyImage());
 		}
 	}
 
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	
 
 	public String getPropertyNo() {
 		return propertyNo;
@@ -82,14 +50,6 @@ public class CompanyDTO {
 
 	public void setPropertyNo(String propertyNo) {
 		this.propertyNo = propertyNo;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
 	}
 
 	public String getWebAddress() {
@@ -116,14 +76,77 @@ public class CompanyDTO {
 		this.workingTime = workingTime;
 	}
 
-	public Set<ImageDTO> getImages() {
-		return images;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setImages(Set<ImageDTO> images) {
-		this.images = images;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getRepeated_password() {
+		return repeated_password;
+	}
+
+
+	public void setRepeated_password(String repeated_password) {
+		this.repeated_password = repeated_password;
+	}
+
+
+	public Date getDate() {
+		return new Date();
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
+	public ImageDTO getCompanyImage() {
+		return companyImage;
+	}
+
+
+	public void setCompanyImage(ImageDTO companyImage) {
+		this.companyImage = companyImage;
+	}
+
+
 	
 
 }

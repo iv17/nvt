@@ -67,6 +67,12 @@
 			});
 		};
 
+		retVal.reports = function(id)	{
+			return Restangular.one("realEstates", id).getList("reports").then(function(response) {
+				return response;
+			});
+		};
+
 		return retVal;
 	}]);	//kraj Restangular-a
 

@@ -3,17 +3,16 @@
   <div class="media media-grid media-clearfix-xs">
     <div class="media-left">
       <div class="width-250 width-auto-xs">
-        <div class="panel panel-default widget-user-1 text-center">
+        <div class="panel panel-default widget-company-1 text-center">
           <div class="avatar">
-            <img ng-src="{{user.image.fileString}}"  class="img-circle">
-            <h3>{{ user.name }} {{ user.lastName }}</h3>
+            <img ng-src="{{company.companyImage.fileString}}" width="110px" height="110px" alt="" class="img-circle">
+            <h3>{{ company.username }}</h3>
+              <h4>{{ company.propertyNo }}</h4>
 
           </div>
           <div class="profile-icons margin-none">
             <span><i class="fa fa-fw icon icon-home-2"></i> {{ numRealEstates }}</span>
             <span><i class="fa fa-star"></i> {{ numRatings }}</span>
-            <span><i class="fa fa-comment"></i> {{ numComments }}</span>
-            <span><i class="fa fa-flag"></i> {{ numReports }}</span>
           </div>
         </div>
         <!-- Contact -->
@@ -22,8 +21,9 @@
             Contact
           </div>
           <ul class="icon-list icon-list-block">
-            <li><i class="fa fa-envelope fa-fw"></i> {{ user.email }}</li>
-            <li><i class="fa fa-phone fa-fw"></i> {{ user.phoneNumber}}</li>
+            <li><i class="fa fa-envelope fa-fw"></i> {{ company.email }}</li>
+            <li><i class="fa fa-phone fa-fw"></i> {{ company.phoneNumber}}</li>
+            <li><i class="fa fa-external-link fa-fw"></i> {{ company.webAddress}}</li>
           </ul>
         </div>
       </div>
@@ -41,19 +41,13 @@
                 <li class="padding-v-5">
                   <div class="row">
                     <div class="col-sm-4"><span class="text-muted">Name</span></div>
-                    <div class="col-sm-8">{{ user.name }}</div>
+                    <div class="col-sm-8">{{ company.username }}</div>
                   </div>
                 </li>
                 <li class="padding-v-5">
                   <div class="row">
-                    <div class="col-sm-4"><span class="text-muted">Last name</span></div>
-                    <div class="col-sm-8">{{ user.lastName }}</div>
-                  </div>
-                </li>
-                <li class="padding-v-5">
-                  <div class="row">
-                    <div class="col-sm-4"><span class="text-muted">Date of Birth</span></div>
-                    <div class="col-sm-8">{{ user.date | date: "medium"}}</div>
+                    <div class="col-sm-4"><span class="text-muted">Date of Establishment</span></div>
+                    <div class="col-sm-8">{{ company.date | date: "medium"}}</div>
                   </div>
                 </li>
               </ul>
@@ -64,11 +58,11 @@
       </div>
       <div class="panel panel-default">
         <div class="panel-heading panel-heading-gray">
-          <i class="fa fa-fw icon icon-home-2"></i> user realestates
+          <i class="fa fa-fw icon icon-home-2"></i> company realestates
         </div>
         <div class="panel-body">
           <div class="row">
-            <div ng-repeat = "realEstate in userRealEstates">
+            <div ng-repeat = "realEstate in companyRealEstates">
             <div class="col-md-4">
               <div class = "panel panel-default relative">
                 <div class = "ribbon-heading ribbon-primary inline absolute left margin-none">{{ realEstate.advertisementType.name }}</div>

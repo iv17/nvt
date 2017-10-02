@@ -132,6 +132,24 @@
 					}
 				}
 			})
+			.state('register_company', {
+				url: "/register_company/:username/:propertyNo/:email/:webAddress/:phoneNumber/:password/:repeated_password",
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+						templateUrl: 'app/views/sidebar_search.html',
+						controller: 'SidebarSearchController'
+					},
+					'content@': {
+						controller: 'CompanyRegistrationController'
+					}
+				}
+			})
 			.state('user_profile', {
 				url: "/user_profile/:userId",
 				views: {
@@ -148,6 +166,25 @@
 					'content@': {
 						templateUrl: 'app/views/content/user_profile.html',
 						controller: 'UserController'
+					}
+				}
+			})
+			.state('company_profile', {
+				url: "/company_profile/:companyId",
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+						templateUrl: 'app/views/sidebar_search.html',
+						controller: 'SidebarSearchController'
+					},
+					'content@': {
+						templateUrl: 'app/views/content/company_profile.html',
+						controller: 'CompanyController'
 					}
 				}
 			})

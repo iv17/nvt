@@ -31,13 +31,13 @@ public class User implements Serializable {
 	@Column(name = "id", nullable = false , unique = true)
 	private int id;
 	
-	@Column(name = "email", unique = false, nullable = false)
+	@Column(name = "email", unique = false, nullable = true)
 	protected String email;
 	
-	@Column(name = "username", unique = false, nullable = false)
+	@Column(name = "username", unique = false, nullable = true)
 	protected String username;
 	
-	@Column(name = "password", unique = false, nullable = false)
+	@Column(name = "password", unique = false, nullable = true)
 	protected String password;
 	
 	@Column(name = "name", unique = false, nullable = true)
@@ -89,6 +89,13 @@ public class User implements Serializable {
 	}
 
 	
+	public User(String email, String username, String password, String phoneNumber) {
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.phoneNumber = phoneNumber;
+	}
+
 	public int getId() {
 		return id;
 	}

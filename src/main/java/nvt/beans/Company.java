@@ -1,58 +1,42 @@
 package nvt.beans;
 
-import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "company")
-public class Company implements Serializable {
+public class Company extends User {
 
 	private static final long serialVersionUID = 991372987353234682L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false , unique = true)
-	private int id;
 
 	@Column(name = "property_no", unique = true, nullable = false)
 	private String propertyNo;
-
-	@Column(name = "name", unique = true, nullable = false)
-	private String name;
-
-	@Column(name = "password", unique = false, nullable = false)
-	private String password;
-
-	@Column(name = "phone_number", unique = false, nullable = false)
-	private String phoneNumber;
 
 	@Column(name = "web_address", unique = false, nullable = false)
 	private String webAddress;
 
 	@ManyToOne @JsonIgnore
-	@JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "location_id", referencedColumnName = "id", nullable = true)
 	private Location location;
 
+	@OneToOne(mappedBy = "company")
+	private Image companyImage;
+	
 	@ManyToOne @JsonIgnore
-	@JoinColumn(name = "working_time_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "working_time_id", referencedColumnName = "id", nullable = true)
 	private WorkingTime workingTime;
-
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, mappedBy = "company") @JsonIgnore
-	private Set<Image> images;
 
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "company") @JsonIgnore
 	private Set<Agent> agents;
@@ -60,60 +44,25 @@ public class Company implements Serializable {
 
 
 	public Company() {
-
+		super();
 	}
 
 
-	public Company(String propertyNo, String name, String password, String phoneNumber, 
-			String webAddress, Location location, WorkingTime workingTime) {	
-		this.propertyNo = propertyNo;
-		this.name = name;
+	public Company(String email, String username, String password, String phoneNumber, String propertyNo, 
+			String webAddress, Location location, WorkingTime workingTime) {
+		super();
+		this.email = email;
+		this.username = username;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
 		this.webAddress = webAddress;
 		this.location = location;
 		this.workingTime = workingTime;
-	}
-
-
-	public Company(String name, String propertyNo, String password, String phoneNumber, 
-			String webAddress, Location location, Set<Agent> agents) {
-		this.name = name;
 		this.propertyNo = propertyNo;
-		this.password = password;
-		this.phoneNumber = phoneNumber;
-		this.webAddress = webAddress;
-		this.location = location;
-		this.agents = agents;
-	}
-
-
-	public Company(int id, String propertyNo, String name, String password, String phoneNumber,
-			String webAddress, Location location, WorkingTime workingTime, Set<Image> images,
-			Set<Agent> agents) {
-
-		this.id = id;
-		this.propertyNo = propertyNo;
-		this.name = name;
-		this.password = password;
-		this.phoneNumber = phoneNumber;
-		this.webAddress = webAddress;
-		this.location = location;
-		this.workingTime = workingTime;
-		this.agents = agents;
-		this.images = images;
 		
 	}
 
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	
 	public String getPropertyNo() {
 		return propertyNo;
 	}
@@ -170,14 +119,6 @@ public class Company implements Serializable {
 		this.workingTime = workingTime;
 	}
 	
-	public Set<Image> getImages() {
-		return images;
-	}
-
-	public void setImages(Set<Image> images) {
-		this.images = images;
-	}
-	
 	public Set<Agent> getAgents() {
 		return agents;
 	}
@@ -186,6 +127,18 @@ public class Company implements Serializable {
 		this.agents = agents;
 	}
 
+
+	public Image getCompanyImage() {
+		return companyImage;
+	}
+
+
+	public void setCompanyImage(Image companyImage) {
+		this.companyImage = companyImage;
+	}
+
+
+	
 
 
 }

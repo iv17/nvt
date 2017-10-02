@@ -38,15 +38,16 @@ public class Image implements Serializable {
 	@JoinColumn(name = "realestate_id", referencedColumnName = "id", nullable = true)
 	private RealEstate realEstate;
 	
+	
 	@OneToOne
 	@JoinColumn(name = "id")
 	private User user;
 	
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-	@JoinColumn(name = "company_id", referencedColumnName = "id", nullable = true)
+	
+	@OneToOne
+	@JoinColumn(name = "id")
 	private Company company;
-	
-	
+		
 	public Image() { }
 
 	public Image(String name, byte [] file) {
@@ -107,11 +108,9 @@ public class Image implements Serializable {
 		this.user = user;
 	}
 
-
 	public Company getCompany() {
 		return company;
 	}
-
 
 	public void setCompany(Company company) {
 		this.company = company;

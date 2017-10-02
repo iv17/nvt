@@ -153,18 +153,37 @@ public class NvtApplication implements CommandLineRunner {
 		WorkingTime workingTime1 = new WorkingTime("09.00", "18.0", "Zatvoreno", "Zatvoreno");
 		workingTimeRepository.save(workingTime1);
 		
-		
-		Company company1 = new Company("001", "BEST REAL ESTATE", "company", "063-282-558", "www.bestrealestate.rs", location11, workingTime1);
+		Company company1 = new Company("bestrealesate@gmail.com", "BEST REAL ESTATE", encoder.encode("123"), "063-282-558", "0001", "www.bestrealestate.rs", location11, workingTime1);
 		companyRepository.save(company1);
-		Company company2 = new Company("002", "MENTOR REAL ESTATE BELGRADE", "company", "011-30-89-080", "m", location12, workingTime1);
+		Company company2 = new Company("mentor@gmail.com", "MENTOR REAL ESTATE BELGRADE", encoder.encode("123"), "063-282-558", "0002", "www.bestrealestate.rs", location12, workingTime1);
 		companyRepository.save(company2);
-		Company company3 = new Company("003", "R.E.A.L. Consulting Nekretnine", "company", "069-46-68-118", "m", location13, workingTime1);
+		Company company3 = new Company("real.consulting@gmail.com",  "R.E.A.L. Consulting Nekretnine",  encoder.encode("123"), "063-282-558", "0003", "www.bestrealestate.rs", location13, workingTime1);
 		companyRepository.save(company3);
-		Company company4 = new Company("004", "Kvadrat nekretnine", "company", "011-33-48-871", "m", location14, workingTime1);
+		Company company4 = new Company("kvadrat.nekretnine@gmail.com", "Kvadrat nekretnine", encoder.encode("123"), "063-282-558", "0004", "www.bestrealestate.rs", location14, workingTime1);
 		companyRepository.save(company4);
-		Company company5 = new Company("005", "FOX nekretnine", "company", "011-24-02-386", "foxnekretnine.com", location15, workingTime1);
+		Company company5 = new Company("fox@gmail.com", "FOX nekretnine", encoder.encode("123"), "063-282-558", "0005",  "foxnekretnine.com", location15, workingTime1);
 		companyRepository.save(company5);
 
+
+		Image image20 = new Image("r1.jpg", "app/images/companies/r1.jpg".getBytes(), "image/jpeg");
+		image20.setCompany(company1);
+		imageRepository.save(image20);
+		Image image21 = new Image("r2.jpg", "app/images/companies/r2.jpg".getBytes(), "image/jpeg");
+		image21.setCompany(company2);
+		imageRepository.save(image21);
+		Image image22 = new Image("r4.jpg", "app/images/companies/r4.jpg".getBytes(), "image/jpeg");
+		image22.setCompany(company3);
+		imageRepository.save(image22);
+		Image image23 = new Image("r6.jpg", "app/images/companies/r6.jpg".getBytes(), "image/jpeg");
+		image23.setCompany(company4);
+		imageRepository.save(image23);
+		Image image24 = new Image("r1.jpg", "app/images/companies/r1.jpg".getBytes(), "image/jpeg");
+		image24.setCompany(company5);
+		imageRepository.save(image24);
+		
+		
+	
+		
 		User user11 = new User("ivana.unitedforce@gmail.com", "iv", encoder.encode("123"), "Lars", "Urlich", "061-123-456");
 		userRepository.save(user11);
 		User user12 = new User("james.hatfield@gmail.com", "james", encoder.encode("123"), "James", "Hatfield", "061-456-789");
@@ -220,8 +239,6 @@ public class NvtApplication implements CommandLineRunner {
 		image09.setUser(agent4);
 		imageRepository.save(image09);
 		
-		
-	
 	
 		
 		HeatingType heatingType1 = new HeatingType("Forced Air");

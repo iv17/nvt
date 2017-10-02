@@ -44,6 +44,10 @@ public class CompanyService {
 	public void remove(Company company) {
 		companyRepository.delete(company);
 	}
+
+	public Company findByUsername(String username) {
+		return companyRepository.findByUsername(username);
+	}
 	
 	
 }
