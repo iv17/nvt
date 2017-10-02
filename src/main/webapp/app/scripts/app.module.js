@@ -335,6 +335,24 @@
 					}
 				}
 			})
+			.state('create_report', {
+				url: "/create_report/:realEstateId",
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'sidebar_search@': {
+
+					},
+					'content@': {
+						templateUrl: 'app/views/content/property.html',
+						controller: 'CreateReportController'
+					}
+				}
+			})
 			.state('rate_realEstate', {
 				url: "/rate_realEstate/:rate/:realEstateId",
 				views: {

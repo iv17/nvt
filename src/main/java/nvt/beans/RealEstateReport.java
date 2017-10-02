@@ -25,18 +25,18 @@ public class RealEstateReport implements Serializable {
 	@Column(name = "id", nullable = false , unique = true)
 	private int id;
 	
-	@Column(name = "report", unique = false, nullable = false)
+	@Column(name = "report", unique = false, nullable = true)
 	private String report;
 	
 	@Column(name = "posted", unique = false, nullable = true)
 	private Date posted;
 	
 	@ManyToOne @JsonIgnore
-	@JoinColumn(name = "real_estate_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "real_estate_id", referencedColumnName = "id", nullable = true)
 	private RealEstate realEstate;
 	
 	@ManyToOne @JsonIgnore
-	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
 	private User user;
 
 	

@@ -1,7 +1,9 @@
 package nvt.web.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,11 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import nvt.beans.RealEstate;
+import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateReport;
 import nvt.beans.User;
 import nvt.service.RealEstateReportService;
 import nvt.service.RealEstateService;
 import nvt.service.UserService;
+import nvt.web.dto.CreateCommentResponseDTO;
+import nvt.web.dto.RealEstateCommentDTO;
+import nvt.web.dto.RealEstateDTO;
 import nvt.web.dto.RealEstateReportDTO;
 
 @RestController
@@ -36,32 +42,51 @@ public class RealEstateReportController {
 
 
 	//prijava oglasa kao neprikladnog
+	@RequestMapping(
+			value = "/create", 
+			method = RequestMethod.POST, 
+			consumes = "application/json"
+			)
+	public ResponseEntity<CreateCommentResponseDTO> createReport(@RequestBody RealEstateDTO r) {
 
-	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<RealEstateReportDTO> createReport(@RequestBody RealEstateReportDTO realEstateReportDTO) {
+		int id = r.getId();
 
-		RealEstateReport realEstateReport = realEstateReportService.findById(realEstateReportDTO.getId());
+		if(realEstateService.findById(id) != null) {
 
-		realEstateReport.setReport(realEstateReportDTO.getReport());
-		realEstateReport.setPosted(realEstateReportDTO.getPosted());
+			RealEstate realEstate = realEstateService.findById(id);
+			List<RealEstateCommentDTO> cDTO = new ArrayList<RealEstateCommentDTO>();
 
-		RealEstate realEstate = realEstateService.findById(realEstateReportDTO.getRealEstate().getId());
-		if(realEstate == null) {
+			RealEstateReport report = new RealEstateReport();
+			report.setPosted(new Date());
+			report.setRealEstate(realEstate);
+			//report.setUser(user);
 
+			realEstateReportService.save(report);
+			
+			Set<RealEstateReport> reports = realEstate.getReports();
+			reports.add(report);
+			
+			realEstate.setReports(reports);
+			realEstateService.save(realEstate);
+			
+			
+			RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
+
+			Set<RealEstateComment> comments = realEstate.getComments();
+			List<RealEstateCommentDTO> commentsDTO = new ArrayList<RealEstateCommentDTO>();
+			for (RealEstateComment comm : comments) {
+				RealEstateCommentDTO commentDTO = new RealEstateCommentDTO(comm);
+				commentsDTO.add(commentDTO);
+			}
+
+			CreateCommentResponseDTO createCommentResponseDTO = new CreateCommentResponseDTO(realEstateDTO, commentsDTO);
+			return new ResponseEntity<CreateCommentResponseDTO>(createCommentResponseDTO, HttpStatus.CREATED);
+
+		} else {
+			return new ResponseEntity<CreateCommentResponseDTO>(HttpStatus.NOT_FOUND);
 		}
-		realEstateReport.setRealEstate(realEstate);
 
-		User user = userService.findById(realEstateReportDTO.getUser().getId());
-		if(user == null) {
 
-		}
-		realEstateReport.setUser(user);
-
-		realEstateService.save(realEstate);
-
-		RealEstateReportDTO newRealEstateReportDTO = new RealEstateReportDTO(realEstateReport);
-
-		return new ResponseEntity<RealEstateReportDTO>(newRealEstateReportDTO, HttpStatus.OK);
 	}
 
 
