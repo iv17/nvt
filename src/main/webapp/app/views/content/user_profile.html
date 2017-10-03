@@ -59,6 +59,47 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading panel-heading-gray">
+							<a class="btn btn-white btn-xs pull-right"><i class="fa fa-pencil"></i></a>
+							<i class="fa fa-fw fa-info-circle"></i> Ratings
+						</div>
+						<div class="panel-body">
+							<div ng-show="loggedUser" class="input-group">
+								<div star-rating rating="rate" read-only="false" max-rating="5"></div>
+							</div>
+							&nbsp;
+							<div ng-show="loggedUser" class="input-group-btn"><a class="btn btn-primary" ui-sref="rate_agent({rate: rate, agentId: user.id})"> <i class="fa fa-star"></i> Rate it</a></div>
+							<p>&nbsp;</p>
+							<div class="input-group">
+								Srednja vrednost:
+								<div star-rating rating="agentSrednjaVrednost" read-only="true" max-rating="5"></div>
+							</div>
+							&nbsp;
+							<div class="input-group">
+								{{agentRatings1}} / {{agentUkupno}}
+								<div star-rating rating="1" read-only="true" max-rating="5"></div>
+							</div>
+							<div class="input-group">
+								{{agentRatings2}} / {{agentUkupno}}
+								<div star-rating rating="2" read-only="true" max-rating="5"></div>
+							</div>
+							<div class="input-group">
+								{{agentRatings3}} / {{agentUkupno}}
+								<div star-rating rating="3" read-only="true" max-rating="5"></div>
+							</div>
+							<div class="input-group">
+								{{agentRatings4}} / {{agentUkupno}}
+								<div star-rating rating="4" read-only="true" max-rating="5"></div>
+							</div>
+							<div class="input-group">
+								{{agentRatings5}} / {{agentUkupno}}
+								<div star-rating rating="5" read-only="true" max-rating="5"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="panel panel-default">
 				<div class="panel-heading panel-heading-gray">

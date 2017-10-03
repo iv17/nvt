@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import nvt.beans.Agent;
 import nvt.beans.AgentRating;
+import nvt.beans.User;
 import nvt.service.AgentRatingService;
 import nvt.service.AgentService;
 import nvt.service.UserService;
@@ -45,13 +47,13 @@ public class AgentRatingController {
 			method = RequestMethod.POST, 
 			consumes = "application/json"
 			)
-	public ResponseEntity<AgentRatingsResponseDTO> createRatings(@RequestBody CreateAgentRateRequestDTO createRateRequest) {
+	public ResponseEntity<AgentRatingsResponseDTO> createRatings(@RequestBody CreateAgentRateRequestDTO createRateRequest,  @RequestHeader("X-Auth-Token") String token) {
 	
 		int id = createRateRequest.getAgentId();
 		int rate = createRateRequest.getRate();
 		
 	
-		if(agentService.findById(id) != null) {
+		if(agentService.findById(id) != null && userService.findByToken(token) != null) {
 	
 			Agent agent = agentService.findById(id);
 			List<AgentRatingDTO> aDTO = new ArrayList<AgentRatingDTO>();
@@ -60,12 +62,13 @@ public class AgentRatingController {
 				aDTO.add(new AgentRatingDTO(a));
 			}
 	
+			User user = userService.findByToken(token);
 			AgentRating rating = new AgentRating();
 			
 			rating.setRate(rate);
 			rating.setPosted(new Date());
 			rating.setAgent(agent);
-			//rating.setUser(user);
+			rating.setUser(user);
 			agentRatingService.save(rating);
 	
 			Set<AgentRating> agentRatings = agent.getAgentRatings();

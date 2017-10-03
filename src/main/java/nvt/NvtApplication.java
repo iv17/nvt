@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import nvt.beans.AdvertisementType;
 import nvt.beans.Agent;
+import nvt.beans.AgentRating;
 import nvt.beans.Company;
 import nvt.beans.HeatingType;
 import nvt.beans.Image;
@@ -21,6 +22,7 @@ import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateIndoors;
 import nvt.beans.RealEstateOutdoors;
 import nvt.beans.RealEstateRating;
+import nvt.beans.RealEstateReport;
 import nvt.beans.RealEstateType;
 import nvt.beans.User;
 import nvt.beans.WorkingTime;
@@ -451,6 +453,10 @@ public class NvtApplication implements CommandLineRunner {
 		realEstateCommentRepository.save(realEstateComment6);
 
 
+		RealEstateReport realEstateReport1 = new RealEstateReport(new Date(), realEstate1, company1);
+		realEstateReportRepository.save(realEstateReport1);
+		
+		
 		RealEstateRating realEstateRating1 = new RealEstateRating(5, new Date(), realEstate1, user15);
 		realEstateRatingRepository.save(realEstateRating1);
 		RealEstateRating realEstateRating2 = new RealEstateRating(3, new Date(), realEstate1, user15);
@@ -465,6 +471,12 @@ public class NvtApplication implements CommandLineRunner {
 		realEstateRatingRepository.save(realEstateRating6);
 
 
+		AgentRating agentRating1 = new AgentRating(5, new Date(), agent1, user11);
+		agentRatingRepository.save(agentRating1);
+		AgentRating agentRating2 = new AgentRating(4, new Date(), agent1, user11);
+		agentRatingRepository.save(agentRating2);
+		AgentRating agentRating3 = new AgentRating(3, new Date(), agent1, user11);
+		agentRatingRepository.save(agentRating3);
 	}
 
 }

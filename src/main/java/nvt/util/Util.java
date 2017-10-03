@@ -85,8 +85,7 @@ public class Util {
 		int srednjaVrednost = 0;
 		if(ukupno > 0) {
 			srednjaVrednost = (int) (sum/agent.getAgentRatings().size());
-			//srednjaVrednost = Util.round(srednjaVrednost, 1);
-			System.out.println(srednjaVrednost);
+			
 		}
 
 		RatingsResponseDTO ratings = new RatingsResponseDTO(r1, r2, r3, r4, r5, ukupno, srednjaVrednost);

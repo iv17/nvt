@@ -46,8 +46,8 @@ public class RealEstateCommentController {
 
 	@Autowired
 	protected UserService userService;
-
-
+	
+	
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<RealEstateCommentDTO>> getRealEstateComments() {
@@ -87,11 +87,11 @@ public class RealEstateCommentController {
 		int id = createCommentRequest.getRealEstateId();
 		String text = createCommentRequest.getText();
 
-		if(userService.findByToken(token) != null) {
+		if(userService.findByToken(token) != null ) {
 			
 			User user = userService.findByToken(token);
 			
-			if(realEstateService.findById(id) != null) {
+			if(realEstateService.findById(id) != null ) {
 
 				RealEstate realEstate = realEstateService.findById(id);
 				List<RealEstateCommentDTO> cDTO = new ArrayList<RealEstateCommentDTO>();

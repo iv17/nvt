@@ -25,18 +25,18 @@ public class AgentRating implements Serializable {
 	@Column(name = "id", nullable = false , unique = true)
 	private int id;
 	
-	@Column(name = "rate", unique = false, nullable = false)
+	@Column(name = "rate", unique = false, nullable = true)
 	private int rate;
 	
-	@Column(name = "posted", unique = false, nullable = false)
+	@Column(name = "posted", unique = false, nullable = true)
 	private Date posted;
 	
 	@ManyToOne @JsonIgnore
-	@JoinColumn(name = "agent_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "agent_id", referencedColumnName = "id", nullable = true)
 	private Agent agent;
 	
 	@ManyToOne @JsonIgnore
-	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
 	private User user;
 	
 	public AgentRating() {

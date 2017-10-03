@@ -12,21 +12,27 @@ public class AgentRatingDTO {
 	protected AgentDTO agent;
 	protected UserDTO user;
 
-	
+
 	public AgentRatingDTO() {
-		
+
 	}
-	
-	
+
+
 	public AgentRatingDTO(AgentRating agentRating) {
 		id = agentRating.getId();
 		rate = agentRating.getRate();
 		posted = agentRating.getPosted();
-		agent = new AgentDTO(agentRating.getAgent());
-		user = new UserDTO(agentRating.getUser());
+		if(agentRating.getAgent() != null) {
+			agent = new AgentDTO(agentRating.getAgent());
+		}
+		if(agentRating.getUser() != null) {
+			user = new UserDTO(agentRating.getUser());
+		}
+
+
 	}
 
-	
+
 	public int getId() {
 		return id;
 	}
@@ -66,5 +72,5 @@ public class AgentRatingDTO {
 	public void setUser(UserDTO user) {
 		this.user = user;
 	}
-	
+
 }

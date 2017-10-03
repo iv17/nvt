@@ -15,7 +15,7 @@ public class UserDTO {
 	protected String phoneNumber;
 	protected ImageDTO image; 
 	protected Date date;
-	
+	protected String propertyNo;
 	
 	public UserDTO() {
 		
@@ -108,6 +108,16 @@ public class UserDTO {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+
+	public String getPropertyNo() {
+		return propertyNo;
+	}
+
+
+	public void setPropertyNo(String propertyNo) {
+		this.propertyNo = propertyNo;
 	}
 
 	

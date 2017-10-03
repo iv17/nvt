@@ -5,9 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import nvt.beans.Company;
+import nvt.conf.TokenUtils;
 import nvt.repository.CompanyRepository;
 
 @Service
@@ -15,6 +18,12 @@ public class CompanyService {
 
 	@Autowired
 	protected CompanyRepository companyRepository;
+	
+	@Autowired
+	private TokenUtils tokenUtils;
+
+	@Autowired
+	private UserDetailsService userDetailsService;
 	
 	
 	public Company findById(int id) {
@@ -49,5 +58,12 @@ public class CompanyService {
 		return companyRepository.findByUsername(username);
 	}
 	
+	public Company findByToken(String token) {
+		String username = tokenUtils.getUsernameFromToken(token);
+		UserDetails details = userDetailsService.loadUserByUsername(username);
+
+		Company user = findByUsername(details.getUsername());
+		return user;
+	}
 	
 }

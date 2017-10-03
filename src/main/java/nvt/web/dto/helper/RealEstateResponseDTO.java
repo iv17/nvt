@@ -26,7 +26,7 @@ public class RealEstateResponseDTO {
 	public RealEstateResponseDTO(RealEstateDTO realEstate, List<RealEstateCommentDTO> comments,
 			RatingsResponseDTO ratings, List<RealEstateReportDTO> reports, List<RealEstateIndoorsDTO> indoors,
 			List<RealEstateOutdoorsDTO> outdoors) {
-			this.realEstate = realEstate;
+		this.realEstate = realEstate;
 		this.comments = comments;
 		this.ratings = ratings;
 		this.reports = reports;
