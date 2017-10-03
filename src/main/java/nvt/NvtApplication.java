@@ -446,6 +446,9 @@ public class NvtApplication implements CommandLineRunner {
 		realEstateCommentRepository.save(realEstateComment4);
 		RealEstateComment realEstateComment5 = new RealEstateComment("Preskupo!", new Date(), realEstate2, user15);
 		realEstateCommentRepository.save(realEstateComment5);
+		
+		RealEstateComment realEstateComment6 = new RealEstateComment("Kompanija komentarise!", new Date(), realEstate2, company1);
+		realEstateCommentRepository.save(realEstateComment6);
 
 
 		RealEstateRating realEstateRating1 = new RealEstateRating(5, new Date(), realEstate1, user15);

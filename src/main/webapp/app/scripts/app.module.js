@@ -224,6 +224,22 @@
 					}
 				}
 			})
+			.state('rate_agent', {
+				url: "/rate_agent/:rate/:agentId",
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'content@': {
+						templateUrl: 'app/views/content/user_profile.html',
+						controller: 'RateAgentController'
+					}
+				}
+			})
 			.state('realEstate', {
 				url: "/realEstate/:realEstateId",
 				views: {
@@ -349,6 +365,22 @@
 					'content@': {
 						templateUrl: 'app/views/content/property.html',
 						controller: 'RateRealEstateController'
+					}
+				}
+			})
+			.state('prolong', {
+				url: "/prolong/:realEstateId",
+				views: {
+					'navbar@': {
+						templateUrl: 'app/views/navbar.html',
+						controller: 'NavBarController'
+					},
+					'sidebar_menu@': {
+						templateUrl: 'app/views/sidebar_menu.html'
+					},
+					'content@': {
+						templateUrl: 'app/views/content/property.html',
+						controller: 'ProlongRealEstateController'
 					}
 				}
 			});

@@ -3,8 +3,11 @@ package nvt.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import nvt.beans.Agent;
+import nvt.beans.AgentRating;
 import nvt.beans.RealEstate;
 import nvt.beans.RealEstateRating;
+import nvt.web.dto.AgentRatingDTO;
 import nvt.web.dto.RealEstateRatingDTO;
 import nvt.web.dto.helper.RatingsResponseDTO;
 
@@ -46,6 +49,42 @@ public class Util {
 		int srednjaVrednost = 0;
 		if(ukupno > 0) {
 			srednjaVrednost = (int) (sum/realEstate.getRatings().size());
+			
+		}
+
+		RatingsResponseDTO ratings = new RatingsResponseDTO(r1, r2, r3, r4, r5, ukupno, srednjaVrednost);
+		return ratings;
+	}
+	
+	
+	public static RatingsResponseDTO agentRatings(Agent agent) {
+
+		List<AgentRatingDTO> ratings1 = new ArrayList<AgentRatingDTO>();
+		List<AgentRatingDTO> ratings2 = new ArrayList<AgentRatingDTO>();
+		List<AgentRatingDTO> ratings3 = new ArrayList<AgentRatingDTO>();
+		List<AgentRatingDTO> ratings4 = new ArrayList<AgentRatingDTO>();
+		List<AgentRatingDTO> ratings5 = new ArrayList<AgentRatingDTO>();
+		double sum = 0;
+		for (AgentRating r : agent.getAgentRatings()) {
+			sum += r.getRate();
+			AgentRatingDTO rr = new AgentRatingDTO(r);
+			
+			if(rr.getRate() == 1) {ratings1.add(rr);}
+			if(rr.getRate() == 2) {ratings2.add(rr);}
+			if(rr.getRate() == 3) {ratings3.add(rr);}
+			if(rr.getRate() == 4) {ratings4.add(rr);}
+			if(rr.getRate() == 5) {ratings5.add(rr);}
+
+		}
+		int r1 = ratings1.size();
+		int r2 = ratings2.size();
+		int r3 = ratings3.size();
+		int r4 = ratings4.size();
+		int r5 = ratings5.size();
+		int ukupno = agent.getAgentRatings().size();
+		int srednjaVrednost = 0;
+		if(ukupno > 0) {
+			srednjaVrednost = (int) (sum/agent.getAgentRatings().size());
 			//srednjaVrednost = Util.round(srednjaVrednost, 1);
 			System.out.println(srednjaVrednost);
 		}
@@ -53,4 +92,5 @@ public class Util {
 		RatingsResponseDTO ratings = new RatingsResponseDTO(r1, r2, r3, r4, r5, ukupno, srednjaVrednost);
 		return ratings;
 	}
+	
 }

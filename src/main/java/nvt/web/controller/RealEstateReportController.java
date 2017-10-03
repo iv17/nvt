@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ import nvt.beans.RealEstateComment;
 import nvt.beans.RealEstateIndoors;
 import nvt.beans.RealEstateOutdoors;
 import nvt.beans.RealEstateReport;
+import nvt.beans.User;
 import nvt.service.RealEstateReportService;
 import nvt.service.RealEstateService;
 import nvt.service.UserService;
@@ -52,69 +54,75 @@ public class RealEstateReportController {
 			method = RequestMethod.POST, 
 			consumes = "application/json"
 			)
-	public ResponseEntity<RealEstateResponseDTO> createReport(@RequestBody RealEstateDTO re) {
+	public ResponseEntity<RealEstateResponseDTO> createReport(@RequestBody RealEstateDTO re, @RequestHeader("X-Auth-Token") String token) {
 
-		int id = re.getId();
+		if(userService.findByToken(token) != null) {
 
-		if(realEstateService.findById(id) != null) {
+			User user = userService.findByToken(token);
 
-			RealEstate realEstate = realEstateService.findById(id);
+			int id = re.getId();
 
-			RealEstateReport report = new RealEstateReport();
-			report.setPosted(new Date());
-			report.setRealEstate(realEstate);
-			//report.setUser(user);
+			if(realEstateService.findById(id) != null) {
 
-			realEstateReportService.save(report);
-			
-			Set<RealEstateReport> allReports = realEstate.getReports();
-			allReports.add(report);
-			
-			realEstate.setReports(allReports);
-			realEstateService.save(realEstate);
-			
-			RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
+				RealEstate realEstate = realEstateService.findById(id);
 
-			Set<RealEstateComment> comments = realEstate.getComments();
-			List<RealEstateCommentDTO> commentsDTO = new ArrayList<RealEstateCommentDTO>();
-			for (RealEstateComment c : comments) {
-				RealEstateCommentDTO commentDTO = new RealEstateCommentDTO(c);
-				commentsDTO.add(commentDTO);
+				RealEstateReport report = new RealEstateReport();
+				report.setPosted(new Date());
+				report.setRealEstate(realEstate);
+				report.setUser(user);
+
+				realEstateReportService.save(report);
+
+				Set<RealEstateReport> allReports = realEstate.getReports();
+				allReports.add(report);
+
+				realEstate.setReports(allReports);
+				realEstateService.save(realEstate);
+
+				RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
+
+				Set<RealEstateComment> comments = realEstate.getComments();
+				List<RealEstateCommentDTO> commentsDTO = new ArrayList<RealEstateCommentDTO>();
+				for (RealEstateComment c : comments) {
+					RealEstateCommentDTO commentDTO = new RealEstateCommentDTO(c);
+					commentsDTO.add(commentDTO);
+				}
+
+				Set<RealEstateReport> reports = realEstate.getReports();
+				List<RealEstateReportDTO> reportsDTO = new ArrayList<RealEstateReportDTO>();
+				for (RealEstateReport r : reports) {
+					RealEstateReportDTO reportDTO = new RealEstateReportDTO(r);
+					reportsDTO.add(reportDTO);
+				}
+				Set<RealEstateIndoors> indoors = realEstate.getIndoors();
+				List<RealEstateIndoorsDTO> indoorsDTO = new ArrayList<RealEstateIndoorsDTO>();
+				for (RealEstateIndoors i : indoors) {
+					RealEstateIndoorsDTO indoorDTO = new RealEstateIndoorsDTO(i);
+					indoorsDTO.add(indoorDTO);
+				}
+				Set<RealEstateOutdoors> outdoors = realEstate.getOutdoors();
+				List<RealEstateOutdoorsDTO> outdoorsDTO = new ArrayList<RealEstateOutdoorsDTO>();
+				for (RealEstateOutdoors o : outdoors) {
+					RealEstateOutdoorsDTO outdoorDTO = new RealEstateOutdoorsDTO(o);
+					outdoorsDTO.add(outdoorDTO);
+				}
+				RatingsResponseDTO ratings = Util.ratings(realEstate);
+
+				RealEstateResponseDTO realEstateResponseDTO = new RealEstateResponseDTO();
+				realEstateResponseDTO.setRealEstate(realEstateDTO);
+				realEstateResponseDTO.setComments(commentsDTO);
+				realEstateResponseDTO.setReports(reportsDTO);
+				realEstateResponseDTO.setIndoors(indoorsDTO);
+				realEstateResponseDTO.setOutdoors(outdoorsDTO);
+				realEstateResponseDTO.setRatings(ratings);
+				return new ResponseEntity<RealEstateResponseDTO>(realEstateResponseDTO, HttpStatus.CREATED);
+
+			} else {
+				return new ResponseEntity<RealEstateResponseDTO>(HttpStatus.NOT_FOUND);
 			}
-			
-			Set<RealEstateReport> reports = realEstate.getReports();
-			List<RealEstateReportDTO> reportsDTO = new ArrayList<RealEstateReportDTO>();
-			for (RealEstateReport r : reports) {
-				RealEstateReportDTO reportDTO = new RealEstateReportDTO(r);
-				reportsDTO.add(reportDTO);
-			}
-			Set<RealEstateIndoors> indoors = realEstate.getIndoors();
-			List<RealEstateIndoorsDTO> indoorsDTO = new ArrayList<RealEstateIndoorsDTO>();
-			for (RealEstateIndoors i : indoors) {
-				RealEstateIndoorsDTO indoorDTO = new RealEstateIndoorsDTO(i);
-				indoorsDTO.add(indoorDTO);
-			}
-			Set<RealEstateOutdoors> outdoors = realEstate.getOutdoors();
-			List<RealEstateOutdoorsDTO> outdoorsDTO = new ArrayList<RealEstateOutdoorsDTO>();
-			for (RealEstateOutdoors o : outdoors) {
-				RealEstateOutdoorsDTO outdoorDTO = new RealEstateOutdoorsDTO(o);
-				outdoorsDTO.add(outdoorDTO);
-			}
-			RatingsResponseDTO ratings = Util.ratings(realEstate);
-
-			RealEstateResponseDTO realEstateResponseDTO = new RealEstateResponseDTO();
-			realEstateResponseDTO.setRealEstate(realEstateDTO);
-			realEstateResponseDTO.setComments(commentsDTO);
-			realEstateResponseDTO.setReports(reportsDTO);
-			realEstateResponseDTO.setIndoors(indoorsDTO);
-			realEstateResponseDTO.setOutdoors(outdoorsDTO);
-			realEstateResponseDTO.setRatings(ratings);
-			return new ResponseEntity<RealEstateResponseDTO>(realEstateResponseDTO, HttpStatus.CREATED);
-
 		} else {
-			return new ResponseEntity<RealEstateResponseDTO>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<RealEstateResponseDTO>(HttpStatus.BAD_REQUEST);
 		}
-
 
 	}
 

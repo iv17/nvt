@@ -32,6 +32,10 @@
 			<li class="property-meta-item"><i class="fa fa-fw icon icon-home-2"></i> {{ realEstate.realEstateType.name }}</li>
 			<li class="property-meta-item"><i class="fa fa-fw icon icon-bed"></i> {{ realEstate.rooms }} Bedrooms</li>
 			<li class="property-meta-item"><i class="fa fa-fw icon icon-toilet"></i> {{ realEstate.bathrooms}} Bathrooms</li>
+			<li class="property-meta-item"><i class="fa fa-fw icon icon-home-2"></i><a ui-sref="user_profile({userId: realEstate.user.id})"> {{ realEstate.user.username }}</a> </li>
+			<li ng-show="loggedUser.username == realEstate.user.username " class="property-meta-item">
+				<a ui-sref="prolong({realEstateId: realEstate.id})"> <i class="fa fa-clock-o"></i> Prolong</a>
+			</li>
 		</ul>
 	</div>
 	<div class = "panel panel-default">
@@ -132,11 +136,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="input-group-btn"><a class="btn btn-primary" ui-sref="create_report({realEstateId: realEstate.id})"> <i class="fa fa-comment"></i> Report</a></div>
+
 	<h4>Comments</h4>
 	<section class = "panel panel-default">
 		<div class="panel-body">
-			<div class="input-group">
+			<div ng-show="loggedUser" class="input-group">
 				<input type="text" ng-model="commentText" class="form-control" placeholder="Write comment...">
 				<div class="input-group-btn"><a class="btn btn-primary" ui-sref="create_comment({commentText: commentText, realEstateId: realEstate.id})"> <i class="fa fa-comment"></i> Comment</a></div>
 			</div>
@@ -170,11 +174,11 @@
 	<h4>Rating</h4>
 	<section class = "panel panel-default">
 		<div class="panel-body">
-			<div class="input-group">
+			<div ng-show="loggedUser" class="input-group">
 				<div star-rating rating="rate" read-only="false" max-rating="5"></div>
 			</div>
-			&nbsp;{{ rate }}
-			<div class="input-group-btn"><a class="btn btn-primary" ui-sref="rate_realEstate({rate: rate, realEstateId: realEstate.id})"> <i class="fa fa-star"></i> Rate it</a></div>
+			&nbsp;
+			<div ng-show="loggedUser" class="input-group-btn"><a class="btn btn-primary" ui-sref="rate_realEstate({rate: rate, realEstateId: realEstate.id})"> <i class="fa fa-star"></i> Rate it</a></div>
 			<p>&nbsp;</p>
 			<div class="input-group">
 				Srednja vrednost:
@@ -204,5 +208,30 @@
 		</div>
 		<p>&nbsp;</p>
 	</section>
-	
+	<h4>Reports</h4>
+	<section class = "panel panel-default">
+		<div class="panel-body">
+			<div ng-show="loggedUser" class="input-group">
+				<div class="input-group-btn"><a class="btn btn-primary" ui-sref="create_report({realEstateId: realEstate.id})"> <i class="fa fa-comment"></i> Report</a></div>
+			</div>
+			<p>&nbsp;</p>
+			<div ng-repeat="report in realEstateReports">
+				<section class="panel panel-default">
+					<div class="panel-body">
+						<div class="media">
+							<a class="media-left" ui-sref="user_profile({userId: report.user.id})">
+								<img class="media-object" ng-src="{{ report.user.image.fileString }} " />
+							</a>
+							<div class="media-body">
+								<small class="text-grey-400 pull-right">{{ report.date | date : "short"}}</small>
+								<h5 class="media-heading margin-v-5">{{ report.user.username }}</h5>
+							</div>
+						</div>
+					</div>
+				</section>
+				<p>&nbsp;</p>
+			</div>
+		</div>
+		<p>&nbsp;</p>
+	</section>
 </div>

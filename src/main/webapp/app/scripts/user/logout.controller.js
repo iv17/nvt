@@ -9,6 +9,7 @@
 				toastr, $localStorage) {
 
 		$localStorage.token = null;
+		$rootScope.loggedUser = null;
 		$scope.loggedUser = null;
 		$localStorage.loggedUser = null;
 		$window.location.href = '/#/home';

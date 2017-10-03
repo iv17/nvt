@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +34,7 @@ import nvt.beans.RealEstateIndoors;
 import nvt.beans.RealEstateOutdoors;
 import nvt.beans.RealEstateReport;
 import nvt.beans.RealEstateType;
+import nvt.beans.User;
 import nvt.service.AdvertisementTypeService;
 import nvt.service.HeatingTypeService;
 import nvt.service.ImageService;
@@ -46,6 +48,7 @@ import nvt.service.RealEstateRatingService;
 import nvt.service.RealEstateReportService;
 import nvt.service.RealEstateService;
 import nvt.service.RealEstateTypeService;
+import nvt.service.UserService;
 import nvt.util.Util;
 import nvt.web.dto.IndoorFeatureDTO;
 import nvt.web.dto.OutdoorFeatureDTO;
@@ -72,6 +75,9 @@ import nvt.web.dto.helper.ZipCodeDTO;
 public class RealEstateController {
 
 	@Autowired
+	protected UserService userService;
+
+	@Autowired
 	protected RealEstateService realEstateService;
 
 	@Autowired
@@ -91,43 +97,43 @@ public class RealEstateController {
 
 	@Autowired
 	protected HeatingTypeService heatingTypeService;
-	
+
 	@Autowired
 	protected ImageService imageService;
-	
+
 	@Autowired
 	protected AdvertisementTypeService advertisementTypeService;
-	
+
 	@Autowired
 	protected IndoorFeatureService indoorFeatureService;
 
 	@Autowired
 	protected OutdoorFeatureService outdoorFeatureService;
-	
+
 	@Autowired
 	protected RealEstateIndoorsService indoorsService;
-	
+
 	@Autowired
 	protected RealEstateOutdoorsService outdoorsService;
-	
+
 	@RequestMapping(
 			value = "/search",
 			method = RequestMethod.POST
 			)
 	public ResponseEntity<List<RealEstateDTO>> search(@RequestBody SearchDTO searchDTO) {
 
-	
+
 		ArrayList<ZipCodeDTO> selectedZipCodes = new ArrayList<>();
 		ArrayList<CityDTO> selectedCities = new ArrayList<>();
 		ArrayList<BlockDTO> selectedBlocks = new ArrayList<>();
 		ArrayList<SelectedAdvertisementTypeDTO> selectedAdvertisementTypes = new ArrayList<>();
 		ArrayList<SelectedRealEstateTypeDTO> selectedRealEstateTypes = new ArrayList<>();
-		
+
 		double minPrice = -1;
 		double maxPrice = -1;
 		double minSurface = -1;
 		double maxSurface = -1;
-		
+
 		if(searchDTO.getSelectedZipCodes() != null) {
 			selectedZipCodes = searchDTO.getSelectedZipCodes();
 		}
@@ -148,11 +154,11 @@ public class RealEstateController {
 		if(searchDTO.getMinSurface() != -1) { minSurface = searchDTO.getMinSurface(); }
 		if(searchDTO.getMaxSurface() != -1) { maxSurface = searchDTO.getMaxSurface(); }
 
-		
+
 		List<RealEstate> realEstates = realEstateService.findAll();
 		List<RealEstate> searches = new ArrayList<>();
 		for (RealEstate  r : realEstates) {
-			
+
 			if(selectedAdvertisementTypes.size() != 0) {
 				for (SelectedAdvertisementTypeDTO a : selectedAdvertisementTypes) {
 					if(r.getAdvertisementType().getName().equals(a.getLabel())) {
@@ -188,7 +194,7 @@ public class RealEstateController {
 					}
 				}
 			}
-		
+
 		}
 		List<RealEstateDTO> realEstatesDTO = toDTO(searches);
 		return new ResponseEntity<List<RealEstateDTO>>(realEstatesDTO, HttpStatus.OK);
@@ -199,121 +205,131 @@ public class RealEstateController {
 			value = "/add",
 			method = RequestMethod.POST
 			)
-	public ResponseEntity<RealEstateDTO> createRealEstate(@RequestBody AddRealEstateDTO realEstateDTO) {
+	public ResponseEntity<RealEstateDTO> createRealEstate(@RequestBody AddRealEstateDTO realEstateDTO, @RequestHeader("X-Auth-Token") String token) {
 
-		
-		RealEstate realEstate = new RealEstate();
-		realEstate.setName(realEstateDTO.getName());
-		realEstate.setDescription(realEstateDTO.getDescription());
-		realEstate.setPrice(realEstateDTO.getPrice());
-		realEstate.setSurface(realEstateDTO.getSurface());
-		realEstate.setFloor(realEstateDTO.getFloor());
-		realEstate.setRooms(realEstateDTO.getRooms());
-		realEstate.setBathrooms(realEstateDTO.getBathrooms());
-		realEstate.setConstructedYear(realEstateDTO.getConstructedYear());
-		realEstate.setPosted(new Date());
-		realEstate.setUpdated(new Date());
-		realEstate.setDuration(60);
-		
-		if(realEstateDTO.getFiled().equals("true")) {
-			realEstate.setFiled(true);
-		} else {
-			realEstate.setFiled(false);
-		}
-		if(realEstateDTO.getFurnished().equals("true")) {
-			realEstate.setFurnished(true);
-		} else {
-			realEstate.setFurnished(false);
-		}
-		
-		RealEstateType realEstateType = realEstateTypeService.findById(realEstateDTO.getSelectedRealEstateTypes().get(0).getId());
-		if(realEstateType == null) {
-			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
-		}
-		realEstate.setRealEstateType(realEstateType);
-		
-		HeatingType heatingType = heatingTypeService.findById(realEstateDTO.getSelectedHeatingTypes().get(0).getId());
-		if(heatingType == null) {
-			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
-		}
-		realEstate.setHeatingType(heatingType);
-		
-		AdvertisementType  advertisementType = advertisementTypeService.findById(realEstateDTO.getSelectedAdvertisementTypes().get(0).getId());
-		if(advertisementType == null) {
-			return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
-		}
-		realEstate.setAdvertisementType(advertisementType);
-		
-		ArrayList<Double> latlng = realEstateDTO.getLatlng(); 
-		double lat = latlng.get(0);
-		double lng = Util.round(latlng.get(1), 7);
-		
-		final Geocoder geocoder = new Geocoder();
-		GeocoderRequest geocoderRequest = new GeocoderRequestBuilder().setLocation(new LatLng(String.valueOf(lat), String.valueOf(latlng.get(1)))).setLanguage("en").getGeocoderRequest();
-		GeocodeResponse geocoderResponse = geocoder.geocode(geocoderRequest);
-		
-		
-		Location location = new Location();
-		location.setCoord1(lat);
-		location.setCoord2(lng);
+		if(userService.findByToken(token) != null) {
 
-		location.setStreet(geocoderResponse.getResults().get(0).getFormattedAddress().split(",")[0]);
-		location.setCity(geocoderResponse.getResults().get(0).getFormattedAddress().split(",")[1]);
-		location.setBlock(geocoderResponse.getResults().get(1).getFormattedAddress().split(",")[0]);
-		locationService.save(location);
-		
-		realEstate.setLocation(location);
-		
-		ArrayList<SelectedIndoorFeatureDTO> is = realEstateDTO.getSelectedIndoors();
-		Set<RealEstateIndoors> indoors = new HashSet<RealEstateIndoors>();
-		for (SelectedIndoorFeatureDTO selectedIndoorFeatureDTO : is) {
-			IndoorFeature i = indoorFeatureService.findById(selectedIndoorFeatureDTO.getId());
-			RealEstateIndoors ii = new RealEstateIndoors();
-			ii.setIndoorFeature(i);
+			User user = userService.findByToken(token);
+
+			RealEstate realEstate = new RealEstate();
+			realEstate.setName(realEstateDTO.getName());
+			realEstate.setDescription(realEstateDTO.getDescription());
+			realEstate.setPrice(realEstateDTO.getPrice());
+			realEstate.setSurface(realEstateDTO.getSurface());
+			realEstate.setFloor(realEstateDTO.getFloor());
+			realEstate.setRooms(realEstateDTO.getRooms());
+			realEstate.setBathrooms(realEstateDTO.getBathrooms());
+			realEstate.setConstructedYear(realEstateDTO.getConstructedYear());
+			realEstate.setPosted(new Date());
+			realEstate.setUpdated(new Date());
+			realEstate.setDuration(60);
+
+			realEstate.setUser(user);
 			
-			indoors.add(ii);
-		}
-		realEstate.setIndoors(indoors);
-		
-		ArrayList<SelectedOutdoorFeatureDTO> of = realEstateDTO.getSelectedOutdoors();
-		Set<RealEstateOutdoors> outdoors = new HashSet<RealEstateOutdoors>();
-		for (SelectedOutdoorFeatureDTO selectedOutdoorFeatureDTO : of) {
-			OutdoorFeature o = outdoorFeatureService.findById(selectedOutdoorFeatureDTO.getId());
-			RealEstateOutdoors oo = new RealEstateOutdoors();
-			oo.setOutdoorFeature(o);
-			
-			outdoors.add(oo);
-		}
-		realEstate.setOutdoors(outdoors);
-		
-		realEstateService.save(realEstate);
-		RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
-		
-		
+			if(realEstateDTO.getFiled().equals("true")) {
+				realEstate.setFiled(true);
+			} else {
+				realEstate.setFiled(false);
+			}
+			if(realEstateDTO.getFurnished().equals("true")) {
+				realEstate.setFurnished(true);
+			} else {
+				realEstate.setFurnished(false);
+			}
 
-		ArrayList<String> names = realEstateDTO.getImages();
-		for (String string : names) {
-			String file = "app/images/markers/" + string;
-			Image im = new Image(string, file.getBytes());
-			im.setRealEstate(realEstate);
-			imageService.save(im);	
+			RealEstateType realEstateType = realEstateTypeService.findById(realEstateDTO.getSelectedRealEstateTypes().get(0).getId());
+			if(realEstateType == null) {
+				return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
+			}
+			realEstate.setRealEstateType(realEstateType);
+
+			HeatingType heatingType = heatingTypeService.findById(realEstateDTO.getSelectedHeatingTypes().get(0).getId());
+			if(heatingType == null) {
+				return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
+			}
+			realEstate.setHeatingType(heatingType);
+
+			AdvertisementType  advertisementType = advertisementTypeService.findById(realEstateDTO.getSelectedAdvertisementTypes().get(0).getId());
+			if(advertisementType == null) {
+				return new ResponseEntity<RealEstateDTO>(HttpStatus.NOT_FOUND);
+			}
+			realEstate.setAdvertisementType(advertisementType);
+
+			ArrayList<Double> latlng = realEstateDTO.getLatlng(); 
+			double lat = latlng.get(0);
+			double lng = Util.round(latlng.get(1), 7);
+
+			final Geocoder geocoder = new Geocoder();
+			GeocoderRequest geocoderRequest = new GeocoderRequestBuilder().setLocation(new LatLng(String.valueOf(lat), String.valueOf(latlng.get(1)))).setLanguage("en").getGeocoderRequest();
+			GeocodeResponse geocoderResponse = geocoder.geocode(geocoderRequest);
+
+
+			Location location = new Location();
+			location.setCoord1(lat);
+			location.setCoord2(lng);
+
+			location.setStreet(geocoderResponse.getResults().get(0).getFormattedAddress().split(",")[0]);
+			location.setCity(geocoderResponse.getResults().get(0).getFormattedAddress().split(",")[1]);
+			location.setBlock(geocoderResponse.getResults().get(1).getFormattedAddress().split(",")[0]);
+			locationService.save(location);
+
+			realEstate.setLocation(location);
+
+			ArrayList<SelectedIndoorFeatureDTO> is = realEstateDTO.getSelectedIndoors();
+			Set<RealEstateIndoors> indoors = new HashSet<RealEstateIndoors>();
+			for (SelectedIndoorFeatureDTO selectedIndoorFeatureDTO : is) {
+				IndoorFeature i = indoorFeatureService.findById(selectedIndoorFeatureDTO.getId());
+				RealEstateIndoors ii = new RealEstateIndoors();
+				ii.setIndoorFeature(i);
+
+				indoors.add(ii);
+			}
+			realEstate.setIndoors(indoors);
+
+			ArrayList<SelectedOutdoorFeatureDTO> of = realEstateDTO.getSelectedOutdoors();
+			Set<RealEstateOutdoors> outdoors = new HashSet<RealEstateOutdoors>();
+			for (SelectedOutdoorFeatureDTO selectedOutdoorFeatureDTO : of) {
+				OutdoorFeature o = outdoorFeatureService.findById(selectedOutdoorFeatureDTO.getId());
+				RealEstateOutdoors oo = new RealEstateOutdoors();
+				oo.setOutdoorFeature(o);
+
+				outdoors.add(oo);
+			}
+			realEstate.setOutdoors(outdoors);
+
+			realEstateService.save(realEstate);
+			RealEstateDTO newRealEstateDTO = new RealEstateDTO(realEstate);
+
+
+
+			ArrayList<String> names = realEstateDTO.getImages();
+			for (String string : names) {
+				String file = "app/images/markers/" + string;
+				Image im = new Image(string, file.getBytes());
+				im.setRealEstate(realEstate);
+				imageService.save(im);	
+			}
+
+
+			for (RealEstateIndoors realEstateIndoors : indoors) {
+				realEstateIndoors.setRealEstate(realEstate);
+				indoorsService.save(realEstateIndoors);
+			}
+			for (RealEstateOutdoors realEstateOutdoors : outdoors) {
+				realEstateOutdoors.setRealEstate(realEstate);
+				outdoorsService.save(realEstateOutdoors);
+			}
+
+
+			return new ResponseEntity<RealEstateDTO>(newRealEstateDTO, HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<RealEstateDTO>(HttpStatus.BAD_REQUEST);
 		}
-		
-		
-		for (RealEstateIndoors realEstateIndoors : indoors) {
-			realEstateIndoors.setRealEstate(realEstate);
-			indoorsService.save(realEstateIndoors);
-		}
-		for (RealEstateOutdoors realEstateOutdoors : outdoors) {
-			realEstateOutdoors.setRealEstate(realEstate);
-			outdoorsService.save(realEstateOutdoors);
-		}
-		
-		
-		return new ResponseEntity<RealEstateDTO>(newRealEstateDTO, HttpStatus.CREATED);
+
+
 	}
-	
-	
+
+
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<RealEstateDTO>> getRealEstates() {
 
@@ -333,7 +349,7 @@ public class RealEstateController {
 			return new ResponseEntity<RealEstateResponseDTO>(HttpStatus.NOT_FOUND);
 		}
 		RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
-		
+
 		Set<RealEstateComment> comments = realEstate.getComments();
 		List<RealEstateCommentDTO> commentsDTO = new ArrayList<RealEstateCommentDTO>();
 		for (RealEstateComment c : comments) {
@@ -367,19 +383,19 @@ public class RealEstateController {
 		realEstateResponseDTO.setIndoors(indoorsDTO);
 		realEstateResponseDTO.setOutdoors(outdoorsDTO);
 		realEstateResponseDTO.setRatings(ratings);
-		
+
 		return new ResponseEntity<RealEstateResponseDTO>(realEstateResponseDTO, HttpStatus.OK);
 	}
-	
-	
-	
+
+
+
 	@RequestMapping(value = "/latlng", method = RequestMethod.POST)
 	public ResponseEntity<RealEstateResponseDTO> getRealEstateLatLng(@RequestBody LatLngDTO latlng){
 
-		
+
 		double lat = latlng.getLat();
 		double lng = Util.round(latlng.getLng(), 7);
-		
+
 		Location location = locationService.findByCoordinates(lat, lng).get(0);
 		RealEstate realEstate = realEstateService.findByLocation(location).get(0);
 		if(realEstate == null){
@@ -387,7 +403,7 @@ public class RealEstateController {
 		}
 		RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
 
-		
+
 		Set<RealEstateComment> comments = realEstate.getComments();
 		List<RealEstateCommentDTO> commentsDTO = new ArrayList<RealEstateCommentDTO>();
 		for (RealEstateComment c : comments) {
@@ -423,7 +439,7 @@ public class RealEstateController {
 		realEstateResponseDTO.setRatings(ratings);
 		return new ResponseEntity<RealEstateResponseDTO>(realEstateResponseDTO, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/{id}/indoors", method = RequestMethod.GET)
 	public ResponseEntity<List<IndoorFeatureDTO>> getIndoors(@PathVariable Integer id){
 
@@ -436,10 +452,10 @@ public class RealEstateController {
 			IndoorFeatureDTO f = new IndoorFeatureDTO(realEstateIndoors.getIndoorFeature());
 			indoors.add(f);
 		}
-		
+
 		return new ResponseEntity<List<IndoorFeatureDTO>>(indoors, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/{id}/outdoors", method = RequestMethod.GET)
 	public ResponseEntity<List<OutdoorFeatureDTO>> getOutdoors(@PathVariable Integer id){
 
@@ -452,10 +468,10 @@ public class RealEstateController {
 			OutdoorFeatureDTO f = new OutdoorFeatureDTO(realEstateOutdoors.getOutdoorFeature());
 			outdoors.add(f);
 		}
-		
+
 		return new ResponseEntity<List<OutdoorFeatureDTO>>(outdoors, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/{id}/comments", method = RequestMethod.GET)
 	public ResponseEntity<List<RealEstateCommentDTO>> getComments(@PathVariable Integer id){
 
@@ -468,10 +484,10 @@ public class RealEstateController {
 			RealEstateCommentDTO cc = new RealEstateCommentDTO(c);
 			comments.add(cc);
 		}
-		
+
 		return new ResponseEntity<List<RealEstateCommentDTO>>(comments, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/ratings", method = RequestMethod.POST)
 	public ResponseEntity<RatingsResponseDTO> getRatings(@RequestBody RealEstateDTO realEstateDTO){
 
@@ -480,11 +496,11 @@ public class RealEstateController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		RatingsResponseDTO ratings = Util.ratings(realEstate);
-		
+
 		return new ResponseEntity<RatingsResponseDTO>(ratings, HttpStatus.OK);
 	}
 
-	
+
 
 	@RequestMapping(value = "/{id}/reports", method = RequestMethod.GET)
 	public ResponseEntity<List<RealEstateReportDTO>> getReports(@PathVariable Integer id){
@@ -498,11 +514,77 @@ public class RealEstateController {
 			RealEstateReportDTO rr = new RealEstateReportDTO(r);
 			reports.add(rr);
 		}
-		
+
 		return new ResponseEntity<List<RealEstateReportDTO>>(reports, HttpStatus.OK);
 	}
-	
-	
+
+	@RequestMapping(
+			value = "/prolong", 
+			method = RequestMethod.POST, 
+			consumes = "application/json"
+			)
+	public ResponseEntity<RealEstateResponseDTO> prolong(@RequestBody RealEstateDTO re, @RequestHeader("X-Auth-Token") String token) {
+
+		int id = re.getId();
+
+		if(userService.findByToken(token) != null) {
+			
+			if(realEstateService.findById(id) != null) {
+
+				RealEstate realEstate = realEstateService.findById(id);
+				realEstate.setUpdated(new Date());
+				realEstate.setDuration(60);
+
+				realEstateService.save(realEstate);
+
+				RealEstateDTO realEstateDTO = new RealEstateDTO(realEstate);
+
+				Set<RealEstateComment> comments = realEstate.getComments();
+				List<RealEstateCommentDTO> commentsDTO = new ArrayList<RealEstateCommentDTO>();
+				for (RealEstateComment c : comments) {
+					RealEstateCommentDTO commentDTO = new RealEstateCommentDTO(c);
+					commentsDTO.add(commentDTO);
+				}
+				Set<RealEstateReport> reports = realEstate.getReports();
+				List<RealEstateReportDTO> reportsDTO = new ArrayList<RealEstateReportDTO>();
+				for (RealEstateReport r : reports) {
+					RealEstateReportDTO reportDTO = new RealEstateReportDTO(r);
+					reportsDTO.add(reportDTO);
+				}
+				Set<RealEstateIndoors> indoors = realEstate.getIndoors();
+				List<RealEstateIndoorsDTO> indoorsDTO = new ArrayList<RealEstateIndoorsDTO>();
+				for (RealEstateIndoors i : indoors) {
+					RealEstateIndoorsDTO indoorDTO = new RealEstateIndoorsDTO(i);
+					indoorsDTO.add(indoorDTO);
+				}
+				Set<RealEstateOutdoors> outdoors = realEstate.getOutdoors();
+				List<RealEstateOutdoorsDTO> outdoorsDTO = new ArrayList<RealEstateOutdoorsDTO>();
+				for (RealEstateOutdoors o : outdoors) {
+					RealEstateOutdoorsDTO outdoorDTO = new RealEstateOutdoorsDTO(o);
+					outdoorsDTO.add(outdoorDTO);
+				}
+				RatingsResponseDTO ratings = Util.ratings(realEstate);
+
+				RealEstateResponseDTO realEstateResponseDTO = new RealEstateResponseDTO();
+				realEstateResponseDTO.setRealEstate(realEstateDTO);
+				realEstateResponseDTO.setComments(commentsDTO);
+				realEstateResponseDTO.setReports(reportsDTO);
+				realEstateResponseDTO.setIndoors(indoorsDTO);
+				realEstateResponseDTO.setOutdoors(outdoorsDTO);
+				realEstateResponseDTO.setRatings(ratings);
+				return new ResponseEntity<RealEstateResponseDTO>(realEstateResponseDTO, HttpStatus.CREATED);
+
+			} else {
+				return new ResponseEntity<RealEstateResponseDTO>(HttpStatus.NOT_FOUND);
+			}
+		} else {
+			return new ResponseEntity<RealEstateResponseDTO>(HttpStatus.BAD_REQUEST);
+		}
+		
+
+
+	}
+
 	public List<RealEstateDTO> toDTO(List<RealEstate> realEstates) {
 
 		List<RealEstateDTO> realEstateDTOs = new ArrayList<RealEstateDTO>();
@@ -514,6 +596,6 @@ public class RealEstateController {
 		return realEstateDTOs;
 	}
 
-	
-	
+
+
 }

@@ -3,13 +3,12 @@
 
 	angular
 	.module('nvtApp')
-	.controller('RealEstatesController', ['$scope', '$state', '_', 'RealEstateResource', '$log',
-		function($scope, $state, _, RealEstateResource, $log) {
+	.controller('RealEstatesController', ['$scope', '$rootScope', '$state', '_', 'RealEstateResource', '$log',
+		function($scope, $rootScope, $state, _, RealEstateResource, $log) {
 
 		RealEstateResource.getRealEstates().then(function(items) {
 			$scope.realEstates = items;
 		});
-
 
 	}
 	]);

@@ -20,7 +20,7 @@
 		UserResource.login(logginUser)
 		.then(function(item) {
 
-			$scope.loggedUser = item.user;
+			$rootScope.loggedUser = item.user;
 			$localStorage.loggedUser = item.user;
 			$localStorage.token = item.token;
 

@@ -1,5 +1,6 @@
 <aside class = "sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id = sidebar-menu data-type = collapse>
     <div data-scrollable>
+      <p>&nbsp;</p><p>&nbsp;</p>
       <ul class = "sidebar-menu sm-bordered sm-icons-block sm-icons-right">
         <li class = "hasSubmenu">
           <a ui-sref = "#discover"><i class = "fa fa-star"></i><span>discover</span></a>
@@ -8,13 +9,7 @@
             <li><a ui-sref = "realestates_map()"><i class = "fa fa-map-marker"></i><span>full screen map</span></a></li>
           </ul>
         </li>
-        <li class = "hasSubmenu">
-          <a href = "#property"><i class = "fa fa-home"></i><span>property</span></a>
-          <ul id = "property">
-            <li><a ui-sref = "realestate({realEstateId:1})"><i class = "fa fa-list"></i><span>property details</span></a></li>
-          </ul>
-        </li>
-        <li><a ui-sref = "open_add_realEstate()"><i class = "fa fa-pencil"></i><span>add property</span></a></li>
+        <li ng-show="loggedUser"><a ui-sref = "open_add_realEstate()"><i class = "fa fa-pencil"></i><span>add property</span></a></li>
       </ul>
     </div>
 </aside>

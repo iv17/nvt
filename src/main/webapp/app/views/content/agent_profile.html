@@ -1,0 +1,96 @@
+<p>&nbsp;</p>
+<div class="container-fluid">
+	<div class="media media-grid media-clearfix-xs">
+		<div class="media-left">
+			<div class="width-250 width-auto-xs">
+				<div class="panel panel-default widget-agent-1 text-center">
+					<div class="avatar">
+						<img ng-src="{{agent.image.fileString}}"  class="img-circle">
+						<h3>{{ agent.name }} {{ agent.lastName }}</h3>
+					</div>
+					<div class="profile-icons margin-none">
+						<span><i class="fa fa-fw icon icon-home-2"></i> {{ numRealEstates }}</span>
+						<span><i class="fa fa-star"></i> {{ numRatings }}</span>
+						<span><i class="fa fa-comment"></i> {{ numComments }}</span>
+						<span><i class="fa fa-flag"></i> {{ numReports }}</span>
+					</div>
+				</div>
+				<!-- Contact -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Contact
+					</div>
+					<ul class="icon-list icon-list-block">
+						<li><i class="fa fa-envelope fa-fw"></i> {{ agent.email }}</li>
+						<li><i class="fa fa-phone fa-fw"></i> {{ agent.phoneNumber}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="media-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading panel-heading-gray">
+							<a class="btn btn-white btn-xs pull-right"><i class="fa fa-pencil"></i></a>
+							<i class="fa fa-fw fa-info-circle"></i> About
+						</div>
+						<div class="panel-body">
+							<ul class="list-unstyled profile-about margin-none">
+								<li class="padding-v-5">
+									<div class="row">
+										<div class="col-sm-4"><span class="text-muted">Name</span></div>
+										<div class="col-sm-8">{{ agent.name }}</div>
+									</div>
+								</li>
+								<li class="padding-v-5">
+									<div class="row">
+										<div class="col-sm-4"><span class="text-muted">Last name</span></div>
+										<div class="col-sm-8">{{ agent.lastName }}</div>
+									</div>
+								</li>
+								<li class="padding-v-5">
+									<div class="row">
+										<div class="col-sm-4"><span class="text-muted">Date of Birth</span></div>
+										<div class="col-sm-8">{{ agent.date | date: "medium"}}</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading panel-heading-gray">
+					<i class="fa fa-fw icon icon-home-2"></i> agent realestates
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div ng-repeat = "realEstate in agentRealEstates">
+							<div class="col-md-4">
+								<div class = "panel panel-default relative">
+									<div class = "ribbon-heading ribbon-primary inline absolute left margin-none">{{ realEstate.advertisementType.name }}</div>
+									<div class = "cover hover overlay margin-none">
+										<img ng-src = "{{ realEstate.image.fileString }}"class = "img-responsive" />
+										<a ui-sref = "realEstate({realEstateId: realEstate.id})" class="overlay overlay-full overlay-bg-black overlay-hover">
+										<span class = "v-center"><span class = "btn btn-circle btn-white"><i class = "fa fa-eye"></i></span></span>
+										</a>
+									</div>
+									<div class = "panel-body">
+										<h4 class = "margin-v-0-5">{{ realEstate.name}}</h4>
+										<p>
+											<span class = "label label-grey-100">{{ realEstate.location.street }}</span>
+											<span class = "label label-grey-100">{{ realEstate.location.block }} , {{ realEstate.location.city }}</span>
+										</p>
+										<span class = "label label-grey-100">{{ realEstate.surface }}m2</span>
+										<span class = "label label-grey-100">&euro;{{ realEstate.price }}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

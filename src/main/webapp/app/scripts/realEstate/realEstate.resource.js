@@ -23,7 +23,7 @@
 			return Restangular.one("realEstates", id).get().then(function(entry) {
 				return entry;
 			});
-		};	
+		};
 
 		retVal.getRealEstateLatLng = function(latlng) {
 			return Restangular.all("realEstates/latlng").post(latlng).then(function(entry) {
@@ -39,6 +39,12 @@
 
 		retVal.addRealEstate = function(realestate)	{
 			return Restangular.all("realEstates/add").post(realestate).then(function(response) {
+				return response;
+			});
+		};
+
+		retVal.prolong = function(realestate)	{
+			return Restangular.all("realEstates/prolong").post(realestate).then(function(response) {
 				return response;
 			});
 		};
